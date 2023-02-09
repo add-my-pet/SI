@@ -1,7 +1,7 @@
 # LikaAugu2023
 Supplementary Information: The relationship between confidence intervals and distributions of estimators for parameters of deterministic models
 
-Konstadia Lika$^(1,2)$, Starrlight Augustine^3,4 , Sebastiaan A.L.M. Kooijman$^{4\ast}$}
+Konstadia Lika$^(1,2)$, Starrlight Augustine$^3$$^4$ , Sebastiaan A.L.M. Kooijman$^{4\ast}$}
   
 $^1$ Department of Biology, University of Crete, 70013, Heraklion, Greece
 $^2$ Institute of Computational Mathematics,
