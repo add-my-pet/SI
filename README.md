@@ -1,7 +1,7 @@
 # LikaAugu2023
 Supplementary Information: The relationship between confidence intervals and distributions of estimators for parameters of deterministic models
 
-Konstadia Lika$^{1,2}$, Starrlight Augustine$^{3,4}$, Sebastiaan A.L.M. Kooijman$^{4\ast}$}
+Konstadia Lika$^(1,2)$, Starrlight Augustine^3,4 , Sebastiaan A.L.M. Kooijman$^{4\ast}$}
   
 $^1$ Department of Biology, University of Crete, 70013, Heraklion, Greece
 $^2$ Institute of Computational Mathematics,
@@ -14,9 +14,9 @@ $^4$  Amsterdam Institute for Life and Environment (A-LIFE),
 VU University Amsterdam, de Boelelaan 1087, 1081 HV, The Netherlands
 $^\ast$ Corresponding author: bas.kooijman@vu.nl
 
-In this document the code used generating each of the 13 figures is listed. The code works Matlab\textsuperscript{\textcopyright} and with free open source DEBtool\_M software - \url{https://debtool.debtheory.org/docs/index.html}.
+In this document the code used generating each of the 13 figures is listed. The code works Matlab and with free open source DEBtool_M software: https://debtool.debtheory.org/docs/index.html.
 
-Code was run with Matlab^\textcopyright R2021a. 
+Code was run with Matlab R2021a. 
 
 
 *  mydata_F2S_exp.m - From loss function to survivor function for the exponential model. Calls exprnd.m and exponential.m
