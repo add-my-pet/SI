@@ -1,0 +1,259 @@
+\documentclass{article}
+
+\usepackage{a4wide,bm,graphicx,url,color}
+\usepackage[sort&compress,comma,authoryear]{natbib}
+\usepackage[a4paper]{geometry}
+\usepackage{apalike,lineno,ulem}
+%\usepackage{endfloat}
+\graphicspath{{./img}}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\thesection}{A.\arabic{section}}
+\renewcommand{\theequation}{A.\arabic{equation}}
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+
+\begin{document}
+\date{}
+
+\title{Supporting material for  ``The comparative energetics of the ray-finned fish in an evolutionary context''
+\footnote{Submitted to Conservation Physiology}}
+
+\author{
+        Konstadia Lika$^{1\ast}$,       
+        Starrlight Augustine$^2$ and  
+        Sebastiaan A.L.M. Kooijman$^3$ 
+       }
+
+\maketitle
+\noindent
+{\small
+{$^1$Department of Biology, University of Crete, 70013, Heraklion, Greece}\\
+{$^2$Akvaplan-niva, Fram High North Research Centre for Climate and the Environment, 9296 Troms\o, Norway}\\
+{$^3$Department of Theoretical Biology, VU University Amsterdam, The Netherlands}\\
+{$^\ast$ Corresponding author: lika@uoc.gr}
+}
+
+\noindent
+{\small
+{$^1$Department of Biology, University of Crete, 70013, Heraklion, Greece}\\
+{$^2$Akvaplan-niva, Fram High North Research Centre for Climate and the Environment, 9296 Troms\o, Norway}\\
+{$^3$Department of Theoretical Biology, VU University Amsterdam, The Netherlands}\\
+{$^\ast$ Corresponding author: lika@uoc.gr}
+}
+\vspace{2cm}
+\hrule
+\vspace{0.3cm}\hrule
+\vspace{1cm}
+
+In this Appendix we present the standard DEB model and then link the state variables and parameters with certain traits. For the traits that analytical formulae is either complex or not available we give the DEBtool functions used to compute them.
+DEBtool \citep{DEBtool2022} is a free software package  written in  Matlab, the Mathworks$^{\copyright}$, and it was used to estimate parameters as well as compute all of the implied traits (Table 2, main text).
+The DEBtool package is freely downloadable from \url{https://github.com/add-my-pet/DEBtool_M}.
+DEBtool functions are marked in magenta throughout this appendix.
+
+
+\section{The DEB model}
+
+The Dynamic Energy Budget (DEB) theory is about the metabolic dynamics of an individual organism through its entire life cycle. The state of an individual is described by four state variables: reserve energy, $E$, structural length, $L$, cumulated energy investment into maturation, $E_H$, and cumulated energy investment into reproduction, $E_R$. The assumptions that state how the state variable change are described in  \citep{Kooy2012} or for a more physical setting to \citep{JusuSous2017}. 
+Briefly, an organism converts food to reserves via the process called assimilation.  Subsequently, it allocates mobilized reserve to somatic and maturity maintenance, growth (i.e., increase in structural body mass) and maturation or reproduction (for adults). A fixed fraction $\kappa$ of the mobilized energy is allocated to somatic functions (somatic maintenance and growth) and the remaining fraction to maturity maintenance and maturation or reproduction. Table~\ref{tab:DEB_model} summarizes the metabolic processes and the dynamics of the state variables and Table~\ref{tab:DEB_pars} lists the  DEB parameters needed for this study.
+
+The standard (std) DEB model includes three life stages (embryos, juveniles and adults) and assumes isomorphic growth over all life stages. Isomorphy implies that surface area is proportional to structural length squared. Many fish species show metabolic acceleration during the early developmental stages. When acceleration occurs between birth and metamorphosis the model is named ``abj''. In terms of modeling, during metabolic acceleration the surface area grows proportionally to structural volume ($L^3$), with the consequence that the two parameters $\{ \dot{p}_{Am} \}$ and $\dot{v}$ (Table~\ref{tab:DEB_pars}) with surface area in the dimensions are no longer constant but increase proportional to structural length. Acceleration is quantified by the acceleration factor $s_{\cal M} =\max \left( L_b, \min(L,L_j) \right)/L_b$, where $L_b$ and $L_j$ are the structural lengths at birth and metamorphosis respectively.  After acceleration these parameters are multiplied by the acceleration factor $s_{\cal M} = \frac{L_j}{L_b}$.
+
+The effects of temperature on any rate parameter $\dot{k}$ is computed using the Arrhenius equation
+
+\begin{equation}
+    \dot{k}(T) = \dot{k}(T_{ref}) \exp \left( \frac{T_A}{T_{ref}}-\frac{T_A}{T} \right)
+\end{equation}
+\begin{table}
+	\caption{Energy fluxes linked to metabolic processes, state variables, and dynamics of the standard DEB model. Square brackets {[}~{]} indicate quantities expressed per unit of structural volume and curly brackets \{~\} per unit of structural surface area. The logical (boolean) operation enclosed in parentheses, e.g. ($x \ge y$), have value 1 if true and value 0 if false.}
+	\centering
+	\begin{tabular}{ll}
+	\\[1ex]
+		\hline\hline
+		\textbf{Metabolic process} & \textbf{Energy fluxes}\\
+		Assimilation & $  \dot{p}_A= \{\dot{p}_{Am} \}fL^2(E_H \ge E_H^b) $\\[1ex]
+	        Mobilization & $ \dot{p}_C = E \frac{\dot{v} [E_G] L^2+\dot{p}_S}{[E_G] L^3+\kappa E} $\\[2ex]
+		Somatic maintenance 	& $ \dot{p}_S= {[\dot{p}_M]}L^3 + \{\dot{p}_T\} L^2 $\\
+		Maturity maintenance & $ \dot{p}_J	= \dot{k}_J \max( E_H,E_H^p) $\\
+		Growth & $ \dot{p}_G = \kappa\dot{p}_C-\dot{p}_S$\\
+		Maturation/reproduction & $ \dot{p}_R = (1-\kappa)\dot{p}_C-\dot{p}_J $\\[1ex]
+		\textbf{State variables}& \\
+		%$ V$	&Structural body volume\\
+		$ E$	&Reserve energy\\
+	    $ L$	&Structural length\\
+		$ E_H$	&Cumulated energy investment into maturation\\
+		$ E_R$	&Cumulated energy investment to reproduction\\[1ex]
+		\textbf{Dynamics}& \\
+		$ \frac{d}{dt}L^3=\frac{\dot{p}_G}{[E_G]} $&\\
+		$ \frac{d}{dt}E=\dot{p}_A-\dot{p}_C $&\\
+		$ \frac{d}{dt}E_H=\dot{p}_R(E_H<E_H^p) $&\\
+		$ \frac{d}{dt}E_R=\kappa_R \dot{p}_R(E_H \ge E_H^p) $&\\[1ex]
+		\hline\hline
+	\end{tabular}
+	\label{tab:DEB_model}
+\end{table}
+
+\begin{table}%[h!]
+    \caption{\protect\small\label{tab:DEB_pars}  DEB parameters. Notation: square brackets, {[}~{]}, indicate parameters expressed per unit of structural volume, and curly brackets, \{~\}, per unit of structural surface area.}
+    \centering
+    \begin{tabular}{lll} 
+    \hline 
+    Symbol & Units & Interpretation   \\ [0.75ex]
+     \hline \hline
+$\{\dot{p}_{Am}\}$ &  J\,d$^{-1}$\,cm$^{-2}$ & Maximum specific assimilation rate (assimilation)\tabularnewline
+$\dot{v}$  & cm\,d$^{-1}$ & Energy conductance (mobilization)\tabularnewline 
+$\kappa$ & --& Allocation fraction to soma (allocation) \tabularnewline    
+$[\dot{p}_M]$  & J\,d$^{-1}$\,cm$^{-3}$ &  Somatic (volume specific)  maintenance rate  (turnover, activity) \tabularnewline
+$\{\dot{p}_T\}$  & J\,d$^{-1}$\,cm$^{-3}$ &  Somatic (surface specific)  maintenance rate  (heating, osmosis) \tabularnewline
+$\dot{k}_J$  & d$^{-1}$ &   Maturity maintenance rate coefficient  (development)\tabularnewline
+$[E_G]$ & J\,cm$^{-3}$ & Specific cost for structure (growth)\tabularnewline 
+$E_H^b$  & J &  Maturity at birth  (life cycle)\tabularnewline   
+$E_H^j$ & J &  Maturity at metamorphosis (life cycle) \tabularnewline    
+$E_H^p$ & J &  {Maturity at puberty} (life cycle)  \tabularnewline
+$\ddot{h}_a$ & d$^{-2}$ & Weibull aging acceleration (aging)\tabularnewline
+$s_G$ & -- & Gompertz stress coefficient (aging)\tabularnewline
+\hline 
+$[E_m] = \frac{\{\dot{p}_{Am}\}}{ \dot{v}}$  & J\,cm$^{-3}$ & Maximum energy density \tabularnewline
+$g=\frac{[E_G]}{\kappa  [E_m]}$ & -- & Energy investment ratio\tabularnewline
+$L_m = \frac{\kappa \{\dot{p}_{Am}\}}{[\dot{p}_M]}$ & cm & maximum volumetric length \tabularnewline
+%$s_{\cal M} = \frac{L_j}{L_b}$ & -- & Acceleration factor\tabularnewline
+$\overline{\mu}_E$ & J mol$^{-1}$ & chemical potential of reserve   \tabularnewline
+ $d_{V}$ & g cm$^{-3}$  & specific density of structure   \tabularnewline
+$w= \frac{[E_m] \, w_E}{\overline{\mu}_E \, d_V}$ &-- & contribution of reserve to ash free dry mass \tabularnewline
+$\dot{k}_M=\frac{[\dot{p}_M]}{[E_G]}$ &d$^{-1}$& somatic maintenance rate coefficient \tabularnewline
+$k=\frac{\dot{k}_J}{\dot{k}_M}$ &--&  maintenance ratio  \tabularnewline
+%$s_H^{bp} = \frac{E_H^b}{E_H^p}$ & - & Precociality coefficient\\[1ex]
+%$s_s = \frac{\dot{k}_J E_H^p [p_M]^2}{f^3 s_{\cal M}^3 \{\dot{p}_{Am}\}^3}$ & - & Supply stress ($f \in [0,1]$: scaled functional response)\\[1ex]
+\hline
+$f$ & -- & functional response  \tabularnewline
+$T_A$ & K & Arrhenius temperature \tabularnewline
+$T_{ref}$ & K & Reference temperature \tabularnewline
+%$\dot{r}_m$ & g d$^{-1}$ g$^{-1}$ & specific growth rate at maximum size \\[1ex]
+%$j_O^\infty$ & mol d$^{-1}$ g$^{-1}$ & specific O$_2$ consumption rate at ultimate size \\[1ex]
+%$j_{W_w^b}^\infty$ & mol d$^{-1}$ g$^{-1}$ & specific neonate mass production rate at ultimate size \\[1ex]
+ \hline \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Computing traits}
+In the following subsections and in Table~\ref{tab:DEB_traits} we present the analytical formulae for the traits  and the DEBtool functions used to compute them.
+
+\subsubsection*{\it Respiration}
+The metabolism of the individual is conceptualized as a single macro-chemical reaction equation:
+\begin{itemize} 
+ \item food + O$_2$ $\rightarrow$ reserve + structure + faeces + H$_2$O + CO$_2$ + NH$_3$ + heat
+\end{itemize}
+
+It is possible to split this single macro-chemical reaction equation into three ``micro-chemical reaction equations'':
+\begin{enumerate}
+	\item   assimilation: food     + O$_2$ $\rightarrow$ reserve + faeces + H$_2$O + CO$_2$ + NH$_3$ + heat
+   \item  dissipation:  reserve + O$_2$  $\rightarrow$ H$_2$O + CO$_2$ + NH$_3$ + heat
+   \item  growth:         reserve + O$_2$  $\rightarrow$ structure +  H$_2$O + CO$_2$ + NH$_3$ + heat
+\end{enumerate}
+These equations have to obey conservation rules for energy and the four chemical elements C, H, O and N.
+
+It turns out that the mineral fluxes $\dot{J}_C$ (mol CO$_2$ day$^{-1}$), $\dot{J}_H$ (mol H$_2$O day$^{-1}$), $\dot{J}_O$ (mol O$_2$ day$^{-1}$), and $\dot{J}_N$ (mol NH$_3$ day$^{-1}$) are weighted sums of the three basic powers, assimilation, $\dot{p}_A$, dissipation, $\dot{p}_D = \dot{p}_S +\dot{p}_J + (1-\kappa_R)\dot{p}_R $ (where $\kappa_R=0$ for embryos and juveniles) and growth, $\dot{p}_G$, defined in  Table~\ref{tab:DEB_model}. 
+Thus, the dioxygen consumption rate $\dot{J}_O$ (mol/d) can be written as
+\begin{equation}
+\dot{J}_O  =  \eta_{OA} \, \dot{p}_A + \eta_{OD} \, \dot{p}_D + \eta_{OG} \, \dot{p}_G
+\end{equation}
+The three basic powers are cubic polynomials in structural length  \cite[Chapter 2, Table 2.5]{Kooy2010}. The coefficients $\eta_{O \star}$ specify the mass flux of dioxygen per unit of power $\star$ (i.e., the coupling between the mass and energy fluxes) and are combinations of DEB parameters \cite[Chapter 4.3]{Kooy2010}.
+
+The ultimate dioxygen consumption rate $\dot{J}_O^\infty$ (i.e., the oxygen consumption of a fully grown individual) is computed with the DEBtool function \textcolor{magenta}{scaled\_power} (std-DEB model) or \textcolor{magenta}{scaled\_power\_j} (abj-DEB model) at ultimate structural length $L_\infty=s_{\cal M} f L_m$ and abundant food $f=1$.
+
+The {\bf ultimate specific dioxygen consumption rate} $j_O^\infty$, which is used as a trait in the main text, is the ratio of the dioxygen consumption rate  and wet weight at ultimate size: 
+\begin{equation}
+    j_O^\infty = \frac{\dot{J}_O^\infty}{W_w^\infty}
+\end{equation}
+where $W_w^\infty = L_\infty^3 (1+f \omega)$ at abundant food  $f=1$.
+
+\subsubsection*{\it Aging}
+In addition to the four state variables discussed above, the aging module of DEB theory requires two additional state variable: the damage inducing compounds and the damage compounds, the dynamics of which are linked to the energy mobilization rate $\dot{p}_C$ and the specific growth rate $\dot{r}=\frac{1}{V}\frac{dV}{dt}$. The aging module has two aging parameters, the Weibull aging acceleration $\ddot{h}_a$ and the Gompertz stress coefficient $s_G$. The mean life span is computed with the DEBtool function \textcolor{magenta}{get\_tm\_mod}.
+
+\subsubsection*{\it Reproduction}
+When maturity, $E_H$, reaches the threshold value $E_H^p$, maturation ceases and energy is allocated to reproduction at a rate 
+\begin{equation}
+\dot{p}_R = (1-\kappa)\dot{p}_C - \dot{k}_J E_H^p
+\end{equation}
+
+The mean reproduction rate in terms of number of eggs per time equals $\dot{R}= \kappa_R \dot{p}_C/E_0$, where $E_0$ is the initial energy in egg (Table~\ref{tab:DEB_traits}).
+
+At constant food density, where reserve density $[E]=E/V$ equals $f[E_m]$, the maximum (mean) reproduction rate for an individual of maximum size, i.e., $L=L_\infty$ and $W_w^\infty$, equals
+
+\begin{equation} \label{eqn:repro}
+\dot{R}_\infty = \kappa_R \dot{k}_M \frac{1-k v_H^p}{v_E^0}
+\end{equation}
+with $v_E^0=\frac{E_0}{(1-\kappa)g[E_m]L_m^3}$ and $v_E^p=\frac{E_H^p}{(1-\kappa)g[E_m]L_m^3}$.
+
+The maximum (mean) reproduction rate is computed with the DEBtool functions \textcolor{magenta}{reprod\_rate} (std-DEB model) or \textcolor{magenta}{reprod\_rate\_j} (abj-DEB model) at ultimate structural length $L_\infty$ and abundant food $f=1$.
+
+The ultimate neonate mass production rate is obtained by multiplying the maximum reproduction rate $\dot{R}_\infty$ (eq.~\ref{eqn:repro}) and the wet weight of a neonate $W_w^b$ (Table~\ref{tab:DEB_traits}), then dividing by the ultimate weight of the mother we obtain the {\bf ultimate weight-specific neonate mass production rate}: 
+\begin{equation}
+j_{W_w^b}^\infty = \frac{\dot{R}_\infty W_w^b}{W_w^\infty}
+\end{equation}
+
+The {\bf life time neonate mass} is the product of the life time reproductive output $N_\infty$  and the neonate wet weight $W_w^b$ (Table~\ref{tab:DEB_traits}). 
+%The specific neonate mass production is the life-time neonate mass divided by the ultimate weight $W_w^\infty$.
+
+\subsubsection*{\it Population and body growth}
+
+In a constant environment with only aging as cause of death, any  population would grow theoretically exponentially. To avoid enormous population growth rates, we specify a hazard rate called “thinning”: the hazard rate is chosen such that the feeding rate of a cohort of neonates does not change in time. When individuals grow, they eat more, but this effect is exactly balanced by a reduction in numbers. 
+The {\bf specific population growth rate} $\dot{r}_N$ can be computed by solving the characteristic equation (see for details \cite{KooyLika2020}).
+The computation of the population growth rate has been done for all species of the AmP collection with the function AmPtool/curation/prt\_my\_pet\_pop of AmPtool \citep{AmPtool2022}.
+
+The text presents results in terms of weight-specific body (structure + reserve) growth rate at
+maximum growth and maximum specific growth rate of structure. We here work out their relationship after birth.
+
+The change in structural volume, for the standard DEB models, at abundant food ($f=1$) is given by 
+\begin{equation} 
+\frac{d}{dt} L^3  = \frac{\dot{p}_G}{[E_G]}=\dot{r} L^3 \\
+\end{equation}
+with
+\begin{equation} 
+\dot{r} = \dot{v} \frac{1/ L - 1/ L_m} {1 + g} = \frac{\dot{k}_M (L_m/ L - 1)}{1 + 1/ g} \quad
+\mbox{the specific growth rate of structure }
+\end{equation}
+
+Alternatively, the change in structural length is 
+\begin{equation}
+  \frac{d}{dt} L = \dot{r}_B (L_m - L) 
+\end{equation}
+with
+\begin{equation}
+ \dot{r}_B = \frac{\dot{k}_M/ 3}{1 + 1/ g} = \frac{\dot{r}/ 3}{L_m/ L - 1} \quad \mbox{the von Bertalanffy growth rate }
+\end{equation}
+
+Growth of structure is at maximum when $\frac{d}{dt}(\dot{r}L^3) =0$ and occurs at structural length $L = \frac{2} {3} L_m$ \citep{KooyLika2020} and the specific growth rate at this length is $\dot{r}_m = \frac{\dot{k}_M/ 2}{1 + 1/ g}$. The implication is that the specific growth at maximum growth, $\dot{r}_m$, relates to the von Bertalanffy growth rate, $\dot{r}_B$: $\dot{r}_m = \frac{3}{2} \dot{r}_B$.
+
+The {\bf specific body growth rate at maximum growth} $\dot{r}_m$ is computed for all models with the DEBtool functions \textcolor{magenta}{statistics\_st}. 
+
+
+\begin{table}[htbp]
+    \caption{\protect\small\label{tab:DEB_traits}  DEB traits and other quantities.}
+    \centering
+    \begin{tabular}{llll} 
+    \hline 
+    Symbol & Units & Interpretation   \\ [0.75ex]
+     \hline \hline
+$E_0$ & J& initial energy in egg & \textcolor{magenta}{initial\_scaled\_reserve}\tabularnewline 
+$a_b, a_p$ & d & age at birth, puberty& \textcolor{magenta}{get\_tj}\tabularnewline
+$a_m$ & d & age at death & \textcolor{magenta}{get\_tm\_mod}\tabularnewline
+$L_b, L_p$ & cm &  structural length at birth, puberty & \textcolor{magenta}{get\_tj} \tabularnewline 
+$L_\infty$ & cm & ultimate volumetric length & $s_{\cal M}fL_m$\tabularnewline   
+$W_w^b$& g &  wet weight at birth& $L_b^3 (1+f \omega)$\tabularnewline   
+$W_w^p$ & g &  wet weight puberty & $L_p^3 (1+f \omega)$\tabularnewline   
+$W_w^\infty $ & g & ultimate wet weight & $L_\infty^3 (1+f \omega)$ \tabularnewline   
+$N_\infty$ & \# & life time reproductive output & \textcolor{magenta}{cum\_reprod} (std-DEB) or\tabularnewline 
+ & & & \textcolor{magenta}{cum\_reprod\_j} (abj-DEB) \tabularnewline 
+%$j_O^\infty$ & mol d$^{-1}$ g$^{-1}$ & specific O$_2$ consumption rate at ultimate size & \tabularnewline   
+%$j_{W_w^b}^\infty$ & mol d$^{-1}$ g$^{-1}$ & specific neonate mass production rate at ultimate size & \tabularnewline   
+ \hline \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
+\nolinenumbers
+\bibliographystyle{apalike} % apalike/plainnat
+\bibliography{LikaAugu2021}
+
+\end{document}

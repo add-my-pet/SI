@@ -1,0 +1,80 @@
+\begin{table}\small
+\caption{\label{tab:codes}\protect\small
+The codes of the data types as presented in Table \ref{tab:species}.
+Zero variate data left, uni-variate data right.
+Life history events: b birth, s settlement, j end of acceleration, p puberty, m death, i death.
+T stands for temperature.}
+
+\begin{tabular}{ll|ll} \hline
+\textbf{code} & \textbf{description} & \textbf{code} & \textbf{description}\\ \hline
+ah & age at h & t-Le & time, embryo length\\ 
+ah\_T & age at h (several T)) & t-Le\_T & time, embryo length (several T)\\ 
+ab & age at birth & t-L & time, length\\ 
+ab\_T & age at birth (several T) & t-L\_T & time, length (several T)\\ 
+ab\_f & age at birth (several f) & t-L\_f & time, length (several f)\\ 
+as & age at s & t-L\_fT & time, length (several f, T)\\ 
+aj & age at j & t-dL & time, change in length\\ 
+ap & age (or time since birth) at p & t-VY & time, yolk volume\\ 
+am & age at death (life span) & t-Wwe & time, embryo wet weight\\ 
+am\_T & age at death (several T) & t-Ww & time, wet weight\\ 
+L0 & length at 0 & t-Ww\_f & time, wet weight (several f)\\ 
+Lh & length at h & t-Ww\_T & time, wet weight (several T)\\ 
+Lb & length at b & t-Ww\_fT & time, wet weight (several f, T)\\ 
+Ls & length at s & t-WwR & time, gonad wet weight\\ 
+Lj & length at j & t-WdYe & time, embryo dry weight (yolk)\\ 
+Lp & length at p & t-Wde & time, embryo dry weight (total)\\ 
+Li & length at i & t-Wd\_T & time, dry weight (several T)\\ 
+L\_t & length at time t & t-E & time, energy content\\ 
+L\_W & length at time weight & t-p+ & time, heat production\\ 
+dLb & change in length at b & t-N & time, number of offspring\\ 
+dLp & change in length at p & t-N\_f & time, number of offspring (several f)\\ 
+dLj & change in length at j & t-JX\_T & time, ingestion rate (several T)\\ 
+Ww0 & wet weight at 0 & t-JCe & time, embryo CO$_2$ production\\ 
+Wwh & wet weight at h & t-JOe & time, embryo O$_2$ consumption\\ 
+Wwb & wet weight at b & t-JNe & time, embryo NH$_3$ production\\ 
+Wwj & wet weight at j & t-S & time, surviving fraction\\ 
+WwR & wet weight at R & t-S\_f & time, surviving fraction (several f)\\ 
+Wwp & wet weight at p & t-dC & time, condition factor\\ 
+Wwi & wet weight at i & X-JX & food density, ingestion rate\\ 
+Ww\_L & wet weight at length & L-L & length, length (different length measures)\\ 
+Ww\_t & wet weight at time & L-dL & length, change in length\\ 
+Wd0 & dry weight at 0 & L0-Lt & length at capture, length at recapture\\ 
+Wdh & dry weight at h & L-Ww & length, wet weight\\ 
+Wdb & dry weight at b & L-Ww\_f & length, wet weight (several f)\\ 
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}\small
+\caption{\label{tab:codes}\protect\small
+Continuation of Table \ref{tab:codes}.}
+
+\begin{tabular}{ll|ll} \hline
+\textbf{code} & \textbf{description} & \textbf{code} & \textbf{description}\\ \hline
+
+Wdb\_f & dry weight at b (several f) & L-Wde\_T & length, embryo dry weight (several T)\\ 
+Wdj & dry weight at j & L-Wd & length, dry weight\\ 
+E0 & reserve energy at 0 & L-N & length, number of eggs/offspring\\ 
+rB & von Bertalanffy growth rate & L-N\_f & length, number of eggs/offspring (several f)\\ 
+rB\_T & von Bertalanffy growth rate (several  T) & L-X & length, cumulated food ingested\\ 
+Ri & reproduction rate at i & L-JO\_T & length, O$_2$ consumption (several T)\\ 
+R\_L & reproduction rate at length & Ww0-Wwt & wet weight at capture, wet weight at recapture\\ 
+R\_W & reproduction rate at weight & Ww-dWw\_T & wet weight, change in wet weight (several T)\\ 
+GSI & gonado-somatic index & Ww-N & wet weight, number of eggs/offspring\\ 
+Ni & (total) number of offspring at i & Ww-WwR & wet weight, clutch wet weight\\ 
+JO\_W & O2 consumption at W & Ww-R & wet weight, reproduction rate\\ 
+ss & supply stress & Ww-JX\_T & wet weight, ingestion rate (several T)\\ 
+  &   & Ww-JO & wet weight, O$_2$ consumption\\ 
+  &   & Ww-JO\_T & wet weight, O$_2$ consumption (several T)\\ 
+  &   & T-ah & temperature, age at h\\ 
+  &   & T-ab & temperature, age at b\\ 
+  &   & T-aj & temperature, age at j\\ 
+  &   & T-dL & temperature, change in length\\ 
+  &   & T-dWw\_f & temperature, change in wet weight (several f)\\ 
+  &   & T-JX & temperature, food consumption\\ 
+  &   & T-JO & temperature, O$_2$ consumption\\ 
+  &   & T-JO\_f & temperature, O$_2$ consumption (several f)\\ 
+  &   & T-JN\_W & temperature, NH$_3$ production (several W)\\ 
+\hline
+\end{tabular}
+\end{table}
