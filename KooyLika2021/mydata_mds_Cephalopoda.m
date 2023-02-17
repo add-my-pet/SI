@@ -7,8 +7,6 @@
 % If the matlab command window gives red warnings, please type "clear all"
 % and retry
 
-close all
-
 species = select('Cephalopoda');
 % traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
 traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'};
@@ -39,16 +37,16 @@ shstat_options('default');
 shstat_options('x_transform', 'none');
 shstat_options('y_transform', 'none');
 shstat_options('z_transform', 'none');
-[Hfig, Hleg] = shstat(data, legend_Cephalopoda, ['Cephalopoda ', num2str(length(species)), ' @ ', datestr(date,26)]);
+[HfigCe, HlegCe] = shstat(data, legend_Cephalopoda, ['Cephalopoda ', num2str(length(species)), ' @ ', datestr(date,26)]);
 
-fig(Hleg)
+figure(HlegCe)
 title('Cephalopoda');
-%saveas (Hleg, 'CephalopodaLegend.png')
+%saveas (HlegCe, 'CephalopodaLegend.png')
 
 % connect the points for subclades
-connect_subclade(Hfig, y(:,1:3), 'Cephalopoda', 'Sepiida');
+connect_subclade(HfigCe, y(:,1:3), 'Cephalopoda', 'Sepiida');
 
-%saveas (Hfig, 'CephalopodaMds.png')
+%saveas (HfigCe, 'CephalopodaMds.png')
 
 figure % plot eigenvalues
 n_e = length(e); n_t = length(traits);

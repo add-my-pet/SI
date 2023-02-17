@@ -4,7 +4,7 @@ function KooyAugu2022_SI(fig)
 % Authors: Kooijman, Augustine
 % Journal: Conservation Physiology 10
 % DOI: 10.1093/conphys/coac057
-% Date: 2020/02/11
+% Date: 2023/02/17
 % 
 % Matlab scripts to generate the figures in the publication
 %

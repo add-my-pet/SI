@@ -6,8 +6,6 @@
 % If you did not yet run read_stat this Matlab session, the first time you run this script might take a while; next trials are faster.
 % If the matlab command window gives red warnings, please type "clear all"
 
-close all
-
 species = select('Testudines');
 % traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
 traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'};
@@ -35,16 +33,16 @@ shstat_options('default');
 shstat_options('x_transform', 'none');
 shstat_options('y_transform', 'none');
 shstat_options('z_transform', 'none');
-[Hfig, Hleg] = shstat(data, legend_Testudines, ['Testudines ', num2str(length(species)), ' @ ', datestr(date,26)]);
+[HfigT, HlegT] = shstat(data, legend_Testudines, ['Testudines ', num2str(length(species)), ' @ ', datestr(date,26)]);
 
-fig(Hleg)
+figure(HlegT)
 title('Testudines');
 %saveas (Hleg, 'TestudinesLegend.png')
 
 % connect the points for subclades
-connect_subclade(Hfig, y(:,1:3), 'Testudines', 'Chelonioidea');
+connect_subclade(HfigT, y(:,1:3), 'Testudines', 'Chelonioidea');
 
-%saveas (Hfig, 'TestudinesMds.png')
+%saveas (HfigT, 'TestudinesMds.png')
 
 figure % plot eigenvalues
 n_e = length(e); n_t = length(traits);

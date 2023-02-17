@@ -4,7 +4,7 @@ function KooyLika2020_SI(fig)
 % Authors: Kooijman, Lika, Augustine, Marn, Kooi
 % Journal: Ecological Modelling 428, 109055
 % DOI: 10.1016/j.ecolmodel.2020.109055
-% Date: 2020/02/11
+% Date: 2023/02/11
 % 
 % Matlab scripts to generate the figures in the publication
 %
@@ -20,6 +20,7 @@ function KooyLika2020_SI(fig)
 % To run the code section for a figure, place the cursor in that code section and press "Run Section" in the toolbar of the Matlab Editor
 %
 % Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
 %  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
 %  Click on a marker in the Matlab-figure to see the species name
 %  Uncomment "saveas" to save the Matlab-figure to a png-file

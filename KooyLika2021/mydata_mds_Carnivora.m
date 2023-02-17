@@ -6,8 +6,6 @@
 % If you did not yet run read_stat this Matlab session, the first time you run this script might take a while; next trials are faster.
 % If the matlab command window gives red warnings, please type "clear all"  and retry
 
-close all
-
 species = select('Carnivora');
 % traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hx'; 'E_Hp'};
 traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'};
@@ -36,17 +34,17 @@ shstat_options('default');
 shstat_options('x_transform', 'none');
 shstat_options('y_transform', 'none');
 shstat_options('z_transform', 'none');
-[Hfig, Hleg] = shstat(data, legend_Carnivora, ['Carnivora ', num2str(length(species)), ' @ ', datestr(date,26)]);
+[HfigCa, HlegCa] = shstat(data, legend_Carnivora, ['Carnivora ', num2str(length(species)), ' @ ', datestr(date,26)]);
 
-fig(Hleg)
+figure(HlegCa)
 title('Carnivora');
 %saveas (Hleg, 'CarnivoraLegend.png')
 
 % connect the points for subclades
-connect_subclade(Hfig, y(:,1:3), 'Carnivora', 'Canidae');
-connect_subclade(Hfig, y(:,1:3), 'Carnivora', 'Pinnipedia');
+connect_subclade(HfigCa, y(:,1:3), 'Carnivora', 'Canidae');
+connect_subclade(HfigCa, y(:,1:3), 'Carnivora', 'Pinnipedia');
 
-%saveas (Hfig, 'CarnivoraMds.png')
+%saveas (HfigCa, 'CarnivoraMds.png')
 
 figure % plot eigenvalues
 n_e = length(e); n_t = length(traits);

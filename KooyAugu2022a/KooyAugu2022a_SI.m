@@ -4,7 +4,7 @@ function KooyAugu2022_SI(fig)
 % Authors: Kooijman, Augustine
 % Journal: J Sea Res 184 (2022) 102205
 % DOI: 10.1016/j.seares.2022.102205
-% Date: 2020/02/17
+% Date: 2023/02/17
 % 
 % Matlab scripts to generate the figures in the publication
 %

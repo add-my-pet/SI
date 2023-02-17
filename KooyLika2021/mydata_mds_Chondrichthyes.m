@@ -6,8 +6,6 @@
 % If you did not yet run read_stat this Matlab session, the first time you run this script might take a while; next trials are faster.
 % If the matlab command window gives red warnings, please type "clear all"
 
-close all
-
 species = select('Chondrichthyes');
 % traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
 traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'};
@@ -38,15 +36,15 @@ shstat_options('default');
 shstat_options('x_transform', 'none');
 shstat_options('y_transform', 'none');
 shstat_options('z_transform', 'none');
-[Hfig, Hleg] = shstat(data, legend_Chondrichthyes, ['Chondrichthyes ', num2str(length(species)), ' @ ', datestr(date,26)]);
+[HfigCh, HlegCh] = shstat(data, legend_Chondrichthyes, ['Chondrichthyes ', num2str(length(species)), ' @ ', datestr(date,26)]);
 
-fig(Hleg)
+figure(HlegCh)
 title('Chondrichthyes');
-%saveas (Hleg, 'ChondrichthyesLegend.png')
+%saveas (HlegCh, 'ChondrichthyesLegend.png')
 
 % connect the points for subclades
-connect_subclade(Hfig, y(:,1:3), 'Chondrichthyes', 'Chimaeriformes');
-%saveas (Hfig, 'ChondrichthyesMds.png')
+connect_subclade(HfigCh, y(:,1:3), 'Chondrichthyes', 'Chimaeriformes');
+%saveas (HfigCh, 'ChondrichthyesMds.png')
 
 figure % plot eigenvalues
 n_e = length(e); n_t = length(traits);
@@ -56,4 +54,3 @@ ylabel('eigenvalue');
 title('MDS for Chondrichthyes');
 set(gca, 'FontSize', 15, 'Box', 'on');
 %saveas (gca, 'ChondrichthyesEigen.png')
-
