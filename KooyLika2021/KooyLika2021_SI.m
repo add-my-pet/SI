@@ -126,5 +126,3 @@ for i=1:length(fig)
 
   end
 end
-
-
