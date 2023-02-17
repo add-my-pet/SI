@@ -1,5 +1,31 @@
-function KooyAugu2021(fig)
-% figures for KooyAugu2021 on cephalopods
+function KooyAugu2022_SI(fig)
+% Supporting Information for KooyAugu2022a
+% Title: The comparative energetics of the cephalopods: they neither grow nor reproduce fast
+% Authors: Kooijman, Augustine
+% Journal: J Sea Res 184 (2022) 102205
+% DOI: 10.1016/j.seares.2022.102205
+% Date: 2020/02/17
+% 
+% Matlab scripts to generate the figures in the publication
+%
+% To run the scripts you need
+% 1) Matlab (the student or home version will suffice)
+% 2) Download AmPdata from http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/
+%    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
+% 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
+% 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+%
+% Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
+% Load this script-file in the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. KooyLika2020_SI(4)
+%
+% Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
+%  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
+%  Click on a marker in the Matlab-figure to see the species name
+%  Uncomment "saveas" to save the Matlab-figure to a png-file
+%  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
+%  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 
 if ~exist('fig','var')
    fig = 1:18;
@@ -42,79 +68,81 @@ llegend = {... % Mollusca
  for i=1:length(fig)
  
  switch fig(i)
-   case 1
+   % figs 1a,.,1d are directly taken from the entries of the AmP collection
+   
+   case 1 % fig 2a
      shstat_options('x_transform', 'log10');
      hp_Am = shstat({'p_Am'}, llegend); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
      %saveas(hp_Am, [path, 'pAm.png'])
-     exportgraphics(hp_Am, [path,'pAm.png'], 'Resolution',1200); % 1a
+     %exportgraphics(hp_Am, [path,'pAm.png'], 'Resolution',1200); 
 
-   case 2
+   case 2 % fig 2b
      shstat_options('x_transform', 'log10');
      hv = shstat({'v'}, llegend); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
      %saveas(hv, [path, 'v.png'])
-     exportgraphics(hv, [path,'v.png'], 'Resolution',1200); % 1b
+     %exportgraphics(hv, [path,'v.png'], 'Resolution',1200); 
 
-   case 3
+   case 3 % fig 2c
      shstat_options('x_transform', 'none');
      hkap = shstat({'kap'}, llegend);
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
      %saveas(hkap, [path, 'kap.png'])
-     exportgraphics(hkap, [path,'kap.png'], 'Resolution',1200); % 1c
+     %exportgraphics(hkap, [path,'kap.png'], 'Resolution',1200); 
 
-   case 4
+   case 4 % fig 2d
      shstat_options('x_transform', 'log10');
      hp_M = shstat({'p_M'}, llegend); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
      %saveas(hp_M, [path, 'pM.png'])
-     exportgraphics(hp_M, [path,'pM.png'], 'Resolution',1200); % 1d
+     %exportgraphics(hp_M, [path,'pM.png'], 'Resolution',1200); 
      
-   case 5
+   case 5 % fig 2e
      shstat_options('x_transform', 'log10');
      ha_m = shstat({'a_m'}, llegend); 
      figure(ha_m)
      xlabel('_{10}log age at death, a_m, d')
      %saveas(ha_m, [path, 'am.png'])
-     exportgraphics(ha_m, [path,'am.png'], 'Resolution',1200); % 1e
+     %exportgraphics(ha_m, [path,'am.png'], 'Resolution',1200); 
      
-   case 6
+   case 6 % fig 2f
      shstat_options('x_transform', 'log10');
      hE_m = shstat({'E_m'}, llegend); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
      %saveas(hE_m, [path, 'Em.png'])
-     exportgraphics(hE_m, [path,'Em.png'], 'Resolution',1200); % 1f
+     %exportgraphics(hE_m, [path,'Em.png'], 'Resolution',1200); 
 
-   case 7
+   case 7 % fig 2g
      shstat_options('x_transform', 'log10');
      hs_Hbp = shstat({'s_Hbp'}, llegend); 
      figure(hs_Hbp)
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
      %saveas(hs_Hbp, [path, 'sHbp.png'])
-     exportgraphics(hs_Hbp, [path,'sHbp.png'], 'Resolution',1200); % 1g
+     %exportgraphics(hs_Hbp, [path,'sHbp.png'], 'Resolution',1200); 
 
-   case 8
+   case 8 % fig 2h
      shstat_options('x_transform', 'log10');
      hs_M = shstat({'s_M'}, llegend); 
      figure(hs_M)
      xlabel('_{10}log acceleration factor, s_M, -')
      %saveas(hs_M, [path, 'sM.png'])
-     exportgraphics(hs_M, [path,'sM.png'], 'Resolution',1200); % 1h
+     %exportgraphics(hs_M, [path,'sM.png'], 'Resolution',1200); 
  
-   case 9
+   case 9 % fig 2i
      shstat_options('x_transform', 'log10');
      hs_s = shstat({'s_s'}, llegend); 
      figure(hs_s)
      xlabel('_{10}log supply stress, s_s, -')
      %saveas(hs_s, [path, 'ss.png'])
-     exportgraphics(hs_s, [path,'ss.png'], 'Resolution',1200); % 1i
+     %exportgraphics(hs_s, [path,'ss.png'], 'Resolution',1200); 
 
-   case 10
+   case 10 % fig 2j
      shstat_options('x_transform', 'log10');
      Wwi_P = read_stat(select('Polyplacophora'),{'Ww_i'}); 
      Wwi_B = read_stat(select('Bivalvia'),{'Ww_i'}); 
@@ -129,9 +157,9 @@ llegend = {... % Mollusca
      figure(hWw_i)
      xlabel('_{10}log wet weight at birth, death, W_b^w, W_\infty^w, g')
      %saveas(hWw_i, [path, 'Wwi.png'])
-     exportgraphics(hWw_i, [path,'Wwi.png'], 'Resolution',1200); % 1j
+     %exportgraphics(hWw_i, [path,'Wwi.png'], 'Resolution',1200); 
 
-   case 11
+   case 11 % fig 2k
      shstat_options('x_transform', 'log10');
      WdW_P = read_stat(select('Polyplacophora'),{'W_dWm','dWm','c_T'}); WdW_P = WdW_P(:,2) ./ WdW_P(:,1) ./ WdW_P(:,3);
      WdW_B = read_stat(select('Bivalvia'),{'W_dWm','dWm','c_T'});       WdW_B = WdW_B(:,2) ./ WdW_B(:,1) ./ WdW_B(:,3);
@@ -144,9 +172,9 @@ llegend = {... % Mollusca
      figure(hWdW)
      xlabel('_{10}log maximum spec growth, r_m, g/d.g')
      %saveas(hWdW, [path, 'WdW.png'])
-     exportgraphics(hWdW, [path,'WdW.png'], 'Resolution',1200); % 1k
+     %exportgraphics(hWdW, [path,'WdW.png'], 'Resolution',1200); 
 
-   case 12
+   case 12 % fig 2i
      shstat_options('x_transform', 'log10');
      JOiW_P = read_stat(select('Polyplacophora'),{'J_Oi','Ww_i','c_T'}); JOiW_P = JOiW_P(:,1) ./ JOiW_P(:,2) ./ JOiW_P(:,3);
      JOiW_B = read_stat(select('Bivalvia'),{'J_Oi','Ww_i','c_T'});       JOiW_B = JOiW_B(:,1) ./ JOiW_B(:,2) ./ JOiW_B(:,3);
@@ -159,9 +187,9 @@ llegend = {... % Mollusca
      figure(hJOiW)
      xlabel('_{10}log specific O_2 consumption at death, j_O^m, mol/d.g')
      %saveas(hJOiW, [path, 'JOiW.png'])
-     exportgraphics(hJOiW, [path,'JOiW.png'], 'Resolution',1200); % 1l
+     exportgraphics(hJOiW, [path,'JOiW.png'], 'Resolution',1200); 
 
-   case 13
+   case 13 % fig 3a
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      WJO = read_allStat({'Ww_i', 'J_Oi','c_T'}); WJO(:,2) = WJO(:,2) ./ WJO(:,1) ./ WJO(:,3);
@@ -172,10 +200,10 @@ llegend = {... % Mollusca
      ylabel('_{10}log spec O_2 consumption, mol/d.g')
      %saveas(hWwi_JOiW, [path, 'Wwi_JOiW.png'])
      %saveas(hC, [path, 'legend_Ceph.png'])
-     exportgraphics(hWwi_JOiW, [path,'Wwi_JOiW.png'], 'Resolution',1200); % 2a
-     exportgraphics(hC, [path,'legend_Ceph.png'], 'Resolution',1200); % 2b
+     %exportgraphics(hWwi_JOiW, [path,'Wwi_JOiW.png'], 'Resolution',1200); 
+     %exportgraphics(hC, [path,'legend_Ceph.png'], 'Resolution',1200); % 2b
 
-   case 14
+   case 14 % fig 3b
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      vsEE = read_allStat({'v', 's_M', 'E_Hb', 'E_Hj', 'E_Hp'}); 
@@ -187,7 +215,7 @@ llegend = {... % Mollusca
      xlabel('_{10}log post-accel energy cond., v s_M, cm/d')
      ylabel('_{10}log maturity ratio, s_H^{jp}, -')
      %saveas(hvs_s_Hjp, [path, 'vsM_sHjp.png'])
-     exportgraphics(hvs_s_Hjp, [path,'vsM_sHjp.png'], 'Resolution',1200); % 2c
+     %exportgraphics(hvs_s_Hjp, [path,'vsM_sHjp.png'], 'Resolution',1200); 
 
    case 15
      shstat_options('x_transform', 'log10');
@@ -201,7 +229,7 @@ llegend = {... % Mollusca
      %saveas(hv_vs, [path, 'v_vsM.png'])
      %exportgraphics(hv_vs, [path,'v_vsM.png'], 'Resolution',1200); 
 
-    case 16
+    case 16 % fig 4a
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
      kNWWa = read_allStat({'kap', 'N_i', 'Ww_b', 'Ww_i', 'a_m' , 'c_T'}); 
@@ -212,9 +240,9 @@ llegend = {... % Mollusca
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log total fecundity/ life span, #/d')
      %saveas(hkap_R, [path, 'kap_R.png'])
-     exportgraphics(hkap_R, [path,'kap_R.png'], 'Resolution',1200); % 3a
+     %exportgraphics(hkap_R, [path,'kap_R.png'], 'Resolution',1200); 
     
-   case 17
+   case 17 % fig 4b
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
      kNWWa = read_allStat({'kap', 'N_i', 'Ww_b', 'Ww_i', 'a_m', 'c_T'}); 
@@ -223,25 +251,11 @@ llegend = {... % Mollusca
      hkap_RWW = shstat([kap, RWW], legend);   
      figure(hkap_RWW)
      xlabel('allocation fraction to soma, \kappa, -')
-     ylabel('_{10}log spec offspring prod./ life span, 1/d')
-     saveas(hkap_RWW, [path, 'kap_RWW.png'])
-%      exportgraphics(hkap_RWW, [path,'kap_RWW.png'], 'Resolution',1200); % 3b
-
-   case 18
-     shstat_options('x_transform', 'log10');
-     shstat_options('y_transform', 'log10');
-     WdW = read_allStat({'W_dWm','dWm','c_T'}); WdW = WdW(:,2) ./ WdW(:,1) ./ WdW(:,3);
-     r = read_popStat('f1.thin1.f.r') ./ read_popStat('c_T'); 
+     ylabel('_{10}log spec offspring prod./ life span, #/d')
+     %saveas(hkap_RWW, [path, 'kap_RWW.png'])
+     %exportgraphics(hkap_RWW, [path,'kap_RWW.png'], 'Resolution',1200); 
      
-     hWdW_r = shstat([WdW, r], legend);   
-     figure(hWdW_r)
-     plot([-1 -4.5], [-1 -4.5], 'k')
-     xlabel('_{10}log max spec growth, r_m, g/d.g')
-     ylabel('_{10}log max spec pop growth, r_N, 1/d')
-     %saveas(hWdW_r, [path, 'WdW_r.png'])
-     exportgraphics(hWdW_r, [path,'WdW_r.png'], 'Resolution',1200); % 4
-     
-   case 19
+   case 18 % fig 5a, 5b
      %legend = [legend, {{'.', 8, 8, [0 1 0], [0 1 0]}, 'Actinopterygii'}];
 
      shstat_options('x_transform', 'log10');
@@ -254,7 +268,7 @@ llegend = {... % Mollusca
      xlabel('_{10}log weight at max growth, g')
      ylabel('_{10}log max spec growth, r_m, g/d.g')
      %saveas(hWwi_WdW, [path, 'WdWm_dWm.png'])
-     exportgraphics(hWdWm_dWm, [path,'WdWm_dWm.png'], 'Resolution',1200); % 4
+     %exportgraphics(hWdWm_dWm, [path,'WdWm_dWm.png'], 'Resolution',1200); 
 
      WWN = read_allStat({'Ww_i','Ww_b','N_i','c_T'}); WN = [WWN(:,1), WWN(:,2) .* WWN(:,3) ./ WWN(:,4)];
      WN(select_01('Cephalopoda'),1) = get_Wwam(select('Cephalopoda'));
@@ -265,7 +279,21 @@ llegend = {... % Mollusca
      xlabel('_{10}log max maximum weight, W_w^{max}, g')
      ylabel('_{10}log neonate mass prod, g')
      %saveas(hWwi_WdW, [path, 'Wwi_WdW.png'])
-     exportgraphics(hWwi_NiWb, [path,'Wwi_NiWb.png'], 'Resolution',1200); % 4
+     %exportgraphics(hWwi_NiWb, [path,'Wwi_NiWb.png'], 'Resolution',1200); 
+     
+   case 19 % fig 6
+     shstat_options('x_transform', 'log10');
+     shstat_options('y_transform', 'log10');
+     WdW = read_allStat({'W_dWm','dWm','c_T'}); WdW = WdW(:,2) ./ WdW(:,1) ./ WdW(:,3);
+     r = read_popStat('f1.thin1.f.r') ./ read_popStat('c_T'); 
+     
+     hWdW_r = shstat([WdW, r], legend);   
+     figure(hWdW_r)
+     plot([-1 -4.5], [-1 -4.5], 'k')
+     xlabel('_{10}log max spec growth, r_m, g/d.g')
+     ylabel('_{10}log max spec pop growth, r_N, 1/d')
+     %saveas(hWdW_r, [path, 'WdW_r.png'])
+     %exportgraphics(hWdW_r, [path,'WdW_r.png'], 'Resolution',1200); % 4
 
    end
 end
