@@ -17,7 +17,7 @@ function KooyLika2020_SI(fig)
 %
 % Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
 % Load this script-file in the Matlab Editor
-% To run the code section for a figure, place the cursor in that code section and press "Run Section" in the toolbar of the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. KooyLika2020_SI(4)
 %
 % Remarks: 
 %  The figures show current AmP data, which might change in time; the results might differ from the publication
