@@ -1,4 +1,3 @@
-
 function KooyLika2021_SI(fig)
 % Supporting Information for KooyLika2021
 % Title: Multidimensional scaling for animal traits in the context of dynamic energy budget theory
