@@ -1,5 +1,31 @@
-function KooyAugu2021a(fig)
-% figures for Kooy2021 on carnivora/pangolins
+function KooyAugu2022_SI(fig)
+% Supporting Information for KooyAugu2022
+% Title: The comparative energetics of the carnivorans and pangolins
+% Authors: Kooijman, Augustine
+% Journal: Conservation Physiology 10
+% DOI: 10.1093/conphys/coac057
+% Date: 2020/02/11
+% 
+% Matlab scripts to generate the figures in the publication
+%
+% To run the scripts you need
+% 1) Matlab (the student version will suffice)
+% 2) Download AmPdata from http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/
+%    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
+% 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
+% 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+%
+% Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
+% Load this script-file in the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. KooyLika2020_SI(4)
+%
+% Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
+%  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
+%  Click on a marker in the Matlab-figure to see the species name
+%  Uncomment "print" to save the Matlab-figure to a png-file
+%  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
+%  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 
 if ~exist('fig','var')
    fig = 1:32;
@@ -76,24 +102,24 @@ end
  for i=1:length(fig)
  
  switch fig(i)
-   case 1
+   case 1 % fig 1c, 2c
      fprintf('case 1\n');
      shstat_options('x_transform', 'none');
      
      [hkap, hleg] = shstat({'kap'}, llegend, 'Mammalia');
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
-     print -r0 -dpng kap.png
+     %print -r0 -dpng kap.png
      figure(hleg)
-     print -r0 -dpng llegend_Mammalia.png
+     %print -r0 -dpng llegend_Mammalia.png
      
      % Laurasiatheria
      [hkap, hleg] = shstat({'kap'}, llegend_Laurasiatheria, 'Laurasiatheria');
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
-     print -r0 -dpng kap_Laurasiatheria.png
+     %print -r0 -dpng kap_Laurasiatheria.png
      figure(hleg)
-     print -r0 -dpng llegend_Laurasiatheria.png
+     %print -r0 -dpng llegend_Laurasiatheria.png
 
      % Carnivora
      [hkap, hleg] = shstat({'kap'}, llegend_Carnivora, 'Carnivora');
@@ -103,20 +129,20 @@ end
      %figure(hleg)
      %print -r0 -dpng llegend_Carnivora.png
 
-   case 2
+   case 2 % fig 1d, 2d
      fprintf('case 2\n');
      shstat_options('x_transform', 'log10');
      
      hp_M = shstat({'p_M'}, llegend, 'Mammalia'); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
-     print -r0 -dpng pM.png
+     %print -r0 -dpng pM.png
 
      % Laurasiatheria
      hp_M = shstat({'p_M'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
-     print -r0 -dpng pM_Laurasiatheria.png
+     %print -r0 -dpng pM_Laurasiatheria.png
      
      % Carnivora
      hp_M = shstat({'p_M'}, llegend_Carnivora, 'Carnivora'); 
@@ -137,14 +163,14 @@ end
      hs_M = shstat(NWbWi(:,1).*NWbWi(:,2)./NWbWi(:,3), llegend, 'Mammalia'); 
      figure(hs_M)
      xlabel('_{10}log total neonate mass prod/ ultimate weight, -')
-     print -r0 -dpng WRWi.png
+     %print -r0 -dpng WRWi.png
      
      % Laurasiatheria
      NWbWi = read_allStat({'N_i','Ww_b','Ww_i'});
      hs_M = shstat(NWbWi(:,1).*NWbWi(:,2)./NWbWi(:,3), llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hs_M)
      xlabel('_{10}log total neonate mass prod/ ultimate weight, -')
-     print -r0 -dpng WRWi_Laurasiatheria.png
+     %print -r0 -dpng WRWi_Laurasiatheria.png
 
      % Carnivora
      NWbWi = read_allStat({'N_i','Ww_b','Ww_i'});
@@ -153,14 +179,14 @@ end
      xlabel('_{10}log total neonate mass prod/ ultimate weight, -')
      %print -r0 -dpng WRWi_Carnivora.png
 
-   case 4 
+   case 4 % fig 1h, 2h
      fprintf('case 4\n');
      shstat_options('x_transform', 'log10');
      
      hs_s = shstat({'s_s'}, llegend, 'Mammalia'); 
      figure(hs_s)
      xlabel('_{10}log supply stress, s_s, -')
-     print -r0 -dpng ss.png
+     %print -r0 -dpng ss.png
 
      % Laurasiatheria
      hs_s = shstat({'s_s'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
@@ -175,20 +201,20 @@ end
      %print -r0 -dpng ss_Carnivora.png
 
      
-   case 5
+   case 5 % fig 1g, 2g
      fprintf('case 5\n');
      shstat_options('x_transform', 'log10');
      
      hs_Hbp = shstat({'s_Hbp'}, llegend, 'Mammalia'); 
      figure(hs_Hbp)
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r0 -dpng sHbp.png
+     %print -r0 -dpng sHbp.png
 
      % Laurasiatheria
      hs_Hbp = shstat({'s_Hbp'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hs_Hbp)
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r0 -dpng sHbp_Laurasiatheria.png
+     %print -r0 -dpng sHbp_Laurasiatheria.png
      
      % Carnivora
      hs_Hbp = shstat({'s_Hbp'}, llegend_Carnivora, 'Carnivora'); 
@@ -196,20 +222,20 @@ end
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
      %print -r0 -dpng sHbp_Carnivora.png
      
-   case 6
+   case 6 % fig 1b, 2b
      fprintf('case 6\n');
      shstat_options('x_transform', 'log10');
      
      hv = shstat({'v'}, llegend, 'Mammalia'); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
-     print -r0 -dpng v.png
+     %print -r0 -dpng v.png
 
      % Laurasiatheria
      hv = shstat({'v'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
-     print -r0 -dpng v_Laurasiatheria.png
+     %print -r0 -dpng v_Laurasiatheria.png
      
      % Carnivora
      hv = shstat({'v'}, llegend_Carnivora, 'Carnivora'); 
@@ -217,20 +243,20 @@ end
      xlabel('_{10}log energy conductance, v, cm/d')
      %print -r0 -dpng v_Carnivora.png
      
-   case 7
+   case 7 % fig 1a, 2a
      fprintf('case 7\n');
      shstat_options('x_transform', 'log10');
      
      hp_Am = shstat({'p_Am'}, llegend, 'Mammalia'); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
-     print -r0 -dpng pAm.png
+     %print -r0 -dpng pAm.png
 
      % Laurasiatheria
      hp_Am = shstat({'p_Am'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
-     print -r0 -dpng pAm_Laurasiatheria.png
+     %print -r0 -dpng pAm_Laurasiatheria.png
 
      % Carnivora
      hp_Am = shstat({'p_Am'}, llegend_Carnivora, 'Carnivora'); 
@@ -238,7 +264,7 @@ end
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
      %print -r0 -dpng pAm_Carnivora.png
 
-   case 8
+   case 8 % fig 1i, 2i
      fprintf('case 8\n');
      shstat_options('x_transform', 'log10');
      
@@ -247,7 +273,7 @@ end
      shstat({'Ww_b'}, llegend, [], hWw_i);
      figure(hWw_i)
      xlabel('_{10}log weight at birth, puberty, death, W_w^b, W_w^p, W_w^\infty, g')
-     print -r0 -dpng Wwi.png
+     %print -r0 -dpng Wwi.png
 
      % Laurasiatheria
      hWw_i = shstat({'Ww_i'}, llegend_Laurasiatheria);
@@ -255,7 +281,7 @@ end
      shstat({'Ww_b'}, llegend_Laurasiatheria, 'Laurasiatheria', hWw_i);
      figure(hWw_i)
      xlabel('_{10}log weight at birth, puberty, death, W_w^b, W_w^p, W_w^\infty, g')
-     print -r0 -dpng Wwi_Laurasiatheria.png
+     %print -r0 -dpng Wwi_Laurasiatheria.png
 
      % Carnivora
      hWw_i = shstat({'Ww_i'}, llegend_Carnivora);
@@ -265,20 +291,20 @@ end
      xlabel('_{10}log weight at birth, puberty, death, W_w^b, W_w^p, W_w^\infty, g')
      %print -r0 -dpng Wwi_Carnivora.png
 
-  case 9
+  case 9 % 1f, 2f
      fprintf('case 6\n');
      shstat_options('x_transform', 'log10');
      
      hE_m = shstat({'E_m'}, llegend, 'Mammalia'); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng Em.png
+     %print -r0 -dpng Em.png
 
      % Laurasiatheria
      hE_m = shstat({'E_m'}, llegend_Laurasiatheria, 'Laurasiatheria'); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng Em_Laurasiatheria.png
+     %print -r0 -dpng Em_Laurasiatheria.png
 
      % Carnivora
      hE_m = shstat({'E_m'}, llegend_Carnivora, 'Carnivora'); 
@@ -286,7 +312,7 @@ end
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
      %print -r0 -dpng Em_Carnivora.png
 
-   case 10
+   case 10 % fig 1e, 2e
      fprintf('case 10\n');
      shstat_options('x_transform', 'log10');
      
@@ -296,7 +322,7 @@ end
      shstat(aaac(:,1).*aaac(:,4), llegend, [], ha_m); 
      figure(ha_m)
      xlabel('_{10}log age at birth, puberty, death, a_b, a_p, a_m, d')
-     print -r0 -dpng am.png
+     %print -r0 -dpng am.png
 
      % Laurasiatheria
      ha_m = shstat(aaac(:,3).*aaac(:,4), llegend_Laurasiatheria);
@@ -304,7 +330,7 @@ end
      shstat(aaac(:,1).*aaac(:,4), llegend_Laurasiatheria, 'Laurasiatheria', ha_m); 
      figure(ha_m)
      xlabel('_{10}log age at birth, puberty, death, a_b, a_p, a_m, d')
-     print -r0 -dpng am_Laurasiatheria.png
+     %print -r0 -dpng am_Laurasiatheria.png
 
      % Carnivora
      ha_m = shstat(aaac(:,3).*aaac(:,4), llegend_Carnivora);
@@ -314,7 +340,7 @@ end
      xlabel('_{10}log age at birth, puberty, death, a_b, a_p, a_m, d')
      %print -r0 -dpng am_Carnivora.png
 
-   case 11
+   case 11 % fig 1j, 2j
      fprintf('case 11\n');
      shstat_options('x_transform', 'log10');
      
@@ -334,7 +360,7 @@ end
      figure(hWdW)
      xlim([-8 0])
      xlabel('_{10}log maximum spec growth, r, g/d.g')
-     print -r0 -dpng WdW.png
+     %print -r0 -dpng WdW.png
 
      % Laurasiatheria
      WdW_L = read_stat(select('Eulipotyphla'),{'W_dWm','dWm','c_T'});   WdW_L = WdW_L(:,2) ./ WdW_L(:,1) ./ WdW_L(:,2);
@@ -349,10 +375,10 @@ end
      figure(hWdW_Laurasiatheria)
      xlim([-8 0.2])
      xlabel('_{10}log maximum spec growth, r, g/d.g')
-     print -r0 -dpng WdW_Laurasiatheria.png
+     %print -r0 -dpng WdW_Laurasiatheria.png
      %
      shllegend(llegend_Laurasiatheria, [], [], 'Laurasiatheria');
-     print -r0 -dpng llegend_Laurasiatheria.png
+     %print -r0 -dpng llegend_Laurasiatheria.png
 
      % Carnivora
      WdW_P = read_stat(select('Pinnipedia'),{'W_dWm','dWm','c_T'});   WdW_P = WdW_P(:,2) ./ WdW_P(:,1) ./ WdW_P(:,2);
@@ -370,7 +396,7 @@ end
      shllegend(llegend_Carnivora, [], [], 'Carnivora');
      %print -r0 -dpng llegend_Carnivora.png
      
-   case 12
+   case 12 % fig 1k, 2k
      fprintf('case 12\n');
      shstat_options('x_transform', 'log10');
      JOiW_M = read_stat(select('Marsupialia'),{'J_Oi','Ww_i','c_T'}); JOiW_M = JOiW_M(:,1) ./ JOiW_M(:,2) ./ JOiW_M(:,3);
@@ -388,7 +414,7 @@ end
      %shstat(JOiW_E, {'r', 'r'}, [], hJOiW);   
      figure(hJOiW)
      xlabel('_{10}log ultimate spec O_2 consumption, j_O^\infty, mol/d.g')
-     print -r0 -dpng jOi.png
+     %print -r0 -dpng jOi.png
 
      % Laurasiatheria
      JOiW_L = read_stat(select('Eulipotyphla'),{'J_Oi','Ww_i','c_T'}); JOiW_L = JOiW_L(:,1) ./ JOiW_L(:,2) ./ JOiW_L(:,3);
@@ -402,7 +428,7 @@ end
      shstat(JOiW_U, {'r', 'r'}, 'Laurasiatheria', hJOiW_Laurasiatheria);   
      figure(hJOiW_Laurasiatheria)
      xlabel('_{10}log ultimate spec O_2 consumption, j_O^\infty, mol/d.g')
-     print -r0 -dpng jOi_Laurasiatheria.png
+     %print -r0 -dpng jOi_Laurasiatheria.png
 
      % Carnivora
      JOiW_P = read_stat(select('Pinnipedia'),{'J_Oi','Ww_i','c_T'}); JOiW_P = JOiW_P(:,1) ./ JOiW_P(:,2) ./ JOiW_P(:,3);
@@ -417,7 +443,7 @@ end
      xlabel('_{10}log ultimate spec O_2 consumption, j_O^\infty, mol/d.g')
      %print -r0 -dpng jOi_Carnivora.png
 
-   case 13
+   case 13 % fig 1l, 2l
      fprintf('case 13\n');
      shstat_options('x_transform', 'log10');
      JRWW = read_allStat({'R_i','Ww_b','Ww_i','c_T'}); jWb = JRWW(:,1) .* JRWW(:,2) ./ JRWW(:,3) ./ JRWW(:,4);
@@ -425,13 +451,13 @@ end
      hjWb = shstat(jWb, llegend, 'Mammalia');   
      figure(hjWb)
      xlabel('_{10}log ultimate spec neonate mass prod rate, j_{W_w^b}^\infty, 1/d')
-     print -r0 -dpng jWb.png
+     %print -r0 -dpng jWb.png
 
      % Laurasiatheria
      hjWb = shstat(jWb, llegend_Laurasiatheria, 'Laurasiatheria');   
      figure(hjWb)
      xlabel('_{10}log ultimate spec neonate mass prod rate, j_{W_w^b}^\infty, 1/d')
-     print -r0 -dpng jWb_Laurasiatheria.png
+     %print -r0 -dpng jWb_Laurasiatheria.png
 
      % Carnivora
      hjWb = shstat(jWb, llegend_Carnivora, 'Carnivora');   
@@ -439,7 +465,7 @@ end
      xlabel('_{10}log ultimate spec neonate mass prod rate, j_{W_w^b}^\infty, 1/d')
      %print -r0 -dpng jWb_Carnivora.png
 
-   case 14
+   case 14 % fig 6
      fprintf('case 14\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -452,9 +478,9 @@ end
      xlabel('_{10}log ultimate wet weight, g')
      ylabel('_{10}log spec O_2 consumption, mol/d.g')
      
-     print -r300 -dpng Wwi_JOiW.png
+     %print -r300 -dpng Wwi_JOiW.png
      figure(hC)
-     print -r1200 -dpng legend_Carnivora.png
+     %print -r1200 -dpng legend_Carnivora.png
      
    case 15
      fprintf('case 15\n');
@@ -465,7 +491,7 @@ end
      figure(hv_sHbp)
      xlabel('_{10}log energy conductance, v, cm/d')
      ylabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r0 -dpng v_sHbp.png
+     %print -r0 -dpng v_sHbp.png
 
    case 16
      fprintf('case 16\n');
@@ -476,7 +502,7 @@ end
      figure(hkap_R)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log max reprod rate, #/d')
-     print -r0 -dpng kap_R.png
+     %print -r0 -dpng kap_R.png
     
    case 17
      fprintf('case 17\n');
@@ -489,7 +515,7 @@ end
      figure(hkap_RWW)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log spec neonate mass prod rate, 1/d')
-     print -r0 -dpng kap_RWW.png
+     %print -r0 -dpng kap_RWW.png
 
    case 18
      fprintf('case 18\n');
@@ -504,9 +530,9 @@ end
      plot([-2 -4.5], [-2 -4.5], 'k', 'LineWidth', 2)
      xlabel('_{10}log max spec growth, r_m, g/d.g')
      ylabel('_{10}log max spec pop growth, r_N, 1/d')
-     print -r0 -dpng WdW_r.png
+     %print -r0 -dpng WdW_r.png
       
-   case 19
+   case 19 % fig 3a, 3b, 3c
      fprintf('case 19\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -516,7 +542,7 @@ end
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng pM_Em.png
+     %print -r0 -dpng pM_Em.png
  
      hpAm_Em = shstat({'p_Am','E_m'}, legend); 
      figure(hpAm_Em)
@@ -524,37 +550,37 @@ end
      xlim([2.15 4.85])
      xlabel('_{10}log spec max assim rate, \{p_{Am}\}, J/d.cm^2')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng pAm_Em.png
+     %print -r0 -dpng pAm_Em.png
 
      hpAm_v = shstat({'p_Am','v'}, legend); 
      figure(hpAm_v)
      %plot([1.2 3.8],1.5+[1.2 3.8], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec max assim rate, \{p_{Am}\}, J/d.cm^2')
      ylabel('_{10}log energy conductance, v, cm/d')
-     print -r0 -dpng pAm_v.png
+     %print -r0 -dpng pAm_v.png
 
      hLi_Em = shstat({'L_i','E_m'}, legend); 
      figure(hLi_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max structural length, L_\infty, cm')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng Li_Em.png
+     %print -r0 -dpng Li_Em.png
 
      hWwi_Em = shstat({'Ww_i','E_m'}, legend); 
      figure(hWwi_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng Wwi_Em.png
+     %print -r0 -dpng Wwi_Em.png
      
      hWwb_Em = shstat({'Ww_b','E_m'}, legend); 
      figure(hWwb_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log weight at birth, W_w^b, g')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng Wwb_Em.png
+     %print -r0 -dpng Wwb_Em.png
 
-   case 20
+   case 20 % fig 3d
      fprintf('case 20\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -564,7 +590,7 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log precociality coeff, s_H^{bp}, - ')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r0 -dpng sHbp_Em.png
+     %print -r0 -dpng sHbp_Em.png
  
      hsHbp_Em_Lepido = shstat({'s_Hbp', 'E_m'}, legend); 
      figure(hsHbp_Em_Lepido)
@@ -573,7 +599,7 @@ end
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
      %print -r0 -dpng sHbp_Em_Lepido.png
 
-   case 21
+   case 21 % fig 7b
      fprintf('case 21\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -587,7 +613,7 @@ end
      xlim([-4 3]); ylim([-3.5 3.5]);
      xlabel('_{10}log max respiration rate, mol/d')
      ylabel('_{10}log max neonate mass prod, g/d')
-     print -r0 -dpng JO_JR.png
+     %print -r0 -dpng JO_JR.png
      
      NWb = WWRJ(:,5) .* WWRJ(:,1);
      hWi_NWb = shstat([Wwi, NWb], legend, 'Ferae');
@@ -596,7 +622,7 @@ end
      xlim([0.5 8]); ylim([0.5 8]);
      xlabel('_{10}log max weight, g')
      ylabel('_{10}log cum neonate mass prod, g')
-     print -r1200 -dpng Wwi_NWb.png
+     %print -r1200 -dpng Wwi_NWb.png
      
    case 22
      fprintf('case 22\n');
@@ -608,7 +634,7 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log precociality coeff, s_H^{bp}, - ')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r0 -dpng sHbp_pM.png
+     %print -r0 -dpng sHbp_pM.png
 
      hsHbp_pAm = shstat({'s_Hbp', 'p_Am'}, legend); 
      figure(hsHbp_pAm)
@@ -616,14 +642,14 @@ end
      xlim([-4.5 0]); ylim([1.5 4.5])
      xlabel('_{10}log precociality coeff, s_H^{bp}, - ')
      ylabel('_{10}log spec assim rate, \{p_{Am}\}, J/d.cm^2')
-     print -r0 -dpng sHbp_pAm.png
+     %print -r0 -dpng sHbp_pAm.png
      
      hsHbp_v = shstat({'s_Hbp', 'v'}, legend); 
      figure(hsHbp_v)
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log precociality coeff, s_H^{bp}, - ')
      ylabel('_{10}log energy conductance, v, cm/d')
-     print -r0 -dpng sHbp_v.png
+     %print -r0 -dpng sHbp_v.png
      
      hLi_sHbp = shstat({'L_i','s_Hbp'}, legend); 
      figure(hLi_sHbp)
@@ -631,7 +657,7 @@ end
      xlim([-0.25 2.25]); ylim([-4.5 0])
      xlabel('_{10}log max structural length, L_\infty, cm')
      ylabel('_{10}log precociality coeff, s_H^{bp}, - ')
-     print -r0 -dpng Li_sHbp.png
+     %print -r0 -dpng Li_sHbp.png
 
      hWwi_sHbp = shstat({'Ww_i','s_Hbp'}, legend); 
      figure(hWwi_sHbp)
@@ -639,7 +665,7 @@ end
      xlim([-0.5 8]); ylim([-4.5 0])
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log precociality coeff, s_H^{bp}, - ')
-     print -r0 -dpng Wwi_sHbp.png
+     %print -r0 -dpng Wwi_sHbp.png
      
      WbWp_s = read_allStat({'Ww_b','Ww_p','s_Hbp'});
      WbWp_s = [WbWp_s(:,1)./WbWp_s(:,2), WbWp_s(:,3)];
@@ -649,7 +675,7 @@ end
      %xlim([-0.5 8]); ylim([-4.5 0])
      xlabel('_{10}log W_w^b/ W_w^p, -')
      ylabel('_{10}log precociality coeff, s_H^{bp}, - ')
-     print -r0 -dpng WbWp_sHbp.png
+     %print -r0 -dpng WbWp_sHbp.png
      
    case 23
      fprintf('case 23\n');
@@ -662,7 +688,7 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max structural length, L_m, cm ')
      ylabel('_{10}log scaled struc length, l_b, l_p, -')
-     print -r0 -dpng Li_lblp.png
+     %print -r0 -dpng Li_lblp.png
 
      hLi_Lb = shstat({'L_i', 'L_b'}, legend); 
      shstat({'L_i', 'L_p'}, legend,[], hLi_Lb); 
@@ -670,9 +696,9 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max structural length, L_m, cm ')
      ylabel('_{10}log struc length at birth, puberty, L_b, L_p, cm')
-     print -r0 -dpng Li_LbLp.png
+     %print -r0 -dpng Li_LbLp.png
      
-   case 24
+   case 24 % fig 3a, 3b
      fprintf('case 24\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -684,7 +710,7 @@ end
      xlim([0.5 6]);
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log weight at birth, W_w^b, g')
-     print -r0 -dpng Wwi_Wwb.png
+     %print -r0 -dpng Wwi_Wwb.png
 
      hWwi_Wwp = shstat({'Ww_i', 'Ww_p'}, legend); 
      figure(hWwi_Wwp)
@@ -693,7 +719,7 @@ end
      ylim([-1.2 8]);
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log weight at puberty, W_w^p, g')
-     print -r0 -dpng Wwi_Wwp.png
+     %print -r0 -dpng Wwi_Wwp.png
      
    case 25
      fprintf('case 25\n');
@@ -705,9 +731,9 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log allocation fraction to soma, \kappa, -')
-     print -r0 -dpng Wwi_kap.png
+     %print -r0 -dpng Wwi_kap.png
      
-   case 26
+   case 26 % fig 8
      fprintf('case 26\n');
      species = select('Mammalia');
      traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
@@ -744,7 +770,7 @@ end
      
      fprintf('%g \n', e(1:8));
      
-   case 27
+   case 27 % fig 5b
      fprintf('case 27\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -771,7 +797,7 @@ end
      figure(hWwi_rm)
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log spec growth at max growth, 1/d')
-     print -r0 -dpng Wwi_rm.png
+     %print -r0 -dpng Wwi_rm.png
       
      WdW = read_allStat({'W_dWm','dWm','Ww_i','c_T'}); 
      WdW = [WdW(:,1), WdW(:,2) ./ WdW(:,1) ./ WdW(:,4)];
@@ -779,9 +805,9 @@ end
      figure(hWwi_rm)
      xlabel('_{10}log weight at max growth, g')
      ylabel('_{10}log spec growth at max growth, 1/d')
-     print -r0 -dpng WdWm_rm.png
+     %print -r0 -dpng WdWm_rm.png
      
-   case 28
+   case 28 % fig 7a
      fprintf('case 28\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -793,7 +819,7 @@ end
      plot([4.3; 5], [-3.2; -5.5], 'k', 'LineWidth', 3) % slope -1.77
      xlabel('_{10}log life span, d')
      ylabel('_{10}log spec respiration, J_O^\infty/W_w^\infty, mol/d.g')
-     print -r1200 -dpng am_jO.png
+     %print -r1200 -dpng am_jO.png
      
    case 29
      fprintf('case 29\n');
@@ -806,7 +832,7 @@ end
      plot([0; 2.4], -0.2 + [0; 2.4], 'k', 'LineWidth', 3) % slope 1
      xlabel('_{10}log length at puberty, L_p, cm')
      ylabel('_{10}log length at weaning, L_x, cm')
-     print -r0 -dpng Lp_Lx.png
+     %print -r0 -dpng Lp_Lx.png
 
      hWwb_Wwx = shstat({'Ww_b','Ww_x'}, legend, 'Carnivora');   
      figure(hWwb_Wwx)
@@ -814,7 +840,7 @@ end
      plot([-0.4; 2], 0.4 + [-0.4; 2], 'k', 'LineWidth', 3) % slope 1
      xlabel('_{10}log weight at birth, W_w^b, cm')
      ylabel('_{10}log weight at weaning, W_w^x, cm')
-     print -r0 -dpng Wwb_Wwx.png
+     %print -r0 -dpng Wwb_Wwx.png
 
      hWwp_Wwx = shstat({'Ww_p','Ww_x'}, legend, 'Carnivora');   
      figure(hWwp_Wwx)
@@ -822,7 +848,7 @@ end
      plot([0; 8], -0.2 + [0; 8], 'k', 'LineWidth', 3) % slope 1
      xlabel('_{10}log weight at puberty, W_w^p, g')
      ylabel('_{10}log weight at weaning, W_w^x, g')
-     print -r0 -dpng Wwp_Wwx.png
+     %print -r0 -dpng Wwp_Wwx.png
 
      hWwb_Wwx = shstat({'Ww_b','Ww_x'}, legend, 'Carnivora');   
      figure(hWwb_Wwx)
@@ -830,9 +856,9 @@ end
      plot([-0.4; 7], 0.4 + [-0.4; 7], 'k', 'LineWidth', 3) % slope 1
      xlabel('_{10}log weight at birth, W_w^b, g')
      ylabel('_{10}log weight at weaning, W_w^x, g')
-     print -r0 -dpng Wwb_Wwx.png
+     %print -r0 -dpng Wwb_Wwx.png
 
-   case 30
+   case 30 % fig 3c
      fprintf('case 30\n');
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
@@ -868,12 +894,12 @@ end
      figure(hJOi_Ri)
      xlabel('_{10}log ultimate spec respiration, j_O^\infty, mol O_2/g.d')
      ylabel('_{10}log ultimate reproduction rate, R_\infty, #/d')
-     print -r0 -dpng jOi_Ri_CM.png
+     %print -r0 -dpng jOi_Ri_CM.png
 
      figure(hleg_CM)
-     print -r0 -dpng legend_CM.png
+     %print -r0 -dpng legend_CM.png
 
-   case 32 
+   case 32 % fig 5a
      fprintf('case 32\n');
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'none');
@@ -885,7 +911,7 @@ end
      xlim([0 4/27]); ylim([0 1]);
      xlabel('supply stress, s_s, -')
      ylabel('_{10}log allocation fraction, \kappa, -')
-     print -r0 -dpng ss_kap.png
+     %print -r0 -dpng ss_kap.png
 
    case 33 
      fprintf('case 33\n');
@@ -898,7 +924,7 @@ end
      xlim([0 4/27]); 
      xlabel('supply stress, s_s, -')
      ylabel('_{10}log neonate mass production, g/d')
-     print -r0 -dpng ss_RiWwb.png
+     %print -r0 -dpng ss_RiWwb.png
 
      data = [Data(:,1), Data(:,4).*Data(:,5)];
      hss_am = shstat(data, legend, 'Ferae'); 
@@ -906,7 +932,7 @@ end
      xlim([0 4/27]); 
      xlabel('supply stress, s_s, -')
      ylabel('_{10}log life span, d')
-     print -r0 -dpng ss_am.png
+     %print -r0 -dpng ss_am.png
 
    case 34 
      fprintf('case 34\n');
@@ -917,7 +943,7 @@ end
      figure(hWwi_pM)
      xlabel('_{10}log ultimate wet weight, g, -')
      ylabel('_{10}log spec somatic maint., J/d.cm^3')
-     print -r0 -dpng Wwi_pM.png
+     %print -r0 -dpng Wwi_pM.png
 
  end
       
