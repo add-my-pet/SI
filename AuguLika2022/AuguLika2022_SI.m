@@ -1,9 +1,36 @@
-function AuguLika2021(fig)
-% figures for AuguLika2021 on Chondrichthyans
-% replace "print -r0" by "print -r1200" for 1200 dpi png's 
+function AuguLika2022_SI(fig)
+% Supporting Information for AuguLika2022
+% Title: The comparative energetics of the chondrichthyans reveals universal links between respiration, reproduction and lifespan
+% Authors: Augustine, Lika, Kooijman
+% Journal: Journal of Sea Research 185  102228
+% DOI: 10.1016/j.seares.2022.102228
+% Date: 2023/02/18
+% 
+% Matlab scripts to generate the figures in the publication
+%
+% To run the scripts you need
+% 1) Matlab (the student or Home version will suffice)
+% 2) Download AmPdata from http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/
+%    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
+% 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
+% 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+%
+% Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
+% Load this script-file in the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. AuguLika2022_SI(2)
+%
+% Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
+%  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
+%  Click on a marker in the Matlab-figure to see the species name
+%  Uncomment "print" to save the Matlab-figure to a png-file
+%  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
+%  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
+
+close all
 
 if ~exist('fig','var')
-   fig = 1:19;
+   fig = 1:28;
 end
 
  llegend = {... % Chondrichthyes
@@ -145,74 +172,74 @@ end
  for i=1:length(fig)
  
  switch fig(i)
-   case 1
+   case 1 % fig 2c
      shstat_options('x_transform', 'none');
      [hkap hllegend] = shstat({'kap'}, llegend);
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
-     print -r300 -dpng kap.png
+     %print -r300 -dpng kap.png
 
-   case 2
+   case 2 % fig 2d
      shstat_options('x_transform', 'log10');
      hp_M = shstat({'p_M'}, llegend); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng pM.png
+     %print -r300 -dpng pM.png
       
-   case 3 
+   case 3 % fig 2h
      shstat_options('x_transform', 'log10');
      hs_s = shstat({'s_s'}, llegend); 
      figure(hs_s)
      xlabel('_{10}log supply stress, s_s, -')
-     print -r300 -dpng ss.png
+     %print -r300 -dpng ss.png
 
-   case 4
+   case 4 % fig 2g
      shstat_options('x_transform', 'log10');
      hs_Hbp = shstat({'s_Hbp'}, llegend); 
      figure(hs_Hbp)
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r300 -dpng sHbp.png
+     %print -r300 -dpng sHbp.png
 
-   case 5
+   case 5 % fig 2b
      shstat_options('x_transform', 'log10');
      hv = shstat({'v'}, llegend); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
-     print -r300 -dpng v.png
+     %print -r300 -dpng v.png
 
-   case 6
+   case 6 % fig 2a
      shstat_options('x_transform', 'log10');
      hp_Am = shstat({'p_Am'}, llegend); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
-     print -r300 -dpng pAm.png
+     %print -r300 -dpng pAm.png
 
-   case 7
+   case 7 % fig 2i
      shstat_options('x_transform', 'log10');
    
      hWw_i = shstat({'Ww_i'}, llegend);
      shstat({'Ww_b'}, llegend, [], hWw_i);
      figure(hWw_i)
      xlabel('_{10}log wet weight at birth, death, W_b^w, W_\infty^w, g')
-     print -r300 -dpng Wwi.png
+     %print -r300 -dpng Wwi.png
 
-   case 8
+   case 8 % fig 2f
      shstat_options('x_transform', 'log10');
      hE_m = shstat({'E_m'}, llegend); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng Em.png
+     %print -r300 -dpng Em.png
 
-   case 9
+   case 9 % fig 2e
      shstat_options('x_transform', 'log10');
      ha_m = shstat({'a_m'}, llegend); 
      shstat({'a_b'}, llegend, [], ha_m);   
      figure(ha_m)
      xlabel('_{10}log age at birth, death, d')
      xlim([1.5 5.2]);
-     print -r300 -dpng am.png
+     %print -r300 -dpng am.png
      
-   case 10
+   case 10 % fig 2j
      shstat_options('x_transform', 'log10');
      WdW_C = read_stat(select('Chimaeriformes'),{'W_dWm','dWm','c_T'}); WdW_C = WdW_C(:,2) ./ WdW_C(:,1) ./ WdW_C(:,3);
      WdW_S = read_stat(select('Squalomorphi'),{'W_dWm','dWm','c_T'});   WdW_S = WdW_S(:,2) ./ WdW_S(:,1) ./ WdW_S(:,3);
@@ -224,9 +251,9 @@ end
      shstat(WdW_B, {'r', 'r'}, [], hWdW);   
      figure(hWdW)
      xlabel('_{10}log spec growth at max growth, r, g/d.g')
-     print -r300 -dpng WdW.png
+     %print -r300 -dpng WdW.png
 
-   case 11
+   case 11 % fig 2k
      shstat_options('x_transform', 'log10');
      JOiW_C = read_stat(select('Chimaeriformes'),{'J_Oi','Ww_i','c_T'}); JOiW_C = JOiW_C(:,1) ./ JOiW_C(:,2) ./ JOiW_C(:,3);
      JOiW_S = read_stat(select('Squalomorphi'),{'J_Oi','Ww_i','c_T'});   JOiW_S = JOiW_S(:,1) ./ JOiW_S(:,2) ./ JOiW_S(:,3);
@@ -238,9 +265,9 @@ end
      shstat(JOiW_B, {'r', 'r'}, [], hJOiW);   
      figure(hJOiW)
      xlabel('_{10}log ultimate specific O_2 consumption, J_O^m, mol/d.g')
-     print -r300 -dpng JOiW.png
+     %print -r300 -dpng JOiW.png
 
-   case 12
+   case 12 % fig 3
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      WJO = read_allStat({'Ww_i', 'J_Oi','c_T'}); WJO(:,2) = WJO(:,2) ./ WJO(:,1) ./ WJO(:,3);
@@ -250,9 +277,9 @@ end
      ylabel('_{10}log spec O_2 consumption, mol/d.g')
      print -r0 -dpng Wwi_JOiW.png
      figure(hC)     
-     print -r0 -dpng legend_Chondrichthyes.png
+     %print -r0 -dpng legend_Chondrichthyes.png
 
-    case 13
+    case 13 % fig 4a
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
 %      kNWWa = read_allStat({'kap', 'N_i', 'Ww_b', 'Ww_i', 'a_m'}); 
@@ -263,9 +290,9 @@ end
      figure(hkap_R)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log max reproduction rate, #/d')
-     print -r300 -dpng kap_R.png
+     %print -r300 -dpng kap_R.png
     
-   case 14
+   case 14 % fig 4b
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
 %      kNWWa = read_allStat({'kap', 'N_i', 'Ww_b', 'Ww_i', 'a_m'}); 
@@ -277,9 +304,9 @@ end
      figure(hkap_RWW)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log max neonate mass prod, 1/d')
-     print -r300 -dpng kap_RWW.png
+     %print -r300 -dpng kap_RWW.png
 
-   case 15
+   case 15 % fig 4b
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
      kRWW = read_allStat({'kap', 'R_i', 'Ww_b', 'Ww_i', 'c_T'}); 
@@ -288,9 +315,9 @@ end
      figure(hkap_RWW)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log spec neonate mass prod, g/d')
-     print -r300 -dpng kap_RWW.png
+     %print -r300 -dpng kap_RWW.png
 
-   case 16
+   case 16 % fig 5b
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      WdW = read_allStat({'W_dWm','dWm','c_T'}); WdW = WdW(:,2) ./ WdW(:,1) ./ WdW(:,3);
@@ -301,9 +328,9 @@ end
      plot([-6 -1.5], [-6 -1.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log max spec growth, r_m, g/d.g')
      ylabel('_{10}log max spec pop growth, r_N, 1/d')
-     print -r300 -dpng WdW_r.png
+     %print -r300 -dpng WdW_r.png
 
-   case 17
+   case 17 % fig 5a
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      aJW = read_allStat({'a_m', 'J_Oi', 'Ww_i', 'Ww_b', 'R_i', 'c_T'});
@@ -314,14 +341,14 @@ end
      xlabel('_{10}log life span, d')
      ylabel('_{10}log spec respiration, J_O^\infty/W_w^\infty, mol/d.g')
      xlim([1.5 5.3])
-     print -r300 -dpng am_jO.png
+     %print -r300 -dpng am_jO.png
     
      hWi_amJWb = shstat([aJW(:,3), aJW(:,1).*aJW(:,4).*aJW(:,5)], legend_Pisces, 'Pisces'); 
      figure(hWi_amJWb)
      plot([-1; 7.5], [-1; 7.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate weight, W_w^\infty, g')
      ylabel('_{10}log life span \times neonate mass prod, g')
-     print -r300 -dpng Wi_amJWb_Pisces.png
+     %print -r300 -dpng Wi_amJWb_Pisces.png
 
      [hWi_amJWb_Amphibia, hlegend_Amphibia] = shstat([aJW(:,3).*aJW(:,6), aJW(:,1).*aJW(:,4).*aJW(:,5)./aJW(:,6)], legend_Amphibia, 'Amphibia'); 
      figure(hWi_amJWb_Amphibia)
@@ -330,7 +357,7 @@ end
      ylabel('_{10}log life span \times neonate mass prod, g')
      print -r300 -dpng Wi_amJWb_Amphibia.png
      figure(hlegend_Amphibia)
-     print -r300 -dpng legend_Amphibia.png
+     %print -r300 -dpng legend_Amphibia.png
 
      [hWi_amJWb_Squamata hlegend_Squamata] = shstat([aJW(:,3), aJW(:,1).*aJW(:,4).*aJW(:,5)], legend_Squamata, 'Squamata'); 
      figure(hWi_amJWb_Squamata)
@@ -339,7 +366,7 @@ end
      ylabel('_{10}log life span \times neonate mass prod, g')
      print -r0 -dpng Wi_amJWb_Squamata.png
      figure(hlegend_Squamata)
-     print -r300 -dpng legend_Squamata.png
+     %print -r300 -dpng legend_Squamata.png
 
      [hWi_amJWb_Aves hlegend_Aves] = shstat([aJW(:,3), aJW(:,1).*aJW(:,4).*aJW(:,5)], legend_Aves, 'Crocs & Aves'); 
      figure(hWi_amJWb_Aves)
@@ -349,7 +376,7 @@ end
      ylabel('_{10}log life span \times neonate mass prod, g')
      print -r300 -dpng Wi_amJWb_Aves.png
      figure(hlegend_Aves)
-     print -r300 -dpng legend_Aves.png
+     %print -r300 -dpng legend_Aves.png
 
      [hWi_amJWb_Placentalia, hlegend_Placentalia] = shstat([aJW(:,3), aJW(:,1).*aJW(:,4).*aJW(:,5)], legend_Placentalia, 'Placentalia'); 
      figure(hWi_amJWb_Placentalia)
@@ -358,7 +385,7 @@ end
      ylabel('_{10}log life span \times neonate mass prod, g')
      print -r300 -dpng Wi_amJWb_Placentalia.png
      figure(hlegend_Placentalia)
-     print -r300 -dpng legend_Placentalia.png
+     %print -r300 -dpng legend_Placentalia.png
 
      [sel_C, nm] = select_01('Cephalopoda'); nm_C = nm(sel_C); n_C = length(nm_C); Wa = zeros(n_C,1); Ri = zeros(n_C,1); WD = cdCur;
      for i=1:n_C; cdEntr(nm_C{i}); 
@@ -385,9 +412,9 @@ end
      ylabel('_{10}log life span \times neonate mass prod, g')
      print -r300 -dpng Wi_amJWb_Mollusca.png
      figure(hlegend_Mollusca)
-     print -r300 -dpng legend_Mollusca.png
+     %print -r300 -dpng legend_Mollusca.png
 
-   case 18
+   case 18 % fig 1a, 1b
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
         
@@ -400,14 +427,14 @@ end
      plot(logJO_range, 1+logJO_range, 'k', 'linewidth', 2)
      xlabel('_{10}log max respiration rate, mol/d')
      ylabel('_{10}log max neonate mass prod. rate, g/d')
-     print -r300 -dpng JO_JR.png
+     %print -r300 -dpng JO_JR.png
 
      hpT_JR = shstat([pT, JR], legend_Pisces(1:13,:));   
      figure(hpT_JR)
      plot(logpT_range, -4.7+logpT_range, 'k', 'linewidth', 2)
      xlabel('_{10}log max heat dissipation, J/d')
      ylabel('_{10}log max neonate mass prod. rate, g/d')
-     print -r0 -dpng pT_JR.png
+     %print -r0 -dpng pT_JR.png
 
      [hJO_JR_RSED hlegend_RSED] = shstat([JO, JR], legend_RSED);   
      figure(hJO_JR_RSED)
@@ -415,11 +442,11 @@ end
      plot(logJO_range, 1+logJO_range, 'k', 'linewidth', 2)
      xlabel('_{10}log max respiration rate, mol/d')
      ylabel('_{10}log max neonate mass prod. rate, g/d')
-     print -r300 -dpng JO_JR_RSED.png
+     %print -r300 -dpng JO_JR_RSED.png
      figure(hlegend_RSED)
-     print -r300 -dpng legend_RSED.png
+     %print -r300 -dpng legend_RSED.png
 
-   case 19
+   case 19 % fig 6a, 6b, 6c
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      shstat_options('z_transform', 'log10');
@@ -436,28 +463,28 @@ end
      plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate structural length, L_\infty, cm ')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng Li_Em.png
+     %print -r300 -dpng Li_Em.png
  
      hpM_Em = shstat({'p_M','E_m'}, legend_Pisces(1:13,:)); 
      figure(hpM_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng pM_Em.png
+     %print -r300 -dpng pM_Em.png
  
      hpAm_Em = shstat({'p_Am','E_m'}, legend_Pisces(1:13,:)); 
      figure(hpAm_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec assimilation, \{p_{Am}\}, J/d.cm^2')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng pAm_Em.png
+     %print -r300 -dpng pAm_Em.png
     
      hv_Em = shstat({'v','E_m'}, legend_Pisces(1:13,:)); 
      figure(hv_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log energy conductance, v, cm/d')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng v_Em.png
+     %print -r300 -dpng v_Em.png
 
      
 %      hLi_Em_sHbp = shstat({'L_i','E_m','s_Hbp'}, legend_Pisces(1:13,:)); 
@@ -492,7 +519,7 @@ end
      % plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log birth over puberty weight, W_w^b/W_w^p, -')
      ylabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r300 -dpng Ww_sHbp.png
+     %print -r300 -dpng Ww_sHbp.png
      
    case 21
      shstat_options('x_transform', 'log10');
@@ -502,14 +529,14 @@ end
      figure(hWwi_Wwb)
      xlabel('_{10}log ultimate weight, g')
      ylabel('_{10}log weight at birth, g')
-     print -r300 -dpng Wwi_Wwb.png
+     %print -r300 -dpng Wwi_Wwb.png
      
      WR = read_allStat({'Ww_i','R_i','c_T'}); WR = [WR(:,1), WR(:,2)./WR(:,3)];
      hWwi_Ri = shstat(WR, legend_Pisces); 
      figure(hWwi_Ri)
      xlabel('_{10}log ultimate weight, g')
      ylabel('_{10}log ultimate reprod rate, #/d')
-     print -r0 -dpng Wwi_Ri.png
+     %print -r0 -dpng Wwi_Ri.png
 
      WWR = read_stat('Pisces',{'Ww_b','Ww_i','R_i','c_T'});
      data = NaN(length(select('Animalia')),2); 
@@ -518,7 +545,7 @@ end
      figure(hWwi_RiWW)
      xlabel('_{10}log ultimate weight, W_w^\infty, g')
      ylabel('_{10}log reprod rate \times W^w_b/W^w_i, #/d')
-     print -r300 -dpng Wwi_RiWW.png
+     %print -r300 -dpng Wwi_RiWW.png
      
    case 22
      shstat_options('x_transform', 'log10');
@@ -536,9 +563,9 @@ end
      shstat({'Ww_b'}, llegend_Batoidea, [], hWw_i_Bat);
      figure(hWw_i_Bat)
      xlabel('_{10}log wet weight at birth, death, W_b^w, W_\infty^w, g')
-     print -r300 -dpng Wwi.png
+     %print -r300 -dpng Wwi.png
 
-   case 23
+   case 23 
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      
@@ -586,7 +613,7 @@ end
      ylabel('_{10}log incubation time, d')
      %print -r300 -dpng Wam_ab.png
 
-   case 26
+   case 26 % fig C1, C2
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      aJW = read_allStat({'a_m', 'J_Oi', 'Ww_i', 'Ww_b', 'R_i', 'c_T'});
@@ -626,7 +653,7 @@ end
      ylabel('_{10}log age at birth, d')
      %print -r300 -dpng am_ab_Chondrichthyes.png
      
-   case 28
+   case 28 % fig B1
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      WWN = read_allStat({'Ww_i', 'Ww_b', 'N_i'});
@@ -637,7 +664,7 @@ end
      plot([-1; 7.5], [-1; 7.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate weight, W_w^\infty, g')
      ylabel('_{10}log life time neonate mass, g')
-     print -r300 -dpng Wi_WR_Pisces.png
+     %print -r300 -dpng Wi_WR_Pisces.png
 
      [hWi_WR_Amphibia, hlegend_Amphibia] = shstat(WiWR, legend_Amphibia, 'Amphibia'); 
      figure(hWi_WR_Amphibia)
@@ -708,7 +735,7 @@ end
      plot([-8; 8.5], [-8; 8.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate weight, W_w^\infty, g')
      ylabel('_{10}log life time neonate mass, g')
-     print -r300 -dpng Wi_WR_RSED.png
+     %print -r300 -dpng Wi_WR_RSED.png
      %figure(hlegend_RSED)
      %print -r300 -dpng legend_RSED.png
      
