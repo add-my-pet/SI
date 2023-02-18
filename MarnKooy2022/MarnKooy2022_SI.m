@@ -1,21 +1,37 @@
-% Supporting Files for MarnKooy2022
-% Publication title: The comparative energetics of the turtles and crocodiles
-% Authors (Year): Marn N, Kooijman SALM (2022)  
-% Journal: Ecology and Evolution 12(6): e8996; doi: 10.1002/ece3.8996
+function MarnKooy2022_SI(fig)
+% Supporting Information for MarnKooy2022
+% Title: The comparative energetics of the turtles and crocodiles
+% Authors (Year): Marn, Kooijman (2022)  
+% Journal: Ecology and Evolution 12(6): e8996; 
+% DOI: 10.1002/ece3.8996
+% Date: 2023/02/18
 
-% uses open source package DEBtool_M  https://github.com/add-my-pet/DEBtool_M 
-% and AmPtool https://github.com/add-my-pet/AmPtool
-
-
-function MarnKooy2022_fig(fig)
-% created by Kooijman Oct 2021 and modified by Marn Nov 2021, last modified Feb 2023
-% generates Figures 1-5 and Figure 7 of the main article, and Figures A1-A3 of the Appendix (+ some extra plots not used in the publication)
-% run function without input to generate all manuscript figures, or select a (sub)plot of interest and run with a corresponding input; (out)comment "saveas(..., '*.png')" or "print.... .png" commands to save (or not) the figures
+% Matlab scripts to generate Figures 1-5 and Figure 7 of the publication, and Figures A1-A3 of the Appendix (+ some extra plots not used in the publication)
 % Input --> Figure 
 %    1-12 --> Fig 1
 %    13:18 --> Figures 2-5 and Fig 7
 %    19:21 --> Figures A1-A3
-%    50:59 --> some additional plots (see code for details)
+%    50:59 --> some additional plots (see code for detai
+
+% To run the scripts you need
+% 1) Matlab (the student or Home version will suffice)
+% 2) Download AmPdata from http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/
+%    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
+% 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
+% 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+%
+% Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
+% Load this script-file in the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. LikaAugu2022_SI(2)
+%
+% Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
+%  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
+%  Click on a marker in the Matlab-figure to see the species name
+%  Uncomment "print" to save the Matlab-figure to a png-file
+%  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
+%  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
+
 
 species = {'Testudinidae','Chelonioidea','Testudines','Deinosuchus', 'Crocodilia',  'Lepidosauria',...
     'Pterosauria', 'Saurischia','Ornithischia', 'Tyrannosauridae'};
