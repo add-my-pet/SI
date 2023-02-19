@@ -32,7 +32,6 @@ function MarnKooy2022_SI(fig)
 %  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
 %  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 
-
 species = {'Testudinidae','Chelonioidea','Testudines','Deinosuchus', 'Crocodilia',  'Lepidosauria',...
     'Pterosauria', 'Saurischia','Ornithischia', 'Tyrannosauridae'};
 
