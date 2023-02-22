@@ -85,10 +85,13 @@ function AuguLika2019_SI(fig)
         EHb = read_allStat('E_Hb'); 
         EHb_med = median(EHb); EHb_min = min(EHb); EHb_max = max(EHb); EHb_m = mean(EHb); EHb_v = mean(EHb.^2) - mean(EHb)^2;
         EHb_x = 10.^linspace(log10(EHb_min),log10(EHb_max),500); 
-        AB = wblfit(EHb, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(EHb,A,B);
+        %AB = wblfit(EHb, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(EHb); % gives MLEs 
+        %A = AB(1); B = AB(2); S = 1-wblcdf(EHb,A,B);
+        A = AB(1); B = AB(2); S = exp(-(EHb/A).^B);
         fprintf(['pars wbl for EHb: ', num2str(A), ' , ', num2str(B),'\n'])
-        S = 1-wblcdf(EHb_x,A,B);
+        %S = 1-wblcdf(EHb_x,A,B);
+        S = exp(-(EHb_x/A).^B);
         plot(log10(EHb_x), S, '-', 'color', [0.75 0.75 1], 'linewidth', 8)
         
         hold on
@@ -104,13 +107,16 @@ function AuguLika2019_SI(fig)
         EHp_med = median(EHp); EHp_min = min(EHp); EHp_max = max(EHp); EHp_m = mean(EHp); EHp_v = mean(EHp.^2) - mean(EHp)^2;
         surv_EHp = surv(EHp); 
         EHp_x = 10.^linspace(log10(EHp_min),log10(EHp_max),500); 
-        AB = wblfit(EHp, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(EHp,A,B);
+        %AB = wblfit(EHp, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(EHp); % gives MLEs 
+        %A = AB(1); B = AB(2); S = 1-wblcdf(EHp,A,B);
+        A = AB(1); B = AB(2); S = exp(-(EHp/A).^B);
         fprintf(['pars wbl for EHp: ', num2str(A), ' , ', num2str(B),'\n'])
-        S = 1-wblcdf(EHp_x,A,B);
+        % = 1-wblcdf(EHp_x,A,B);
+        S = exp(-(EHp_x/A).^B);
         plot(log10(EHp_x), S, '-', 'color', [1 0.75 0.75], 'linewidth', 8)
         
-        hold on
+        %hold on
         fprintf(['mean and variance for EHp: ', num2str(EHp_m), ' , ', num2str(EHp_v),'\n'])
         surv_EHp = surv(EHp); 
         Hfig = shstat(EHp, {'r', 'r'}, [], 1);
@@ -123,10 +129,13 @@ function AuguLika2019_SI(fig)
         sH = log10(EHb ./ EHp); 
         sH_med = median(sH); sH_min = min(sH); sH_max = max(sH); sH_m = mean(sH); sH_v = mean(sH.^2) - mean(sH)^2;
         sH_x = linspace(sH_min,sH_max,500); 
-        AB = wblfit(10.^sH, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(EHb,A,B);
+        %AB = wblfit(10.^sH, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(10.^sH); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(EHb,A,B);
+        A = AB(1); B = AB(2); S = exp(-(10.^sH/A).^B);
         fprintf(['pars wbl for 10^sH: ', num2str(A), ' , ', num2str(B),'\n'])
-        S = 1-wblcdf(10.^sH_x,A,B);
+        %S = 1-wblcdf(10.^sH_x,A,B);
+        S = exp(-(10.^sH_x/A).^B);
         plot(sH_x, S, '-', 'color', [0.75 0.75 1], 'linewidth', 8)
         [Hfig Hleg] = shstat(sH,  {'b', 'b'}, [], 2);
         %xlabel('s_H^{bp}, -') 
@@ -135,10 +144,13 @@ function AuguLika2019_SI(fig)
         LL = read_allStat('L_b','L_p'); sHL = sH + 3*log10(LL(:,2)./LL(:,1));
         sHL_med = median(sHL); sHL_min = min(sHL); sHL_max = max(sHL); sHL_m = mean(sHL); sHL_v = mean(sHL.^2) - mean(sHL)^2;
         sHL_x = linspace(sHL_min,sHL_max,500); 
-        AB = wblfit(10.^sHL, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(sHL,A,B);
+        %AB = wblfit(10.^sHL, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(10.^sHL); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(sHL,A,B);
+        A = AB(1); B = AB(2); S = exp(-(sHL/A).^B);
         fprintf(['pars wbl for 10^sHL: ', num2str(A), ' , ', num2str(B),'\n'])
-        S = 1-wblcdf(10.^sHL_x,A,B);
+        %S = 1-wblcdf(10.^sHL_x,A,B);
+        S = exp(-(10.^sHL_x/A).^B);
         plot(sHL_x, S, '-', 'color', [1 0.75 0.75], 'linewidth', 8)
         [Hfig Hleg] = shstat(sHL,  {'r', 'r'}, [], 2);
         set(gca, 'FontSize', 15, 'Box', 'on')
@@ -151,8 +163,8 @@ function AuguLika2019_SI(fig)
         shstat_options('x_label', 'on');
         shstat_options('y_label', 'on');
 
-        figure % E_Hb, E_Hp
-        [Hfig Hleg] = shstat({'E_Hb','E_Hp'}, legend_RSED, '(A) maturity', 1);
+        %figure  E_Hb, E_Hp
+        [Hfig Hleg] = shstat({'E_Hb','E_Hp'}, legend_RSED, '(A) maturity');
         set(gca, 'FontSize', 15, 'Box', 'on')
         figure(Hfig)
         set(gca, 'FontSize', 15, 'Box', 'on')
@@ -161,10 +173,10 @@ function AuguLika2019_SI(fig)
         %saveas(gca, 'EHb_EHp.png')
         %saveas(Hleg, 'legend_EHb_EHp.png')
 
-        figure % E_Hb/Lb^3, E_Hp/Lp^3
+        %figure  E_Hb/Lb^3, E_Hp/Lp^3
         vars = read_allStat('L_b','L_p','E_Hb','E_Hp');
         eHb = vars(:,3)./vars(:,1).^3; eHp = vars(:,4)./vars(:,2).^3;
-        [Hfig Hleg] = shstat([eHb, eHp], legend_RSED, '(B) maturity density', 3);
+        [Hfig Hleg] = shstat([eHb, eHp], legend_RSED, '(B) maturity density');
         close(Hleg)
         figure(Hfig)
         set(gca, 'FontSize', 15, 'Box', 'on')
@@ -172,10 +184,10 @@ function AuguLika2019_SI(fig)
         ylabel('maturity density at puberty E_H^p/ L_p^3, J/cm^3')
         %saveas(gca, 'EHLb_EHLp.png')
     
-        figure % E_Hb/z^3, E_Hp/z^3
+        %figure  E_Hb/z^3, E_Hp/z^3
         vars = read_allStat('z','s_M','E_Hb','E_Hp');
         eHb = vars(:,3)./(vars(:,1) .* vars(:,2)).^3; eHp = vars(:,4)./(vars(:,1) .* vars(:,2)).^3;
-        [Hfig Hleg] = shstat([eHb, eHp], legend_RSED, '(C) maturity per ultimate volume', 4);
+        [Hfig Hleg] = shstat([eHb, eHp], legend_RSED, '(C) maturity per ultimate volume');
         close(Hleg)
         figure(Hfig)
         set(gca, 'FontSize', 15, 'Box', 'on')
@@ -194,24 +206,24 @@ function AuguLika2019_SI(fig)
         ytxt = 's_{HL}^{bp}, -';
         v1 = sH; v2 = sHL; vtxt = 'sH_sHL';
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates', 1); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
         %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
     
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia', 3); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
         %saveas(Hleg,['legend_', vtxt, '_fish.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids', 5); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
         figure(Hfig) 
         figure(Hfig)
         xlabel(xtxt)      
@@ -219,8 +231,8 @@ function AuguLika2019_SI(fig)
         %saveas(gca,[vtxt, '_aves.png'])
         %saveas(Hleg,['legend_', vtxt, '_aves.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals', 7); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
@@ -343,24 +355,24 @@ function AuguLika2019_SI(fig)
         xtxt = '_{10}log W_w^\infty, g';
         v1 = Wwi; v2 = sH; vtxt = 'Wwi_sH';
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates', 1); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
         %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
     
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia', 3); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
         %saveas(Hleg,['legend_', vtxt, '_fish.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids', 5); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
         figure(Hfig) 
         figure(Hfig)
         xlabel(xtxt)      
@@ -368,8 +380,8 @@ function AuguLika2019_SI(fig)
         %saveas(gca,[vtxt, '_aves.png'])
         %saveas(Hleg,['legend_', vtxt, '_aves.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals', 7); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
@@ -380,6 +392,7 @@ function AuguLika2019_SI(fig)
         shstat_options('default');
         shstat_options('y_transform', 'none');
         shstat_options('x_transform', 'log10');
+        
         vars = read_allStat('E_Hb', 'E_Hp', 'L_b', 'L_p', 'Ww_i'); 
         EHLb = vars(:,1) ./ vars(:,3).^3; EHLp = vars(:,2) ./ vars(:,4).^3;  Wwi = vars(:,5);
         sH = vars(:,1) ./ vars(:,2); sHL = EHLb ./ EHLp;
@@ -387,24 +400,24 @@ function AuguLika2019_SI(fig)
         xtxt = '_{10}log W_w^\infty, g';
         v1 = Wwi; v2 = sHL; vtxt = 'Wwi_sHL';
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates', 1); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
         %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
     
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia', 3); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
         %saveas(Hleg,['legend_', vtxt, '_fish.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids', 5); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
         figure(Hfig) 
         figure(Hfig)
         xlabel(xtxt)      
@@ -412,15 +425,15 @@ function AuguLika2019_SI(fig)
         %saveas(gca,[vtxt, '_aves.png'])
         %saveas(Hleg,['legend_', vtxt, '_aves.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals', 7); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_mamm.png'])
         %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
 
-      case 7 % fig 6
+      case 7 % fig 6a
         shstat_options('default');
         shstat_options('y_transform', 'log10');
         shstat_options('x_transform', 'log10');
@@ -432,24 +445,24 @@ function AuguLika2019_SI(fig)
         xtxt = '_{10}log p_R^\infty, J/d';
         v1 = Ri; v2 = sH; vtxt = 'pRi_sH';
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates', 1); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
         %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
     
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia', 3); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
         %saveas(Hleg,['legend_', vtxt, '_fish.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids', 5); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
         figure(Hfig) 
         figure(Hfig)
         xlabel(xtxt)      
@@ -457,13 +470,58 @@ function AuguLika2019_SI(fig)
         %saveas(gca,[vtxt, '_aves.png'])
         %saveas(Hleg,['legend_', vtxt, '_aves.png'])
 
-        figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals', 7); 
+        %figure
+        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
         figure(Hfig)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_mamm.png'])
         %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
+
+      case 8 % fig 6b
+        shstat_options('default');
+        shstat_options('y_transform', 'log10');
+        shstat_options('x_transform', 'log10');
+        
+        vars = read_allStat('E_Hb', 'E_Hp', 'L_b', 'L_p', 'a_b', 'a_p', 'c_T'); 
+        EHLb = vars(:,1) ./ vars(:,3).^3; EHLp = vars(:,2) ./ vars(:,4).^3;  ab = vars(:,5) .* vars(:,7); ap = vars(:,6) .* vars(:,7);
+        sH = vars(:,1) ./ vars(:,2); sHL = EHLb ./ EHLp;
+        ytxt = '_{10}log s_H^{bp}, -';
+        xtxt = '_{10}log a_b/a_p, -';
+        v1 = ab./ap; v2 = sH; vtxt = 'abp_sH';
+
+       %figure
+       [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
+       figure(Hfig)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_RXSE.png'])
+       %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
+    
+       %figure
+       [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
+       figure(Hfig)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_fish.png'])
+       %saveas(Hleg,['legend_', vtxt, '_fish.png'])
+
+       %figure
+       [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
+       figure(Hfig) 
+       figure(Hfig)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_aves.png'])
+       %saveas(Hleg,['legend_', vtxt, '_aves.png'])
+
+       %figure
+       [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
+       figure(Hfig)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_mamm.png'])
+       %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
 
     end
   end

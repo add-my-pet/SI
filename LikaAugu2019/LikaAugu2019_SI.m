@@ -87,15 +87,13 @@ function LikaAugu2019_SI(fig)
         fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
         fprintf(['mean and variance for kap: ', num2str(m), ' , ', num2str(v),'\n'])
         
-        [AB, PCI] = betafit(kap,0.05) % gives MLEs and 100(1-ALPHA)% CI
+        AB = betaML(kap); % gives MLEs 
         A =AB(1); B = AB(2);
-        fprintf(['(betafit.m) pars beta for kap: ', num2str(A), ' , ', num2str(B),'\n'])
-        [M, V] = betastat(A,B); 
+        fprintf(['ML est for scale, shape pars of beta distr for kap: ', num2str(A), ' , ', num2str(B),'\n'])
+        [M, V] = betaStat(A,B); 
         fprintf(['mean & var of beta distr: ', num2str(M), ' , ', num2str(V),'\n'])
         
-        kap =linspace(0,1,100); S = 1-betacdf(kap, A, B);
-        plot(kap, S, '-', 'color', [0.3 0.3 1], 'linewidth',2)
-        %kap =linspace(0,1,100);  S = 1 - betainc(kap,a,b);  
+        kap =linspace(0,1,100);  S = 1 - betainc(kap,a,b);  
         plot(kap, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
         
@@ -390,19 +388,20 @@ function LikaAugu2019_SI(fig)
       case 6 % fig 2b: 
         var = read_allStat('Ww_i', 'p_Ti', 'c_T'); Ww_i = var(:,1); p_Ti = 1e-3*var(:,2)./var(:,1);
         legend = {...
-          {'o', 5, 1, [0 1 0], [1 1 1]}, 'Lepidosauria'; ....
-          {'o', 5, 1, [0 1 0], [1 1 1]}, 'Testudines'; ....
-          {'o', 5, 1, [0 1 0], [1 1 1]}, 'Crocodilia'; ....
+          {'o', 5, 1, [0 0 1], [1 1 1]}, 'Lepidosauria'; ....
+          {'o', 5, 1, [0 0 1], [1 1 1]}, 'Testudines'; ....
+          {'o', 5, 1, [0 0 1], [1 1 1]}, 'Crocodilia'; ....
           {'o', 5, 1, [1 0 0], [1 1 1]}, 'Aves'; ....
           {'o', 5, 1, [0 0 0], [1 1 1]}, 'Mammalia'; ....
         };
-        [Hfig_Wp Hleg_Wp] = shstat([log10(Ww_i), log10(p_Ti)], legend, 'AmP at T_{typical}', 3); 
+        shstat_options('default');
+        [Hfig_Wp, Hleg_Wp] = shstat([Ww_i, p_Ti], legend, 'AmP at T_{typical}'); 
         figure(Hfig_Wp) 
         xlabel('_{10}log max body weight, g')
         ylabel('_{10}log spec. heat dissipation, kJ/d.g')
         xlim([0 8.5])
         ylim([-3 1.5])
-        %saveas(gca,'Wwi_pT_AmP2018.png')
+        %saveas(gca,'Wwi_pT_AmP2023.png')
      
       case 7 % fig 3a: Wwi, Wdi
         figure
@@ -412,15 +411,16 @@ function LikaAugu2019_SI(fig)
         surv_Wdi = surv(Wdi); surv_Wwi = surv(Wwi); 
         W = 10.^linspace(log10(Wdi_min),log10(Wwi_max),500)'; 
         %
-        AB = wblfit(Wdi, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A_Wdi = AB(1); B_Wdi = AB(2); S_Wdi = 1-wblcdf(W,A_Wdi,B_Wdi);
+        AB = wblML(Wdi); % gives MLEs
+        %A_Wdi = AB(1); B_Wdi = AB(2); S_Wdi = 1-wblcdf(W,A_Wdi,B_Wdi);
+        A_Wdi = AB(1); B_Wdi = AB(2); S_Wdi = exp(-(W/A_Wdi).^B_Wdi);
         fprintf(['Pars Weibull for Wdi: ', num2str(A_Wdi), '  g; ', num2str(B_Wdi), '\n'])
-        [M, V] = wblstat(A_Wdi,B_Wdi); 
+        [M, V] = wblStat(A_Wdi,B_Wdi); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
-        AB = wblfit(Wwi, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A_Wwi = AB(1); B_Wwi = AB(2); S_Wwi = 1-wblcdf(W,A_Wwi,B_Wwi);
+        AB = wblML(Wwi); % gives MLE
+        A_Wwi = AB(1); B_Wwi = AB(2); S_Wwi = exp(-(W/A_Wwi).^B_Wwi);
         fprintf(['Pars Weibull for Wdi: ', num2str(A_Wwi), '  g; ', num2str(B_Wwi), '\n'])
-        [M, V] = wblstat(A_Wwi,B_Wwi); 
+        [M, V] = wblStat(A_Wwi,B_Wwi); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         %
         plot(log10(W), S_Wdi, '-', 'color', [1 0.75 0.75], 'linewidth',8)
@@ -440,10 +440,12 @@ function LikaAugu2019_SI(fig)
         Li_med = median(Li); Li_min = min(Li); Li_max = max(Li);
         surv_Li = surv(Li); 
         Z = 10.^linspace(log10(Li_min),log10(Li_max),500)'; 
-        AB = wblfit(Li, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(Z,A,B);
+        %AB = wblfit(Li, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(Li); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(Z,A,B);
+        A = AB(1); B = AB(2); S = exp(-(Z/A).^B);
         fprintf(['Pars Weibull for Li: ', num2str(A), '  d/J; ', num2str(B), '\n'])
-        [M, V] = wblstat(A,B); 
+        [M, V] = wblStat(A,B); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         plot(log10(Z), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
@@ -492,7 +494,8 @@ function LikaAugu2019_SI(fig)
         %saveas(gca,'sJA.png')
 
       case 11 % not numbered (for testing): p_Si/p_Ai = kap
-        figure 
+        %figure 
+        vars = read_allStat('p_Ji','p_Si','p_Ai'); p_Ji = vars(:,1); p_Si = vars(:,2); p_Ai = vars(:,3); 
         s_SA = p_Si./p_Ai; sSA_max = 1;
         sSA_med = median(s_SA); sSA_min = min(s_SA);  m = mean(s_SA); v = mean(s_SA.^2) - mean(s_SA)^2;
         surv_sSA = surv(s_SA); 
@@ -505,7 +508,7 @@ function LikaAugu2019_SI(fig)
        
         hold on
         plot([sSA_min; sSA_med; sSA_med], [0.5;0.5;0], 'b', surv_sSA(:,1), surv_sSA(:,2), 'b', 'Linewidth', 2)
-        [Hfig Hleg] = shstat({'kap'}, {'r', 'r'},[],3);
+        [Hfig Hleg] = shstat({'kap'}, {'r', 'r'},[]);
         xlabel('p_S^\infty/p_A^\infty, \kappa,  -')
         ylabel('survivor function')
         %saveas(gca,'sSA.png')
@@ -516,10 +519,12 @@ function LikaAugu2019_SI(fig)
         surv_pA = surv(pA); 
         pA_med = median(pA); pA_min = min(pA); pA_max = max(pA); 
         PA = 10.^linspace(log10(pA_min),log10(pA_max),500)'; 
-        AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        %AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(pA); % gives MLEs
         A = AB(1); B = AB(2);
         fprintf(['Pars Weibull for p_A: ', num2str(A), ' d/J; ', num2str(B), '\n'])
-        [M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
+        %[M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
+        [M, V] = wblStat(A,B); S = exp(-(PA/A).^B);
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         plot(log10(PA), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
@@ -536,10 +541,12 @@ function LikaAugu2019_SI(fig)
         pM_med = median(pM); pM_min = min(pM); pM_max = max(pM);
         surv_pM = surv(pM); 
         PM = 10.^linspace(log10(pM_min),log10(pM_max),500)'; 
-        AB = wblfit(pM, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(PM,A,B);
+        %AB = wblfit(pM, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(pM); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(PM,A,B);
+        A = AB(1); B = AB(2); S = exp(-(PM/A).^B);
         fprintf(['Pars Weibull for p_M: ', num2str(A), '  J/d; ', num2str(B), '\n'])
-        [M, V] = wblstat(A,B); 
+        [M, V] = wblStat(A,B); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         plot(log10(PM), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
@@ -556,10 +563,12 @@ function LikaAugu2019_SI(fig)
         pJ_med = median(pJ); pJ_min = min(pJ); pJ_max = max(pJ); 
         surv_pJ = surv(pJ); 
         PJ = 10.^linspace(log10(pJ_min),log10(pJ_max),500)'; 
-        AB = wblfit(pJ, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(PJ,A,B);
+        %AB = wblfit(pJ, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(pJ); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(PJ,A,B);
+        A = AB(1); B = AB(2); S = exp(-(PJ/A).^B);
         fprintf(['Pars Weibull for p_J: ', num2str(A), ' J/d; ',  num2str(B), '\n'])
-        [M, V] = wblstat(A,B); 
+        [M, V] = wblStat(A,B); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         plot(log10(PJ), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
@@ -576,10 +585,12 @@ function LikaAugu2019_SI(fig)
         pR_med = median(pR); pR_min = min(pR); pR_max = max(pR);
         surv_pR = surv(pR); 
         PR = 10.^linspace(log10(pR_min),log10(pR_max),500)'; 
-        AB = wblfit(pR, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-        A = AB(1); B = AB(2); S = 1-wblcdf(PR,A,B);
+        %AB = wblfit(pR, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+        AB = wblML(pR); % gives MLEs
+        %A = AB(1); B = AB(2); S = 1-wblcdf(PR,A,B);
+        A = AB(1); B = AB(2); S = exp(-(PR/A).^B);
         fprintf(['Pars Weibull for p_R: ', num2str(A), '  d/J; ', num2str(B), '\n'])
-        [M, V] = wblstat(A,B); 
+        [M, V] = wblStat(A,B); 
         fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
         plot(log10(PR), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
