@@ -355,7 +355,7 @@ end
      figure(hsM_sHbp)
      xlabel('_{10}log acceleration factor, s_M, -')
      ylabel('_{10}log procociality coeff, s_H^{bp}, -')
-     print -r300 -dpng sM_sHbp.png
+     %print -r300 -dpng sM_sHbp.png
      
    case 21
      n = 21; n_spec = NaN(n,1); sM_min = NaN(n,1); sM_max = NaN(n,1); sM_med = NaN(n,1); sM_geo = NaN(n,1); sM_char = NaN(n,1); sM_ave = NaN(n,1);
@@ -389,28 +389,28 @@ end
      %plot([3.25 5.25],[-0.25 -3.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log precociality coeff, s_H^{bp}, - ')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng sHbp_Em.png
+     %print -r300 -dpng sHbp_Em.png
 
      hLi_Em = shstat({'L_i','E_m'}, legend); 
      figure(hLi_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate structural length, L_\infty, cm ')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng Li_Em.png
+     %print -r300 -dpng Li_Em.png
  
      hpM_Em = shstat({'p_M','E_m'}, legend); 
      figure(hpM_Em)
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng pM_Em.png
+     %print -r300 -dpng pM_Em.png
  
      hpAm_Em = shstat({'p_Am','E_m'}, legend); 
      figure(hpAm_Em)
      plot([0.25 4.5],1.5+[0.25 4.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec max assim rate, \{p_{Am}\}, J/d.cm^2')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng pAm_Em.png
+     %print -r300 -dpng pAm_Em.png
 
 
      hWwi_Em = shstat({'Ww_i','E_m'}, legend); 
@@ -418,7 +418,7 @@ end
      %plot([0.25 2.25],[3.25 5.25], 'k', 'LineWidth', 3)
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng Wwi_Em.png
+     %print -r300 -dpng Wwi_Em.png
 
    case 23
      shstat_options('x_transform', 'log10');
@@ -433,7 +433,7 @@ end
      plot(logJO_range, 1+1*logJO_range, 'k', 'linewidth', 2)
      xlabel('_{10}log max respiration rate, mol/d')
      ylabel('_{10}log max neonate mass prod. rate, g/d')
-     print -r300 -dpng JO_JR.png
+     %print -r300 -dpng JO_JR.png
      
    case 24
      shstat_options('x_transform', 'log10');
@@ -445,9 +445,9 @@ end
      plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log life span, a_m, d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng am_pM_Cyprinodontiformes.png
+     %print -r300 -dpng am_pM_Cyprinodontiformes.png
      figure(hlegend)
-     print -r300 -dpng legend_Cyprinodontiformes.png
+     %print -r300 -dpng legend_Cyprinodontiformes.png
 
      jWbpM = read_allStat({'N_i','Ww_i','Ww_b','p_M'});   jWbpM = [jWbpM(:,1) .* jWbpM(:,3) ./ jWbpM(:,2), jWbpM(:,4)];
      hjWbpM = shstat(jWbpM, legend_Cyprinodontiformes);   
@@ -455,7 +455,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec total neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng NiWbWi_pM_Cyprinodontiformes.png
+     %print -r300 -dpng NiWbWi_pM_Cyprinodontiformes.png
      
      WdW = read_allStat({'W_dWm','dWm','p_M','c_T'});   WdW = [WdW(:,2) ./ WdW(:,1) ./ WdW(:,4), WdW(:,3)];
      hWdW_pM = shstat(WdW, legend_Cyprinodontiformes);   
@@ -463,7 +463,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log max spec growth rate, 1/d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng WdW_pM_Cyprinodontiformes.png
+     %print -r300 -dpng WdW_pM_Cyprinodontiformes.png
      
      hv_pM = shstat({'v','p_M'}, legend_Cyprinodontiformes);   
      figure(hv_pM)
@@ -484,9 +484,9 @@ end
      plot([2.1; 4.3], [2.92; 0.28], 'k', 'LineWidth', 3) % slope -1.2
      xlabel('_{10}log life span, a_m, d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng am_pM_Leuciscinae.png
+     %print -r300 -dpng am_pM_Leuciscinae.png
      figure(hlegend)
-     print -r300 -dpng legend_Leuciscinae.png
+     %print -r300 -dpng legend_Leuciscinae.png
 
      jWbpM = read_allStat({'N_i','Ww_i','Ww_b','p_M'});   jWbpM = [jWbpM(:,1) .* jWbpM(:,3) ./ jWbpM(:,2), jWbpM(:,4)];
      hjWbpM = shstat(jWbpM, legend_Leuciscinae);   
@@ -494,7 +494,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec total neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng NiWbWi_pM_Leuciscinae.png
+     %print -r300 -dpng NiWbWi_pM_Leuciscinae.png
      
      WdW = read_allStat({'W_dWm','dWm','p_M','c_T'});   WdW = [WdW(:,2) ./ WdW(:,1) ./ WdW(:,4), WdW(:,3)];
      hWdW_pM = shstat(WdW, legend_Leuciscinae);   
@@ -502,7 +502,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log max spec growth rate, 1/d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng WdW_pM_Leuciscinae.png
+     %print -r300 -dpng WdW_pM_Leuciscinae.png
 
      hv_pM = shstat({'v','p_M'}, legend_Leuciscinae);   
      figure(hv_pM)
@@ -522,9 +522,9 @@ end
      plot([2.2; 4.0], [2.8; 0.64], 'k', 'LineWidth', 3) % slope -1.2
      xlabel('_{10}log life span, a_m, d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng am_pM_Etheostomatinae.png
+     %print -r300 -dpng am_pM_Etheostomatinae.png
      figure(hlegend)
-     print -r300 -dpng legend_Etheostomatinae.png
+     %print -r300 -dpng legend_Etheostomatinae.png
 
      jWbpM = read_allStat({'N_i','Ww_i','Ww_b','p_M'});   jWbpM = [jWbpM(:,1) .* jWbpM(:,3) ./ jWbpM(:,2), jWbpM(:,4)];
      hjWbpM = shstat(jWbpM, legend_Etheostomatinae);   
@@ -532,7 +532,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log spec total neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng NiWbWi_pM_Etheostomatinae.png
+     %print -r300 -dpng NiWbWi_pM_Etheostomatinae.png
      
      WdW = read_allStat({'W_dWm','dWm','p_M','c_T'});   WdW = [WdW(:,2) ./ WdW(:,1) ./ WdW(:,4), WdW(:,3)];
      hWdW_pM = shstat(WdW, legend_Etheostomatinae);   
@@ -540,7 +540,7 @@ end
      %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
      xlabel('_{10}log max spec growth rate, 1/d')
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng WdW_pM_Etheostomatinae.png
+     %print -r300 -dpng WdW_pM_Etheostomatinae.png
 
      hv_pM = shstat({'v','p_M'}, legend_Etheostomatinae);   
      figure(hv_pM)
@@ -576,10 +576,10 @@ end
      % plot with legend in second figure
      [Hfig Hleg] = shstat(data, legend_Pisces, 'MDS for Pisces');
      xlabel(''); ylabel('')
-     print -r300 -dpng mds_Pisces.png % too big for -r300 when full-screen
+     %print -r300 -dpng mds_Pisces.png % too big for -r300 when full-screen
      
      figure(Hleg)
-     print -r300 -dpng legend_Pisces.png
+     %print -r300 -dpng legend_Pisces.png
 
    case 29
      shstat_options('x_transform', 'log10');
@@ -603,7 +603,7 @@ end
      plot([-5; 7], [0.3; -4.3], 'k', 'LineWidth', 2)
      xlabel('_{10}log weight at max growth, g')
      ylabel('_{10}log spec growth at max growth, 1/d')
-     print -r300 -dpng WdWm_rm.png
+     %print -r300 -dpng WdWm_rm.png
      
    case 31 % fig 5
      shstat_options('x_transform', 'log10');
@@ -617,7 +617,7 @@ end
      xlabel('_{10}log life span, d')
      ylabel('_{10}log spec respiration, J_O^\infty/W_w^\infty, mol/d.g')
      xlim([1.5 5.3])
-     print -r300 -dpng am_jO.png
+     %print -r300 -dpng am_jO.png
      
      WWN = read_allStat({'Ww_i', 'Ww_b', 'N_i'});
      WiWR = [WWN(:,1), WWN(:,2) .* WWN(:,3)];
@@ -628,7 +628,7 @@ end
      plot([-1; 7.5], [-1; 7.5], 'k', 'LineWidth', 3)
      xlabel('_{10}log ultimate weight, W_w^\infty, g')
      ylabel('_{10}log life time neonate mass, g')
-     print -r300 -dpng Wi_WR.png
+     %print -r300 -dpng Wi_WR.png
 
 end
 end
