@@ -44,7 +44,9 @@ function KooyLika2014_SI(fig)
     {'o', 8, 3, [1 0 0],     [1 1 1]}, 'Theropoda'; ....
     {'o', 8, 3, [0.5 0 0.5], [1 1 1]}, 'Deuterostomata'; ....
   };
+
   close all
+  
   shstat_options('default');
   shstat_options('y_label', 'on'); 
   shstat_options('x_label', 'off'); 
