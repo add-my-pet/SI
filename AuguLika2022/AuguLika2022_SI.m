@@ -1,4 +1,4 @@
-function AuguLika2022(fig)
+function AuguLika2022_SI(fig)
 % Supporting Information for AuguLika2022
 % Title: The comparative energetics of the chondrichthyans reveals universal links between respiration, reproduction and lifespan
 % Authors: Augustine, Lika, Kooijman
