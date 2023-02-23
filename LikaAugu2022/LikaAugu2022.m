@@ -606,8 +606,7 @@ end
      %print -r300 -dpng WdWm_rm.png
      
    case 31 % fig 5
-     shstat_options('x_transform', 'log10');
-     shstat_options('y_transform', 'log10');
+     shstat_options('default');
        
      aJW = read_allStat({'a_m', 'J_Oi', 'Ww_i', 'Ww_b', 'R_i', 'c_T'});
      ham_jO = shstat([aJW(:,1).*aJW(:,6), aJW(:,2)./aJW(:,3)./aJW(:,6)], legend, 'Actinopterygii');   
