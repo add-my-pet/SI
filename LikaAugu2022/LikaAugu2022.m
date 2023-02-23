@@ -1,12 +1,33 @@
-% Supporting Information: The comparative energetics of the ray-finned fish in an evolutionary context
-% Lika K, Augustine S, Kooijman SALM (2022)  
-% Conserv Physiol 10(1): coac039; doi:10.1093/conphys/coac039.
+function LikaAugu2022_SI(fig)
+% Supporting Information for LikaAugu2022
+% Title: The comparative energetics of the ray-finned fish in an evolutionary context
+% Authors: Lika, Augustine, Kooijman
+% Journal: Conserv Physiol 10(1): coac039
+% DOI: 10.1093/conphys/coac039
+% Date: 2023/02/18
+% 
+% Matlab scripts to generate the figures in the publication
+%
+% To run the scripts you need
+% 1) Matlab (the student or Home version will suffice)
+% 2) Download AmPdata from http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/
+%    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
+% 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
+% 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+%
+% Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
+% Load this script-file in the Matlab Editor
+% To run the code for a figure: type in the Matlab window e.g. LikaAugu2022_SI(2)
+%
+% Remarks: 
+%  The figures show current AmP data, which might change in time; the results might differ from the publication
+%  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
+%  Click on a marker in the Matlab-figure to see the species name
+%  Uncomment "print" to save the Matlab-figure to a png-file
+%  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
+%  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 
-% uses open source package DEBtool_M  https://github.com/add-my-pet/DEBtool_M 
-% and AmPtool https://github.com/add-my-pet/AmPtool
-
-function LikaAugu2022(fig)
-% generates figures 
+close all
 
 if ~exist('fig','var')
    fig = 1:31;
@@ -112,59 +133,59 @@ end
  for i=1:length(fig)
  
  switch fig(i)
-   case 1
+   case 1 % fig 1c
      shstat_options('x_transform', 'none');
      [hkap, hleg] = shstat({'kap'}, llegend);
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
-     print -r300 -dpng kap.png
+     %print -r300 -dpng kap.png
      figure(hleg)
-     print -r300 -dpng llegend_Actinopterygii.png
+     %print -r300 -dpng llegend_Actinopterygii.png
 
 
-   case 2
+   case 2 % fig 1d
      shstat_options('x_transform', 'log10');
      hp_M = shstat({'p_M'}, llegend); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
-     print -r300 -dpng pM.png
+     %print -r300 -dpng pM.png
      
    case 3 
      shstat_options('x_transform', 'log10');
      hs_M = shstat({'s_M'}, llegend); 
      figure(hs_M)
      xlabel('_{10}log acceleration factor, s_M, -')
-     print -r300 -dpng sM.png
+     %print -r300 -dpng sM.png
  
-   case 4 
+   case 4 % fig 1g
      shstat_options('x_transform', 'log10');
      hs_s = shstat({'s_s'}, llegend); 
      figure(hs_s)
      xlim([-6 -0.5])
      xlabel('_{10}log supply stress, s_s, -')
-     print -r300 -dpng ss.png
+     %print -r300 -dpng ss.png
 
-   case 5
+   case 5  % fig 1f
      shstat_options('x_transform', 'log10');
      hs_Hbp = shstat({'s_Hbp'}, llegend); 
      figure(hs_Hbp)
      xlim([-8.2 0])
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
-     print -r300 -dpng sHbp.png
+     %print -r300 -dpng sHbp.png
 
-   case 6
+   case 6 % fig 1b
      shstat_options('x_transform', 'log10');
      hv = shstat({'v'}, llegend); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
-     print -r300 -dpng v.png
+     %print -r300 -dpng v.png
 
-   case 7
+   case 7  % fig 1a
      shstat_options('x_transform', 'log10');
      hp_Am = shstat({'p_Am'}, llegend); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
-     print -r300 -dpng pAm.png
+     %print -r300 -dpng pAm.png
 
    case 8
      shstat_options('x_transform', 'log10');
@@ -174,7 +195,7 @@ end
      shstat({'Ww_b'}, llegend, [], hWw_i);
      figure(hWw_i)
      xlabel('_{10}log weight at birth, puberty, death, W_w^b, W_w^p, W_w^\infty, g')
-     print -r300 -dpng Wwi.png
+     %print -r300 -dpng Wwi.png
      
      Wbpi = read_allStat({'Ww_b','Ww_p','Ww_i'});
      sel_Cy = select_01('Cyclostomata'); sel_Ch = select_01('Chondrichthyes');
@@ -185,12 +206,12 @@ end
          median(Wbpi(sel_Cy,3)) median(Wbpi(sel_Ch,3)) median(Wbpi(sel_Ac,3)) median(Wbpi(sel_CL,3)) median(Wbpi(sel_Te,3))];
      prt_tab({{'Ww_b';'Ww_p';'Ww_i'}, Wbpi},{'Weight','Cyclo','Chond','Actino','CL','Tetra'});
      
-   case 9
+   case 9  % fig 1e
      shstat_options('x_transform', 'log10');
      hE_m = shstat({'E_m'}, llegend); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
-     print -r300 -dpng Em.png
+     %print -r300 -dpng Em.png
 
    case 10
      shstat_options('x_transform', 'log10');
@@ -201,7 +222,7 @@ end
      shstat(ab, llegend, [], ha_m); 
      figure(ha_m)
      xlabel('_{10}log age at birth, puberty, death, a_b, a_p, a_m, d')
-     print -r300 -dpng am.png
+     %print -r300 -dpng am.png
      
    case 11
      shstat_options('x_transform', 'log10');
@@ -217,7 +238,7 @@ end
      shstat(WdW_T, {'g', 'g'}, [], hWdW);   
      figure(hWdW)
      xlabel('_{10}log maximum spec growth, r_m, g/d.g')
-     print -r300 -dpng WdW.png
+     %print -r300 -dpng WdW.png
 
    case 12
      shstat_options('x_transform', 'log10');
@@ -233,7 +254,7 @@ end
      shstat(JOiW_T,  {'g', 'g'}, [], hJOiW);   
      figure(hJOiW)
      xlabel('_{10}log ultimate spec O_2 consumption, j_O^\infty, mol/d.g')
-     print -r300 -dpng jOi.png
+     %print -r300 -dpng jOi.png
 
    case 13
      shstat_options('x_transform', 'log10');
@@ -243,9 +264,9 @@ end
      figure(hjWb)
      xlim([-6.7 -1.5])
      xlabel('_{10}log ultimate spec neonate mass prod rate, j_{W_w^b}^\infty, 1/d')
-     print -r300 -dpng jWb.png
+     %print -r300 -dpng jWb.png
 
-   case 14
+   case 14  % fig 4
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      WJO = read_allStat({'Ww_i', 'J_Oi','c_T'}); WJO(:,2) = WJO(:,2) ./ WJO(:,1) ./ WJO(:,3);
@@ -253,9 +274,9 @@ end
      figure(hWwi_JOiW)
      xlabel('_{10}log ultimate wet weight, g')
      ylabel('_{10}log spec O_2 consumption, mol/d.g')
-     print -r300 -dpng Wwi_JOiW.png
+     %print -r300 -dpng Wwi_JOiW.png
      figure(hC)
-     print -r300 -dpng legend_Actinopterygii.png
+     %print -r300 -dpng legend_Actinopterygii.png
      
    case 15
      shstat_options('x_transform', 'log10');
@@ -268,7 +289,7 @@ end
      figure(hvs_s_Hjp)
      xlabel('_{10}log post-accel energy cond., v s_M, cm/d')
      ylabel('_{10}log maturity ratio, s_H^{jp}, -')
-     print -r300 -dpng vsM_sHjp.png
+     %print -r300 -dpng vsM_sHjp.png
 
    case 16
      shstat_options('x_transform', 'log10');
@@ -279,9 +300,9 @@ end
      figure(hv_vs)
      xlabel('_{10}log energy conductance, v, cm/d')
      ylabel('_{10}log post-accel energy cond., v s_M, cm/d')
-     print -r300 -dpng v_vsM.png
+     %print -r300 -dpng v_vsM.png
 
-   case 17
+   case 17  % fig 6a
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
      kapR = read_allStat({'kap', 'R_i','c_T'}); kapR(:,2) = kapR(:,2) ./ kapR(:,3);
@@ -289,9 +310,9 @@ end
      figure(hkap_R)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log max reprod rate, #/d')
-     print -r300 -dpng kap_R.png
+     %print -r300 -dpng kap_R.png
     
-   case 18
+   case 18 % fig 6b
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'log10');
      kNWWa = read_allStat({'kap', 'R_i', 'Ww_b', 'Ww_i', 'c_T'}); 
@@ -300,9 +321,9 @@ end
      figure(hkap_RWW)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log spec neonate mass prod rate, 1/d')
-     print -r300 -dpng kap_RWW.png
+     %print -r300 -dpng kap_RWW.png
 
-   case 19
+   case 19 % fig 7a
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      shstat_options('z_transform', 'log10');
@@ -316,7 +337,7 @@ end
      plot([-1 -4.5], [-1 -4.5], 'k')
      xlabel('_{10}log max spec growth, r_m, g/d.g')
      ylabel('_{10}log max spec pop growth, r_N, 1/d')
-     print -r300 -dpng WdW_r.png
+     %print -r300 -dpng WdW_r.png
 
      hWdW_r_sM = shstat([WdW, r, sM], legend);    
      figure(hWdW_r_sM)
@@ -358,7 +379,7 @@ end
      figure(hs_M)
      xlabel('_{10}log acceleration factor, s_M, - ')
      
-   case 22
+   case 22  % fig 3
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      shstat_options('z_transform', 'log10');
@@ -490,7 +511,7 @@ end
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
      %print -r300 -dpng v_pM_Leuciscinae.png
 
-   case 26
+   case 26  % fig 9
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      
@@ -542,7 +563,7 @@ end
      ylabel('_{10}log age at puberty, d')
      %print -r300 -dpng am_ap_RSED.png
      
-   case 28
+   case 28  % fig 8
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'none');
      
@@ -570,7 +591,7 @@ end
      ylabel('_{10}log ageing acceleration, 1/d^2')
      %print -r300 -dpng pM_ha_Cyprinodontiformes.png
 
-   case 30
+   case 30 % fig 7b
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
      
@@ -584,7 +605,7 @@ end
      ylabel('_{10}log spec growth at max growth, 1/d')
      print -r300 -dpng WdWm_rm.png
      
-   case 31
+   case 31 % fig 5
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');
        
