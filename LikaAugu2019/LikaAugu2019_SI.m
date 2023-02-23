@@ -81,7 +81,7 @@ function LikaAugu2019_SI(fig)
       case 1 % fig 1a kap
         figure % kappa
         kap = read_allStat('kap'); 
-        kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - mean(kap)^2;
+        kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - m^2;
         surv_kap = surv(kap); 
         a = m*(m*(1-m)/v-1); b = a*(1-m)/m;
         fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
