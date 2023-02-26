@@ -31,7 +31,7 @@ function KooyLika2014_SI(fig)
   close all
 
   if ~exist('fig','var')
-    fig = 1:20;
+    fig = 1:7;
   end
 
   legend = {...
