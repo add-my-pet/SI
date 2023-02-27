@@ -4,7 +4,7 @@ function KooyLika2014a_SI(fig)
 % Authors: Kooijman, Lika
 % Journal: J. Sea Res. 94 (2014): 19-28
 % DOI: 10.1016/j.seares.2014.01.015
-% Date: 2023/02/26
+% Date: 2023/02/27
 % 
 % Matlab scripts to generate the figures in the publication
 %
@@ -56,7 +56,7 @@ function KooyLika2014a_SI(fig)
   };
 
   if ~exist('fig','var')
-    fig = 1:28;
+    fig = 1:32;
   end
 
   close all
@@ -78,7 +78,7 @@ function KooyLika2014a_SI(fig)
         data = log10([LipAmsM(sel,[1 2 1]), LipAmsM(sel,2) .* LipAmsM(sel,3)]);
         for j=1:size(data,1); plot(data(j,[1 3]), data(j,[2 4]), '-k', 'linewidth',2); end
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('spec assim rate, \{p_{Am}\}, J/d.cm^2')
+        ylabel('spec assim rate, _{10}log \{p_{Am}\}, J/d.cm^2')
         %print -r0 -dpng Li_p_Am.png
         figure(HlegLipAm)
         %print -r0 -dpng legend.png
@@ -94,7 +94,7 @@ function KooyLika2014a_SI(fig)
         data = log10([LivsM(sel,[1 2 1]), LivsM(sel,2) .* LivsM(sel,3)]);
         for j=1:size(data,1); plot(data(j,[1 3]), data(j,[2 4]), '-k', 'linewidth',2); end
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('energy conductance, v, cm/d')
+        ylabel('energy conductance, _{10}log v, cm/d')
         %print -r0 -dpng Li_v.png
         figure(HlegLiv)
         %print -r0 -dpng legend.png
@@ -117,7 +117,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLipM)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('spec somatic maint rate, [p_M], J/d.cm^3')
+        ylabel('spec somatic maint rate, _{10}log [p_M], J/d.cm^3')
         %print -r0 -dpng Li_pM.png
         figure(HlegLipM)
         %print -r0 -dpng legend.png
@@ -128,7 +128,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLikJ)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('maturity maint rate coeff, k_J, 1/d')
+        ylabel('maturity maint rate coeff, _{10}log k_J, 1/d')
         %print -r0 -dpng Li_kJ.png
         figure(HlegLikJ)
         %print -r0 -dpng legend.png
@@ -139,7 +139,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLiEG)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('spec cost for struct, [E_G], J/cm^3')
+        ylabel('spec cost for struct, _{10}log [E_G], J/cm^3')
         %print -r0 -dpng Li_EG.png
         figure(HlegLiEG)
         %print -r0 -dpng legend.png
@@ -150,7 +150,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLiEHb)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('maturity at birth, E_H^b, J')
+        ylabel('maturity at birth, _{10}log E_H^b, J')
         %print -r0 -dpng Li_EHb.png
         figure(HlegLiEHb)
         %print -r0 -dpng legend.png
@@ -161,7 +161,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLiEHj)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('maturity at metam, E_H^j, J')
+        ylabel('maturity at metam, _{10}log E_H^j, J')
         %print -r0 -dpng Li_EHj.png
         figure(HlegLiEHj)
         %print -r0 -dpng legend.png
@@ -172,7 +172,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLiEHp)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('maturity at puberty, E_H^p, J')
+        ylabel('maturity at puberty, _{10}log E_H^p, J')
         %print -r0 -dpng Li_EHp.png
         figure(HlegLiEHp)
         %print -r0 -dpng legend.png
@@ -183,7 +183,7 @@ function KooyLika2014a_SI(fig)
         
         figure(HfigLiha)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('ageing acceleration, h_a, 1/d^2')
+        ylabel('ageing acceleration, _{10}log h_a, 1/d^2')
         %print -r0 -dpng Li_ha.png
         figure(HlegLiha)
         %print -r0 -dpng legend.png
@@ -211,61 +211,225 @@ function KooyLika2014a_SI(fig)
         figure(hlegsR)
         %print -r0 -dpng llegend.png
 
-      case 13 % fig 3a: Li-EHp/EHb
+      case 13 % fig 3a: Li-ab
         shstat_options('default');
-        LiEHbEHp = read_allStat({'L_i','E_Hb','E_Hp'});
-        L_i = LiEHbEHp(:,1); s_R = LiEHbEHp(:,3)./LiEHbEHp(:,2);
-        [HfigLisR, HlegLisR] = shstat([L_i, s_R], legend); 
+        Liab = read_allStat({'L_i','a_b','c_T'}); Liab = [Liab(:,1), Liab(:,2) .* Liab(:,3)];
+        [HfigLiab, HlegLiab] = shstat(Liab, legend); 
         
-        figure(HfigLisR)
+        figure(HfigLiab)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('maturity ratio, s_R, -')
-        %print -r0 -dpng Li_sR.png
-        figure(HlegLisR)
+        ylabel('age at birth, _{10}log a_b, d')
+        %print -r0 -dpng Li_ab.png
+        figure(HlegLiab)
         %print -r0 -dpng legend.png
 
-      case 14 % fig 3b: Li-pJp/Li^3
+      case 14 % fig 3b: Li-ap
         shstat_options('default');
-        LipJpTC = read_allStat({'L_i','p_Jp','TC'});
-        L_i = LipJpTC(:,1); p_J = LipJpTC(:,2)./ LipJpTC(:,3) ./ L_i.^3;
+        Liap = read_allStat({'L_i','a_p','c_T'}); Liap = [Liap(:,1), Liap(:,2) .* Liap(:,3)];
+        [HfigLiap, HlegLiap] = shstat(Liap, legend); 
+        
+        figure(HfigLiap)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('age at puberty, _{10}log a_p, d')
+        %print -r0 -dpng Li_ap.png
+        figure(HlegLiap)
+        %print -r0 -dpng legend.png
+
+      case 15 % fig 3c: Li-am
+        shstat_options('default');
+        Liam = read_allStat({'L_i','a_m','c_T'}); Liam = [Liam(:,1), Liam(:,2) .* Liam(:,3)];
+        [HfigLiam, HlegLiam] = shstat(Liam, legend); 
+        
+        figure(HfigLiam)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('age at death, _{10}log a_m, d')
+        %print -r0 -dpng Li_am.png
+        figure(HlegLiam)
+        %print -r0 -dpng legend.png
+          
+      case 16 % fig 3d: Li-Lb
+        shstat_options('default');
+        [HfigLiLb, HlegLiLb] = shstat({'L_i', 'L_b'}, legend); 
+        
+        figure(HfigLiLb)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('structural length at birth, _{10}log L_b, cm')
+        %print -r0 -dpng Li_Lb.png
+        figure(HlegLiLb)
+        %print -r0 -dpng legend.png
+          
+      case 17 % fig 3e: Li-Lj
+        shstat_options('default');
+        LiLjLb = read_allStat({'L_i','L_j','L_b'}); sel=isnan(LiLjLb(:,2)); LiLjLb(sel,2)=LiLjLb(sel,3)+1e-3;
+        [HfigLiLj, HlegLiLj] = shstat(LiLjLb(:,[1 2]), legend); 
+        
+        figure(HfigLiLj)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('structural length at metam, _{10}log L_j, cm')
+        %print -r0 -dpng Li_Lj.png
+        figure(HlegLiLj)
+        %print -r0 -dpng legend.png
+          
+      case 18 % fig 3f: Li-Lp
+        shstat_options('default');
+        [HfigLiLp, HlegLiLp] = shstat({'L_i', 'L_p'}, legend); 
+        
+        figure(HfigLiLp)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('structural length at puberty, _{10}log L_p, cm')
+        %print -r0 -dpng Li_Lp.png
+        figure(HlegLiLp)
+        %print -r0 -dpng legend.png
+          
+      case 19 % fig 3g: Li-Wwm/Li^3
+        shstat_options('default');
+        LiWwi = read_allStat({'L_i','Ww_i'}); LiWwi(:,2)=LiWwi(:,2)./LiWwi(:,1).^3;
+        [HfigLiWwi, HlegLiWwi] = shstat(LiWwi, legend); 
+        
+        figure(HfigLiWwi)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('ultimate weight per struct volume, _{10}log W_w^{\infty}/L_{\infty}^3, g/cm^3')
+        %print -r0 -dpng Li_Wwi.png
+        figure(HlegLiWwi)
+        %print -r0 -dpng legend.png
+
+      case 20 % fig 3g: Li-Em
+        shstat_options('default');
+        [HfigLiEm, HlegLiEm] = shstat({'L_i', 'E_m'}, legend); 
+        
+        figure(HfigLiEm)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('reserve capacity, _{10}log [E_m], J/cm^3')
+        %print -r0 -dpng Li_Em.png
+        figure(HlegLiEm)
+        %print -r0 -dpng legend.png
+
+      case 21 % fig 3i: Li-rB
+        shstat_options('default');
+        LirB = read_allStat({'L_i','r_B','c_T'}); LirB = [LirB(:,1), LirB(:,2) ./ LirB(:,3)];
+        [HfigLirB, HlegLirB] = shstat(LirB, legend); 
+        
+        figure(HfigLirB)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('von Bert growth rate, _{10}log r_B, 1/d')
+        %print -r0 -dpng Li_rB.png
+        figure(HlegLirB)
+        %print -r0 -dpng legend.png
+
+      case 22 % fig 3j: Li-EHp/EHb
+        shstat_options('default');
+        LiEHbEHp = read_allStat({'L_i','E_Hb','E_Hp'});
+        L_i = LiEHbEHp(:,1); s_H = LiEHbEHp(:,3)./LiEHbEHp(:,2);
+        [HfigLisH, HlegLisH] = shstat([L_i, s_H], legend); 
+        
+        figure(HfigLisH)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('maturity ratio, _{10}log s_H, -')
+        %print -r0 -dpng Li_sH.png
+        figure(HlegLisH)
+        %print -r0 -dpng legend.png
+
+      case 23 % fig 3k: Li-pJp/Li^3
+        shstat_options('default');
+        LipJpTC = read_allStat({'L_i','p_Jp','c_T'});
+        L_i = LipJpTC(:,1); p_J = LipJpTC(:,2) ./ LipJpTC(:,3) ./ L_i.^3;
         [HfigLipJ, HlegLipJ] = shstat([L_i, p_J], legend); 
         
         figure(HfigLipJ)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('spec allocation to maturation, p_J/L_{\infty}^3, J/d.cm^3')
+        ylabel('spec allocation to maturation, _{10}log p_J/L_{\infty}^3, J/d.cm^3')
         %print -r0 -dpng Li_pJ.png
         figure(HlegLipJ)
         %print -r0 -dpng legend.png
         
-      case 15 % fig 3c: Li-ME0
+      case 24 % fig 3l: Li-ME0
         shstat_options('default');
         [HfigLiME0, HlegLiME0] = shstat({'L_i', 'M_E0'}, legend); 
         
         figure(HfigLiME0)
         xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
-        ylabel('initial mass, M_E^0, mol')
+        ylabel('initial mass, _{10}log M_E^0, C-mol')
         %print -r0 -dpng Li_ME0.png
         figure(HlegLiME0)
         %print -r0 -dpng legend.png
           
-      case 16 % fig 3d: Li-pJp/Li^3 
-      case 17 % fig 3e: Li-Ri  
-      case 18 % fig 3f: Li-rm
-          
-      case 19 % fig 3g: Li-EHb
-      case 20 % fig 3h: Li-EHj
-      case 21 % fig 3i: Li-EHp
-          
-      case 22 % fig 3k: Li-ha 
-      case 23 % fig 3l: Li-ha 
-      case 24 % fig 3m: Li-ha 
-          
-      case 25 % fig 4a: pM-rB
-      case 26 % fig 4b: pM-pR/Li^3
+      case 25 % fig 3m: Li-pRi/Li^3 
+        shstat_options('default');
+        LipRiTC = read_allStat({'L_i','p_Ri','c_T'});
+        L_i = LipRiTC(:,1); p_Ri = LipRiTC(:,2) ./ LipRiTC(:,3) ./ L_i.^3;
+        [HfigLipRi, HlegLipRi] = shstat([L_i, p_Ri], legend); 
+        
+        figure(HfigLipRi)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('spec allocation to reprod, _{10}log p_R^{\infty}/L_{\infty}^3, J/d.cm^3')
+        %print -r0 -dpng Li_pR.png
+        figure(HlegLipRi)
+        %print -r0 -dpng legend.png
 
-      case 27 % fig 5: Wdm-JO/Wd
+      case 26 % fig 3n: Li-Ri  
+        shstat_options('default');
+        LiRiTC = read_allStat({'L_i','R_i','c_T'});
+        L_i = LiRiTC(:,1); R_i = LiRiTC(:,2) ./ LiRiTC(:,3);
+        [HfigLiRi, HlegLiRi] = shstat([L_i, R_i], legend); 
+        
+        figure(HfigLiRi)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('ultimate reprod, _{10}log R_{\infty}, #/d')
+        %print -r0 -dpng Li_Ri.png
+        figure(HlegLiRi)
+        %print -r0 -dpng legend.png
 
-      case 28 % fig 6: surv EHp/EHb
+      case 27 % fig 3o: Li-rm
+        shstat_options('default');
+        LiTC = read_allStat({'L_i','c_T'}); r = read_popStat('f1.thin1.f.r');
+        [HfigLirm, HlegLirm] = shstat([LiTC(:,1), r./LiTC(:,2)], legend); 
+        
+        figure(HfigLirm)
+        xlabel('ultimate structural length, _{10}log L_{\infty}, cm')
+        ylabel('max pop growth rate, _{10}log r_m, 1/d')
+        %print -r0 -dpng Li_rm.png
+        figure(HlegLirm)
+        %print -r0 -dpng legend.png
+
+      case 28 % fig 4: Wdi-jO
+
+      case 29 % fig 5a: pM-rB
+        shstat_options('default');
+        pMrBTC = read_allStat({'p_M','r_B','c_T'});
+        p_M = pMrBTC(:,1); r_B = pMrBTC(:,2) ./ pMrBTC(:,3);
+        [HfigpMrB, HlegpMrB] = shstat([p_M, r_B], legend); 
+        
+        figure(HfigpMrB)
+        xlabel('spec somatic maint, _{10}log [p_M], J/cm^3')
+        ylabel('von Bert growth rate, _{10}log r_B, 1/d')
+        %print -r0 -dpng pM_rB.png
+        figure(HlegpMrB)
+        %print -r0 -dpng legend.png
+
+      case 30 % fig 5b: pM-pR/Li^3
+        shstat_options('default');
+        pMpRLiTC = read_allStat({'p_M','p_Ri','L_i','c_T'});
+        p_M = pMpRLiTC(:,1); p_R = pMpRLiTC(:,2) ./ pMpRLiTC(:,3).^3 ./ pMpRLiTC(:,4);
+        [HfigpMpR, HlegpMpR] = shstat([p_M, p_R], legend); 
+        
+        figure(HfigpMpR)
+        xlabel('spec somatic maint, _{10}log [p_M], J/cm^3')
+        ylabel('spec allocation to reprod, _{10}log p_R^{\infty}/L_{\infty}^3, J/d.cm^3')
+        %print -r0 -dpng pM_pR.png
+        figure(HlegpMpR)
+        %print -r0 -dpng legend.png
+
+      case 31 % fig 6: surv EHp/EHb
+        shstat_options('default');
+        EHbp = read_allStat({'E_Hb','E_Hp'}); s_H = EHbp(:,1)./EHbp(:,2);
+        [hfigsH, hlegsH] = shstat(s_H, llegend_CAA, title);
+        figure(hfigsH)
+        xlabel('altriciality index, _{10}log s_H, -')
+        %print -r0 -dpng sH.png
+        figure(hlegsH)
+        %print -r0 -dpng llegend.png
+
+      case 32 % fig 7: Com-Fit
 
     end
   end
