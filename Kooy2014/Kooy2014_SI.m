@@ -1,6 +1,6 @@
 function Kooy2014_SI(figi)
-% Supporting Information for Kooy2020a
-% Title:  in animal ontogeny: An evolutionary perspective
+% Supporting Information for Kooy2014
+% Title:  Metabolic acceleration in animal ontogeny: An evolutionary perspective
 % Authors: Kooijman
 % Journal: Journal of Sea Research 94 (2014) 128–137
 % DOI: 10.1016/j.seares.2014.06.005
