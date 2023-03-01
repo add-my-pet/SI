@@ -4,7 +4,7 @@ function Kooy2020a_SI(fig)
 % Authors: Kooijman
 % Journal: Ecological Modelling 427: 109052
 % DOI:10.1016/j.ecolmodel.2020.109052
-% Date: 2020/03/20
+% Date: 2023/02/20
 % 
 % Matlab scripts to generate the figures in the publication
 %
@@ -17,7 +17,8 @@ function Kooy2020a_SI(fig)
 %
 % Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
 % Load this script-file in the Matlab Editor
-% To run the code section for a figure, place the cursor in that code section and press "Run Section" in the toolbar of the Matlab Editor
+%
+% To run the code (here for section 3), open this file in the Matlab Editor and type in the Matlab window: Kooy2020a_SI(3)
 %
 % Remarks: 
 %  The figures show current AmP data, which might change in time; the results might differ from the publication
