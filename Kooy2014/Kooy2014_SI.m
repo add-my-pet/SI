@@ -1,4 +1,4 @@
-function Kooy2014_SI(fig)
+function Kooy2014_SI(figi)
 % Supporting Information for Kooy2020a
 % Title:  in animal ontogeny: An evolutionary perspective
 % Authors: Kooijman
@@ -32,13 +32,13 @@ function Kooy2014_SI(fig)
   
   title = ['animals ', datestr(date,26)];
 
-  if ~exist('fig','var')
-    fig = 1:19;
+  if ~exist('figi','var')
+    figi = 1:19;
   end
 
-  for i=1:length(fig)
+  for i=1:length(figi)
  
-    switch fig(i)
+    switch figi(i)
       case 1 % fig 1a,1b: a-Wd, a-JO for P. bibronii
         web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Pseudophryne_bibronii/Pseudophryne_bibronii_res.html', '-browser')
         
