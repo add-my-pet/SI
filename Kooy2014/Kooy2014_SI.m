@@ -24,7 +24,7 @@ function Kooy2014_SI(figi)
 %  The figures show current AmP data, which might change in time; the results might differ from the publication
 %  The scripts call functions read_allStat; the first call to these functions loads the allStat.mat file, which can take some time
 %  Click on a marker in the Matlab-figure to see the species name
-%  Uncomment "saveas" to save the Matlab-figure to a png-file
+%  Uncomment "print" to save the Matlab-figure to a png-file
 %  Modify selection of taxa and markers by changing the legend (e.g. legend_RSED), see https://add-my-pet.github.io/AmPtool/docs/index.html
 %  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 
