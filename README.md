@@ -1,5 +1,5 @@
 # SI: Supplementary Information
-
+Each folder provides code for generating figures used in papers https://debportal.debtheory.org/docs/DEBpapers.html
 
 * LikaAugu2023 relationship between confidence intervals and distributions of estimators for parameters
 
