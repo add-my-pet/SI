@@ -54,8 +54,9 @@ function KooyLika2014_SI(fig)
   
   for i=1:length(fig)
     switch fig(i)
-      case 1 % fig 1a: Li-R         
-        [HfigLR, HlegLR] = shstat({'L_i','R_i'}, legend); 
+      case 1 % fig 1a: Li-R 
+        LiRicT = read_allStat({'L_i','R_i','c_T'});
+        [HfigLR, HlegLR] = shstat([LiRicT(:,1), LiRicT(:,2)./LiRicT(:,3)], legend); 
         
         figure(HfigLR)
         plot([-3;3], [2;-4], 'k', 'Linewidth', 2)

@@ -51,7 +51,7 @@ function KooyLika2014a_SI(fig)
 
   llegend_CAA = {...
     {'-', 2, [0 0 0]}, 'Animalia'; ....
-    {'-', 2, [0 0 1]}, 'Chondrichthyes'; ....
+    {'-', 2, [0 1 0]}, 'Chondrichthyes'; ....
     {'-', 2, [1 0 0]}, 'Actinopterygii'; ....
   };
 
@@ -203,10 +203,10 @@ function KooyLika2014a_SI(fig)
         sel = isnan(par(:,9)); par(sel,9) = par(sel,8)+1e-3; % E_Hj=E_Hb+1e-3 for non-accelerating species 
         mod = read_allStat('model'); s_M = par(:,11);
         [kap_m, R_m, R_i] = get_kapm(mod,par); %sel = ~isnan(kap_m); 
-        s_R = R_i./R_m;
+        s_R = -log10(R_i./R_m);
         [hsR, hlegsR] = shstat(s_R, llegend_CAA, title);
         figure(hsR)
-        xlabel('s_R = R_{\infty}/R_{max} , -')
+        xlabel('-_{10}log s_R = R_{\infty}/R_{max} , -')
         %print -r0 -dpng sR.png
         figure(hlegsR)
         %print -r0 -dpng llegend.png

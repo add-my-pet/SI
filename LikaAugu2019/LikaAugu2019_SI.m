@@ -99,7 +99,7 @@ function LikaAugu2019_SI(fig)
         
         hold on
         plot([0; kap_med; kap_med], [0.5;0.5;0], 'r', surv_kap(:,1), surv_kap(:,2), 'b', 'Linewidth', 2)
-        xlabel('\kappa, -') 
+        xlabel('allocation fraction to soma, \kappa, -') 
         ylabel('survivor function')
         %saveas(gca,'kap.png')
 

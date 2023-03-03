@@ -3,7 +3,7 @@ function BaasKooy2015_SI(figi)
 % Title:  Sensitivity of animals to chemical compounds links to metabolic rate
 % Authors: Baas & Kooijman
 % Journal: Ecotoxicology 24 (2015) 657–663
-% DOI: 10.1016/j.seares.2014.06.005
+% DOI: 10.1007/s10646-014-1413-5
 % Date: 2023/03/01
 % 
 % Matlab scripts to generate the figures in the publication
@@ -78,7 +78,7 @@ function BaasKooy2015_SI(figi)
 
       case 2 % fig 1b: NEC-pM for Malathion
         nm_Malat = {...
-        'Baritelphua_amicularis'       % -?
+        'Barytelphusa_cunicularis'     % -
         'Gammarus_pulex'               % +
         'Macrobrachium_lamarrei'       % -
         'Oziotelphusa_senex'           % -
