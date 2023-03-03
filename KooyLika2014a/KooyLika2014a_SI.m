@@ -199,7 +199,7 @@ function KooyLika2014a_SI(fig)
 
       case 12 % fig 2b: surv sR
         shstat_options('x_transform','none');
-        par = read_allStat({'kap','kap_R','p_Am','v','p_M','k_J','E_G','E_Hb','E_Hj','E_Hp','s_M'}); 
+        par = read_allStat({'kap','kap_R','p_Am','v','p_M','k_J','E_G','E_Hb','E_Hj','E_Hp','s_M','s_s'}); 
         sel = isnan(par(:,9)); par(sel,9) = par(sel,8)+1e-3; % E_Hj=E_Hb+1e-3 for non-accelerating species 
         mod = read_allStat('model'); s_M = par(:,11);
         [kap_m, R_m, R_i] = get_kapm(mod,par); %sel = ~isnan(kap_m); 
@@ -457,7 +457,7 @@ function KooyLika2014a_SI(fig)
 end
 
 function [kap_m, R_m, R_i] = get_kapm(mod, par)
-  %nm=select; 
+  nm=select; 
   n=size(par,1); kap_m = NaN(n,1); R_m = NaN(n,1); R_i = NaN(n,1); dkap = 1e-4;
   get_kap = @(kap,mod,pari,dkap) (reprod_rate_max(mod,[kap, pari]) - reprod_rate_max(mod,[kap-dkap, pari]))/ dkap;
   
@@ -465,7 +465,7 @@ function [kap_m, R_m, R_i] = get_kapm(mod, par)
     R_i(i) = reprod_rate_max(mod{i}, par(i,:));
     if ~isnan(R_i(i))
       try
-        kap_m(i) = fzero(@(kap) get_kap(kap,mod{i},par(i,2:end),dkap), 0.45);
+        kap_m(i) = fzero(@(kap) get_kap(kap,mod{i},par(i,2:end),dkap), 1e-3*[1; -1]+flip(roots3([1; -1; 0; par(i,end)],3)));
         R_m(i) = reprod_rate_max(mod{i},[kap_m(i), par(i,2:end)]);
         %if R_m(i) < R_i(i); keyboard; end
         %fprintf('%g %s %s %g %g & %g %g\n',i, nm{i}, mod{i}, par(i,1), R_i(i), kap_m(i), R_m(i));
