@@ -465,6 +465,7 @@ function [kap_m, R_m, R_i] = get_kapm(mod, par)
     R_i(i) = reprod_rate_max(mod{i}, par(i,:));
     if ~isnan(R_i(i))
       try
+        % kap must be between the positive roots of kap^2*(1-kap)=s_s (see LikaAugu2014)
         kap_m(i) = fzero(@(kap) get_kap(kap,mod{i},par(i,2:end),dkap), 1e-3*[1; -1]+flip(roots3([1; -1; 0; par(i,end)],3)));
         R_m(i) = reprod_rate_max(mod{i},[kap_m(i), par(i,2:end)]);
         %if R_m(i) < R_i(i); keyboard; end
