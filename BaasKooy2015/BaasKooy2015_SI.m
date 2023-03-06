@@ -41,7 +41,7 @@ function BaasKooy2015_SI(figi)
     switch figi(i)
       case 1 % fig 1a: NEC-pM for Chlorpyriphos
         nm_Chlor = {...
-        'Paratya_australiensis'    % -
+        'Paratya_australiensis'    % +
         'Gammarus_pulex'           % +
         'Macrobachium_lanchesteri' % -
         'Neocaridina_denticulata'  % -
@@ -84,7 +84,7 @@ function BaasKooy2015_SI(figi)
         'Oziotelphusa_senex'           % -
         'Channa_punctata'              % +
         'Cirhinus_mrigala'             % -
-        'Lepomis_gibbosus'             % -
+        'Lepomis_gibbosus'             % +
         'Puntius_sophore'              % -
         'Dania_rerio'                  % +
         'Cyprinus_carpio'              % +
