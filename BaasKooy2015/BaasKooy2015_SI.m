@@ -51,7 +51,7 @@ function BaasKooy2015_SI(figi)
         'Gammarus_pseudolimnaeus'  % +
         'Hyalella_azteca'          % +
         'Anguilla_anguilla'        % +
-        'Cirhinus_mrigala'         % -
+        'Cirhinus_mrigala'         % +
         'Gibelion_catla'           % -
         'Lepomis_cyanellus'        % +
         'Melanotaenia_fluviatilis' % -
@@ -83,7 +83,7 @@ function BaasKooy2015_SI(figi)
         'Macrobrachium_lamarrei'       % -
         'Oziotelphusa_senex'           % -
         'Channa_punctata'              % +
-        'Cirhinus_mrigala'             % -
+        'Cirhinus_mrigala'             % +
         'Lepomis_gibbosus'             % +
         'Puntius_sophore'              % -
         'Dania_rerio'                  % +
@@ -169,7 +169,7 @@ function BaasKooy2015_SI(figi)
         'Oncorhynchus_mykiss'          % +
         'Carassius_auratus'            % +
         'Etheostoma_rubrum'            % -
-        'Corbicula_fluminea'           % -
+        'Corbicula_fluminea'           % +
         };
           
         NEC_Carba = [.82 .11 .1 .16 .11 .42 .108 17.5 .108 .8 11.1 2.3 4.2e-2 3.1e-2 17.9 11.8 8.9 61 55 5.8 61 10.8 7.9 24.8 .23 4.8 2.3 4.3 10.1 9.3 25]; % mummol/L
