@@ -114,7 +114,7 @@ function KooyLika2014_SI(fig)
         fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
         fprintf(['mean and variance for kap: ', num2str(m), ' , ', num2str(v),'\n'])
           
-        figure % fig 3a: kap, kap_m
+        %figure % fig 3a: kap, kap_m
         kapX = linspace(0,1,100);  S = 1 - betainc(kapX,a,b);  
         plot(kapX, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
@@ -149,7 +149,7 @@ function KooyLika2014_SI(fig)
         s_R = R_i./R_m;
         surv_sR = surv(s_R(sel));
         plot(log10(surv_sR(:,1)), surv_sR(:,2), 'k', 'Linewidth', 2)
-        xlabel('_{10}log R_{\infty)/R_{max}, -') 
+        xlabel('_{10}log R_{\infty}/R_{max}, -') 
         ylabel('survival function, -')
 
         % fig 4b: Ri_Rm
@@ -157,11 +157,11 @@ function KooyLika2014_SI(fig)
         HfigRR = shstat([R_i, R_m], legend);     
         figure(HfigRR)
         plot([-5;10],[-5;10], 'k', 'Linewidth',2)
-        xlabel('_{10}log R_{\infty), #/d') 
+        xlabel('_{10}log R_{\infty}, #/d') 
         ylabel('_{10}log R_{max), #/d')
         %saveas(gca,'Ri_Rm.png')
         
-        figure % fig 5: sM_sR
+        %figure % fig 5: sM_sR
         shstat_options('default');
         HfigsMsR = shstat([s_M, s_R], legend);
         figure(HfigsMsR)
