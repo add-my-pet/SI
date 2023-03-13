@@ -114,7 +114,7 @@ function KooyLika2014_SI(fig)
         fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
         fprintf(['mean and variance for kap: ', num2str(m), ' , ', num2str(v),'\n'])
           
-        %figure % fig 3a: kap, kap_m
+        Hfigkap = figure; % fig 3a: kap, kap_m
         kapX = linspace(0,1,100);  S = 1 - betainc(kapX,a,b);  
         plot(kapX, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
         set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)

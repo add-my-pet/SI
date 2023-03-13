@@ -114,7 +114,7 @@ function BaasKooy2015_SI(figi)
       case 3 % fig 1c: NEC-pM for Carbofuran
         nm_Carbo = {...
         'Gammarus_pulex'           % +
-        'Anabas_testudineus'       % -
+        'Anabas_testudineus'       % +
         'Heteropneustes_fossilis'  % -
         'Lepomis_cyanellus'        % +
         'Lepidocephalichthys_thermalis' % -
