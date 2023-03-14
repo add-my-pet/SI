@@ -388,7 +388,7 @@ function AuguLika2019_SI(fig)
         %saveas(gca,[vtxt, '_mamm.png'])
         %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
 
-      case 6 % not numbered 
+      case 6 % not numbered
         shstat_options('default');
         shstat_options('y_transform', 'none');
         shstat_options('x_transform', 'log10');
@@ -401,39 +401,38 @@ function AuguLika2019_SI(fig)
         v1 = Wwi; v2 = sHL; vtxt = 'Wwi_sHL';
 
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
-        figure(Hfig)
+        [HfigWwi_sHL_inv HlegWwi_sHL_inv] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
+        figure(HfigWwi_sHL_inv)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
-        %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
+        %saveas(HlegWwi_sHL_inv,['legend_', vtxt, '_RXSE.png'])
     
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
-        figure(Hfig)
+        [HfigWwi_sHL_fish HlegWwi_sHL_fish] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
+        figure(HfigWwi_sHL_fish)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
-        %saveas(Hleg,['legend_', vtxt, '_fish.png'])
+        %saveas(HlegWwi_sHL_fish,['legend_', vtxt, '_fish.png'])
 
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
-        figure(Hfig) 
-        figure(Hfig)
+        [HfigWwi_sHL_saur HlegWwi_sHL_saur] = shstat([v1, v2], legend_aves, 'sauropsids'); 
+        figure(HfigWwi_sHL) 
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_aves.png'])
-        %saveas(Hleg,['legend_', vtxt, '_aves.png'])
+        %saveas(HlegWwi_sHL_saur,['legend_', vtxt, '_aves.png'])
 
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
-        figure(Hfig)
+        [HfigWwi_sHL_mam HlegWwi_sHL_mam] = shstat([v1, v2], legend_mamm, 'mammals'); 
+        figure(HfigWwi_sHL_mam)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_mamm.png'])
-        %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
+        %saveas(HlegWwi_sHL_mam,['legend_', vtxt, '_mamm.png'])
 
-      case 7 % fig 6a
+      case 7 % fig 7a
         shstat_options('default');
         shstat_options('y_transform', 'log10');
         shstat_options('x_transform', 'log10');
@@ -446,39 +445,38 @@ function AuguLika2019_SI(fig)
         v1 = Ri; v2 = sH; vtxt = 'pRi_sH';
 
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
-        figure(Hfig)
+        [HfigpRi_sH_inv HlegpRi_sH_inv] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
+        figure(HfigpRi_sH_inv)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_RXSE.png'])
-        %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
+        %saveas(HlegpRi_sH_inv,['legend_', vtxt, '_RXSE.png'])
     
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
-        figure(Hfig)
+        [HfigpRi_sH_fish HlegpRi_sH_fish] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
+        figure(HfigpRi_sH_fish)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_fish.png'])
-        %saveas(Hleg,['legend_', vtxt, '_fish.png'])
+        %saveas(HlegpRi_sH_fish,['legend_', vtxt, '_fish.png'])
 
         %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
-        figure(Hfig) 
-        figure(Hfig)
+        [HfigpRi_sH_saur HlegpRi_sH_saur] = shstat([v1, v2], legend_aves, 'sauropsids'); 
+        figure(HfigpRi_sH_saur) 
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_aves.png'])
-        %saveas(Hleg,['legend_', vtxt, '_aves.png'])
+        %saveas(HlegpRi_sH_saur,['legend_', vtxt, '_aves.png'])
 
-        %figure
-        [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
-        figure(Hfig)
+        %figure % fig 7a
+        [HfigpRi_sH_mam HlegpRi_sH_mam] = shstat([v1, v2], legend_mamm, 'mammals'); 
+        figure(HfigpRi_sH_mam)
         xlabel(xtxt)      
         ylabel(ytxt)
         %saveas(gca,[vtxt, '_mamm.png'])
-        %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
+        %saveas(HlegpRi_sH_mam,['legend_', vtxt, '_mamm.png'])
 
-      case 8 % fig 6b
+      case 8 % fig 7b
         shstat_options('default');
         shstat_options('y_transform', 'log10');
         shstat_options('x_transform', 'log10');
@@ -491,38 +489,113 @@ function AuguLika2019_SI(fig)
         v1 = ab./ap; v2 = sH; vtxt = 'abp_sH';
 
        %figure
-       [Hfig Hleg] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
-       figure(Hfig)
+       [Hfigabp_sH_inv Hlegabp_sH_inv] = shstat([v1, v2], legend_RXSE, 'invertebrates'); 
+       figure(Hfigabp_sH_inv)
        xlabel(xtxt)      
        ylabel(ytxt)
        %saveas(gca,[vtxt, '_RXSE.png'])
-       %saveas(Hleg,['legend_', vtxt, '_RXSE.png'])
+       %saveas(Hlegabp_sH_inv,['legend_', vtxt, '_RXSE.png'])
     
        %figure
-       [Hfig Hleg] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
-       figure(Hfig)
+       [Hfigabp_sH_fish Hlegabp_sH_fish] = shstat([v1, v2], legend_fish, 'fish & amphibia'); 
+       figure(Hfigabp_sH_fish)
        xlabel(xtxt)      
        ylabel(ytxt)
        %saveas(gca,[vtxt, '_fish.png'])
-       %saveas(Hleg,['legend_', vtxt, '_fish.png'])
+       %saveas(Hlegabp_sH_fish,['legend_', vtxt, '_fish.png'])
 
        %figure
-       [Hfig Hleg] = shstat([v1, v2], legend_aves, 'sauropsids'); 
-       figure(Hfig) 
-       figure(Hfig)
+       [Hfigabp_sH_saur Hlegabp_sH_saur] = shstat([v1, v2], legend_aves, 'sauropsids'); 
+       figure(Hfigabp_sH_saur)
        xlabel(xtxt)      
        ylabel(ytxt)
        %saveas(gca,[vtxt, '_aves.png'])
-       %saveas(Hleg,['legend_', vtxt, '_aves.png'])
+       %saveas(Hlegabp_sH_saur,['legend_', vtxt, '_aves.png'])
 
-       %figure
-       [Hfig Hleg] = shstat([v1, v2], legend_mamm, 'mammals'); 
-       figure(Hfig)
+       %figure % fig 7b
+       [Hfigabp_sH_mam, Hlegabp_sH_mam] = shstat([v1, v2], legend_mamm, 'mammals'); 
+       figure(Hfigabp_sH_mam)
        xlabel(xtxt)      
        ylabel(ytxt)
        %saveas(gca,[vtxt, '_mamm.png'])
-       %saveas(Hleg,['legend_', vtxt, '_mamm.png'])
+       %saveas(Hlegabp_sH_mam,['legend_', vtxt, '_mamm.png'])
+       
+     case(9) % fig 6b
+       shstat_options('default');
+       shstat_options('y_transform', 'log10');
+       shstat_options('x_transform', 'none');
+       vars = read_allStat('E_Hb', 'L_b', 'kap'); 
+       EHLb = vars(:,1) ./ vars(:,2).^3; kap = vars(:,3); 
+       ytxt = '_{10}log [E_H^b], J/cm^3';
+       xtxt = '\kappa, -';
+       v1 = kap; v2 = EHLb; vtxt = 'kap_EHLb';
 
+       %figure
+       legend_RXSE = {...
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Echinodermata'; ....
+         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Radiata'; ...
+         {'o', 8, 3, [0 0 0], [0 0 1]}, 'Xenacoelomorpha'; ...
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Spiralia'; ...
+         {'o', 8, 3, [1 0 1], [1 0 1]}, 'Ecdysozoa'; ....
+       };
+       [Hfigkap_EHLb_RXSE Hlegkap_EHLb_RXSE] = shstat([v1, v2], legend_RXSE, 'invertebrates', 1); 
+       figure(Hfigkap_EHLb_RXSE)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_RXSE.png'])
+       %saveas(Hlegkap_EHLb_RXSE,['legend_', vtxt, '_RXSE.png'])
+    
+       %figure % fig 6b (correct fig; the fig in the paper is wrong)
+       legend_fish = {...
+         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Cyclostomata'; ...
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Chondrichthyes'; ...
+         {'o', 8, 3, [1 0 1], [0 0 1]}, 'Latimeria'; ....
+         {'o', 8, 3, [1 0 1], [1 0 0]}, 'Dipnoi'; ....
+         {'o', 8, 3, [1 0 1], [1 0 1]}, 'Amphibia'; ....
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Actinopterygii'; ...
+       };
+       [HfigEHLb_fish HlegEHLb_fish] = shstat([v1, v2], legend_fish, 'fish & amphibia', 3); 
+       figure(HfigEHLb_fish)
+       kap = linspace(2e-3,1-4e-4,200); 
+       plot(kap, log10((1 - kap)./ kap * 5230), 'k', 'LineWidth', 3)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_fish.png'])
+       %saveas(HlegEHLb_fish,['legend_', vtxt, '_fish.png'])
+
+       %figure
+       legend_aves = {...
+         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Lepidosauria'; ....
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Aves'; ....
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Testudines'; ....
+         {'o', 8, 3, [1 0 1], [0 0 1]}, 'Crocodilia'; ....
+         {'o', 8, 3, [1 0 1], [1 0 1]}, 'Avemetatarsalia'; ....
+       };
+       [HfigEHLb_aves HlegEHLb_aves] = shstat([v1, v2], legend_aves, 'sauropsids', 5); 
+       figure(HfigEHLb_aves) 
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_aves.png'])
+       %saveas(HlegEHLb_aves,['legend_', vtxt, '_aves.png'])
+
+       figure
+       legend_mamm = {...
+         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Prototheria'; ...  
+         {'o', 8, 3, [0 0 1], [0 0 0]}, 'Marsupialia'; ...
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Xenarthra'; ...
+         {'o', 8, 3, [0 0 1], [1 0 1]}, 'Afrotheria'; ....
+         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Laurasiatheria'; ....
+         {'o', 8, 3, [1 0 1], [1 0 1]}, 'Gliriformes'; ....
+         {'o', 8, 3, [1 0 1], [1 0 0]}, 'Scandentia'; ....
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Dermoptera'; ....
+         {'o', 8, 3, [1 0 0], [1 .5 .5]}, 'Primates'; ....
+       };
+       [HfigEHLb_mamm HlegEHLb_mamm] = shstat([v1, v2], legend_mamm, 'mammals', 7); 
+       figure(HfigEHLb_mamm)
+       xlabel(xtxt)      
+       ylabel(ytxt)
+       %saveas(gca,[vtxt, '_mamm.png'])
+       %saveas(HlegEHLb_mamm,['legend_', vtxt, '_mamm.png'])
     end
   end
 end
