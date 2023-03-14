@@ -122,6 +122,7 @@ function AuguLika2019_SI(fig)
         Hfig = shstat(EHp, {'r', 'r'}, [], 1);
         set(gca, 'FontSize', 15, 'Box', 'on')
         xlabel('_{10}log E_H^b, E_H^p, J') 
+        xlim([-20 10])
         %saveas(gca, 'EHbp.png')
 
         figure % s_H, s_HL
@@ -155,6 +156,7 @@ function AuguLika2019_SI(fig)
         [Hfig Hleg] = shstat(sHL,  {'r', 'r'}, [], 2);
         set(gca, 'FontSize', 15, 'Box', 'on')
         xlabel('_{10}log s_H^{bp}, s_{HL}^{bp}, -') 
+        xlim([-12 0])
         %saveas(gca, 'sHL.png')
 
       case 2 % fig 2
