@@ -1,0 +1,20 @@
+% Errata for AuguLika2019
+% Title: Altricial-precocial spectra in animal kingdom
+% Authors: Augustine, Lika, Kooijman
+% Journal: J. of Sea Res. 143: 27–34
+% DOI: 10.1016/j.seares.2018.03.006
+% Date: 2023/03/16
+
+typos in words are corrected : lines are counted from the top using positive numbers and lines counted from the bottom are in negative numbers.
+l. -1 is one line up from the bottom
+l. +3 is three lines down from the bottom
+C1: lines counted in column 1
+c2: lines counted in column 2
+
+subsection 2.2 pp 30 
+C1 l. -1:  maintenance = maturity 
+C2 l. 1 isas = is as
+
+fig. 6: legend is correct but the figures are not, they are copies of figures from fig 7- it was an error during the final typesetting of the article. Please run case 9 to see the correct figures.
+
+
