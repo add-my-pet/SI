@@ -51,10 +51,10 @@ function BaasKooy2015_SI(figi)
         'Gammarus_pseudolimnaeus'  % +
         'Hyalella_azteca'          % +
         'Anguilla_anguilla'        % +
-        'Cirhinus_mrigala'         % +
-        'Gibelion_catla'           % -
+        'Cirrhinus_mrigala'        % +
+        'Labeo_catla'              % + Gibelion_catla
         'Lepomis_cyanellus'        % +
-        'Melanotaenia_fluviatilis' % -
+        'Melanotaenia_fluviatilis' % +
         'Oreochromis_mossambicus'  % +
         'Tilapia_guineensis'       % -
         'Ctenopharyngodon_idella'  % +
@@ -83,7 +83,7 @@ function BaasKooy2015_SI(figi)
         'Macrobrachium_lamarrei'       % -
         'Oziotelphusa_senex'           % -
         'Channa_punctata'              % +
-        'Cirhinus_mrigala'             % +
+        'Cirrhinus_mrigala'            % +
         'Lepomis_gibbosus'             % +
         'Puntius_sophore'              % -
         'Dania_rerio'                  % +
