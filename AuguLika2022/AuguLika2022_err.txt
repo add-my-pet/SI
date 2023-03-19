@@ -1,0 +1,14 @@
+% Supporting Information for AuguLika2022
+% Title: The comparative energetics of the chondrichthyans reveals universal links between respiration, reproduction and lifespan
+% Authors: Augustine, Lika, Kooijman
+% Journal: Journal of Sea Research 185  102228
+% DOI: 10.1016/j.seares.2022.102228
+% Date: 2023/03/19
+
+typos in words are corrected : lines are counted from the top using positive numbers and lines counted from the bottom are in negative numbers.
+-1 is one line up from the bottom
++3 is three lines down from the bottom
+C1: lines counted in column 1
+c2: lines counted in column 2
+
+p.8 C1: 14 longevity is inversely proportional to the weight specific respiration rate
