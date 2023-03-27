@@ -47,7 +47,7 @@ function BaasKooy2015_SI(figi)
         'Neocaridina_denticulata'  % -
         'Palaemonetes_pugio'       % +
         'Parathelphusinae'         % -
-        'Procambarus_clarkia'      % -
+        'Procambarus_clarkii'      % +
         'Gammarus_pseudolimnaeus'  % +
         'Hyalella_azteca'          % +
         'Anguilla_anguilla'        % +
@@ -56,7 +56,7 @@ function BaasKooy2015_SI(figi)
         'Lepomis_cyanellus'        % +
         'Melanotaenia_fluviatilis' % +
         'Oreochromis_mossambicus'  % +
-        'Tilapia_guineensis'       % -
+        'Coptodon_guineensis'      % + Tilapia_guineensis
         'Ctenopharyngodon_idella'  % +
         'Gambusia_affinis'         % +
         };
