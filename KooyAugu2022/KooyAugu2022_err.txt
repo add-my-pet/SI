@@ -1,0 +1,17 @@
+% Errata for KooyAugu2022
+% Title: The comparative energetics of the carnivorans and pangolins
+% Authors: Kooijman, Augustine
+% Journal: Conservation Physiology 10
+% DOI: 10.1093/conphys/coac057
+% Date: 2023/02/17
+
+typos in words are corrected : lines are counted from the top using positive numbers and lines counted from the bottom are in negative numbers.
+-1 is one line up from the bottom
++3 is three lines down from the bottom
+C1: lines counted in column 1
+c2: lines counted in column 2
+
+Fig. 7: Left: The O2 consumption rate as function of life span. The line has slope -3.3 (not -1 as is said in the text).
+
+
+

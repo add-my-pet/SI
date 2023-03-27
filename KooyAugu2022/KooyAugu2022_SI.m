@@ -816,7 +816,7 @@ end
      ham_jO = shstat([aJW(:,1).*aJW(:,6), aJW(:,2)./aJW(:,3)./aJW(:,6)], legend, 'Ferae');   
      figure(ham_jO)
      xlim([4.3; 5.3]); ylim([-5.54; -3])
-     plot([4.3; 5], [-3.2; -5.5], 'k', 'LineWidth', 3) % slope -1.77
+     plot([4.3; 5], [-3.2; -5.5], 'k', 'LineWidth', 3) % slope -3.3
      xlabel('_{10}log life span, d')
      ylabel('_{10}log spec respiration, J_O^\infty/W_w^\infty, mol/d.g')
      %print -r1200 -dpng am_jO.png
