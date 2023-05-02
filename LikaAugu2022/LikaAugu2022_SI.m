@@ -472,7 +472,13 @@ end
      ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
      %print -r300 -dpng v_pM_Cyprinodontiformes.png
 
-     
+     hv_pM = shstat({'R_i','p_M'}, legend_Cyprinodontiformes);   
+     figure(hv_pM)
+     %plot([1.7; 3.7], [3.4; 1.0], 'k', 'LineWidth', 3)
+     xlabel('_{10}log max reprod rate, R_\infty, 1/d')
+     ylabel('_{10}log spec somatic maint, [p_M], J/d.cm^3')
+     %print -r300 -dpng Ri_pM_Cyprinodontiformes.png
+
    case 25
      shstat_options('x_transform', 'log10');
      shstat_options('y_transform', 'log10');

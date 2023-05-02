@@ -177,6 +177,46 @@ function Kooy2014_SI(figi)
       case 19 % fig 11c: L-JO for Ensis directus
         web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Ensis_directus/Ensis_directus_res.html', '-browser')
         % notice the better fit in the paper. The fit on the site also depends on additional data, which is slightly inconsistent.
+        
+      case 20 % 
+        shstat_options('default');
+        [HfigvsM, HlegvsM] = shstat({'v','s_M','L_m'}, legend_actino, 'Actinopterygii 2023/04/21'); 
+        
+        figure(HfigvsM)
+        xlabel('energy conductance, v, cm/d')
+        ylabel('acceleration factor, s_M, -')
+        zlabel('max length, L_m, cm')
+        
+      case 21 % Eupercaria of Lika et al 2014
+          sMT = [ ...
+          6.7   19.2 % Demersal & Oct–Dec  & Sparus aurata       Sparidae   Eupercaria
+          5.3   16.5 % Demersal & Apr–May  & Dentex  dentex      Sparidae   Eupercaria
+         22.7   24.0 % Demersal & May–Sep  & Pagellus erythrinus Sparidae   Eupercaria
+         10.9   23.9 % Demersal & Sep–Oct  & Diplodus puntazzo   Sparidae   Eupercaria
+          7.6   17.1 % Demersal & Mar–May  & Argyrosomus  regius Sciaenidae Eupercaria
+          3.7   17.1 % Demersal & Mar–May  & Sciaena umbra       Sciaenidae Eupercaria
+          8.2   15.3 % Demersal & Jan–Mar  & Dicentrarchus labrax Moronidae  Eupercaria
+        %  5.8   22.6 % Pelagic  & May–Jul  & Seriola  dumerili   Carangidae
+        %  5.3   24.3 % Pelagic  & Jun–Jul  & Thunnus  thynnus    Scombridae
+          ];
+        plot(sMT(:,2), sMT(:,1), '.r', 'markersize', 8)
+        xlabel('temp at spawning, C')
+        ylabel('acceleration factor, s_M, -')
+        
+      case 22
+          % type, size, linewidth, edge color and face color of a marker, taxon
+          legend = {... % Sparidae
+            {'o', 8, 3, [0 0 0], [0 0 1]}, 'Boopsinae'; ...
+            {'o', 8, 3, [0 0 1], [1 0 1]}, 'Denticinae'; ....
+            {'o', 8, 3, [0 0 1], [0 0 1]}, 'Pagellinae'; ....
+            {'o', 8, 3, [1 0 0], [0 0 1]}, 'Sparinae'; ....
+            {'o', 8, 3, [1 0 0], [1 0 0]}, 'Centracanthinae'; ....
+          };
+        shstat_options('x_transform','none');
+        shstat_options('y_transform','none');
+        [HfigTsM, HlegTsM] = shstat({'T_typical','s_M'}, legend, 'Sapridae 2023/04/21'); 
+
+          
     end
   end
 end

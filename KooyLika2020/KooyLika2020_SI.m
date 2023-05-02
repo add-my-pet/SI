@@ -150,7 +150,7 @@ for i=1:length(fig)
 
     case 6 % Fig 3B
       shstat_options('default');
-      dWWRc = read_allStat('dWm', 'W_dWm', 'R_i', 'c_T'); cT = dWWRc(:,4); rm = dWWRc(:,1) ./ dWWRc(:,2) ./ c_T; R_i = dWWRc(:,3) ./ c_T;
+      dWWRc = read_allStat('dWm', 'W_dWm', 'R_i', 'c_T'); c_T = dWWRc(:,4); rm = dWWRc(:,1) ./ dWWRc(:,2) ./ c_T; R_i = dWWRc(:,3) ./ c_T;
       sgr0 = read_popStat('f1.thin0.f.r') ./ c_T; % sgr without thinning
       sgr1 = read_popStat('f1.thin1.f.r') ./ c_T; % sgr with thinning
       
@@ -162,7 +162,6 @@ for i=1:length(fig)
       xlabel('_{10}log spec growth at max growth of structure, 1/d')      
       ylabel('_{10}log r_N, 1/d')
       
-      figure(Hfig3B) 
       plot([-5.5; 0.5], [-5.5; 0.5], 'k', 'Linewidth', 2)
       xlim([-5.5 0.5]);
       ylim([-5.5 0.5]);
