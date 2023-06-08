@@ -121,6 +121,7 @@ for i=1:length(fig)
       figure(hlegClad)
       %print -r1200 -dpng legend_Vertebrata.png;
 
+      figure()
       % cladogram 
       cladogram = SEQlinkage(dist, 'average', taxa); view(cladogram); % default method
 
