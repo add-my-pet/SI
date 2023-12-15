@@ -1,5 +1,5 @@
 function LikaKooy2023a_SI(fig)
-% Supporting Information for LikaKooy202a
+% Supporting Information for LikaKooy2023a
 % Title: The metabolic interpretation of the von Bertalanffy growth rate
 % Authors: Lika, Kooijman
 % Journal: Ecol. Mod
