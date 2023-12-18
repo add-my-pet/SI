@@ -150,7 +150,42 @@ for i=1:length(fig)
     hleg = shllegend({{'-',2,[1 0 0]},'no scatter';{'-',2,[0 0 1]},'scatter'});
     %saveas (hleg, 'legend_ref.png')
 
-  case 4 % Fig 4: effects of oscillating input
+  case 4 % Fig 4: effects of immigration
+    % run std as ref
+    txN = IBM(my_pet,[],tJX,[],V_X,h,[],t_max,tickRate,1);
+
+    % immigration
+    metaPar.model = 'stdmigr';
+    % h = [.1 1e-35 5e-4 5e-4 0]; % 1/d, hazard rates [h_X, h_B0b, h_Bbp, h_Bpi, thin]
+    par.h_migr = 0.1; h(4) = 0.1;
+    data = {metaData, metaPar, par, txtPar};
+    txN_migr = IBM(data,[],tJX,[],V_X,h,[],t_max,tickRate,1);
+
+    % plot
+    title_txt = [strrep(my_pet,'_',' '), ' @ ', datestr(date,26)];
+
+    figure % food
+    plot(txN(:,1),txN(:,2),'r', txN_migr(:,1),txN_migr(:,2),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('scaled food density X/K, -'); title(title_txt); 
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_x_migr.png')
+ 
+    figure % numbers
+    plot(txN(:,1),txN(:,3),'r', txN_migr(:,1),txN_migr(:,3),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('# of individuals, -'); title(title_txt)
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_N_migr.png')
+ 
+    figure % biomass
+    plot(txN(:,1),txN(:,7),'r', txN_migr(:,1),txN_migr(:,7),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('total biomass, g'); title(title_txt)
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_W_migr.png')
+
+    hleg = shllegend({{'-',2,[1 0 0]},'no migration';{'-',2,[0 0 1]},'migration'});
+    %saveas (hleg, 'legend_ref.png')
+
+  case 5 % Fig 5: effects of oscillating input
     % run std as ref
     txN = IBM(my_pet,[],tJX,[],V_X,h,[],t_max,tickRate,1);
 
@@ -186,7 +221,42 @@ for i=1:length(fig)
     hleg = shllegend({{'-',2,[1 0 0]},'no oscillation';{'-',2,[0 0 1]},'oscillation'});
     %saveas (hleg, 'legend_osc.png')
 
-  case 5 % Fig xx: effects of 2 types of food
+  case 6 % Fig 6: effects of socialisation
+    % run std as ref
+    txN = IBM(my_pet,[],tJX,[],V_X,h,[],t_max,tickRate,1);
+
+    % socialisation
+    metaPar.model = 'stdsoc';
+    par.k_Y = 20;  % 1/d, 1/duration of an interaction
+    par.F_Y = 5; % L/d, encounter frequency
+    data = {metaData, metaPar, par, txtPar};
+    txN_soc = IBM(data,[],tJX,[],V_X,h,[],t_max,tickRate,1);
+
+    % plot
+    title_txt = [strrep(my_pet,'_',' '), ' @ ', datestr(date,26)];
+
+    figure % food
+    plot(txN(:,1),txN(:,2),'r', txN_soc(:,1),txN_soc(:,2),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('scaled food density X/K, -'); title(title_txt); 
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_x_soc.png')
+ 
+    figure % numbers
+    plot(txN(:,1),txN(:,3),'r', txN_soc(:,1),txN_soc(:,3),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('# of individuals, -'); title(title_txt)
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_N_soc.png')
+ 
+    figure % biomass
+    plot(txN(:,1),txN(:,7),'r', txN_soc(:,1),txN_soc(:,7),'b', 'linewidth',2)
+    xlabel('time, d'); ylabel('total biomass, g'); title(title_txt)
+    set(gca, 'FontSize', 15, 'Box', 'on'); 
+    %saveas (gca, 't_W_soc.png')
+
+    hleg = shllegend({{'-',2,[1 0 0]},'no socialisation';{'-',2,[0 0 1]},'socialisation'});
+    %saveas (hleg, 'legend_ref.png')
+
+  case 7 % Fig xx: effects of 2 types of food
     % t_max = 5 * t_max;
 
     % run std as ref
