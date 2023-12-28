@@ -54,9 +54,9 @@ function Kooy2024_SI(fig)
     close all
  
  switch fig % IBM std, only for checking code
-   case 0 %  Fig 1: ref, juvenile-driven cycles from DEB2023
+   case 0 % juvenile-driven cycles from DEB2023
     
-    % run std in IBM and EBT
+    % run std
     txN_IBM = IBM(my_pet,[],tJX,[],V_X,h,[],t_max,tickRate,1);
     
     % plot
