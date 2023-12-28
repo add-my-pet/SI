@@ -15,7 +15,7 @@ function [txxNL23W, info] = IBM211(species, tT, tJX1, tJX2, X1_0, X2_0, V_X, h, 
 
 WD = cdIBMnlogo;
 
-model = 'std211'; % only works for the std model
+model = 'stdpref'; % only works for the std model
 
 % make sure that results of previous runs are removed (NetLogo deletes existing txNL23W.txt file)
 if exist('spline_TC.txt', 'file')==2
@@ -52,7 +52,7 @@ else  % use allStat.mat as parameter source
   [par, metaPar, txtPar, metaData, info] = allStat2par(species);
   if info == 0
     fprintf('Species not recognized\n');
-    txNL23W = []; return
+    txxNL23W = []; return
   end
   datePrintNm = ['allStat version: ', datestr(date_allStat, 'yyyy/mm/dd')];
 end
@@ -140,18 +140,13 @@ else
   h_X1 = h(1); h_X2 = h(2); thin = h(end);
 end
 par.h_X1 = h_X1; par.h_X2 = h_X2; par.thin = thin; 
-%
-switch model
-  case {'std','stf','sbp','abp'}
+
     if ~exist('h','var') || isempty(h)
       h_B0b = 1e-35; h_Bbp = 1e-35; h_Bpi = 1e-35; 
     else
       h_B0b = h(3); h_Bbp = h(4); h_Bpi = h(5);       
     end
     par.h_B0b = h_B0b; par.h_Bbp = h_Bbp; par.h_Bpi = h_Bpi; 
-  otherwise
-    return
-end
 
 % get trajectories
 txxNL23W = get_IBMnlogo_std211(model, par, tT, tJX1, tJX2, X1_0, X2_0, V_X, t_R, t_max, tickRate, runNetLogo);
@@ -219,7 +214,7 @@ end
 
 %% report_my_pet.html
 
-fileName = ['report_', species, '.html'];
+fileName = ['report_', species, '.html']; metaPar.model = 'std';
 prt_report_my_pet({par, metaPar, txtPar, metaData}, [], [], [], [], fileName);
 web(fileName,'-browser') % open html in systems browser
 
