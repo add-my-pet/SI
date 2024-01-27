@@ -1,5 +1,5 @@
 function LikaKooy2023a_SI(fig)
-% Supporting Information for LikaKooy202a
+% Supporting Information for LikaKooy2023a
 % Title: The metabolic interpretation of the von Bertalanffy growth rate
 % Authors: Lika, Kooijman
 % Journal: Ecol. Mod
@@ -61,14 +61,329 @@ end
  for i=1:length(fig)
  
  switch fig(i)
-   case 1 % Mammalia +
+   case 1 %  Mammalia +
+     WD = cdEntr('Bison_bison'); data = mydata_Bison_bison; cd(WD);
+     tW0=data.tW_fO; tW1=data.tW_fK; tW2=data.tW_mO; tW3=data.tW_mK;
+     par = [19.4e3 1;  %  1 Ww_b
+            514e3  1;  %  2 Wwi_0
+            514e3  1;  %  3 Wwi_1
+            514e3  1;  %  4 Wwi_2
+            514e3  1;  %  5 Wwi_3
+            1.3e-3 1;  %  6 rB_0
+            1.3e-3 1;  %  7 rB_1
+            1.3e-3 1;  %  8 rB_2
+            1.3e-3 1;  %  9 rB_3
+            4.19 0];   % 10 ome
+     %[EW0, EW1, EW2, EW3] = rB_W(par, tW0, tW1, tW2, tW3);
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
+     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
+     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
+     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_W', par, tW0, tW1, tW2, tW3) 
+     xlabel('time since birth, d')
+     ylabel('weight, g')
+     title('Bison bison, mm/ff')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_Ww_Bison_bison.png')
+          
+     par
+     
+     figure
+     hold on
+     colors = plotColors(4);
+     Li = (par(2:5,1)/(1+par(10,1))).^(1/3); irB = 1./par(6:9,1);
+     for j=1:4
+       plot(Li(j), irB(j), '.', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     xlim([44; 58]); ylim([350; 1100]);
+     xlabel('ultimate structural length, cm')
+     ylabel('1/vBGR, d')
+     title('Bison bison, mm/ff')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Bison_bison.png')
+ 
+
+   case 2 % Mollusca +
+     WD = cdEntr('Mytilus_edulis'); data = mydata_Mytilus_edulis; cd(WD);
+     tL0=data.tL_0; tL1=data.tL_13; tL2=data.tL_33; 
+     
+     par = [0    0;     %  1 Lw_b
+            8    1;     %  2 Lwi_0
+            7    1;     %  3 Lwi_1
+            6    1;     %  4 Lwi_2
+            1e-4 1;     %  5 rB_0
+            2e-4 1;     %  6 rB_1
+            3e-4 1;     %  7 rB_2
+            0.34144 0;  %  8 del_M
+            4.16*1.16 0]; %9 L_m
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_L', par, tL0, tL1, tL2);
+     par = nmregr('rB_L', par, tL0, tL1, tL2);
+     par = nmregr('rB_L', par, tL0, tL1, tL2);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_L', par, tL0, tL1, tL2) 
+     xlabel('time since birth, d')
+     ylabel('standard height, cm')
+     title('Mytilus edulis')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_L_Mytilus_edulis.png')
+
+     par
+     
+     figure
+     hold on
+     colors = plotColors(3);
+     Li = par(2:4,1) * par(9,1); irB = 1./par(5:7,1);
+     for j=1:3
+       plot(Li(j), irB(j), '.r', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     ylim([2800; 3500]);
+     xlabel('standard height, cm')
+     ylabel('1/vBGR, d')
+     title('Mytilus edulis')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Mytilus_edulis.png')
+
+   case 3 % Amphibia +
+     WD = cdEntr('Pyxicephalus_adspersus'); data = mydata_Pyxicephalus_adspersus; cd(WD);
+     tL0=data.tL_f; tL1=data.tL_m; tW0=data.tW_f; tW1=data.tW_m; 
+     
+     par = [1.3    0;   %  1 Lw_b
+            24.5   1;   %  2 Lwi_0
+            19.2   1;   %  3 Lwi_1
+            5.7e-3 1;   %  4 rB_0
+            5.6e-3 1;   %  5 rB_1
+            0.2873 0;   %  6 del_M
+            5.10   0];  %  7 L_m
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_L', par, tL0, tL1) 
+     xlabel('time since birth, d')
+     ylabel('SVL, cm')
+     title('Pyxicephalus adspersus, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_L_Pyxicephalus_adspersus.png')
+
+     par
+     
+     figure
+     hold on
+     colors = plotColors(2);
+     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
+     for i = 1:2
+       plot(Li(i), irB(i), '.', 'MarkerSize', 20, 'Color', colors{i});
+     end
+     xlim([2.5; 3.75]); ylim([75; 140]);
+     xlabel('SVL, cm')
+     ylabel('1/vBGR, d')
+     title('Pyxicephalus adspersus, m/f')    
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Pyxicephalus_adspersus.png')
+
+     %weight
+     figure
+     colors = plotColors(2);
+     par = [3      0;   %  1 Ww_b
+            1400   1;   %  2 Wwi_0
+            840    1;   %  3 Wwi_1
+            5.7e-3 1;   %  4 rB_0
+            5.6e-3 1;   %  5 rB_1
+            6.4    0];  %  6 ome
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_W', par, tW0, tW1);
+     par = nmregr('rB_W', par, tW0, tW1);
+     par = nmregr('rB_W', par, tW0, tW1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_W', par, tW0, tW1) 
+     xlabel('time since birth, d')
+     ylabel('weight, g')
+     title('Pyxicephalus adspersus, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_Ww_Pyxicephalus_adspersus.png')
+
+     par
+     
+     figure
+     hold on
+     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
+     for i = 1:2
+       plot(Li(i), irB(i), '.', 'MarkerSize', 20, 'Color', colors{i});
+     end
+     xlim([2.5; 3.4]); ylim([70; 115]);
+     xlabel('ultimate structural length, cm')
+     ylabel('1/vBGR, d')
+     title('Pyxicephalus adspersus, m/f')    
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Pyxicephalus_adspersus_W.png')
+
+   case 4 % Reptilia +  
+     WD = cdEntr('Eryx_miliaris'); data = mydata_Eryx_miliaris; cd(WD);
+     tW0=data.tW_f; tW1=data.tW_m; 
+     par = [7  0;      %  1 Ww_b
+            180  1;    %  2 Wwi_0
+            44   1;    %  3 Wwi_1
+            2.6e-3 1;  %  4 rB_0
+            7.9e-3 1;  %  5 rB_1
+            4.0 0];    %  6 ome
+     %[EW0, EW1] = rB_W(par, tW0, tW1);
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_W', par, tW0, tW1);
+     par = nmregr('rB_W', par, tW0, tW1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_W', par, tW0, tW1) 
+     xlabel('time since birth, d')
+     ylabel('weight, g')
+     title('Eryx miliaris, f/m')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_Ww_Eryx_miliaris.png')
+          
+     par
+     
+     figure
+     colors = plotColors(2);
+     hold on
+     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
+     for j=1:2
+       plot(Li(j), irB(j), '.', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     xlim([1.8; 3.5]); ylim([90; 410]);
+     xlabel('ultimate structural length, cm')
+     ylabel('1/vBGR, d')
+     title('Eryx miliaris, f/m')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Eryx_miliaris.png')
+
+   case 5 % Chondrichthyes +
+     WD = cdEntr('Raja_radula'); data = mydata_Raja_radula; cd(WD);
+     tL0=data.tL_f; tL1=data.tL_m; 
+     
+     par = [10  0;     %  1 Lw_b
+            77  1;     %  2 Lwi_0
+            65  1;     %  3 Lwi_1
+            3.9e-4 1;  %  4 rB_0
+            3.9e-4 1;  %  5 rB_1
+            0.11598 0; %  6 del_M
+            9.69   0]; %  7 L_m
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_L', par, tL0, tL1) 
+     xlabel('time since birth, d')
+     ylabel('total length, cm')
+     title('Raja radula, f/m')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_L_Raja_radula.png')
+
+     par
+     
+     figure
+     hold on
+     colors = plotColors(2);
+     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
+     for j=1:2
+       plot(Li(j), irB(j), '.', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     ylim([2300; 2900]);
+     xlabel('total length, cm')
+     ylabel('1/vBGR, d')
+     title('Raja radula, f/m')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Raja_radula.png')
+
+   case 6 % Aves +
+     WD = cdEntr('Philomachus_pugnax'); data = mydata_Philomachus_pugnax; cd(WD);
+     tW0=data.tW_f; tW1=data.tW_m; 
+     par = [10  0;    %  1 Ww_b
+            180  1;   %  2 Wwi_0
+            110  1;   %  3 Wwi_1
+            0.037 1;  %  4 rB_0
+            0.037 1;  %  5 rB_1
+            41.11 0]; %  6 ome
+     %[EW0, EW1] = rB_W(par, tW0, tW1);
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_W', par, tW0, tW1);
+     par = nmregr('rB_W', par, tW0, tW1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_W', par, tW0, tW1) 
+     xlabel('time since birth, d')
+     ylabel('weight, g')
+     title('Philomachus pugnax, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_Ww_Philomachus_pugnax.png')
+          
+     par
+     
+     figure
+     hold on
+     colors = plotColors(2);
+     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
+     for j=1:2
+       plot(Li(j), irB(j), '.', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     xlim([1.35; 1.7]); ylim([10; 13]);
+     xlabel('ultimate structural length, cm')
+     ylabel('1/vBGR, d')
+     title('Philomachus pugnax, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Philomachus_pugnax.png')
+
+
+   case 7 % Actinopterygii +
+     WD = cdEntr('Cynopoecilus_melanotaenia'); data = mydata_Cynopoecilus_melanotaenia; cd(WD);
+     tL0=data.tL_f; tL1=data.tL_m; 
+     
+     par = [0.47  0;    %  1 Lw_b
+            2.5  1;     %  2 Lwi_0
+            3.5  1;     %  3 Lwi_1
+            2.3e-2 0;   %  4 rB_0
+            2.0e-2 0;   %  5 rB_1
+            0.113 0;    %  6 del_M
+            0.27 0];    %  7 L_m
+     nmregr_options('max_step_number',1000);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     par = nmregr('rB_L', par, tL0, tL1);
+     shregr_options('all_in_one', 1); 
+     shregr_AmP('rB_L', par, tL0, tL1) 
+     xlabel('time since birth, d')
+     ylabel('total length, cm')
+     title('Cynopoecilus melanotaenia, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'t_L_Cynopoecilus_melanotaenia.png')
+
+     par
+     
+     figure
+     hold on
+     colors = plotColors(2);
+     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
+     for j=1:2
+       plot(Li(j), irB(j), '.', 'MarkerSize', 20, 'Color', colors{j});
+     end
+     xlim([0.26; 0.43]); ylim([42.4; 51]);
+     xlabel('total length, cm')
+     ylabel('1/vBGR, d')
+     title('Cynopoecilus melanotaenia, m/f')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gcf,'Li_irB_Cynopoecilus_melanotaenia.png')
+ 
+     % a negative slope results, but a positive also fits well
+     
+  case 8 % Mammalia +
      WD = cdEntr('Macroscelides_proboscideus'); data = mydata_Macroscelides_proboscideus; cd(WD);
      tW0=data.tW_m4G; tW1=data.tW_m4J; tW2=data.tW_m4C; tW3=data.tW_m4B; 
-     par = [7 0;       %  1 Ww_b
-            40  1;     %  2 Wwi_0
-            35  1;     %  3 Wwi_1
-            35  1;     %  4 Wwi_2
-            35  1;     %  5 Wwi_3
+     par = [ 7     0;  %  1 Ww_b
+            40     1;  %  2 Wwi_0
+            35     1;  %  3 Wwi_1
+            35     1;  %  4 Wwi_2
+            35     1;  %  5 Wwi_3
             0.0259 1;  %  6 rB_0
             0.0269 1;  %  7 rB_1
             0.0281 1;  %  8 rB_2
@@ -87,20 +402,21 @@ end
      ylabel('weight, g')
      title('Macroscelides proboscideus, m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Macroscelides_proboscideus.png')
+     %saveas(gcf,'t_Ww_Macroscelides_proboscideus.png')
           
      par
      
      figure
      Li = (par(2:5,1)/(1+par(10,1))).^(1/3); irB = 1./par(6:9,1);
-     plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([1.63; 2]); ylim([5; 30]);
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Macroscelides proboscideus, m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Macroscelides_proboscideus.png')
+     %saveas(gcf,'Li_irB_Macroscelides_proboscideus.png')
      
-   case 2 % Mammalia +
+   case 9 % Mammalia +
      WD = cdEntr('Mustela_vison'); data = mydata_Mustela_vison; cd(WD);
      tW0=data.tW_f; tW1=data.tW_m; tW2 = data.tW_0f; tW3 = data.tW_0m;
      par = [8.5 0;     %  1 Ww_b
@@ -125,20 +441,22 @@ end
      ylabel('weight, g')
      title('Mustela vison, mm/ff')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Mustela_vison.png')
+     %saveas(gcf,'t_Ww_Mustela_vison.png')
           
      par
      
      figure
      Li = (par(2:5,1)/(1+par(10,1))).^(1/3); irB = 1./par(6:9,1);
      plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([4.75; 7.5]); ylim([50; 90]);
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Mustela vison, mm/ff')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Mustela_vison.png')
+     %saveas(gcf,'Li_irB_Mustela_vison.png')
      
-   case 3 % Mammalia +
+   case 10 % Mammalia +
      WD = cdEntr('Neomonachus_schauinslandi'); data = mydata_Neomonachus_schauinslandi; cd(WD);
      tL0=data.tL_MHI; tL1=data.tL_FFS; tL2=data.tL_LAY; tL3=data.tL_LIS; tL4=data.tL_PHR; tL5=data.tL_MDY; tL6=data.tL_KUR; 
      
@@ -169,59 +487,21 @@ end
      ylabel('standard height, cm')
      title('Neomonachus schauinslandi')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Neomonachus_schauinslandi.png')
+     %saveas(gcf,'t_L_Neomonachus_schauinslandi.png')
 
      par
      
      figure
      Li = par(2:8,1) * par(16,1); irB = 1./par(9:15,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     ylim([700; 3600]);
+     xlabel('standard height, cm')
      ylabel('1/vBGR, d')
      title('Neomonachus schauinslandi')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Neomonachus_schauinslandi.png')
+     %saveas(gcf,'Li_irB_Neomonachus_schauinslandi.png')
 
-   case 4 %  Mammalia +
-     WD = cdEntr('Bison_bison'); data = mydata_Bison_bison; cd(WD);
-     tW0=data.tW_mO; tW1=data.tW_mK; tW2=data.tW_fO; tW3=data.tW_fK; 
-     par = [19.4e3 1;  %  1 Ww_b
-            514e3  1;  %  2 Wwi_0
-            514e3  1;  %  3 Wwi_1
-            514e3  1;  %  4 Wwi_2
-            514e3  1;  %  5 Wwi_3
-            1.3e-3 1;  %  6 rB_0
-            1.3e-3 1;  %  7 rB_1
-            1.3e-3 1;  %  8 rB_2
-            1.3e-3 1;  %  9 rB_3
-            4.19 0];   % 10 ome
-     %[EW0, EW1, EW2, EW3] = rB_W(par, tW0, tW1, tW2, tW3);
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
-     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
-     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
-     par = nmregr('rB_W', par, tW0, tW1, tW2, tW3);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_W', par, tW0, tW1, tW2, tW3) 
-     xlabel('time since birth, d')
-     ylabel('weight, g')
-     title('Bison bison')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Bison_bison.png')
-          
-     par
-     
-     figure
-     Li = (par(2:5,1)/(1+par(10,1))).^(1/3); irB = 1./par(6:9,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Bison bison')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Bison_bison.png')
- 
-
-   case 5 % Mammalia  +
+   case 11 % Mammalia  +
      WD = cdEntr('Mastomys_natalensis'); data = mydata_Mastomys_natalensis; cd(WD);
      tW0=data.tWw_m; tW1=data.tWw_f; 
      par = [2.4  0;   %  1 Ww_b
@@ -240,20 +520,21 @@ end
      ylabel('weight, g')
      title('Mastomys natalensis, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Mastomys_natalensis.png')
+     %saveas(gcf,'t_Ww_Mastomys_natalensis.png')
           
      par
      
      figure
      Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([1.35; 1.57]); ylim([36.5; 40]);
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Mastomys natalensis, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Mastomys_natalensis.png')
+     %saveas(gcf,'Li_irB_Mastomys_natalensis.png')
      
-   case 6 % Mammalia +
+   case 12 % Mammalia +
      WD = cdEntr('Tatera_indica'); data = mydata_Tatera_indica; cd(WD);
      tW0=data.tWw_m; tW1=data.tWw_f; 
      par = [3  0;     %  1 Ww_b
@@ -272,20 +553,21 @@ end
      ylabel('weight, g')
      title('Tatera indica, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Tatera_indica.png')
+     %saveas(gcf,'t_Ww_Tatera_indica.png')
          
      par
      
      figure
      Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([1.65; 2]); ylim([34; 49]);
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Tatera indica, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Tatera_indica.png')
+     %saveas(gcf,'Li_irB_Tatera_indica.png')
 
-   case 7 % Mammalia +
+   case 13 % Mammalia +
      WD = cdEntr('Millardia_meltada'); data = mydata_Millardia_meltada; cd(WD);
      tW0=data.tWw_m; tW1=data.tWw_f; 
      par = [2.4  0;   %  1 Ww_b
@@ -304,20 +586,21 @@ end
      ylabel('weight, g')
      title('Millardia meltada, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Millardia_meltada.png')
+     %saveas(gcf,'t_Ww_Millardia_meltada.png')
           
      par
      
      figure
      Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([1.2; 1.45]); ylim([26; 33]);
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Millardia meltada, m/f')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Millardia_meltada.png')
+     %saveas(gcf,'Li_irB_Millardia_meltada.png')
 
-   case 8 % Chondrichthyes +
+   case 14 % Chondrichthyes +
      WD = cdEntr('Rhizoprionodon_taylori'); data = mydata_Rhizoprionodon_taylori; cd(WD);
      tL0=data.tL_f; tL1=data.tL_m; 
      
@@ -338,56 +621,23 @@ end
      ylabel('total length, cm')
      title('Rhizoprionodon taylori, f/m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Rhizoprionodon_taylori.png')
+     %saveas(gcf,'t_L_Rhizoprionodon_taylori.png')
 
      par
      
      figure
      Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([4.1; 4.9]); 
+     xlabel('total length, cm')
      ylabel('1/vBGR, d')
      title('Rhizoprionodon taylori, f/m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Rhizoprionodon_taylori.png')
+     %saveas(gcf,'Li_irB_Rhizoprionodon_taylori.png')
    
      % free vBGR gives negative slope but positive slope also fits well
 
-   case 9 % Chondrichthyes +
-     WD = cdEntr('Raja_radula'); data = mydata_Raja_radula; cd(WD);
-     tL0=data.tL_f; tL1=data.tL_m; 
-     
-     par = [10  0;     %  1 Lw_b
-            77  1;     %  2 Lwi_0
-            65  1;     %  3 Lwi_1
-            3.9e-4 1;  %  4 rB_0
-            3.9e-4 1;  %  5 rB_1
-            0.11598 0; %  6 del_M
-            9.69   0]; %  7 L_m
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_L', par, tL0, tL1) 
-     xlabel('time since birth, d')
-     ylabel('total length, cm')
-     title('Raja radula, f/m')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Raja_radula.png')
-
-     par
-     
-     figure
-     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Raja radula, f/m')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Raja_radula.png')
-
-   case 10 % Actinopterygii +
+   case 15 % Actinopterygii +
      WD = cdEntr('Nothobranchius_furzeri'); data = mydata_Nothobranchius_furzeri; cd(WD);
      tL0=data.tL_mNF221; tL1=data.tL_mNF222; tL2=data.tL_fNF221; tL3=data.tL_fNF222;
      
@@ -412,153 +662,21 @@ end
      ylabel('total length, cm')
      title('Nothobranchius furzeri, mm/ff')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Nothobranchius_furzeri.png')
+     %saveas(gcf,'t_L_Nothobranchius_furzeri.png')
 
      par
      
      figure
      Li = par(2:5,1) * par(10,1); irB = 1./par(6:9,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     ylim([17; 35]); 
+     xlabel('total length, cm')
      ylabel('1/vBGR, d')
      title('Nothobranchius furzeri, mm/ff')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Nothobranchius_furzeri.png')
+     %saveas(gcf,'Li_irB_Nothobranchius_furzeri.png')
 
-   case 11 % Actinopterygii +
-     WD = cdEntr('Cynopoecilus_melanotaenia'); data = mydata_Cynopoecilus_melanotaenia; cd(WD);
-     tL0=data.tL_m; tL1=data.tL_f; 
-     
-     par = [0.47  0;    %  1 Lw_b
-            3.5  1;     %  2 Lwi_0
-            2.5  1;     %  3 Lwi_1
-            2.0e-2 0;   %  4 rB_0
-            2.3e-2 0;   %  5 rB_1
-            0.113 0;    %  6 del_M
-            0.27 0];    %  7 L_m
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_L', par, tL0, tL1) 
-     xlabel('time since birth, d')
-     ylabel('total length, cm')
-     title('Cynopoecilus melanotaenia, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Cynopoecilus_melanotaenia.png')
-
-     par
-     
-     figure
-     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Cynopoecilus melanotaenia, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Cynopoecilus_melanotaenia.png')
- 
-     % a negative slope results, but a positive also fits well
-     
-   case 12 % Amphibia +
-     WD = cdEntr('Pyxicephalus_adspersus'); data = mydata_Pyxicephalus_adspersus; cd(WD);
-     tL0=data.tL_m; tL1=data.tL_f; tW0=data.tW_m; tW1=data.tW_f; 
-     
-     par = [1.3    0;   %  1 Lw_b
-            24.5   1;   %  2 Lwi_0
-            19.2   1;   %  3 Lwi_1
-            5.7e-3 1;   %  4 rB_0
-            5.6e-3 1;   %  5 rB_1
-            0.2873 0;   %  6 del_M
-            5.10   0];  %  7 L_m
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     par = nmregr('rB_L', par, tL0, tL1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_L', par, tL0, tL1) 
-     xlabel('time since birth, d')
-     ylabel('SVL, cm')
-     title('Pyxicephalus adspersus, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Pyxicephalus_adspersus.png')
-
-     par
-     
-     figure
-     Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Pyxicephalus adspersus, m/f')    
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Pyxicephalus_adspersus.png')
-
-     %weight
-     figure
-     par = [3      0;   %  1 Ww_b
-            1400   1;   %  2 Wwi_0
-            840    1;   %  3 Wwi_1
-            5.7e-3 1;   %  4 rB_0
-            5.6e-3 1;   %  5 rB_1
-            6.4    0];  %  6 ome
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_W', par, tW0, tW1);
-     par = nmregr('rB_W', par, tW0, tW1);
-     par = nmregr('rB_W', par, tW0, tW1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_W', par, tW0, tW1) 
-     xlabel('time since birth, d')
-     ylabel('weight, g')
-     title('Pyxicephalus adspersus, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Pyxicephalus_adspersus.png')
-
-     par
-     
-     figure
-     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Pyxicephalus adspersus, m/f')    
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Pyxicephalus_adspersus_W.png')
-
-   case 13 % Reptilia +  
-     WD = cdEntr('Eryx_miliaris'); data = mydata_Eryx_miliaris; cd(WD);
-     tW0=data.tW_f; tW1=data.tW_m; 
-     par = [7  0;      %  1 Ww_b
-            180  1;    %  2 Wwi_0
-            44   1;    %  3 Wwi_1
-            2.6e-3 1;  %  4 rB_0
-            7.9e-3 1;  %  5 rB_1
-            4.0 0];    %  6 ome
-     %[EW0, EW1] = rB_W(par, tW0, tW1);
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_W', par, tW0, tW1);
-     par = nmregr('rB_W', par, tW0, tW1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_W', par, tW0, tW1) 
-     xlabel('time since birth, d')
-     ylabel('weight, g')
-     title('Eryx miliaris, f/m')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Eryx_miliaris.png')
-          
-     par
-     
-     figure
-     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Eryx miliaris, f/m')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Eryx_miliaris.png')
-
-   case 14 % Reptilia +
+   case 16 % Reptilia +
      WD = cdEntr('Bitis_arietans'); data = mydata_Bitis_arietans; cd(WD);
      tL0=data.tL_f1; tL1=data.tL_f2; tL2=data.tL_m1; tL3=data.tL_m2;
      
@@ -581,23 +699,24 @@ end
      shregr('rB_L', par, tL0, tL1, tL2, tL3) 
      xlabel('time since birth, d')
      ylabel('total length, cm')
-     title('SBitis arietans, ff/mm')
+     title('Bitis arietans, ff/mm')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Bitis_arietans.png')
+     %saveas(gcf,'t_L_Bitis_arietans.png')
 
      par
      
      figure
      Li = par(2:5,1) * par(10,1); irB = 1./par(6:9,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     ylim([220; 550]);
+     xlabel('total length, cm')
      ylabel('1/vBGR, d')
      title('Bitis arietans, ff/mm')    
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Bitis_arietans.png')
+     %saveas(gcf,'Li_irB_Bitis_arietans.png')
 
 
-   case 114 % Reptilia +
+   case 17 % Reptilia +
      WD = cdEntr('Spalerosophis_diadema'); data = mydata_Spalerosophis_diadema; cd(WD);
      tL0=data.tL_fm(:,[1 2]); tL1=data.tL_fm(:,[1 3]); tL1(end-1:end,:)=[]; tW0=data.tW_fm(:,[1 2]); tW1=data.tW_fm(:,[1 3]); tW1(end-1:end,:)=[];
      
@@ -618,18 +737,19 @@ end
      ylabel('total length, cm')
      title('Spalerosophis diadema, f/m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Spalerosophis_diadema.png')
+     %saveas(gcf,'t_L_Spalerosophis_diadema.png')
 
      par
      
      figure
      Li = par(2:3,1) * par(6,1); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     %xlim([4.75; 7.5]); ylim([50; 90]);
+     xlabel('total length, cm')
      ylabel('1/vBGR, d')
      title('Spalerosophis diadema, f/m')    
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Spalerosophis_diadema.png')
+     %saveas(gcf,'Li_irB_Spalerosophis_diadema.png')
 
      % weight
      figure
@@ -649,88 +769,21 @@ end
      ylabel('weight, g')
      title('Spalerosophis diadema, f/m')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Spalerosophis_diadema.png')
+     %saveas(gcf,'t_Ww_Spalerosophis_diadema.png')
 
      par
      
      figure
      Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     xlim([8.1; 9.2]); 
      xlabel('ultimate structural length, cm')
      ylabel('1/vBGR, d')
      title('Spalerosophis diadema, f/m')    
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Spalerosophis_diadema_W.png')
+     %saveas(gcf,'Li_irB_Spalerosophis_diadema_W.png')
 
-   case 15 % Aves +
-     WD = cdEntr('Philomachus_pugnax'); data = mydata_Philomachus_pugnax; cd(WD);
-     tW0=data.tW_m; tW1=data.tW_f; 
-     par = [10  0;    %  1 Ww_b
-            180  1;   %  2 Wwi_0
-            110  1;   %  3 Wwi_1
-            0.037 1;  %  4 rB_0
-            0.037 1;  %  5 rB_1
-            41.11 0]; %  6 ome
-     %[EW0, EW1] = rB_W(par, tW0, tW1);
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_W', par, tW0, tW1);
-     par = nmregr('rB_W', par, tW0, tW1);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_W', par, tW0, tW1) 
-     xlabel('time since birth, d')
-     ylabel('weight, g')
-     title('Philomachus pugnax, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_Ww_Philomachus_pugnax.png')
-          
-     par
-     
-     figure
-     Li = (par(2:3,1)/(1+par(6,1))).^(1/3); irB = 1./par(4:5,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Philomachus pugnax, m/f')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Philomachus_pugnax.png')
-
-   case 16 % Mollusca +
-     WD = cdEntr('Mytilus_edulis'); data = mydata_Mytilus_edulis; cd(WD);
-     tL0=data.tL_0; tL1=data.tL_13; tL2=data.tL_33; 
-     
-     par = [0    0;     %  1 Lw_b
-            8    1;     %  2 Lwi_0
-            7    1;     %  3 Lwi_1
-            6    1;     %  4 Lwi_2
-            1e-4 1;     %  5 rB_0
-            2e-4 1;     %  6 rB_1
-            3e-4 1;     %  7 rB_2
-            0.34144 0;  %  8 del_M
-            4.16*1.16 0]; %9 L_m
-     nmregr_options('max_step_number',1000);
-     par = nmregr('rB_L', par, tL0, tL1, tL2);
-     par = nmregr('rB_L', par, tL0, tL1, tL2);
-     par = nmregr('rB_L', par, tL0, tL1, tL2);
-     shregr_options('all_in_one', 1); 
-     shregr('rB_L', par, tL0, tL1, tL2) 
-     xlabel('time since birth, d')
-     ylabel('standard height, cm')
-     title('Mytilus edulis')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Mytilus_edulis.png')
-
-     par
-     
-     figure
-     Li = par(2:4,1) * par(9,1); irB = 1./par(5:7,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
-     ylabel('1/vBGR, d')
-     title('Mytilus edulis')
-     set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Mytilus_edulis.png')
-
-   case 17 % Mollusca +
+   case 18 % Mollusca +
      WD = cdEntr('Patella_vulgata'); data = mydata_Patella_vulgata; cd(WD);
      tL0=data.tL1; tL1=data.tL2; tL2=data.tL3; tL3=data.tL4; 
      
@@ -752,23 +805,24 @@ end
      shregr_options('all_in_one', 1); 
      shregr('rB_L', par, tL0, tL1, tL2, tL3) 
      xlabel('time since birth, d')
-     ylabel('length, cm')
+     ylabel('shell length, cm')
      title('Patella vulgata')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'t_L_Patella_vulgata.png')
+     %saveas(gcf,'t_L_Patella_vulgata.png')
 
      par
      
      figure
      Li = par(2:5,1) * par(10,1); irB = 1./par(6:9,1);
-     plot(Li, irB, 'or');
-     xlabel('ultimate structural length, cm')
+     plot(Li, irB, '.r', 'MarkerSize', 20);
+     ylim([1000; 3600]);
+     xlabel('shell length, cm')
      ylabel('1/vBGR, d')
      title('Patella vulgata')
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gcf,'Li_irB_Patella_vulgata.png')
+     %saveas(gcf,'Li_irB_Patella_vulgata.png')
 
-   case 18 % L-Ww 
+   case 19 % L-Ww 
      WD = cdEntr('Gloydius_blomhoffii'); data = mydata_Gloydius_blomhoffii; cd(WD);
      LW_f=data.LW_f; LW_m=data.LW_m; 
      
@@ -783,8 +837,9 @@ end
      set(gca, 'FontSize', 15, 'Box', 'on')
      saveas(gcf,'L_Ww_Gloydius_blomhoffii.png')
      
-   case 19 % Wwi-rB
-     [h hleg] = shstat({'L_i', 'r_B'}, legend_fish);
+   case 20 % Wwi-rB
+     LirBcT = read_allStat({'L_i','r_B','c_T'}); LirB = [LirBcT(:,1), LirBcT(:,2)./LirBcT(:,3)];
+     [h hleg] = shstat(LirB, legend_fish);
      L=linspace(-0.5,2,100)';
      figure(h)
      Li_rB = log10([read_stat('Chondrichthyes',{'L_i','r_B'});read_stat('Actinopterygii',{'L_i','r_B'})]);
@@ -800,13 +855,14 @@ end
 
      par
      
-   case 20 % Wwi-rB
-     [h hleg] = shstat({'L_i', 'r_B'}, legend_crus);
+   case 21 % Wwi-rB
+     LirBcT = read_allStat({'L_i','r_B','c_T'}); LirB = [LirBcT(:,1), LirBcT(:,2)./LirBcT(:,3)];
+     [h hleg] = shstat(LirB, legend_crus);
      L=linspace(-2.2,1.5,100)';
      figure(h)
      Li_rB = log10(read_stat('Crustacea',{'L_i','r_B'}));
      nmregr_options('max_step_number',500);
-     par = [.07 1; 0.1 1];
+     par = [.09 1; 0.1 1];
      %par = nmregr('LirB', par, Li_rB);
      rB = log10(par(1,1)./(1 + 10.^L/par(2,1)));
      plot(L,rB,'k', 'linewidth', 2)
@@ -817,8 +873,9 @@ end
 
      par
      
-   case 21 % Wwi-rB
-     [h hleg] = shstat({'L_i', 'r_B'}, legend_moll);
+   case 22 % Wwi-rB
+     LirBcT = read_allStat({'L_i','r_B','c_T'}); LirB = [LirBcT(:,1), LirBcT(:,2)./LirBcT(:,3)];
+     [h hleg] = shstat(LirB, legend_moll);
      L=linspace(-1.5,2.1,100)';
      figure(h)
      Li_rB = log10(read_stat('Mollusca',{'L_i','r_B'}));
