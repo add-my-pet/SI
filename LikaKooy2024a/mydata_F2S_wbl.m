@@ -11,7 +11,7 @@ function mydata_F2S_wbl
 % pdf(t) = k*lambda*(t*lambda)^(k-1)*exp(-(lambda*t)^k)
 % Bas Kooijman, 2021/07/28
 
-clc; clear all; close all;
+clear all; close all;
 % sets options for DEBtool_M function nmregr, see online package manual: 
 nmregr_options('default'); nmregr_options('report',0); nmregr_options('max_step_number',1e5); nmregr_options('max_fun_evals',1e5);
 wbl = @(shape, t) sum(t.^shape .* log(t))/ sum(t.^shape) - 1/shape - mean(log(t)); % ML fn for shape par
@@ -84,7 +84,6 @@ for i=1:length(conf_c)
   Fc_ML(i) = max(0,spline1(1-conf_c(i), flip(flip(SFML,2),1)));  
 end
 
-
 % conf level of par
 conf=.01:.01:.99; n_conf = length(conf); parbl = zeros(n_conf,4); parbu = zeros(n_conf,4);
 % SB
@@ -135,17 +134,19 @@ print -r0 -dpng  sample_wbl
 % set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.5, 0.25, 0.5]);
 
 Hfig2 = figure(2); % loss function profile for rate par
-xlabels{1} = 'rate parameter, 1/d';
-xlabels{2} = 'rate parameter, 1/d';
-ylabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
-ylabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
-[ax,~,~] = plotxx(rate, F_SB(:,1), rate, F_ML(:,1),  xlabels, ylabels, 'r', 'k');
-set(gca, 'FontSize', 15)
+colororder({'k','r'})
+yyaxis left
+plot(rate,F_SB(:,2),'r', 'linewidth',2);
+xlabel('rate parameter, 1/d');
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+title('Weibull')
+yyaxis right
+plot(rate,F_ML(:,2),'k', 'linewidth',2);
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
+set(gca, 'FontSize', 15, 'Box', 'on')
 set(gca, 'xlim', range(1,:))
-set(ax, 'xlim', range(1,:))
 savefig('rate_lf_wbl')
 print -r0 -dpng  rate_lf_wbl
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0.5, 0.25, 0.5]);
 
 Hfig3 = figure(3);
 plot(parb_SB(:,1), parb_SB(:,2), 'r', 'linewidth',3) 
@@ -181,17 +182,21 @@ print -r0 -dpng  lf_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.25, 0.5]);
 
 Hfig6 = figure(6); % loss function profile for shape par
-xlabels{1} = 'shape parameter, -';
-xlabels{2} = 'shape parameter, -';
-ylabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
-ylabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
-[ax,~,~] = plotxx(shape, F_SB(:,2), shape, F_ML(:,2),  xlabels, ylabels, 'r', 'k');
+colororder({'k','r'})
+yyaxis left
+plot(shape,F_SB(:,2),'r', 'linewidth',2);
+xlabel('shape parameter, -')
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+title('Weibull')
+yyaxis right
+plot(shape,F_ML(:,2),'k', 'linewidth',2);
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
 set(gca, 'FontSize', 15)
+set(gca, 'FontSize', 15, 'Box', 'on')
 set(gca, 'xlim', range(2,:))
-set(ax, 'xlim', range(2,:))
 savefig('shape_lf_wbl')
 print -r0 -dpng  shape_lf_wbl
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0, 0.25, 0.5]);
+%set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0, 0.25, 0.5]);
 
 Hfig7 = figure(7);
 plot(parb_SB(:,3), parb_SB(:,4), 'r', 'linewidth',3) 
@@ -245,7 +250,7 @@ colormap(color_lava([1:256]/300))
 h.LineWidth = 2;
 savefig('profiles_ML')
 print -r0 -dpng  profiles_ML
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.75, 0, 0.25, 0.5]);
+%set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.75, 0, 0.25, 0.5]);
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5, 0, 0.25, 0.5]);
 set(gca, 'FontSize', 15, 'Box', 'on')
 
@@ -268,7 +273,6 @@ text(lambda,0.85, ['\color{black}{ML}, median = ', num2str(Mpar_ML,'%.3f')])
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('rate_wbl')
 print -r0 -dpng rate_wbl.png
-%set(Hfig20, 'Outerposition',[0 0.5 0.5 0.5]);
 
 Spar_SB = surv(par_SB(:,2)); Spar_ML = surv(par_ML(:,2)); 
 Mpar_SB = median(par_SB(:,2)); Mpar_ML = median(par_ML(:,2)); 
@@ -289,7 +293,6 @@ text(3*k,0.85, ['\color{black}{ML}, median = ', num2str(Mpar_ML,'%.3f')])
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('shape_wbl')
 print -r0 -dpng shape_wbl.png
-%set(Hfig21, 'Outerposition',[0.5 0.5 0.5 0.5]);
 
 % compute bias
 Bias_ML = [par_ML0(1) - median(par_ML(:,1)), par_ML0(2) - median(par_ML(:,2))]

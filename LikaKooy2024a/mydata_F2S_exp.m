@@ -13,7 +13,7 @@ function  mydata_F2S_exp
 % modified by Dina Lika, 2021/08/05, MC simulations are with the estimate
 % of lambda based on the D0 sample
 
-clc; clear all; close all;
+clear all; close all;
 
 % sets options for DEBtool_M function nmregr, see online package manual
 nmregr_options('default'); nmregr_options('report',0); nmregr_options('max_step_number',1e5); nmregr_options('max_fun_evals',1e5); 
@@ -98,11 +98,19 @@ savefig('sample_exp')
 print -r0 -dpng sample_exp.png
 
 Hfig2 = figure(2); % loss functions
-xlabels{1} = 'rate parameter, 1/d';
-xlabels{2} = 'rate parameter, 1/d';
-ylabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
-ylabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
-[~,~,~] = plotxx(lamb, F_SB, lamb, F_ML,  xlabels, ylabels, 'r', 'k');
+colororder({'k','r'})
+yyaxis left
+plot(lamb,F_SB,'r', 'linewidth',2);
+xlabel('rate parameter, 1/d');
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+title('Exponential')
+yyaxis right
+plot(lamb,F_ML,'k', 'linewidth',2);
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
+set(gca, 'FontSize', 15, 'Box', 'on')
+savefig('rate_lf_exp')
+print -r0 -dpng rate_lf_exp
+
 set(gca, 'FontSize', 15)
 % txt = 'data: '; for i=1:n; txt=[txt,num2str(t0(i)),',']; end; txt(end)='';
 % title(txt)
@@ -119,7 +127,6 @@ ylabels{1} = 'survivor function';
 ylabels{2} = 'survivor function';
 [~,~,~] = plotxx(SFSB(:,1), SFSB(:,2), SFML(:,1), SFML(:,2),  xlabels, ylabels, 'r', 'k');
 set(gca, 'FontSize', 15, 'Box', 'on')
-%set(gca, 'Units', 'Normalized', 'outerPosition', [0, 2.5, 0, 0]);
 savefig('lf_exp')
 print -r0 -dpng lf_exp 
 
@@ -127,12 +134,11 @@ Hfig4 = figure(4);
 plot(parb_SB(:,1), parb_SB(:,2), 'r', 'linewidth',3) 
 hold on 
 plot(parb_ML(:,1), parb_ML(:,2), 'k', 'linewidth',3) 
-xlabel('parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('confidence level')
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('rate_ci_exp')
 print -r0 -dpng rate_ci_exp
-% set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.5, 0.5]);
 
 Hfig5 = figure(5);
 plot(parS_SB(:,1), parS_SB(:,2), 'r', 'linewidth',3) 
