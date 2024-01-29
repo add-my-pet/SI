@@ -40,7 +40,7 @@ plot([0;Mlambda_SB;Mlambda_SB], [0.5;0.5;0],'r', ...
      lambda, 0, '.k', 'markersize',20) % true value
 ylim([0 1])
 xlim([0 2*lambda])
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('survivor function')
 text(lambda,0.90, ['\color{red}{SB, median = ', num2str(Mlambda_SB), '}'])
 text(lambda,0.85, ['\color{black}{ML}, median  = ', num2str(Mlambda_ML)])
