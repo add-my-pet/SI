@@ -54,7 +54,8 @@ Slambda_SB = surv(lambda_SB);   Slambda_ML   = surv(lambda_ML);
 Mlambda_SB = median(lambda_SB); Mlambda_ML = median(lambda_ML); 
 
 % lf profile of par
-lamb = linspace(.05 * lambda_SB0, 5 * lambda_SB0, n_par)';
+%lamb = linspace(.05 * lambda_SB0, 5 * lambda_SB0, n_par)';
+lamb = linspace(.05 * lambda_SB0, 5, n_par)';
 F_SB = zeros(100,1); 
 for i=1:n_par; prd = exponential(lamb(i), D0); F_SB(i) = mean(((prd - D0(:,2)).^2)./(mean(prd)^2 + mean(D0(:,2))^2)); end
 F_SB = F_SB - FSB0;
@@ -97,30 +98,30 @@ savefig('sample_exp')
 print -r0 -dpng sample_exp.png
 
 Hfig2 = figure(2); % loss functions
-xlabels{1} = 'scale parameter, 1/d';
-xlabels{2} = 'scale parameter, 1/d';
+xlabels{1} = 'rate parameter, 1/d';
+xlabels{2} = 'rate parameter, 1/d';
 ylabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
 ylabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
 [~,~,~] = plotxx(lamb, F_SB, lamb, F_ML,  xlabels, ylabels, 'r', 'k');
 set(gca, 'FontSize', 15)
 % txt = 'data: '; for i=1:n; txt=[txt,num2str(t0(i)),',']; end; txt(end)='';
 % title(txt)
-xlim([0 2*lambda])
+%xlim([0 2*lambda])
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_lf_exp')
-print -r0 -dpng scale_lf_exp
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.5, 0.5, 0.5]);
+savefig('rate_lf_exp')
+print -r0 -dpng rate_lf_exp
 
 Hfig3 = figure(3); % loss functions
+Hfig3.Units = 'centimeters';
 xlabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
 xlabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
 ylabels{1} = 'survivor function';
 ylabels{2} = 'survivor function';
 [~,~,~] = plotxx(SFSB(:,1), SFSB(:,2), SFML(:,1), SFML(:,2),  xlabels, ylabels, 'r', 'k');
 set(gca, 'FontSize', 15, 'Box', 'on')
+%set(gca, 'Units', 'Normalized', 'outerPosition', [0, 2.5, 0, 0]);
 savefig('lf_exp')
-print -r0 -dpng lf_exp
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5, 0.5, 0.5, 0.5]);
+print -r0 -dpng lf_exp 
 
 Hfig4 = figure(4);
 plot(parb_SB(:,1), parb_SB(:,2), 'r', 'linewidth',3) 
@@ -129,19 +130,19 @@ plot(parb_ML(:,1), parb_ML(:,2), 'k', 'linewidth',3)
 xlabel('parameter, 1/d')
 ylabel('confidence level')
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_ci_exp')
-print -r0 -dpng scale_ci_exp
+savefig('rate_ci_exp')
+print -r0 -dpng rate_ci_exp
 % set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.5, 0.5]);
 
 Hfig5 = figure(5);
 plot(parS_SB(:,1), parS_SB(:,2), 'r', 'linewidth',3) 
 hold on
 plot(parS_ML(:,1), parS_ML(:,2), 'k', 'linewidth',3) 
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('survivor function')
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_sv_exp')
-print -r0 -dpng scale_sv_exp
+savefig('rate_sv_exp')
+print -r0 -dpng rate_sv_exp
 % set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5, 0, 0.5, 0.5]);
 
 
@@ -153,14 +154,14 @@ plot([0;Mlambda_SB;Mlambda_SB], [0.5;0.5;0],'r', ...
      [0;Mlambda_ML;Mlambda_ML], [0.5;0.5;0],'k')
 ylim([0 1])
 xlim([0 2*lambda])
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('survivor function')
 text(lambda,0.90, ['\color{red}{SB, median = ', num2str(Mlambda_SB,'%.3f'), '}'])
 text(lambda,0.85, ['\color{black}{ML}, median = ', num2str(Mlambda_ML,'%.3f')])
 set(gca, 'FontSize', 15, 'Box', 'on')
 % title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda)])
-savefig('scale_exp')
-print -r0 -dpng 'scale_exp.png'
+savefig('rate_exp')
+print -r0 -dpng 'rate_exp.png'
 set(Hfig6, 'Outerposition',[50 200 600 600]);
 
 

@@ -13,7 +13,7 @@ clc; clear all; close all;
 nmregr_options('default'); nmregr_options('report',0); nmregr_options('max_step_number',1e5); nmregr_options('max_fun_evals',1e5);
 wbl = @(shape, t) sum(t.^shape .* log(t))/ sum(t.^shape) - 1/shape - mean(log(t)); % ML fn for shape par
 
-  lambda = 1; % 1/d, real scale parameter (must be positive)
+  lambda = 1; % 1/d, real rate parameter (must be positive)
   k = 3;      % - , shape parameter
   n = 5;      % #, number of trials from the weibull distribution (must be integer)
   N = 5000;   % #, number of Monte Carlo runs
@@ -50,7 +50,7 @@ text(lambda,0.90, ['\color{red}{SB1, median = ', num2str(Mpar_SB), '}'])
 text(lambda,0.85, ['\color{black}{ML}, median  = ', num2str(Mpar_ML)])
 title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda), ', k = ', num2str(k)])
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_wbl')
+savefig('rate_wbl')
 print -r0 -dpng rate_wbl.png
 %set(Hfig1, 'Outerposition',[0 0.5 0.5 0.5]);
 

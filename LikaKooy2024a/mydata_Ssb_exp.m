@@ -46,7 +46,7 @@ text(lambda,0.90, ['\color{red}{SB, median = ', num2str(Mlambda_SB), '}'])
 text(lambda,0.85, ['\color{black}{ML}, median  = ', num2str(Mlambda_ML)])
 set(gca, 'FontSize', 15, 'Box', 'on')
 title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda)])
-savefig('scale_exp')
+savefig('rate_exp')
 print -r0 -dpng 'rate_exp.png'
 %set(Hfig1, 'Outerposition',[50 200 600 600]);
 

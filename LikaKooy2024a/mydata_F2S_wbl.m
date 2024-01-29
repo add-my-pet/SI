@@ -54,14 +54,14 @@ Spar_SB = surv(par_SB(:,1)); Spar_ML = surv(par_ML(:,1));
 Mpar_SB = median(par_SB(:,1)); Mpar_ML = median(par_ML(:,1)); 
 
 % lf profile of pars
-% scale = linspace(.05*lambda, 5*lambda, n_par)'; shape = linspace(.05*k, 5*k, n_par)';
-scale = linspace(.05*par_SB0(1,1), 5*par_SB0(1,1), n_par)'; shape = linspace(.05*par_SB0(2,1), 5*par_SB0(2,1), n_par)';
+% rate = linspace(.05*lambda, 5*lambda, n_par)'; shape = linspace(.05*k, 5*k, n_par)';
+rate = linspace(.05*par_SB0(1,1), 5*par_SB0(1,1), n_par)'; shape = linspace(.05*par_SB0(2,1), 5*par_SB0(2,1), n_par)';
 
 F_SB = zeros(n_par,2); F_ML = zeros(n_par,2); 
 for i=1:n_par
-   prd = weibull([scale(i); par_SB0(2)], D0); F_SB(i,1) = mean(((prd - D0(:,2)).^2)./(mean(prd)^2 + mean(D0(:,2))^2)); 
+   prd = weibull([rate(i); par_SB0(2)], D0); F_SB(i,1) = mean(((prd - D0(:,2)).^2)./(mean(prd)^2 + mean(D0(:,2))^2)); 
    prd = weibull([par_SB0(1); shape(i)], D0); F_SB(i,2) = mean(((prd - D0(:,2)).^2)./(mean(prd)^2 + mean(D0(:,2))^2)); 
-   F_ML(i,1) = sum((scale(i)*t0).^par_ML0(2)) - n*log(par_ML0(2)) - n*par_ML0(2)*log(scale(i)) - (par_ML0(2)-1)*sum(log(t0));
+   F_ML(i,1) = sum((rate(i)*t0).^par_ML0(2)) - n*log(par_ML0(2)) - n*par_ML0(2)*log(rate(i)) - (par_ML0(2)-1)*sum(log(t0));
    F_ML(i,2) = sum((par_ML0(1)*t0).^shape(i)) - n*log(shape(i)) - n*shape(i)*log(par_ML0(1)) - (shape(i)-1)*sum(log(t0));
 end
 F_SB = F_SB - FSB0; F_ML = F_ML - FML0;
@@ -90,7 +90,7 @@ conf=.01:.01:.99; n_conf = length(conf); parbl = zeros(n_conf,4); parbu = zeros(
 % SB
 for i=1:n_conf
   F = max(0,spline1(1-conf(i), flip(flip(SFSB,2),1)));
-  b = rspline1([scale, F_SB(:,1)-F]); if length(b)==1; b = [0, b]; end
+  b = rspline1([rate, F_SB(:,1)-F]); if length(b)==1; b = [0, b]; end
   parbl(i,[1 2]) =  [b(1), conf(i)]; parbu(i,[1 2]) =  [b(2), conf(i)];
   b = rspline1([shape, F_SB(:,2)-F]); if length(b)==1; b = [0, b]; end
   parbl(i,[3 4]) =  [b(1), conf(i)]; parbu(i,[3 4]) =  [b(2), conf(i)];
@@ -103,7 +103,7 @@ parS_SB(:,4) = (0.5 + parS_SB(:,4)/2) .* (parS_SB(:,3) <=  par_SB0(2)) + (1 - pa
 % ML
 for i=1:n_conf
   F = max(0,spline1(1-conf(i), flip(flip(SFML,2),1)));
-  b = rspline1([scale, F_ML(:,1)-F]); if length(b)==1; b = [0, b]; end
+  b = rspline1([rate, F_ML(:,1)-F]); if length(b)==1; b = [0, b]; end
   parbl(i,[1 2]) =  [b(1), conf(i)]; parbu(i,[1 2]) =  [b(2), conf(i)];
   b = rspline1([shape, F_ML(:,2)-F]); if length(b)==1; b = [0, b]; end
   parbl(i,[3 4]) =  [b(1), conf(i)]; parbu(i,[3 4]) =  [b(2), conf(i)];
@@ -134,39 +134,39 @@ savefig('sample_wbl')
 print -r0 -dpng  sample_wbl
 % set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.5, 0.25, 0.5]);
 
-Hfig2 = figure(2); % loss function profile for scale par
-xlabels{1} = 'scale parameter, 1/d';
-xlabels{2} = 'scale parameter, 1/d';
+Hfig2 = figure(2); % loss function profile for rate par
+xlabels{1} = 'rate parameter, 1/d';
+xlabels{2} = 'rate parameter, 1/d';
 ylabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
 ylabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
-[ax,~,~] = plotxx(scale, F_SB(:,1), scale, F_ML(:,1),  xlabels, ylabels, 'r', 'k');
+[ax,~,~] = plotxx(rate, F_SB(:,1), rate, F_ML(:,1),  xlabels, ylabels, 'r', 'k');
 set(gca, 'FontSize', 15)
 set(gca, 'xlim', range(1,:))
 set(ax, 'xlim', range(1,:))
-savefig('scale_lf_wbl')
-print -r0 -dpng  scale_lf_wbl
+savefig('rate_lf_wbl')
+print -r0 -dpng  rate_lf_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0.5, 0.25, 0.5]);
 
 Hfig3 = figure(3);
 plot(parb_SB(:,1), parb_SB(:,2), 'r', 'linewidth',3) 
 hold on 
 plot(parb_ML(:,1), parb_ML(:,2), 'k', 'linewidth',3) 
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('confidence level')
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_ci_wbl')
-print -r0 -dpng  scale_ci_wbl
+savefig('rate_ci_wbl')
+print -r0 -dpng  rate_ci_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5, 0.5, 0.25, 0.5]);
 
 Hfig4 = figure(4);
 plot(parS_SB(:,1), parS_SB(:,2), 'r', 'linewidth',3) 
 hold on
 plot(parS_ML(:,1), parS_ML(:,2), 'k', 'linewidth',3) 
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('survivor function')
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_sv_wbl')
-print -r0 -dpng  scale_sv_wbl
+savefig('rate_sv_wbl')
+print -r0 -dpng  rate_sv_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.75, 0.5, 0.25, 0.5]);
 
 Hfig5 = figure(5); % surv for loss functions 
@@ -221,7 +221,7 @@ Hfig9 = figure(9);
 xlim([0.5,1.5])
 ylim([0,8])
 title('SB-method')
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('shape parameter, -')
 hold on
 plot(lambda, k, '.g', par_SB0(1), par_SB0(2), '.k', 'markersize',20)
@@ -237,7 +237,7 @@ Hfig10 = figure(10);
 xlim([0.5,1.5])
 ylim([0,8])
 title('ML-method')
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('shape parameter, -')
 hold on
 plot(lambda, k, '.g', par_ML0(1), par_ML0(2), '.k', 'markersize',20)
@@ -260,14 +260,14 @@ plot([0;Mpar_SB;Mpar_SB], [0.5;0.5;0],'r', ...
      [0;Mpar_ML;Mpar_ML], [0.5;0.5;0],'k')
 ylim([0 1])
 xlim([min(Spar_SB(1,1),Spar_ML(1,1)) 2*lambda])
-xlabel('scale parameter, 1/d')
+xlabel('rate parameter, 1/d')
 ylabel('survivor function')
 text(lambda,0.90, ['\color{red}{SB, median = ', num2str(Mpar_SB,'%.3f'), '}'])
 text(lambda,0.85, ['\color{black}{ML}, median = ', num2str(Mpar_ML,'%.3f')])
 % title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda), ', k = ', num2str(k)])
 set(gca, 'FontSize', 15, 'Box', 'on')
-savefig('scale_wbl')
-print -r0 -dpng scale_wbl.png
+savefig('rate_wbl')
+print -r0 -dpng rate_wbl.png
 %set(Hfig20, 'Outerposition',[0 0.5 0.5 0.5]);
 
 Spar_SB = surv(par_SB(:,2)); Spar_ML = surv(par_ML(:,2)); 
