@@ -47,7 +47,7 @@ text(lambda,0.85, ['\color{black}{ML}, median  = ', num2str(Mlambda_ML)])
 set(gca, 'FontSize', 15, 'Box', 'on')
 title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda)])
 savefig('scale_exp')
-print -r0 -dpng 'scale_exp.png'
+print -r0 -dpng 'rate_exp.png'
 %set(Hfig1, 'Outerposition',[50 200 600 600]);
 
 Hfig2 = figure(2); % loss functions

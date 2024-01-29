@@ -51,7 +51,7 @@ text(lambda,0.85, ['\color{black}{ML}, median  = ', num2str(Mpar_ML)])
 title(['n = ', num2str(n), '; N = ', num2str(N), '; \lambda = ', num2str(lambda), ', k = ', num2str(k)])
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('scale_wbl')
-print -r0 -dpng scale_wbl.png
+print -r0 -dpng rate_wbl.png
 %set(Hfig1, 'Outerposition',[0 0.5 0.5 0.5]);
 
 Spar_SB = surv(par_SB(:,2)); Spar_ML = surv(par_ML(:,2)); 
