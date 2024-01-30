@@ -134,15 +134,15 @@ print -r0 -dpng  sample_wbl
 % set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.5, 0.25, 0.5]);
 
 Hfig2 = figure(2); % loss function profile for rate par
-colororder({'k','r'})
+colororder({'r','k'})
 yyaxis left
 plot(rate,F_SB(:,2),'r', 'linewidth',2);
 xlabel('rate parameter, 1/d');
-ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref}}');
 title('Weibull')
 yyaxis right
 plot(rate,F_ML(:,2),'k', 'linewidth',2);
-ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref}}');
 set(gca, 'FontSize', 15, 'Box', 'on')
 set(gca, 'xlim', range(1,:))
 savefig('rate_lf_wbl')
@@ -171,8 +171,8 @@ print -r0 -dpng  rate_sv_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.75, 0.5, 0.25, 0.5]);
 
 Hfig5 = figure(5); % surv for loss functions 
-xlabels{1} = 'F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}';
-xlabels{2} = 'F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}';
+xlabels{1} = 'F_{SB} - F_{SB}^{ref}';
+xlabels{2} = 'F_{ML} - F_{ML}^{ref}';
 ylabels{1} = 'survivor function';
 ylabels{2} = 'survivor function';
 [~,~,~] = plotxx(SFSB(:,1), SFSB(:,2), SFML(:,1), SFML(:,2),  xlabels, ylabels, 'r', 'k');
@@ -182,15 +182,15 @@ print -r0 -dpng  lf_wbl
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.25, 0.5]);
 
 Hfig6 = figure(6); % loss function profile for shape par
-colororder({'k','r'})
+colororder({'r','k'})
 yyaxis left
 plot(shape,F_SB(:,2),'r', 'linewidth',2);
 xlabel('shape parameter, -')
-ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref}}');
 title('Weibull')
 yyaxis right
 plot(shape,F_ML(:,2),'k', 'linewidth',2);
-ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref}}');
 set(gca, 'FontSize', 15)
 set(gca, 'FontSize', 15, 'Box', 'on')
 set(gca, 'xlim', range(2,:))

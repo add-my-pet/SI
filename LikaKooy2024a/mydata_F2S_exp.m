@@ -98,15 +98,15 @@ savefig('sample_exp')
 print -r0 -dpng sample_exp.png
 
 Hfig2 = figure(2); % loss functions
-colororder({'k','r'})
+colororder({'r','k'})
 yyaxis left
 plot(lamb,F_SB,'r', 'linewidth',2);
 xlabel('rate parameter, 1/d');
-ylabel('\color{red}{F_{SB} - F_{SB}^{ref} | F_{SB} \geq F_{SB}^{ref}}');
+ylabel('\color{red}{F_{SB} - F_{SB}^{ref}}');
 title('Exponential')
 yyaxis right
 plot(lamb,F_ML,'k', 'linewidth',2);
-ylabel('\color{black}{F_{ML} - F_{ML}^{ref} | F_{ML} \geq F_{ML}^{ref}}');
+ylabel('\color{black}{F_{ML} - F_{ML}^{ref}}');
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('rate_lf_exp')
 print -r0 -dpng rate_lf_exp
