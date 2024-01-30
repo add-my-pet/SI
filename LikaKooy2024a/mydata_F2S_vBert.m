@@ -217,7 +217,7 @@ print -r0 -dpng vBert
 
 figure(2) % Monte Carlo surv FSB
 plot(surv_FSB(:,1), surv_FSB(:,2), 'r', 'linewidth', 3);
-xlabel('loss function F_{SB} - F_{SB}^{min}')
+xlabel('loss function F_{SB} - F_{SB}^{min} |  F_{SB} \geq F_{SB}^{min} ')
 ylabel('survivor function')
 set(gca, 'FontSize', 15, 'Box', 'on')
 savefig('lf_vBert')
