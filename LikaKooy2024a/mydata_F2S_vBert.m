@@ -59,7 +59,7 @@ L_i  = 4.66; % cm
 L_im = 6.89; % cm
 g    = 0.15; % -
 k_M  = 1.14; % 1/d
-N    = 1000;% # of successful Monte Carlo trials of adding noise (takes lots of time)
+N     = 1000;% # of successful Monte Carlo trials of adding noise (takes lots of time)
 n_range = 100;
   
 % data + prd
@@ -69,17 +69,15 @@ t = linspace(0,115,100)';
 [EL_f, EL_m] = vBert(par_0(:,1), tL_f, tL_m); 
 [L_f, L_m] = vBert(par_0(:,1), t, t); 
 
-% compute cv to be used to generate new datasets
-% cv = the mean of the absolute difference between observed and predicted 
-% values divided by the predicted value
-cv = 0.5 * (sum(abs(tL_f(:,2)-EL_f)./EL_f)/length(EL_f) + sum(abs(tL_m(:,2)-EL_m)./EL_m)/length(EL_m) );
-
 % survivor of F_SB
+% n_Lf = length(EL_f); n_Lm = length(EL_m);
+% sd_f = (mean((EL_f - tL_f(:,2)).^2))^0.5; sd_m = (mean((EL_m - tL_m(:,2)).^2))^0.5;
 % par_MC = zeros(N,5); FSB = zeros(N,1); info = 0; 
 % for i=1:N
 %   while info==0 || FSB(i) < FSB0 || par_MC(i,5) < 1e-3 || par_MC(i,5) > 100
-%     tLf = [tL_f(:,1), add_noise(EL_f, cv, 1)];  
-%     tLm = [tL_m(:,1), add_noise(EL_m, cv, 1)];  
+%     scat_f = sqrt(-2 * log(rand(n_Lf,1))) .* cos(2 * pi * rand(n_Lf,1));
+%     scat_m = sqrt(-2 * log(rand(n_Lm,1))) .* cos(2 * pi * rand(n_Lm,1));
+%     tLf = [tL_f(:,1), EL_f+sd_f*scat_f]; tLm = [tL_m(:,1), EL_m+sd_m*scat_m]; 
 %     [pari, info, FSB(i)] = nmregr('vBert', par_0, tLf, tLm);  
 %     par_MC(i,:) = pari(:,1)';
 %   end
@@ -102,7 +100,7 @@ surv_kM  = [sort([par_0(5,1);par_MC(:,5)]), surv];
 % F_SB profiles starting close to point estimate, working down and up
 % F_SB profile for L_i
 par = par_0; par(2:5,2) = 1; ind = 1:n_range;
-L_i = linspace(1,10,n_range)'; par_L_i = zeros(n_range,5); FSB_L_i = zeros(n_range,1);
+L_i = linspace(3,8,n_range)'; par_L_i = zeros(n_range,5); FSB_L_i = zeros(n_range,1);
 for i=flip(ind(L_i < par_0(2,1)))
   par(2,:) = [L_i(i) 0]; 
   [par, ~, FSB_L_i(i)] = nmregr('vBert', par, tL_f, tL_m); par_L_i(i,:) = par(:,1)';
@@ -118,7 +116,7 @@ save('vBert.mat', 'L_i', 'FSB_L_i', '-append');
 
 % F_SB profile for L_im
 par = par_0; par(2:5,2) = 1; ind = 1:n_range;
-L_im = linspace(2,13,n_range)'; par_L_im = zeros(n_range,5); FSB_L_im = zeros(n_range,1);
+L_im = linspace(5,11,n_range)'; par_L_im = zeros(n_range,5); FSB_L_im = zeros(n_range,1);
 for i=flip(ind(L_im < par_0(3,1)))
   par(3,:) = [L_im(i) 0]; 
   [par, ~, FSB_L_im(i)] = nmregr('vBert', par, tL_f, tL_m); par_L_im(i,:) = par(:,1)';
@@ -176,7 +174,7 @@ for i=1:n_conf
   if length(b)<2; fprintf('L_i\n');end
   Li_bl(i,:) =  [b(1), conf(i)]; Li_bu(i,:) =  [b(2), conf(i)];
   
-  b = rspline1([L_im, FSB_L_im-F]);
+  b = rspline1([L_im, FSB_L_im-F]); 
   if length(b)<2; fprintf('L_im\n');end
   Lim_bl(i,:) =  [b(1), conf(i)]; Lim_bu(i,:) =  [b(2), conf(i)];
   
@@ -217,9 +215,9 @@ print -r0 -dpng vBert
 
 figure(2) % Monte Carlo surv FSB
 plot(surv_FSB(:,1), surv_FSB(:,2), 'r', 'linewidth', 3);
-xlabel('loss function F_{SB} - F_{SB}^{min} |  F_{SB} \geq F_{SB}^{min} ')
+xlabel('loss function F_{SB} - F_{SB}^{min} | F_{SB} \geq F_{SB}^{min}')
 ylabel('survivor function')
-set(gca, 'FontSize', 15, 'Box', 'on')
+set(gca, 'FontSize', 14, 'Box', 'on')
 savefig('lf_vBert')
 print -r0 -dpng lf_vBert
 
@@ -285,7 +283,7 @@ plot(Lim_b(:,1), Lim_b(:,2), 'b', 'linewidth', 3);
 xlabel('ultimate total length L_{\infty}, cm')
 ylabel('confidence level')
 set(gca, 'FontSize', 15, 'Box', 'on')
-ylim([0 1]); xlim([3 11]);
+ylim([0 1]);
 savefig('Li_ci_vBert')
 print -r0 -dpng Li_ci_vBert
 
