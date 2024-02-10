@@ -91,7 +91,7 @@ cv = 0.5 * (sum(abs(tL_f(:,2)-EL_f)./EL_f)/length(EL_f) + sum(abs(tL_m(:,2)-EL_m
 load('vBert.mat', 'par_0', 'FSB0', 'FSB', 'par_MC');
 
 % add point estimate and create survivor functions
-FSB  = [0; FSB - FSB0]; 
+FSB  = [0; FSB(FSB>FSB0) - FSB0]; 
 surv = [1; 1 - ((1:N)' - 0.5)/ N];
 surv_FSB = [sort(FSB), surv]; %FSB01 = spline1(0.01, flip(surv_FSB,2));
 surv_Li  = [sort([par_0(2,1);par_MC(:,2)]), surv];
