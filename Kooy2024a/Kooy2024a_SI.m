@@ -43,15 +43,15 @@ end
    % Sarcostraca
    {'o', 8, 3, [0 0 0], [0 0 0]}, 'Artemiidae';        % Artemiina    brine shrimps
    {'o', 8, 3, [0 0 1], [0 0 0]}, 'Branchinectidae';   % Anostracina  fairy shrimps
-   {'o', 8, 3, [0 0 1], [0 0 1]}, 'Branchipodidae';    % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [0 1 1]}, 'Branchipodidae';    % Anostracina  fairy shrimps
    {'o', 8, 3, [0 0 1], [1 0 1]}, 'Streptocephalidae'; % Anostracina  fairy shrimps
-   {'o', 8, 3, [0 0 1], [1 0 0]}, 'Tanymastigidae';    % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [1 0.65 0]}, 'Tanymastigidae'; % Anostracina  fairy shrimps
    {'o', 8, 3, [0 0 1], [1 1 1]}, 'Thamnocephalidae';  % Anostracina  fairy shrimps
    % Diplostraca
    {'o', 8, 3, [1 0 1], [0 0 0]}, 'Anomopoda';         % Cladocera    waterfleas
-   {'o', 8, 3, [1 0 1], [0 0 1]}, 'Ctenopoda';         % Cladocera    waterfleas
-   {'o', 8, 3, [1 0 1], [1 0 1]}, 'Haplopoda';         % Cladocera    waterfleas
-   {'o', 8, 3, [1 0 1], [1 0 0]}, 'Onychopoda';        % Cladocera    waterfleas
+   {'o', 8, 3, [1 0 1], [0 1 1]}, 'Onychopoda';        % Cladocera    waterfleas
+   {'o', 8, 3, [1 0 1], [1 0 1]}, 'Ctenopoda';         % Cladocera    waterfleas
+   {'o', 8, 3, [1 0 1], [1 0.65 0]}, 'Haplopoda';      % Cladocera    waterfleas
    {'o', 8, 3, [1 0 1], [1 1 1]}, 'Conchostraca';      %              clam shrimps
    % Notostraca
    {'o', 8, 3, [1 0 0], [1 0 0]}, 'Notostraca';        %              tadpole shrimps
@@ -73,7 +73,7 @@ end
      hp_Am = shstat(p_Am, llegend, 'Branchiopoda'); 
      figure(hp_Am)
      xlabel('_{10}log spec assimilation rate, \{p_{Am}\}, J/d.cm^2')
-    %print -r0 -dpng pAm.png
+     print -r0 -dpng pAm.png
 
    case 2 % Fig 1b
      fprintf('case 2\n');
@@ -83,7 +83,7 @@ end
      hv = shstat(v, llegend, 'Branchiopoda'); 
      figure(hv)
      xlabel('_{10}log energy conductance, v, cm/d')
-    %print -r0 -dpng v.png
+     print -r0 -dpng v.png
      
    case 3 % fig 1c
      fprintf('case 3\n');
@@ -92,10 +92,10 @@ end
      [hkap, hleg] = shstat({'kap'}, llegend, 'Branchiopoda');
      figure(hkap)
      xlabel('allocation fraction to soma, \kappa, -')
-    %print -r0 -dpng kap.png
+     print -r0 -dpng kap.png
      
      figure(hleg)
-    %print -r0 -dpng llegend.png
+     print -r0 -dpng llegend.png
      
    case 4 % fig 1d
      fprintf('case 4\n');
@@ -104,7 +104,7 @@ end
      hp_M = shstat({'p_M'}, llegend, 'Branchiopoda'); 
      figure(hp_M)
      xlabel('_{10}log vol-spec somatic maint, [p_M], J/d.cm^3')
-    %print -r0 -dpng pM.png
+     print -r0 -dpng pM.png
 
    case 5 % Fig 1e
      fprintf('case 5\n');
@@ -116,7 +116,7 @@ end
      shstat(aaac(:,1).*aaac(:,4), llegend, [], ha_m); 
      figure(ha_m)
      xlabel('_{10}log age at birth, puberty, death, a_b, a_p, a_m, d')
-    %print -r0 -dpng am.png
+     print -r0 -dpng am.png
 
    case 6 % Fig 1f
      fprintf('case 6\n');
@@ -125,7 +125,7 @@ end
      hE_m = shstat({'E_m'}, llegend, 'Branchiopoda'); 
      figure(hE_m)
      xlabel('_{10}log reserve capacity, [E_m], J/cm^3')
-    %print -r0 -dpng Em.png
+     print -r0 -dpng Em.png
 
    case 7 %  Fig 1g
      fprintf('case 7\n');
@@ -134,7 +134,7 @@ end
      hs_Hbp = shstat({'s_Hbp'}, llegend, 'Branchiopoda'); 
      figure(hs_Hbp)
      xlabel('_{10}log precociality coeff, s_H^{bp}, -')
-    %print -r0 -dpng sHbp.png
+     print -r0 -dpng sHbp.png
 
    case 8 % Fig 1h
      fprintf('case 8\n');
@@ -143,7 +143,7 @@ end
      hs_s = shstat({'s_s'}, llegend, 'Branchiopoda'); 
      figure(hs_s)
      xlabel('_{10}log supply stress, s_s, -')
-    %print -r0 -dpng ss.png
+     print -r0 -dpng ss.png
      
    case 9 % Fig 1i
      fprintf('case 9\n');
@@ -154,7 +154,7 @@ end
      shstat({'Ww_b'}, llegend, [], hWw_i);
      figure(hWw_i)
      xlabel('_{10}log weight at birth, puberty, death, W_w^b, W_w^p, W_w^\infty, g')
-    %print -r0 -dpng Wwi.png
+     print -r0 -dpng Wwi.png
 
    case 10 % Fig 1j
      fprintf('case 10\n');
@@ -173,7 +173,7 @@ end
      shstat(WdW_E, {'g', 'g'}, [], hWdW);   
      figure(hWdW)
      xlabel('_{10}log spec growth at max growth, r, 1/d')
-    %print -r0 -dpng WdW.png
+     print -r0 -dpng WdW.png
      
      shllegend(llegend);
 
@@ -193,7 +193,7 @@ end
      shstat(JOiW_E, {'g', 'g'}, [], hJOiW);   
      figure(hJOiW)
      xlabel('_{10}log ultimate spec respiration, j_O^\infty, mol/d.g')
-    %print -r0 -dpng jOi.png
+     print -r0 -dpng jOi.png
 
      shllegend(llegend);
 
@@ -209,7 +209,7 @@ end
      ylim([-9 -3]);
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log weight at birth, W_w^b, g')
-    %print -r0 -dpng Wwi_Wwb.png
+     print -r0 -dpng Wwi_Wwb.png
 
      hWwi_Wwp = shstat({'Ww_i', 'Ww_p'}, legend, 'Branchipoda'); 
      figure(hWwi_Wwp)
@@ -218,7 +218,7 @@ end
      ylim([-8 0]);
      xlabel('_{10}log max weight, W_w^\infty, g')
      ylabel('_{10}log weight at puberty, W_w^p, g')
-    %print -r0 -dpng Wwi_Wwp.png
+     print -r0 -dpng Wwi_Wwp.png
         
    case 13 % Fig 3a,b
      fprintf('case 13\n');
@@ -234,14 +234,14 @@ end
      ylabel('_{10}log spec neonate mass prod rate, 1/d')
      title('Branchiopoda')
      xlim([.2 1]); ylim([-5 0]);
-    %print -r0 -dpng kap_RWW.png
+     print -r0 -dpng kap_RWW.png
  
      hkap_R = shstat([kNWWa(:,1), kNWWa(:,2)./kNWWa(:,5)], legend);   
      figure(hkap_R)
      xlabel('allocation fraction to soma, \kappa, -')
      ylabel('_{10}log max reprod rate, #/d')
      title('Branchiopoda')
-    %print -r0 -dpng kap_R.png
+     print -r0 -dpng kap_R.png
     
    case 16 % Fig 3a,b
      fprintf('case 16\n');
@@ -260,7 +260,7 @@ end
      xlim([0 4.5]);
      ylim([-9 9]);
      
-    %print -r0 -dpng pM_WdW.png
+     print -r0 -dpng pM_WdW.png
 
      pMpAm = read_allStat({'p_M','p_Am','L_i','Ww_i','s_M'});  
      pMpAm = [pMpAm(:,1).*pMpAm(:,3).^3./pMpAm(:,4), pMpAm(:,2).*pMpAm(:,5).*pMpAm(:,3).^2./pMpAm(:,4)];
@@ -272,10 +272,10 @@ end
      xlim([-0.5 4.5]);
      ylim([-0.5 4.5]);
 
-    %print -r0 -dpng pM_pAm.png
+     print -r0 -dpng pM_pAm.png
  
      figure(hleg)
-    %print -r0 -dpng legend.png
+     print -r0 -dpng legend.png
 
    case 17 % Fig 4, c,d
      fprintf('case 17\n');
@@ -291,7 +291,7 @@ end
      xlim([-9 -2]); ylim([-9 -2]);
      xlabel('_{10}log max respiration rate, mol/d')
      ylabel('_{10}log max neonate mass prod, g/d')
-    %print -r0 -dpng JO_JR.png
+     print -r0 -dpng JO_JR.png
      
      NWb = WWRJ(:,5) .* WWRJ(:,1);
      hWi_NWb = shstat([Wwi, NWb], legend, 'Branchiopoda');
@@ -300,7 +300,7 @@ end
      xlim([-7 2]); ylim([-7 0]);
      xlabel('_{10}log max weight, g')
      ylabel('_{10}log cum neonate mass prod, g')
-    %print -r0 -dpng Wwi_NWb.png
+     print -r0 -dpng Wwi_NWb.png
 
    case 18 % Fig 5a
      fprintf('case 18\n');
@@ -314,10 +314,10 @@ end
      plot([-6; 2], [-2; -4], '-k', 'Linewidth', 2) % slope -0.25
      xlabel('_{10}log ultimate wet weight, g')
      ylabel('_{10}log spec respiration, mol/d.g')     
-    %print -r0 -dpng Wwi_JOiW.png
+     print -r0 -dpng Wwi_JOiW.png
      
      figure(hC)
-    %print -r1200 -dpng legend_Branchiopoda.png
+     print -r0 -dpng legend_Branchiopoda.png
      
    case 19 % Fig 5b
      fprintf('case 19\n');
@@ -331,13 +331,13 @@ end
      plot([1; 2.5], [-2; -3.5], 'k', 'LineWidth', 3) % slope -1
      xlabel('_{10}log life span, d')
      ylabel('_{10}log spec respiration, J_O^\infty/W_w^\infty, mol/d.g')
-    %print -r0 -dpng am_jO.png
+     print -r0 -dpng am_jO.png
      
    case 20 % Fig 6: mds
      fprintf('case 20\n');
      species = select('Branchiopoda');
-     traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
-     % traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'};
+     %traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
+     traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'kap'; 'E_Hb'; 'E_Hp'};
      % traits = {'Ww_i'; 'Ww_p'; 'Ww_b'};
 
      %[y, e] = cMDScale(dist_traits(species, traits)); % configuration matrix, eigenvalues
@@ -351,7 +351,10 @@ end
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'none');
      shstat_options('z_transform', 'none');
-     Hfig = shstat(data, legend, ['Branchiopoda: ', num2str(length(species)), ' @ ', datestr(date,26)]);
+     Hfig = shstat(data, legend);
+     figure(Hfig)
+     txt_title = ['Branchiopoda: ', num2str(length(species)), ' @ ', datestr(date,26)];
+     title(txt_title, 'FontSize',30);
 
     %print -r300 -dpng mds_Branchiopoda.png
      
@@ -654,25 +657,37 @@ end
      shstat_options('x_transform', 'none');
      shstat_options('y_transform', 'none');
  
-  legend = {...
-    %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Paleognathae'
-    {'o', 8, 3, [1 0 0], [1 0 0]}, 'Passeri'
-    {'o', 8, 3, [1 0 1], [1 0 1]}, 'Tyranni'
-    {'o', 8, 3, [0 0 1], [0 0 1]}, 'Galloanserae' 	
-  };
+ legend = { ... % Branchiopoda
+   % Sarcostraca
+   {'o', 8, 3, [0 0 0], [0 0 0]}, 'Artemiidae';        % Artemiina    brine shrimps
+   {'o', 8, 3, [0 0 1], [0 0 0]}, 'Branchinectidae';   % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [0 1 1]}, 'Branchipodidae';    % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [1 0 1]}, 'Streptocephalidae'; % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [1 0.65 0]}, 'Tanymastigidae'; % Anostracina  fairy shrimps
+   {'o', 8, 3, [0 0 1], [1 1 1]}, 'Thamnocephalidae';  % Anostracina  fairy shrimps
+   % Diplostraca
+   {'o', 8, 3, [1 0 1], [0 0 0]}, 'Aradopoda';         % Anomopoda/Oligopoda/Anopoda
+   {'o', 8, 3, [1 0 1], [0 1 0]}, 'Radopoda';          % Anomopoda/Oligopoda/Anopoda
+   {'o', 8, 3, [1 0 1], [1 1 0]}, 'Onychopoda';        % Anomopoda/Oligopoda/Onygopoda
+   {'o', 8, 3, [1 0 1], [0 1 1]}, 'Polypoda';          % Anomopoda/Polypoda
+   {'o', 8, 3, [1 0 1], [1 1 1]}, 'Conchostraca';      %              clam shrimps
+   % Notostraca
+   {'o', 8, 3, [1 0 0], [1 0 0]}, 'Notostraca';        %              tadpole shrimps
+ };
  
     hleg = shlegend(legend);
    %print -r0 -dpng legend.png
 
-     species = [select('Passeriformes');select('Galloanserae')];
-     traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
+     species = select('Branchiopoda');
+     %traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'p_M'; 'v'; 'kap'; 'E_Hb'; 'E_Hp'};
+     traits = {'a_m'; 'a_p'; 'a_b'; 'Ww_i'; 'Ww_p'; 'Ww_b'; 'R_i'; 's_s'; 's_Hbp'; 'kap'; 'E_Hb'; 'E_Hp'};
      [y, e] = cMDScale(dist_traits(species, traits)); % configuration matrix, eigenvalues
      n_traits = length(traits); E = e(n_traits)/e(1);
      fprintf(['With ', num2str(n_traits), ' traits the ', num2str(n_traits), '-th eigenvalue as fraction of the first one is ', num2str(E), '\n'])
 
 
    data = NaN(length(select),3); data(ismember(select,species),:) = y(:,1:3);
-   Hfig = shstat(data, legend, ['Aves: ', num2str(length(species)), ' @ ', datestr(date,26)]);
+   Hfig = shstat(data, legend, ['Branchiopoda: ', num2str(length(species)), ' @ ', datestr(date,26)]);
 
    prt_tab({traits,corr(read_stat(species, traits),y(:,1:2))},{'trait', 'axis 1', 'axis 2'},'Aves');
 
