@@ -38,11 +38,17 @@ end
  shstat_options('x_transform', 'none'); 
  shstat_options('y_transform', 'none'); 
  
- llegend = {... % Branchiopoda
+ llegend = {... % taxa
    {'-', 2, [0 0 0]}, 'Mollusca'; 
    {'-', 2, [0 0 1]}, 'Aves'; 
    {'-', 2, [1 0 0]}, 'Placentalia'; 
   };
+
+ legend = { ... % 
+   {'o', 8, 3, [0 0 0], [0 0 0]}, 'Mollusca';  
+   {'o', 8, 3, [0 0 1], [0 0 1]}, 'Aves';
+   {'o', 8, 3, [1 0 0], [1 0 0]}, 'Placentalia'; 
+ };
 
  for i=1:length(fig)
  
@@ -51,12 +57,28 @@ end
      vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'});
      E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6); 
      
-     effR = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0;
+     effR = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % total reproduction efficiency
      heffR = shstat(effR, llegend, 'Mollusca & Aves & Placentalia'); 
      figure(heffR)
      xlabel('total reproduction efficiency, -')
      print -r0 -dpng effR_Mol_Ave_Pla.png
- 
+
+   case 2  
+     vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'});
+     E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6);  
+     effR = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % total reproduction efficiency
+
+     vars = read_allStat({'Ww_i','Ww_b','N_i'});
+     Ww_i=vars(:,1); Ww_b=vars(:,2); N_i=vars(:,3);
+     nR = Ww_b .* N_i ./ Ww_i; % spec cum reprod mass prod 
+     
+     shstat_options('x_transform', 'log10'); 
+     hnR = shstat([nR effR], legend, 'Mollusca & Aves & Placentalia'); 
+     figure(hnR)
+     xlabel('_{10}log spec cum reprod mass prod, -')
+     ylabel('total reproduction efficiency, -')
+     %print -r0 -dpng nR_effR_Mol_Ave_Pla.png
+      
  end
 end
       
