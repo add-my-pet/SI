@@ -1,4 +1,4 @@
-function Kooy2024a_SI(fig)
+function Kooy2024a\_SI(fig)
 % Supporting Information for Kooy2024a
 % Title: The comparative energetics of the branchiopods
 % Authors: Kooijman
