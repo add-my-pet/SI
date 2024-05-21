@@ -45,9 +45,11 @@ end
   };
 
  legend = { ... % 
-   {'o', 8, 3, [0 0 0], [0 0 0]}, 'Mollusca';  
-   {'o', 8, 3, [0 0 1], [0 0 1]}, 'Aves';
-   {'o', 8, 3, [1 0 0], [1 0 0]}, 'Placentalia'; 
+   {'o', 4, 2, [0 0 0], [1 1 1]}, 'Cephalopoda';  
+   {'o', 4, 2, [0 0 0], [1 0 0]}, 'Gastropoda';  
+   {'o', 4, 2, [0 0 0], [0 0 0]}, 'Mollusca';  
+   {'o', 4, 2, [0 0 1], [0 0 1]}, 'Aves';
+   {'o', 4, 2, [1 0 0], [1 0 0]}, 'Placentalia'; 
  };
 
  for i=1:length(fig)
@@ -55,7 +57,8 @@ end
  switch fig(i)
    case 1 % Fig 1
      vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'});
-     E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6); 
+     E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6);
+     %kap_R = 0.95 + 0*kap_R; % remove simultaneous hermaphrodite allocation
      
      effR = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % total reproduction efficiency
      heffR = shstat(effR, llegend, 'Mollusca & Aves & Placentalia'); 
