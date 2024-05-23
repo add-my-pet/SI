@@ -82,6 +82,23 @@ end
      ylabel('total reproduction efficiency, -')
      %print -r0 -dpng nR_effR_Mol_Ave_Pla.png
       
+   case 3
+     pars = read_stat('Ovis_aries', {'kap','kap_R','g','k_J','k_M','L_T','v','U_Hb','U_Hp'});    
+     vars = read_stat('Ovis_aries', {'L_m','c_T','l_b','l_p','t_g','t_0','p_Am'});
+     L_m=vars(1); c_T=vars(2); l_b=vars(3); l_p=vars(4); t_g=vars(5); t_0=vars(6); p_Am=vars(7); v=pars(7); 
+     
+     pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L_m, 1, pars, l_b, l_p); p_Di = pACSJGRD(7); % J/d, dissipation for adult female
+     
+     a = linspace(1e-3,t_g,100)'; L = c_T * v * a/ 3; t=[1e-4; t_0 + a]; L = [0; L];
+     pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_De = pACSJGRD(:,7); % J/d, dissipation for foetus
+     
+     figure
+     plot(t*24,p_Di*ones(101,1)/24,'k','linewidth',2); hold on
+     plot(t*24,(p_Di+p_De)/24,'r','linewidth',2);
+     xlabel('time since start of foetal development, h')
+     ylabel('heat of foetus + mother, J/h')
+     print -r0 -dpng t_pD_Ovis.png
+
  end
 end
       
