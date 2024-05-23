@@ -40,7 +40,8 @@ end
  
  llegend = {... % taxa
    {'-', 2, [0 0 0]}, 'Mollusca'; 
-   {'-', 2, [0 0 1]}, 'Aves'; 
+   {'-', 2, [0 0 1]}, 'Squamata'; 
+   {'-', 2, [1 0 1]}, 'Aves'; 
    {'-', 2, [1 0 0]}, 'Placentalia'; 
   };
 
@@ -61,10 +62,10 @@ end
      %kap_R = 0.95 + 0*kap_R; % remove simultaneous hermaphrodite allocation
      
      effR = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % total reproduction efficiency
-     heffR = shstat(effR, llegend, 'Mollusca & Aves & Placentalia'); 
+     heffR = shstat(effR, llegend, 'Mollusca & Squamata & Aves & Placentalia'); 
      figure(heffR)
      xlabel('total reproduction efficiency, -')
-     print -r0 -dpng effR_Mol_Ave_Pla.png
+     print -r0 -dpng effR.png
 
    case 2  
      vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'});
@@ -98,6 +99,11 @@ end
      xlabel('time since start of foetal development, h')
      ylabel('heat of foetus + mother, J/h')
      print -r0 -dpng t_pD_Ovis.png
+     
+     % integrated foetal heat: estimate by GintCame2024 3600*(4.3e5-2.9e5)/2=252 MJ
+     ip_b = ispline1([0;t_g], [t,p_De]);
+     fprintf('integrated heat difference over gestation period: %d J\n',ip_b(2))
+     % this is 16.5 MJ, so a fraction of 0.0655 of the value of GintCame2024
 
  end
 end
