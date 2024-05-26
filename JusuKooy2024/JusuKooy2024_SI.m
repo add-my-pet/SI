@@ -89,7 +89,8 @@ end
      L_m=vars(1); c_T=vars(2); l_b=vars(3); l_p=vars(4); t_g=vars(5); t_0=vars(6); p_Am=vars(7); ome=vars(8); v=pars(7); 
      
      L = (50000/(1+ome))^(1/3); % cm, structural length of a 50 kg ewe
-     pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_Di = pACSJGRD(7); % J/d, dissipation for a 50 kg ewe
+     pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_Di_ref = pACSJGRD(7); % J/d, dissipation for a 50 kg ewe
+     p_Di_ref = p_Di_ref/24; % J/h, dissipation for a 50 kg ewe
      
      a = linspace(1e-3,t_g,100)'; L = c_T * v * a/ 3; t=[1e-4; t_0 + a]; L = [0; L];
      pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_De = pACSJGRD(:,7); % J/d, dissipation for foetus
@@ -121,10 +122,12 @@ end
 
      ip_b_DEB = ispline1([0;t_g*24], [t,p_De]);
      fprintf('integrated heat difference over gestation period for DEB predictions: %g MJ\n',ip_b_DEB(2)/1e6)
-     % this is 16.5 MJ, so a fraction of 0.0655 of the value of GintCame2024
      %
-     tp = tpD; tp(:,2) = tp(:,2) - tp(1,2);
-     ip_b_BrocMcDo1963 = ispline([0;24*140],tp);
+     ip_b_DEB = ispline1([0;t_g*24], [t,p_De*p_Di/p_Di_ref]); 
+     fprintf('integrated heat difference over gestation period for corrected DEB predictions: %g MJ\n',ip_b_DEB(2)/1e6)
+     %
+     tp = tpD; tp(:,2) = tp(:,2) - tp(1,2); 
+     ip_b_BrocMcDo1963 = ispline1([0;24*140],tp);
      fprintf('integrated heat difference over gestation period for BrocMcDo1963 data: %g MJ\n',ip_b_BrocMcDo1963(2)/1e6)
      %
      ip_b_GintCame2024 = (4.3e5-2.9e5)*24*140/2; 
@@ -133,11 +136,12 @@ end
      figure
      hold on
      t_b = 140*24; plot([t_b;t_b], [p_Di;4.5e5],'y', 'linewidth', 4) % line for birth
-     plot(t,p_Di+p_De*0,'k','linewidth',2);  % baseline
+     plot(t,p_Di+p_De*0,'k','linewidth',2) % baseline
      plot(tpD(:,1), tpD(:,2), '.b', 'Markersize', 15) % BrocMcDo1963 data points
      plot(tpD(:,1), tpD(:,2), 'b', 'linewidth', 2) % BrocMcDo1963 data points connections
      plot([0;24*140], [2.9e5; 4.3e5], 'm', 'linewidth', 2) % GintCame2024 "data"
      plot(t,p_Di+p_De,'r','linewidth',2) % DEB predictions based on AmP pars
+     plot(t,p_Di+p_De*p_Di/p_Di_ref,'g','linewidth',2) % DEB predictions based on AmP pars
      xlabel('time since start of foetal development, h')
      ylabel('heat of foetus + mother, J/h')
      print -r0 -dpng t_pD_Ovis.png
