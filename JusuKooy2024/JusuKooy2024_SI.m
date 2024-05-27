@@ -90,13 +90,14 @@ end
      
      L = (50000/(1+ome))^(1/3); % cm, structural length of a 50 kg ewe
      pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_Di_ref = pACSJGRD(7); % J/d, dissipation for a 50 kg ewe
-     p_Di_ref = p_Di_ref/24; % J/h, dissipation for a 50 kg ewe
+     p_Di_ref = p_Di_ref/24; % J/h, dissipation for a 50 kg ewe according to AmP, for an ewe with Wwi = 86 kg
      
      a = linspace(1e-3,t_g,100)'; L = c_T * v * a/ 3; t=[1e-4; t_0 + a]; L = [0; L];
      pACSJGRD = c_T*p_Am*L_m^2*scaled_power(L, 1, pars, l_b, l_p); p_De = pACSJGRD(:,7); % J/d, dissipation for foetus
      t = t*24; % convert d to h
      p_De = p_De/24; % convert J/d to J/h
      
+     % data from BrocMcDo1963 for a 50 kg ewe
      tpD = [ ... % time since copulation (d), heat of 50 kg ewe plus foetus (kcal/d)      
         0.000	1704.565
        20.276	1676.306
@@ -116,14 +117,17 @@ end
       181.877	2809.729
       192.354	2884.205];
      tpD(:,1) = tpD(:,1)*24; % convert d to h
-     tpD(:,2) = tpD(:,2)*4184/24; % convert kcal/d to J/h and set origin at zero
-     % data from BrocMcDo1963 for a 50 kg ewe
+     tpD(:,2) = tpD(:,2)*4184/24; % convert kcal/d to J/h
      p_Di = tpD(1,2); % J/h
-
-     ip_b_DEB = ispline1([0;t_g*24], [t,p_De]);
+     
+     % report about the ewe
+     fprintf('heat production of a 50 kg ewe with AmP pars, (Wwi = 86 kg): %g MJ/h\n', p_Di_ref/1e6)
+     fprintf('heat production of a 50 kg ewe according to BrocMcDo1963: %g MJ/h\n\n', p_Di/1e6)
+     
+     ip_b_DEB = ispline1([0;(t_0+t_g)*24], [t,p_De]);
      fprintf('integrated heat difference over gestation period for DEB predictions: %g MJ\n',ip_b_DEB(2)/1e6)
      %
-     ip_b_DEB = ispline1([0;t_g*24], [t,p_De*p_Di/p_Di_ref]); 
+     ip_b_DEB = ispline1([0;(t_0+t_g)*24], [t,p_De*p_Di/p_Di_ref]); 
      fprintf('integrated heat difference over gestation period for corrected DEB predictions: %g MJ\n',ip_b_DEB(2)/1e6)
      %
      tp = tpD; tp(:,2) = tp(:,2) - tp(1,2); 
@@ -141,7 +145,7 @@ end
      plot(tpD(:,1), tpD(:,2), 'b', 'linewidth', 2) % BrocMcDo1963 data points connections
      plot([0;24*140], [2.9e5; 4.3e5], 'm', 'linewidth', 2) % GintCame2024 "data"
      plot(t,p_Di+p_De,'r','linewidth',2) % DEB predictions based on AmP pars
-     plot(t,p_Di+p_De*p_Di/p_Di_ref,'g','linewidth',2) % DEB predictions based on AmP pars
+     plot(t,p_Di+p_De*p_Di/p_Di_ref,':','color','r','linewidth',2) % DEB predictions based on AmP pars
      xlabel('time since start of foetal development, h')
      ylabel('heat of foetus + mother, J/h')
      print -r0 -dpng t_pD_Ovis.png
