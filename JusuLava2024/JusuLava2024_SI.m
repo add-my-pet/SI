@@ -1,10 +1,10 @@
-function JusuKooy2024_SI(fig)
-% Supporting Information for JusuKooy2024
-% Title: Comment on "Metabolic loads and the costs of metazoan reproduction"
-% Authors: Jusup, Kooijman
+function JusuLava2024_SI(fig)
+% Supporting Information for JusuLava2024
+% Title: Correcting the exaggerated energy costs of reproduction in metazoans
+% Authors: Jusup, Lavaud and others
 % Journal: Science
 % DOI: 
-% Date: 2024/05/20
+% Date: 2024/06/27
 % 
 % Matlab scripts to generate the figures in the publication
 %
