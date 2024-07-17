@@ -67,14 +67,15 @@ end
        shstat_options('x_label', 'off'); 
        shstat_options('x_transform', 'none'); 
        shstat_options('y_transform', 'none'); 
-       legend=legend_aves; legend(end,:)=[]; % remove none-aves 
+       %legend=legend_aves; legend(end,:)=[]; % remove none-aves 
+       legend=legend_vert; 
 
        kapRtot = get_kapRtot(read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'}));
        kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); kapRA = kapRA(:,1);
-       Hfig = shstat([kapRtot,kapRA],legend,'reprod investment vs efficiency');
+       Hfig = shstat([kapRtot,kapRA],legend,'reprod investment vs efficiency in vertebrates');
        figure(Hfig)
        xlabel('\kappa_R^{tot}, -'); ylabel('\kappa_R^A, -');
-       % saveas(gcf,'kapRtot_kapRA.png')
+       % saveas(gcf,'kapRtot_kapRA_vert.png')
    end
  end
 end
