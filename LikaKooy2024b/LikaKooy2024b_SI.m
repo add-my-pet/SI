@@ -67,8 +67,6 @@ end
    switch fig(i)
      case 1 %  kapRtot_kapRA
        shstat_options('default');
-       shstat_options('y_label', 'off'); 
-       shstat_options('x_label', 'off'); 
        shstat_options('x_transform', 'none'); 
        shstat_options('y_transform', 'none'); 
        shstat_options('z_transform', 'none'); 
@@ -85,8 +83,6 @@ end
        shstat_options('default');
        shstat_options('x_transform', 'none');
        shstat_options('y_transform', 'none');
-       shstat_options('x_label', 'on');
-       shstat_options('y_label', 'on');
        kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
        kap = read_allStat('kap');
        [Hfig, Hleg] = shstat([kapRA(:,1),kap], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
