@@ -71,6 +71,7 @@ end
        shstat_options('x_label', 'off'); 
        shstat_options('x_transform', 'none'); 
        shstat_options('y_transform', 'none'); 
+       shstat_options('z_transform', 'none'); 
 
        kapRtot = get_kapRtot(read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'}));
        kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
@@ -119,6 +120,16 @@ end
        xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
        % saveas(gcf,'kap_ss_kapRA_vert.png')
 
-   end
+     case 5 % Wwb_kapRtot
+       shstat_options('default');
+       shstat_options('y_transform', 'none');
+       kapRtot = get_kapRtot(read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'}));
+       Wwb = read_allStat('Ww_b');
+       [Hfig, Hleg] = shstat([Wwb,kapRtot], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
+    
+       figure(Hfig) % add items to figure
+       xlabel('_{10}log W_w^b, g'); ylabel('kap_R^{tot}, -'); 
+       % saveas(gcf,'Wwb_kapRtot_vert.png')
+  end
  end
 end
