@@ -53,6 +53,10 @@ end
     {'o', 4, 2, [1 0 0], [1 0 0]}, 'Cephalopoda'; ....
   };
 
+  %legend=legend_aves; legend(end,:)=[]; % remove non-aves 
+  %legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
+  legend=legend_vert; 
+
  close all
  shstat_options('default');
  shstat_options('y_label', 'on'); 
@@ -67,15 +71,57 @@ end
        shstat_options('x_label', 'off'); 
        shstat_options('x_transform', 'none'); 
        shstat_options('y_transform', 'none'); 
-       %legend=legend_aves; legend(end,:)=[]; % remove none-aves 
-       legend=legend_vert; 
 
        kapRtot = get_kapRtot(read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'}));
-       kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); kapRA = kapRA(:,1);
-       Hfig = shstat([kapRtot,kapRA],legend,'reprod investment vs efficiency in vertebrates');
-       figure(Hfig)
-       xlabel('\kappa_R^{tot}, -'); ylabel('\kappa_R^A, -');
-       % saveas(gcf,'kapRtot_kapRA_vert.png')
+       kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+       kap = read_allStat('kap');
+       Hfig = shstat([kapRtot,kapRA(:,1),kap],legend,['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+       figure(Hfig) % add items to figure
+       xlabel('\kappa_R^{tot}, -'); ylabel('\kappa_R^A, -'); zlabel('\kappa, -');
+       % saveas(gcf,'kapRtot_kapRA_kap_vert.png')
+       
+     case 2 % kapRA_kap
+       shstat_options('default');
+       shstat_options('x_transform', 'none');
+       shstat_options('y_transform', 'none');
+       shstat_options('x_label', 'on');
+       shstat_options('y_label', 'on');
+       kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+       kap = read_allStat('kap');
+       [Hfig, Hleg] = shstat([kapRA(:,1),kap], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
+    
+       figure(Hfig) % add items to figure
+       xlabel('\kappa_R^A, -'); ylabel('\kappa, -');
+       % saveas(gcf,'kapRA_kap_vert.png')
+
+     case 3 % kapRtot_kap
+       shstat_options('default');
+       shstat_options('x_transform', 'none');
+       shstat_options('y_transform', 'none');
+       shstat_options('x_label', 'on');
+       shstat_options('y_label', 'on');
+       kapRtot = get_kapRtot(read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V'}));
+       kap = read_allStat('kap');
+       [Hfig, Hleg] = shstat([kapRtot(:,1),kap], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
+    
+       figure(Hfig) % add items to figure
+       xlabel('\kappa_R^{tot}, -'); ylabel('\kappa, -');
+       % saveas(gcf,'kapRtot_kap_vert.png')
+
+     case 4 % kap_ss_kapRA
+       shstat_options('default');
+       shstat_options('x_transform', 'none');
+       shstat_options('y_transform', 'none');
+       shstat_options('x_label', 'on');
+       shstat_options('y_label', 'on');
+       kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+       kap_ss = read_allStat({'kap','s_s'});
+       [Hfig, Hleg] = shstat([kap_ss,kapRA(:,1)], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
+    
+       figure(Hfig) % add items to figure
+       xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+       % saveas(gcf,'kap_ss_kapRA_vert.png')
+
    end
  end
 end
