@@ -114,6 +114,15 @@ end
     
        figure(Hfig) % add items to figure
        xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+       kap = linspace(1e-8, 1, 15)'; ss = linspace(1e-8, 4/27, 15); kapRA = 1 - kap*ones(1,15) - kap.^-2*ss; % set x,y,z values
+       mesh(kap,ss,kapRA'); % add surface to figure
+       kap = linspace(0,1,100)'; ss= kap.^2.*(1-kap); plot3(kap,ss,0*kap);
+       % define colormap for mesh: k->b->m->r->white
+       xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+       Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+       colormap(Hfig, Colmap) % set color map to add_my_pet colors 
+       caxis([0 1])
+
        % saveas(gcf,'kap_ss_kapRA_vert.png')
 
      case 5 % Wwb_kapRtot
