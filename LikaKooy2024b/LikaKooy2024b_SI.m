@@ -58,10 +58,7 @@ end
   legend=legend_vert; 
 
  close all
- shstat_options('default');
- shstat_options('y_label', 'on'); 
- shstat_options('x_label', 'off'); 
-  
+
  for i=1:length(fig)
  
    switch fig(i)
@@ -114,7 +111,7 @@ end
     
        figure(Hfig) % add items to figure
        xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
-       kap = linspace(1e-8, 1, 15)'; ss = linspace(1e-8, 4/27, 15); kapRA = 1 - kap*ones(1,15) - kap.^-2*ss; % set x,y,z values
+       kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
        mesh(kap,ss,kapRA'); % add surface to figure
        kap = linspace(0,1,100)'; ss= kap.^2.*(1-kap); plot3(kap,ss,0*kap);
        % define colormap for mesh: k->b->m->r->white
