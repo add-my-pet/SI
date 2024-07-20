@@ -54,8 +54,8 @@ end
   };
 
   %legend=legend_aves; legend(end,:)=[]; % remove non-aves 
-  %legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
-  legend=legend_vert; 
+  legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
+  %legend=legend_vert; 
 
  close all
 
@@ -132,6 +132,54 @@ end
        figure(Hfig) % add items to figure
        xlabel('_{10}log W_w^b, g'); ylabel('kap_R^{tot}, -'); 
        % saveas(gcf,'Wwb_kapRtot_vert.png')
+       
+     case 6 % kapRAopt_kap_m: kappa that maximizes p_R/p_A or R_i
+       shstat_options('default');
+       shstat_options('x_transform', 'none');
+       shstat_options('y_transform', 'none');
+       
+       par = read_stat('Vertebrata',{'kap','kap_R','p_Am','v','p_M','k_J','E_G','E_Hb','E_Hj','E_Hp','s_M'}); 
+       mod = read_stat('Vertebrata',{'model'}); 
+       [kap_m, R_m, R_i] = get_kapm(mod,par); 
+       
+       res = get_max_kapRA(par(:,[3 5 6 10 11 1])); kap_opt = res(:,1); kapRA_opt = res(:,2);
+       % shstat wants to have data-values for all entries, to make selections as specified in legend
+       load ('n_entries.mat'); data = NaN(n_entries,2); data(select_01('Vertebrata'),:) = [kap_opt,kap_m];
+
+       [Hfig, Hleg] = shstat(data, legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+
+       figure(Hfig) % add items to figure
+       xlabel('\kappa that maximizes \kappa_R^A'); ylabel('\kappa that maximizes R_\infty'); 
+       % saveas(gcf,'kapRAopt_kap_m_vert.png')
+       
+       % actual R_i/R_m - \kappa_R^A/max \kappa_R^A
+       res = get_kapRA(read_stat('Vertebrata',{'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); s_RA = res(:,1)./kapRA_opt; 
+       s_R = R_i./R_m; data(select_01('Vertebrata'),:) = [s_RA,s_R];
+       
+       [Hfig1, Hleg1] = shstat(data, legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+       figure(Hfig1) % add items to figure
+       xlabel('\kappa_R^A/ max \kappa_R^A'); ylabel('R_\infty/ max R_\infty'); 
+       % saveas(gcf,'sRA_sR.png')
+
   end
  end
 end
+
+function [kap_m, R_m, R_i] = get_kapm(mod, par)
+  %nm=select; 
+  n=size(par,1); kap_m = NaN(n,1); R_m = NaN(n,1); R_i = NaN(n,1); dkap = 1e-4;
+  get_kap = @(kap,mod,pari,dkap) (reprod_rate_max(mod,[kap, pari]) - reprod_rate_max(mod,[kap-dkap, pari]))/ dkap;
+  
+  for i=1:n
+    R_i(i) = reprod_rate_max(mod{i}, par(i,:));
+    if ~isnan(R_i(i))
+      try
+        kap_m(i) = fzero(@(kap) get_kap(kap,mod{i},par(i,2:end),dkap), 0.45);
+        R_m(i) = reprod_rate_max(mod{i},[kap_m(i), par(i,2:end)]);
+        if R_m(i) < R_i(i); keyboard; end
+        fprintf('%g %s %s %g %g & %g %g\n',i, nm{i}, mod{i}, par(i,1), R_i(i), kap_m(i), R_m(i));
+      end
+    end
+  end
+end
+
