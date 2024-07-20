@@ -152,7 +152,7 @@ end
        xlabel('\kappa that maximizes \kappa_R^A'); ylabel('\kappa that maximizes R_\infty'); 
        % saveas(gcf,'kapRAopt_kap_m_vert.png')
        
-       % actual R_i/R_m - \kappa_R^A/max \kappa_R^A
+       % actual R_i/max R_m - \kappa_R^A/max \kappa_R^A
        res = get_kapRA(read_stat('Vertebrata',{'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); s_RA = res(:,1)./kapRA_opt; 
        s_R = R_i./R_m; data(select_01('Vertebrata'),:) = [s_RA,s_R];
        
