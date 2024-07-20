@@ -54,8 +54,8 @@ end
   };
 
   %legend=legend_aves; legend(end,:)=[]; % remove non-aves 
-  legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
-  %legend=legend_vert; 
+  %legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
+  legend=legend_vert; 
 
  close all
 
