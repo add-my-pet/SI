@@ -51,6 +51,20 @@ end
     {'o', 4, 2, [1 0 0], [1 0 0]}, 'Cephalopoda'; ....
   };
 
+  % type, size, linewidth, edge color and face color of a marker, taxon
+  legend_vert = {...
+        {'o', 5, 2, [0 0 0], [0 0 0]}, 'Cyclostomata'
+        {'o', 5, 2, [0 0 1], [0 1 1]}, 'Chondrichthyes'
+        {'o', 5, 2, [0 0 1], [0 0 0]}, 'Actinopterygii'
+        {'o', 5, 2, [0 0 1], [1 0 1]}, 'Latimeria'
+        {'o', 5, 2, [0 0 1], [1 0 0]}, 'Dipnoi'
+        {'o', 5, 2, [1 0 1], [0 1 1]}, 'Amphibia'
+        {'o', 5, 2, [1 0 1], [1 0 1]}, 'Lepidosauria'
+        {'o', 5, 2, [1 0 0], [1 0 0]}, 'Aves'
+        {'o', 5, 2, [1 0 0], [0 0 1]}, 'Archelosauria'
+        {'o', 5, 2, [1 .5 .5], [1 .5 .5]} 'Mammalia'
+  };
+
   %legend=legend_aves; legend(end,:)=[]; % remove non-aves 
   %legend=legend_mamm; legend(end,:)=[]; % remove non-mammels
   legend=legend_vert; 
@@ -120,7 +134,7 @@ end
         
         set(Hfig,'units','centimeters', 'position',[2,2,20,20])        
         view([60 30])
-        rotate3D(Hfig, 'kap_ss_kapRA_vert');
+        rotate3D(Hfig, 'kap_ss_kapRA_vert', 20);
         %saveas(gcf,'kap_ss_kapRA_vert.png')
 
       case 5 % Wwb_kapRtot
