@@ -107,7 +107,7 @@ end
         kap_ss = read_allStat({'kap','s_s'});
         [Hfig, Hleg] = shstat([kap_ss,kapRA(:,1)], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
     
-        figure(Hfig) % add items to figure
+        figure(Hfig)
         xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
         kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
         mesh(kap,ss,kapRA'); % add surface to figure
@@ -117,8 +117,11 @@ end
         Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
         colormap(Hfig, Colmap) % set color map to add_my_pet colors 
         caxis([0 1])
-
-        % saveas(gcf,'kap_ss_kapRA_vert.png')
+        
+        Hfig.WindowState = 'maximized';
+        view([60 30])
+        rotate3D(Hfig, 100, 'kap_ss_kapRA_vert');
+        %saveas(gcf,'kap_ss_kapRA_vert.png')
 
       case 5 % Wwb_kapRtot
         shstat_options('default');
@@ -159,11 +162,19 @@ end
         xlabel('\kappa_R^A/ max \kappa_R^A'); ylabel('R_\infty/ max R_\infty'); 
         % saveas(gcf,'sRA_sR.png')
        
+        shstat_options('x_transform', 'none');
+        shstat_options('y_label', 'on'); % if 'off' (default), no `survivor function' shown on yaxis
+        Hfigkap = shstat(data(:,1), {'b', 'b'}, ['vertebrates @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        shstat(data(:,2), {'r', 'r'}, '', Hfigkap);
+        figure(Hfigkap)
+        xlabel('\color{blue}{R_\infty/max R_\infty}, \color{red}{\kappa_R^A/max \kappa_R^A}');      
+        % saveas(gcf,'surv_sRA_sR.png')
+
         % kap_Wwb
         shstat_options('y_transform', 'log10');
-        [Hfig2, Hleg2] = shstat({'kap','Ww_b'}, legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+        [Hfig2, Hleg2] = shstat({'kap','Ww_b'}, legend, ['vertebrates @ ', datestr(datenum(date), 'yyyy/mm/dd')]); 
         figure(Hfig2) % add items to figure
-        xlabel('\kappa'); ylabel('_{10} logW_w^b, g'); xlim([0 1]);
+        xlabel('\kappa'); ylabel('_{10}log W_w^b, g'); xlim([0 1]);
         % saveas(gcf,'kap_Wwb.png')
      
     end
