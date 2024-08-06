@@ -118,9 +118,9 @@ end
         colormap(Hfig, Colmap) % set color map to add_my_pet colors 
         caxis([0 1])
         
-        Hfig.WindowState = 'maximized';
+        set(Hfig,'units','centimeters', 'position',[2,2,20,20])        
         view([60 30])
-        rotate3D(Hfig, 100, 'kap_ss_kapRA_vert');
+        rotate3D(Hfig, 'kap_ss_kapRA_vert');
         %saveas(gcf,'kap_ss_kapRA_vert.png')
 
       case 5 % Wwb_kapRtot
