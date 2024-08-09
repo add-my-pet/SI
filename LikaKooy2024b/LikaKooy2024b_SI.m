@@ -145,14 +145,14 @@ end
         caxis([0 1])
         %
         set(Hfig,'units','centimeters', 'position',[2,2,20,20])        
-        view([60 30])
+        view([60 20])
         rotate3D(Hfig, 'kap_ss_kapRA_vert', 20);
         %saveas(gcf,'kap_ss_kapRA_vert.png')
         %
         figure(Hleg)
         saveas(gcf,'legend_kap_ss_kapRA_vert.png')
 
-        [Hfigi, Hlegi] = shstat([kap_ss,kapRA(:,1)], legend_invert, [num2str(n_invert),' invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+        [Hfigi, Hlegi] = shstat([kap_ss,kapRA(:,1)], legend_invert, [num2str(n_invert), ' invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
         %
         figure(Hfigi)
         xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -'); 
@@ -163,7 +163,7 @@ end
         caxis([0 1])
         %
         set(Hfigi,'units','centimeters', 'position',[2,2,20,20])        
-        view([60 30])
+        view([60 20])
         rotate3D(Hfigi, 'kap_ss_kapRA_invert', 20);
         %saveas(gcf,'kap_ss_kapRA_invert.png')
         %
