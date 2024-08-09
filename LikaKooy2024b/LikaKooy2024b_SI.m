@@ -62,7 +62,17 @@ end
         {'o', 5, 2, [1 0 1], [1 0 1]}, 'Lepidosauria'
         {'o', 5, 2, [1 0 0], [1 0 0]}, 'Aves'
         {'o', 5, 2, [1 0 0], [0 0 1]}, 'Archelosauria'
-        {'o', 5, 2, [1 .5 .5], [1 .5 .5]} 'Mammalia'
+        {'o', 5, 2, [1 .5 .5], [1 .5 .5]}, 'Mammalia'
+  };
+
+  legend_invert = {...
+        {'o', 5, 2, [0 0 0], [0 0 0]}, 'Radiata'
+        {'o', 5, 2, [0 0 0], [0 0 1]}, 'Xenacoelomorpha'
+        {'o', 5, 2, [0 0 1], [0 0 1]}, 'Spiralia'
+        {'o', 5, 2, [1 0 1], [1 0 1]}, 'Ecdysozoa'
+        {'o', 5, 2, [1 0 0], [1 0 0]}, 'Echinodermata'
+        {'o', 5, 2, [1 0 0], [1 0 1]}, 'Cephalochordata'
+        {'o', 5, 2, [1 0 0], [0 0 1]}, 'Tunicata'
   };
 
   %legend=legend_aves; legend(end,:)=[]; % remove non-aves 
@@ -117,25 +127,48 @@ end
         shstat_options('x_transform', 'none');
         shstat_options('y_transform', 'none');
         shstat_options('z_transform', 'none');
+        Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75]; % define colormap for mesh: k->b->m->r->white
         kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
         kap_ss = read_allStat({'kap','s_s'});
-        [Hfig, Hleg] = shstat([kap_ss,kapRA(:,1)], legend, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
-    
+        kap_mesh = linspace(.005,1,50)'; ss_mesh = linspace(1e-8, 4/27, 50); kapRA_mesh = 1 - kap_mesh*ones(1,50) - kap_mesh.^-2*ss_mesh; % set x,y,z values
+        kap = linspace(0,1,100)'; ss= kap.^2.*(1-kap);
+        n_vert = length(select('Vertebrata')); n_invert = length(select) - n_vert;
+
+        [Hfig, Hleg] = shstat([kap_ss,kapRA(:,1)], legend_vert, [num2str(n_vert),' vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+        %
         figure(Hfig)
         xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
-        kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
-        mesh(kap,ss,kapRA'); % add surface to figure
-        kap = linspace(0,1,100)'; ss= kap.^2.*(1-kap); plot3(kap,ss,0*kap);
-        % define colormap for mesh: k->b->m->r->white
+        mesh(kap_mesh,ss_mesh,kapRA_mesh'); % add surface to figure
+        plot3(kap,ss,0*kap, 'color','k');
         xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
-        Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
         colormap(Hfig, Colmap) % set color map to add_my_pet colors 
         caxis([0 1])
-        
+        %
         set(Hfig,'units','centimeters', 'position',[2,2,20,20])        
         view([60 30])
         rotate3D(Hfig, 'kap_ss_kapRA_vert', 20);
         %saveas(gcf,'kap_ss_kapRA_vert.png')
+        %
+        figure(Hleg)
+        saveas(gcf,'legend_kap_ss_kapRA_vert.png')
+
+        [Hfigi, Hlegi] = shstat([kap_ss,kapRA(:,1)], legend_invert, [num2str(n_invert),' invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); 
+        %
+        figure(Hfigi)
+        xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -'); 
+        mesh(kap_mesh,ss_mesh,kapRA_mesh'); % add surface to figure
+        plot3(kap,ss,0*kap, 'color','k');
+        xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+        colormap(Hfigi, Colmap) % set color map to add_my_pet colors 
+        caxis([0 1])
+        %
+        set(Hfigi,'units','centimeters', 'position',[2,2,20,20])        
+        view([60 30])
+        rotate3D(Hfigi, 'kap_ss_kapRA_invert', 20);
+        %saveas(gcf,'kap_ss_kapRA_invert.png')
+        %
+        figure(Hlegi)
+        saveas(gcf,'legend_kap_ss_kapRA_invert.png')
 
       case 5 % Wwb_kapRtot
         shstat_options('default');
