@@ -223,7 +223,16 @@ end
         figure(Hfig2) % add items to figure
         xlabel('\kappa'); ylabel('_{10}log W_w^b, g'); xlim([0 1]);
         % saveas(gcf,'kap_Wwb.png')
-     
+        
+      case 7 % rB_am: am = 3/r_B for fish... 
+        shstat_options('default') 
+        rB_am = read_allStat({'r_B','a_m'}); am = rB_am(:,2); am_pred = 3./rB_am(:,1);
+        Hfig = shstat([am,am_pred], legend_fish, ['fish @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        
+        figure(Hfig)
+        xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
+        plot([1;5], [1;5], 'k', 'linewidth',1)
+   
     end
   end
 end
