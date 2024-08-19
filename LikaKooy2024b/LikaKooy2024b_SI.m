@@ -232,24 +232,30 @@ end
       case 7 % rB_am: am = 3/r_B for fish... 
         shstat_options('default') 
         rB_am = read_allStat({'r_B','a_m'}); am = rB_am(:,2); am_pred = 3./rB_am(:,1);
-        Hfig = shstat([am,am_pred], legend_fish, ['fish @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
         
+        Hfig = shstat([am,am_pred], legend_fish, ['fish @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        %
         figure(Hfig)
         xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
         plot([1;5], [1;5], 'k', 'linewidth',1)
         
         Hfigh = shstat([am,am_pred*10], legend_homo, ['homeotherms @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
-        
+        %
         figure(Hfigh)
         xlabel('life span, a_m, d'); ylabel('predicted life span, 30/r_B, d');
         plot([2;5.5], [2;5.5], 'k', 'linewidth',1)
 
         Hfigm = shstat([am,am_pred], legend_moll, ['molluscs @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
-        
+        %
         figure(Hfigm)
         xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
         plot([1;5], [1;5], 'k', 'linewidth',1)
  
+        Hfigc = shstat([am,am_pred], legend_crus, ['crustaceans @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        %
+        figure(Hfigc)
+        xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
+        plot([0.5;5], [0.5;5], 'k', 'linewidth',1)
     end
   end
 end
