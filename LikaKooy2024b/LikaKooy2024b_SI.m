@@ -51,6 +51,11 @@ end
     {'o', 4, 2, [1 0 0], [1 0 0]}, 'Cephalopoda'; ....
   };
 
+  legend_homo = {...
+    {'o', 4, 2, [1 0 0], [1 0 0]}, 'Aves'; ....
+    {'o', 4, 2, [0 0 1], [0 0 1]}, 'Mammalia'; ....
+  };
+
   % type, size, linewidth, edge color and face color of a marker, taxon
   legend_vert = {...
         {'o', 5, 2, [0 0 0], [0 0 0]}, 'Cyclostomata'
@@ -232,6 +237,13 @@ end
         figure(Hfig)
         xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
         plot([1;5], [1;5], 'k', 'linewidth',1)
+        
+        Hfigh = shstat([am,am_pred*10], legend_homo, ['homeotherms @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        
+        figure(Hfigh)
+        xlabel('life span, a_m, d'); ylabel('predicted life span, 30/r_B, d');
+        plot([2;5.5], [2;5.5], 'k', 'linewidth',1)
+
    
     end
   end
