@@ -244,7 +244,12 @@ end
         xlabel('life span, a_m, d'); ylabel('predicted life span, 30/r_B, d');
         plot([2;5.5], [2;5.5], 'k', 'linewidth',1)
 
-   
+        Hfigm = shstat([am,am_pred], legend_moll, ['molluscs @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        
+        figure(Hfigm)
+        xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
+        plot([1;5], [1;5], 'k', 'linewidth',1)
+ 
     end
   end
 end
