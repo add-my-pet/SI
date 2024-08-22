@@ -231,7 +231,7 @@ end
         xlabel('\kappa'); ylabel('_{10}log W_w^b, g'); xlim([0 1]);
         % saveas(gcf,'kap_Wwb.png')
         
-      case 7 % rB_am: am = 3/r_B for fish... 
+      case 7 % rB_am: am = 3/r_B 
         shstat_options('default') 
         rB_am = read_allStat({'r_B','a_m'}); am = rB_am(:,2); am_pred = 3./rB_am(:,1);
         
