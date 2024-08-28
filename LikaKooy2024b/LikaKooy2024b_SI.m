@@ -58,6 +58,13 @@ end
     {'o', 4, 2, [0 0 1], [0 0 1]}, 'Mammalia'; ....
   };
 
+  legend_herps = {...
+    {'o', 4, 2, [0 0 1], [0 0 1]}, 'Amphibia'; ....
+    {'o', 4, 2, [1 0 0], [1 0 0]}, 'Squamata'; ....
+    {'o', 4, 2, [0 0 0], [0 0 0]}, 'Crocodilia'; ....
+    {'o', 4, 2, [1 0 1], [1 0 1]}, 'Testudines'; ....
+  };
+
   % type, size, linewidth, edge color and face color of a marker, taxon
   legend_vert = {...
         {'o', 5, 2, [0 0 0], [0 0 0]}, 'Cyclostomata'
@@ -258,7 +265,13 @@ end
         figure(Hfigc)
         xlabel('life span, a_m, d'); ylabel('predicted life span, 3/r_B, d');
         plot([0.5;5], [0.5;5], 'k', 'linewidth',1)
-    end
+
+        Hfigh = shstat([am,am_pred*2], legend_herps, ['herps @ ', datestr(datenum(date), 'yyyy/mm/dd')]);
+        %
+        figure(Hfigh)
+        xlabel('life span, a_m, d'); ylabel('predicted life span, 6/r_B, d');
+        plot([2.25;5], [2.25;5], 'k', 'linewidth',1)
+end
   end
 end
 
