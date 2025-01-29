@@ -1,10 +1,10 @@
-function Kooy2014_SI(figi)
-% Supporting Information for Kooy2014
-% Title:  Metabolic acceleration in animal ontogeny: An evolutionary perspective
+function Kooy2025_SI(figi)
+% Supporting Information for Kooy2025
+% Title:  The syntrophic nature of life's evolution
 % Authors: Kooijman
-% Journal: Journal of Sea Research 94 (2014) 128–137
-% DOI: 10.1016/j.seares.2014.06.005
-% Date: 2023/03/01
+% Journal: to be determined
+% DOI: 
+% Date: 2025/01/27
 % 
 % Matlab scripts to generate the figures in the publication
 %
@@ -39,29 +39,7 @@ function Kooy2014_SI(figi)
   for i=1:length(figi)
  
     switch figi(i)
-      case 1 % fig 1a,1b: a-Wd, a-JO for P. bibronii
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Pseudophryne_bibronii/Pseudophryne_bibronii_res.html', '-browser')
-        
-      case 2 % fig 1a,1b: a-Wd, a-JO for C. georgiana
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Crinia_georgiana/Crinia_georgiana_res.html', '-browser')
-        
-      case 3 % fig 2: t-L for Perca fluviatilis
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Perca_fluviatilis/Perca_fluviatilis_res.html', '-browser')
-        
-      case 4 % fig 3: t-L for Doryteuthis pealei
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Doryteuthis_pealeii/Doryteuthis_pealeii_res.html', '-browser')
-        % notice the better fit in the paper. The fit on the site also depends on additional data, which is slightly inconsistent.
-        
-      case 5 % fig 4: t-Ww for Mirounga leonina
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Mirounga_leonina/Mirounga_leonina_res.html', '-browser')
-        
-      case 6 % fig 5: t-Wd for Acyrthosiphon pisum
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Acyrthosiphon_pisum/Acyrthosiphon_pisum_res.html', '-browser')
-        
-      case 7 % fig 6: type M acceleration in animal taxa
-        web('https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/phyla.html', '-browser')
-        
-      case 8 % fig 7: s_M-E_Hb/Li^3 for RSED 
+      case 1 % fig 2 of : s_M-E_Hb/Li^3 for RSED 
         shstat_options('default');
         sMEHbLi = read_allStat({'s_M','E_Hb','L_i'}); sMEHb = [sMEHbLi(:,1), sMEHbLi(:,2)./sMEHbLi(:,3).^3];
         [HfigsM_EHb HlegsM_EHb] = shstat(sMEHb, legend_RSED, title); % set title, output handle for adding items
