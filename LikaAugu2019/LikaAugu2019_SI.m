@@ -359,7 +359,7 @@ function LikaAugu2019_SI(fig)
           94238.25146051	52749.96682354];
 
         WpT = [WpT_rep; WpT_aves; WpT_mamm]; pT = WpT(:,2)./WpT(:,1);
-        fprintf('range in weight-specific metabolic rate \n')';
+        fprintf('range in weight-specific metabolic rate \n');
         fprintf(['min ', num2str(min(pT)), ' kJ/d.g; max ', num2str(max(pT)), ' kJ/d.g; factor ', num2str(max(pT)/min(pT)),'\n'])
 
         figure
