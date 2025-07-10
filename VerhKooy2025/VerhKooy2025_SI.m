@@ -41,40 +41,41 @@ end
    {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Masupialia'
    {'o', 8, 3, [1 .5 .5], [1 .5 .5]}, 'Placentalia'
  };
- Hlegend = shlegend(legend);
- saveas(Hlegend,'legend_PMR_SMR.png')
+ % Hlegend = shlegend(legend);
+ % saveas(Hlegend,'legend_AS.png')
 
-     act = { ... % Actinopterygii, mass(g), temp(C), SMR(mg O2/h.kg), PMR(mg O2/h.kg), MMR(mg O2/h.kg) 
-       [  0.45 24   463 717 1066], 'FuDong2022', 'Danio_rerio'
-       [  7    25   203 581 1300], 'FuDong2022', 'Zacco_platypus'
-       [  7.72 25   220 470  680], 'FuDong2022', 'Carassius_auratus'
-       [ 10.49 15   120 259  490], 'FuDong2022', 'Carassius_auratus'
-       [  9.68 25   237 629 1100], 'FuDong2022', 'Carassius_auratus'
-       [  7.42 25   191 296 1034], 'FuDong2022', 'Ctenopharyngodon_idella'
-       [ 19.52 25   115 201  780], 'FuDong2022', 'Procypris_rabaudi'
-       [  8.27 15    86 133  547], 'FuDong2022', 'Parabramis_pekinensis'
-       [  4.62 25   290 500 1260], 'FuDong2022', 'Parabramis_pekinensis'
-       [  7.94 15   113 252  629], 'FuDong2022', 'Cyprinus_carpio'
-       [  7.56 25   256 464 1140], 'FuDong2022', 'Cyprinus_carpio'
-       [  4.62 25   220 350 1100], 'FuDong2022', 'Mylopharyngodon_piceus'
-       [  7.72 15   103 209  510], 'FuDong2022', 'Spinibarbus_sinensis'
-       [  7.71 25   160 283 1190], 'FuDong2022', 'Spinibarbus_sinensis'
-       [ 22.45 15    54 149  245], 'FuDong2022', 'Silurus_meridionalis'
-       [ 12.89 25   114 510  761], 'FuDong2022', 'Silurus_meridionalis'
-       [ 30    23    98 222  351], 'FuDong2022', 'Silurus_asotus'
-       [  6.65 25   235 341 1020], 'FuDong2022', 'Tachysurus_vachellii'
-       [520     9    48 109  490], 'FuDong2022', 'Oncorhynchus_tshawytscha'
-       [  6    15   189 591  787], 'FuDong2022', 'Oncorhynchus_mykiss'
-       [364    22.5 100 160  350], 'FuDong2022', 'Dicentrarchus_labrax'
-       [105    17   130 190  381], 'FuDong2022', 'Pagrus_auratus'
-       [107    21   163 250  468], 'FuDong2022', 'Pagrus_auratus'
-       [ 30    17   104 195  686], 'FuDong2022', 'Aldrichetta_forsteri'
-       [ 29    21   124 210  799], 'FuDong2022', 'Aldrichetta_forsteri'
-       [706    26   200 800 1364], 'FuDong2022', 'Coryphaena_hippurus'
-       [135.5  26    90 443  352], 'FuDong2022', 'Pterois_volitans'
-       [135.5  32   166 491  346], 'FuDong2022', 'Pterois_volitans'
+     % 1 mg O2/h = 0.7 ml O2/h
+     act = { ... % Actinopterygii, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min), MMR(ml O2/min) 
+       [  0.45 24    8.8  13.6  20.1], 'FuDong2022', 'Danio_rerio' % 463 717 1066 mg O2/h.kg, 1
+       [  7    25   59.7 170.8 382.2], 'FuDong2022', 'Zacco_platypus' % 203 581 1300 mg O2/h.kg
+       [  7.72 25   64.7 138.2 199.9], 'FuDong2022', 'Carassius_auratus' % 220 470  680 mg O2/h.kg
+       [ 10.49 15   52.9 114.1 215.9], 'FuDong2022', 'Carassius_auratus' % 120 259  490 mg O2/h.kg
+       [  9.68 25   96.4 255.7 447.2], 'FuDong2022', 'Carassius_auratus' % 237 629 1100 mg O2/h.kg
+       [  7.42 25   59.5  92.3 322.2], 'FuDong2022', 'Ctenopharyngodon_idella' % 191 296 1034 mg O2/h.kg
+       [ 19.52 25   94.3 164.8 639.5], 'FuDong2022', 'Procypris_rabaudi' % 115 201  780 mg O2/h.kg
+       [  8.27 15   29.9  46.2 190.0], 'FuDong2022', 'Parabramis_pekinensis' % 86 133  547 mg O2/h.kg
+       [  4.62 25   56.3  97.0 244.5], 'FuDong2022', 'Parabramis_pekinensis' % 290 500 1260 mg O2/h.kg
+       [  7.94 15   37.2  83.0 207.1], 'FuDong2022', 'Cyprinus_carpio' % 113 252  629 mg O2/h.kg
+       [  7.56 25   81.3 147.3 362.0], 'FuDong2022', 'Cyprinus_carpio' % 256 464 1140 mg O2/h.kg
+       [  4.62 25   42.7  67.9 213.4], 'FuDong2022', 'Mylopharyngodon_piceus' % 220 350 1100 mg O2/h.kg
+       [  7.72 15   33.4  67.7 165.1], 'FuDong2022', 'Spinibarbus_sinensis' % 103 209  510 mg O2/h.kg
+       [  7.71 25   51.8  91.6 385.3], 'FuDong2022', 'Spinibarbus_sinensis' % 160 283 1190 mg O2/h.kg
+       [ 22.45 15   50.9 140.5 231.0], 'FuDong2022', 'Silurus_meridionalis' % 54 149  245 mg O2/h.kg
+       [ 12.89 25   61.7 276.1 412.0], 'FuDong2022', 'Silurus_meridionalis' % 114 510  761 mg O2/h.kg
+       [ 30    23  123.5 279.7 442.2], 'FuDong2022', 'Silurus_asotus' % 98 222  351 mg O2/h.kg
+       [  6.65 25   65.6  95.2 284.9], 'FuDong2022', 'Tachysurus_vachellii' % 235 341 1020 mg O2/h.kg
+       [520     9 1048  2381 10702  ], 'FuDong2022', 'Oncorhynchus_tshawytscha' % 48 109  490 mg O2/h.kg
+       [  6    15   47.6 148.9 198.3], 'FuDong2022', 'Oncorhynchus_mykiss' % 189 591  787 mg O2/h.kg
+       [364    22.5 1529 2446  5351 ], 'FuDong2022', 'Dicentrarchus_labrax' % 100 160  350 mg O2/h.kg
+       [105    17   573  838  1680  ], 'FuDong2022', 'Pagrus_auratus' % 130 190  381 mg O2/h.kg
+       [107    21   732 1123  2103  ], 'FuDong2022', 'Pagrus_auratus' % 163 250  4681 mg O2/h.kg
+       [ 30    17   131  245.7 864.4], 'FuDong2022', 'Aldrichetta_forsteri' % 104 195  686 mg O2/h.kg
+       [ 29    21   151  255.8 973.2], 'FuDong2022', 'Aldrichetta_forsteri' % 124 210  799 mg O2/h.kg
+       [706    26   5930 23722 40445], 'FuDong2022', 'Coryphaena_hippurus' % 200 800 1364 mg O2/h.kg
+       [135.5  26    513  2521  2003], 'FuDong2022', 'Pterois_volitans' % 90 443  352 mg O2/h.kg
+       [135.5  32    944  2794  1969], 'FuDong2022', 'Pterois_volitans' % 166 491  346 mg O2/h.kg
      };
-    prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg', 'MMR,mg O2/h.kg'}, 'Actinop')
+    %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
 
     ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); x means not in AmP
        [  36.0 39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
@@ -89,7 +90,7 @@ end
        [21800  39.0 103.6   3728], 'BundHopl1999', 'Rhea_americana' % 2.85 ml O2/s.kg, AS 36
        [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
     };     
-    prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg'}, 'Aves')
+    %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg'}, 'Aves')
 
     mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); x means not in AmP
      [ 1112.5 30.8 10.87  49.86], 'HindBaud1993', 'Ornithorhynchus_anatinus' 
@@ -125,13 +126,12 @@ end
      [32000   39.5 152.5   9792], 'LindHoka1991', 'Antilocapra_americana' % 5.1 ml O2/s.kg = 9792 ml O2/min; Bish1999 AS = 64.2; BMR = 9792/64.2 ml O2/min
      [70000   37.0 268.3   3733], 'WillSton2005', 'Homo_sapiens' % 0.23, 3.2 ml O2/h.g
      };               
-    prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
+    %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
 for i=1:length(fig)
  
   switch fig(i)
-    case 1 % FuDong2022,HindBaud1993
-
+    case 1 % ss_AS
     
     data = cell2mat(act(:,1)); PMR_SMR_act = data(:,4)./data(:,3);
     ss_act = read_stat(act(:,3),'s_s');
@@ -164,7 +164,80 @@ for i=1:length(fig)
     
     saveas(gcf,'ss_AS.png')
     
-        
+  case 2 % BMR obs-pred
+       nm_act = act(:,3); n_act = length(nm_act); SMR_prd_act = zeros(n_act,1);
+       data_act = cell2mat(act(:,1)); SMR_act = data_act(:,3); T_act = data_act(:,2); W_act = data_act(:,2); 
+       pars_act = read_stat(nm_act, {'kap', 'kap_R', 'g', 'k_J', 'k_M', 'L_T', 'v', 'U_Hb', 'U_Hj', 'U_Hp'});
+       pars_act(isnan(pars_act(:,9)),9) = 1e-4+pars_act(isnan(pars_act(:,9)),8);
+       p_act = read_stat(nm_act, {'T_A', 'p_Am', 'L_m', 'l_b', 'l_j', 'l_p', 'ome'}); 
+       p_act(isnan(p_act(:,5)),5) = 1e-4+p_act(isnan(p_act(:,5)),4);
+       T_A = p_act(:,1); p_Am = p_act(:,2); L_m = p_act(:,3); l_b = p_act(:,4); l_j = p_act(:,5); l_p = p_act(:,6); ome = p_act(:,7);
+       p_nO = read_stat(nm_act, {'n_CX', 'n_HX', 'n_OX', 'n_NX','n_CV', 'n_HV', 'n_OV', 'n_NV','n_CE', 'n_HE', 'n_OE', 'n_NE','n_CP', 'n_HP', 'n_OP', 'n_NP' });
+       p_nM = read_stat(nm_act, {'n_CC', 'n_HC', 'n_OC', 'n_NC','n_CH', 'n_HH', 'n_OH', 'n_NH','n_CO', 'n_HO', 'n_OO', 'n_NO','n_CN', 'n_HN', 'n_ON', 'n_NN' });
+       p_eta = read_stat(nm_act, {'mu_E', 'y_X_E', 'y_P_E', 'y_V_E'});
+       for i=1:n_act
+        n_O = p_nO(i,:); n_O = n_O([1:4;5:8;9:12;13:16])';  n_M = p_nM(i,:); n_M = n_M([1:4;5:8;9:12;13:16])'; 
+        mu_E = p_eta(i,1); y_X_E = p_eta(i,2); y_P_E = p_eta(i,3); y_V_E = p_eta(i,4);
+        eta_XA = y_X_E/ mu_E; eta_PA = y_P_E/ mu_E; eta_VG = y_V_E/ mu_E; eta_O = [-eta_XA 0 0; 0 0 eta_VG; 1/mu_E -1/mu_E -1/mu_E; eta_PA 0 0];
+        L = (W_act(i)/(1 + ome(i))).^(1/3); % cm, struc length
+        pT_ref = tempcorr(C2K(T_act(i)), C2K(20), T_A(i)) * p_Am(i) * L_m(i)^2; % J/d, max assimilation power at max size
+        pACSJGRD = pT_ref * scaled_power_j(L, 1, pars_act(i,:), l_b(i), l_j(i), l_p(i));  % J/d, powers
+        pADG = pACSJGRD(:, [1 7 5]);
+        J_M = - (n_M\n_O) * eta_O * pADG';  % mol/d: J_C, J_H, J_O, J_N in rows
+        SMR_prd_act(i) = - 0.7*32e3/24/60*J_M(3,:)'; % ml O2/min
+       end
+    
+       plot(SMR_prd_act, SMR_act,'or')
+       
+         y_P_E  = y_P_X/ y_E_X;          % mol/mol, yield of faeces on reserve
+  %  Mass-power couplers
+  eta_XA = y_X_E/ p.mu_E;          % mol/J, food-assim energy coupler
+  eta_PA = y_P_E/ p.mu_E;          % mol/J, faeces-assim energy coupler
+  eta_VG = y_V_E/ p.mu_E;          % mol/J, struct-growth energy coupler
+  eta_O  = [  -eta_XA   0         0;         % mol/J, mass-energy coupler
+	                0   0         eta_VG;    % used in: J_O = eta_O * p
+	           1/p.mu_E   -1/p.mu_E   -1/p.mu_E;
+	           eta_PA   0         0]; 
+
+  case 3 % kap_ss_kapRA: kappa_RA = pRi/ pAi
+
+       shstat_options('default');
+       shstat_options('x_transform', 'none');
+       shstat_options('y_transform', 'none');
+       shstat_options('z_transform', 'none');
+       kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+       kap_ss_kapRA = [read_allStat({'kap','s_s'}),kapRA(:,1)];
+       
+       [Hfig_vert, Hleg_vert] = shstat(kap_ss_kapRA, legend_vert, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+       figure(Hfig_vert) % add items to figure
+       xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+       kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
+       mesh(kap,ss,kapRA'); % add surface to figure
+       kap_xy = linspace(0,1,100)'; ss_xy= kap_xy.^2.*(1-kap_xy); plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
+       xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+       % define colormap for mesh: k->b->m->r->white
+       Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+       colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+       caxis([0 1]) % range for colormap
+       view(150,18)
+       %saveas(gcf,'kap_ss_kapRA_vert.png')
+       saveas(Hleg_vert,'legend_vert.png')
+
+       [Hfig_invert, Hleg_invert] = shstat(kap_ss_kapRA, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+       figure(Hfig_invert) % add items to figure
+       xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+       %kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
+       mesh(kap,ss,kapRA'); % add surface to figure
+       plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
+       xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+       % define colormap for mesh: k->b->m->r->white
+       % Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+       colormap(Hfig_invert, Colmap) % set color map to add_my_pet colors 
+       caxis([0 1]) % range for colormap
+       view(150,18)
+       %saveas(gcf,'kap_ss_kapRA_invert.png')
+       %saveas(Hleg_invert,'legend_invert.png')
+
   end
 end
    
