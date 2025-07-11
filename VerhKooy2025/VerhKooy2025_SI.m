@@ -189,16 +189,6 @@ for i=1:length(fig)
     
        plot(SMR_prd_act, SMR_act,'or')
        
-         y_P_E  = y_P_X/ y_E_X;          % mol/mol, yield of faeces on reserve
-  %  Mass-power couplers
-  eta_XA = y_X_E/ p.mu_E;          % mol/J, food-assim energy coupler
-  eta_PA = y_P_E/ p.mu_E;          % mol/J, faeces-assim energy coupler
-  eta_VG = y_V_E/ p.mu_E;          % mol/J, struct-growth energy coupler
-  eta_O  = [  -eta_XA   0         0;         % mol/J, mass-energy coupler
-	                0   0         eta_VG;    % used in: J_O = eta_O * p
-	           1/p.mu_E   -1/p.mu_E   -1/p.mu_E;
-	           eta_PA   0         0]; 
-
   case 3 % kap_ss_kapRA: kappa_RA = pRi/ pAi
 
        shstat_options('default');
@@ -237,6 +227,60 @@ for i=1:length(fig)
        view(150,18)
        %saveas(gcf,'kap_ss_kapRA_invert.png')
        %saveas(Hleg_invert,'legend_invert.png')
+       
+    case 4 % kap, s_s, kapRA
+        
+        figure % kap 
+        kap = read_allStat('kap');
+        kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - mean(kap)^2;
+        surv_kap = surv(kap); 
+        M = m; V = v; 
+        a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+        fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
+        S_kap =linspace(0,1,100)'; S = 1 - betainc(S_kap,a,b);
+        plot(S_kap, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+        set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+        hold on
+        plot([kap_min; kap_med; kap_med], [0.5;0.5;0], 'r', surv_kap(:,1), surv_kap(:,2), 'b', 'Linewidth', 2)
+        xlabel('fraction of mobilized reserve to soma \kappa,  -')
+        ylabel('survivor function')
+        %title([num2str(length(kap)),' @ ',datestr(datenum(date),'yyyy/mm/dd')])
+        %saveas(gca,'kap.png')
+
+        figure % s_s
+        ss = read_allStat('s_s'); ss_max = 4/27;
+        ss_med = median(ss); ss_min = min(ss);  m = mean(ss); v = mean(ss.^2) - mean(ss)^2;
+        surv_ss = surv(ss); 
+        M = m/ss_max; V = v/ss_max^2; 
+        a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+        fprintf(['pars beta for s_s: ', num2str(a), ' , ', num2str(b),'\n'])
+        ss =linspace(0,1,100)'; S = 1 - betainc(ss,a,b);
+        plot(ss*ss_max, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+        set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+        hold on
+        plot([ss_min; ss_med; ss_med], [0.5;0.5;0], 'r', surv_ss(:,1), surv_ss(:,2), 'b', 'Linewidth', 2)
+        xlabel('supply stress s_s, -') 
+        ylabel('survivor function')
+        %saveas(gca,'ss.png')
+
+        figure % kapRA
+        kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); kapRA = kapRA(:,1); 
+        kapRA_med = median(kapRA); kapRA_min = min(kapRA);  m = mean(kapRA); v = mean(kapRA.^2) - mean(kapRA)^2;
+        surv_kapRA = surv(kapRA); 
+        M = m; V = v; 
+        a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+        fprintf(['pars beta for kapRA: ', num2str(a), ' , ', num2str(b),'\n'])
+        S_RA =linspace(0,1,100)'; S = 1 - betainc(S_RA,a,b);
+        plot(S_RA, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+        set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+        hold on
+        plot([kapRA_min; kapRA_med; kapRA_med], [0.5;0.5;0], 'r', surv_kapRA(:,1), surv_kapRA(:,2), 'b', 'Linewidth', 2)
+        xlabel('fraction of assimilation to reproduction \kappa_R^A, -') 
+        ylabel('survivor function')
+        %saveas(gca,'kapRA.png')
 
   end
 end
