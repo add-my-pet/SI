@@ -44,6 +44,34 @@ end
  % Hlegend = shlegend(legend);
  % saveas(Hlegend,'legend_AS.png')
 
+  legend_aves = {...
+   %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
+    {'o', 8, 3, [0 0 1], [0 0 0]}, 'Paleognathae'
+    {'o', 8, 3, [0 0 1], [0 0 1]}, 'Galloanserae'
+    % Neoaves: edge magenta and red
+    {'o', 8, 3, [1 0 1], [0 0 0]}, 'Mirandornithes'
+    {'o', 8, 3, [1 0 1], [0 0 1]}, 'Gruimorphae'
+    {'o', 8, 3, [1 0 1], [1 0 1]}, 'Opisthocomiformes'
+    {'o', 8, 3, [1 0 1], [1 0 0]}, 'Strisores'
+    {'o', 8, 3, [1 0 1], [1 1 1]}, 'Columbea'
+    % Passerea: edge red
+    {'o', 8, 3, [1 0 0], [0 0 0]}, 'Elementaves'
+    {'o', 8, 3, [1 0 0], [0 0 1]}, 'Afroaves'
+    {'o', 8, 3, [1 0 0], [1 0 0]}, 'Australaves'
+  };
+
+  legend_mamm = {...
+    {'o', 8, 3, [0 0 0], [1 1 1]}, 'Prototheria'; ...
+    {'o', 8, 3, [0 0 1], [1 1 1]}, 'Marsupialia'; ...
+    {'o', 8, 3, [0 0 1], [0 0 1]}, 'Xenarthra'; ...
+    {'o', 8, 3, [0 0 1], [1 0 1]}, 'Afrotheria'; ....
+    {'o', 8, 3, [0 0 1], [1 0 0]}, 'Laurasiatheria'; ....
+    {'o', 8, 3, [1 0 1], [1 0 1]}, 'Gliriformes'; ....
+    {'o', 8, 3, [1 0 1], [1 0 0]}, 'Scandentia'; ....
+    {'o', 8, 3, [1 0 0], [1 0 0]}, 'Dermoptera'; ....
+    {'o', 8, 3, [1 0 0], [1 .5 .5]}, 'Primates'; ....
+  };
+
      % 1 mg O2/h = 0.7 ml O2/h
      act = { ... % Actinopterygii, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min), MMR(ml O2/min) 
        [  0.45 24    8.8  13.6  20.1], 'FuDong2022', 'Danio_rerio' % 463 717 1066 mg O2/h.kg, 1
@@ -89,6 +117,9 @@ end
        [  11.3 41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
        [21800  39.0 103.6   3728], 'BundHopl1999', 'Rhea_americana' % 2.85 ml O2/s.kg, AS 36
        [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
+       [45000  36.0 301500 2340000], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
+       [55000  36.0 215050 2473075], 'MainKing1989', 'Dromaius_novaehollandiae' %  3.91 ml O2/min.kg, AS 11.5 BundHopl1999
+       [130000  34.6 613600 10738000], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
     };     
     %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg'}, 'Aves')
 
@@ -143,7 +174,7 @@ for i=1:length(fig)
     hold on
     data = cell2mat(mar(:,1)); PMR_SMR_mar = data(:,4)./data(:,3);
     ss_mar = read_stat(mar(:,3),'s_s');
-    plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[0 0 0])
+    plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
     %
     data = cell2mat(pla(:,1)); PMR_SMR_pla = data(:,4)./data(:,3);
     ss_pla = read_stat(pla(:,3),'s_s');
@@ -163,6 +194,25 @@ for i=1:length(fig)
     prt_tab({entries_txt, data},{'species', 's_s', 'PMR/SMR'}, 'Vertebrates')
     
     saveas(gcf,'ss_AS.png')
+    
+    figure
+    plot(ss_act, log10(PMR_SMR_act), '.b', 'MarkerSize',20)
+    hold on
+    plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
+    plot(ss_pla, log10(PMR_SMR_pla),'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+    plot(ss_ave, log10(PMR_SMR_ave), '.r', 'MarkerSize',20)
+    xlabel('supply stress s_s, -')
+    ylabel('_{10}log PMR/SMR, -')
+
+    % set species names behind markers in plot figure
+    h = datacursormode(Hfig); entries_txt = [act(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+    data = [[ss_act;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_act;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
+    for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
+    h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+    datacursormode on % mouse click on plot
+
+    saveas(gcf,'ss_logAS.png')
+
     
   case 2 % BMR obs-pred
        nm_act = act(:,3); n_act = length(nm_act); SMR_prd_act = zeros(n_act,1);
@@ -281,7 +331,18 @@ for i=1:length(fig)
         xlabel('fraction of assimilation to reproduction \kappa_R^A, -') 
         ylabel('survivor function')
         %saveas(gca,'kapRA.png')
+        
+      case 5
+        shstat_options('default');
+        shstat_options('x_transform', 'none');
 
+        [Hfig Hleg] = shstat({'s_s','s_Hbp'}, legend_mamm, datestr(datenum(date),'yyyy/mm/dd'), 1); 
+        figure(Hfig)
+        xlabel('s_s, -')      
+        ylabel('_{10}log s_H^{bp}, -')
+        %saveas(gca,'ss_sHbp.png')
+        %saveas(Hleg,'legend_mamm.png')
+  
   end
 end
    
@@ -323,6 +384,15 @@ end
 %   author = {Bishop, C. M.}
 % }
 % 
+% @ARTICLE{KooyPong1994,
+%   author = {G. L. Kooyman and P. J. Ponganis},
+%   title = {EMPEROR PENGUIN OXYGEN CONSUMPTION, HEART RATE AND PLASMA LACTATE LEVELS DURING GRADED SWIMMING EXERCISE},
+%   journal = {J. exp. Biol.},
+%   year = {1994},
+%   volume = {195},
+%   pages = {199–209}
+% }
+%
 % @article{Lech1978,
 %   title = {The scaling of maximal oxygen consumption and pulmonary dimensions in small mammals},
 %   journal = {Resp. Physiol.},
@@ -341,6 +411,15 @@ end
 %   author = {Lindstedt, S. L. and Hokanson, J. F. and Wells, D. J. abd Swain, S. D. and Hoppeler, H. and Navarro, V.}
 % }
 % 
+% @ARTICLE{MainKing1989,
+%   author = {J. N. Maina and A. S. King},
+%   title = {The lung of the emu, Dromaius novaehollandiae: a microscopic and morphometric study},
+%   journal = {J. Anat.},
+%   year = {1989},
+%   volume = {163},
+%   pages = {67-73}
+% }
+%
 % @book{WillSton2005,
 %   title = {Environmental physiology of animals},
 %   publisher = {Blackwell Publishing},
