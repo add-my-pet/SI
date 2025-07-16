@@ -164,7 +164,7 @@ end
         xlabel('_{10}log [p_M], J/d.cm^3'); 
         % saveas(gcf,'pM.png')
         
-      case 7 % Ttypical-pM
+      case 7 % Ttypical_pM
         shstat_options('default');
         [Hfig, Hleg] = shstat({'T_typical','p_M'}, legend_Scor, ['Scorpaenoidei @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
     
