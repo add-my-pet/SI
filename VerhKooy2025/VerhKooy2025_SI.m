@@ -178,8 +178,8 @@ end
     [217000  36.5   NaN  7860 ], 'TaylMalo1980', 'Taurotragus_oryx' %x 131 ml O2/s
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
-    [ 41000  39.0 140e6  6.6e9], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg
-    [ 25000  38.0 52.8e6 1.3e9], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25
+    [ 41000  39.0 4.5e5  1.5e7], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
+    [ 25000  38.0 1.7e5  4.2e6], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
   };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
