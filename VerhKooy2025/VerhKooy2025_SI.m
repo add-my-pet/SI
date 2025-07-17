@@ -290,7 +290,7 @@ for i=1:length(fig)
  
       % set species names behind markers in plot figure
       h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = log10([[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_act;SMR_ave;SMR_mar;SMR_pla]]);
+      data = log10([[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_act;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
