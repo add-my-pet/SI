@@ -82,7 +82,7 @@ end
        [  9.68 25   0.0268    0.0710    0.1242], 'FuDong2022', 'Carassius_auratus'       % 237 629 1100 mg O2/h.kg
        [  7.42 25   0.0165    0.0256    0.0895], 'FuDong2022', 'Ctenopharyngodon_idella' % 191 296 1034 mg O2/h.kg
        [ 19.52 25   0.0262    0.0458    0.1776], 'FuDong2022', 'Procypris_rabaudi'       % 115 201  780 mg O2/h.kg
-       [  8.27 15   0.0083    0.0128    0.0528], 'FuDong2022', 'Parabramis_pekinensis'    % 86 133  547 mg O2/h.kg
+       [  8.27 15   0.0083    0.0128    0.0528], 'FuDong2022', 'Parabramis_pekinensis'   %  86 133  547 mg O2/h.kg
        [  4.62 25   0.0156    0.0269    0.0679], 'FuDong2022', 'Parabramis_pekinensis'   % 290 500 1260 mg O2/h.kg
        [  7.94 15   0.0105    0.0233    0.0583], 'FuDong2022', 'Cyprinus_carpio'         % 113 252  629 mg O2/h.kg
        [  7.56 25   0.0226    0.0409    0.1005], 'FuDong2022', 'Cyprinus_carpio'         % 256 464 1140 mg O2/h.kg
@@ -108,7 +108,7 @@ end
     
     squ = { ... % squamata mass (g), Tb (C), SMR (mg O2/min) PMR (mg O2/min)
         [ 517  35  1.6    5.4], 'ChriConl1994', 'Tiliqua_rugosa'  
-        [1136 35   NaN   16.9], 'ChriConl1994', 'Cyclura_nubila' %x
+        [1136 35   NaN   16.9], 'ChriConl1994', 'Cyclura_nubila' 
         [1287 35   3.1   24.3], 'ChriConl1994', 'Varanus_rosenbergi' %x
         [1086 35   1.9   24.5], 'ChriConl1994', 'Varanus_gouldii' %x
         [ 931 35   2.1   20.8], 'ChriConl1994', 'Varanus_panoptes' %x
