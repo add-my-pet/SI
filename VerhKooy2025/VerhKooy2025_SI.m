@@ -27,7 +27,7 @@ function VerhKooy2025_SI(fig)
 %  Modify selection of taxa and markers by changing the legend, see https://add-my-pet.github.io/AmPtool/docs/index.html
 %  Allowed names of taxa match the names of the tree nodes at http://www.bio.vu.nl/thb/deb/deblab/add_my_pet/species_tree_Animalia.html
 %
-% Example of use
+% Example of use:
 % VerhKooy2025_SI(1)
 
 close all
@@ -106,7 +106,7 @@ end
   };
   %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
     
-  squ = { ... % Squamata mass (g), Tb (C), SMR (mg O2/min) PMR (mg O2/min)
+  squ = { ... % Squamata mass (g), Tb (C), SMR (mg O2/min) PMR (mg O2/min); %x means not in AmP
     [ 517  35  1.6    5.4], 'ChriConl1994', 'Tiliqua_rugosa'  
     [1136 35   NaN   16.9], 'ChriConl1994', 'Cyclura_nubila' 
    %[1287 35   3.1   24.3], 'ChriConl1994', 'Varanus_rosenbergi' %x
@@ -115,7 +115,7 @@ end
    %[ 904 35   1.2   13.7], 'ChriConl1994', 'Varanus_mertensi' %x
   };
 
-  ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); x means not in AmP
+  ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); %x means not in AmP
     [  36.0 39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
     [  89.4 40.0  NaN   12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
     [  42.1 40.5  1.20   6.57], 'HindBaud1993', 'Synoicus_chinensis' 
@@ -134,7 +134,7 @@ end
   };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg'}, 'Aves')
 
-  mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); x means not in AmP
+  mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); %x means not in AmP
     [ 1112.5 30.8 10.87  49.86], 'HindBaud1993', 'Ornithorhynchus_anatinus' 
     [ 3293.0 30.8  7.76  47.05], 'HindBaud1993', 'Tachyglossus_aculeatus' 
     [   15.6 35.0  0.48   2.38], 'HindBaud1993', 'Sminthopsis_crassicaudata' 
@@ -178,6 +178,8 @@ end
     [217000  36.5   NaN  7860 ], 'TaylMalo1980', 'Taurotragus_oryx' %x 131 ml O2/s
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
+    [ 41000  39.0 140e6  6.6e9], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg
+    [ 25000  38.0 52.8e6 1.3e9], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25
   };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
@@ -194,6 +196,16 @@ for i=1:length(fig)
       ylabel('PMR/SMR, -')
       
       hold on
+      data = cell2mat(squ(:,1)); PMR_SMR_squ = data(:,4)./data(:,3);
+      ss_squ = read_stat(squ(:,3),'s_s');
+      plot(ss_squ, PMR_SMR_squ, '.m', 'MarkerSize',20)
+      xlim([0 4/27])
+      %
+      data = cell2mat(ave(:,1)); PMR_SMR_ave = data(:,4)./data(:,3);
+      ss_ave = read_stat(ave(:,3),'s_s');
+      plot(ss_ave, PMR_SMR_ave, '.r', 'MarkerSize',20)
+      xlim([0 4/27])
+      %
       data = cell2mat(mar(:,1)); PMR_SMR_mar = data(:,4)./data(:,3);
       ss_mar = read_stat(mar(:,3),'s_s');
       plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
@@ -201,15 +213,10 @@ for i=1:length(fig)
       data = cell2mat(pla(:,1)); PMR_SMR_pla = data(:,4)./data(:,3);
       ss_pla = read_stat(pla(:,3),'s_s');
       plot(ss_pla, PMR_SMR_pla,'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
-      %
-      data = cell2mat(ave(:,1)); PMR_SMR_ave = data(:,4)./data(:,3);
-      ss_ave = read_stat(ave(:,3),'s_s');
-      plot(ss_ave, PMR_SMR_ave, '.r', 'MarkerSize',20)
-      xlim([0 4/27])
 
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_ave;ss_mar;ss_pla],[PMR_SMR_act;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla]];
+      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_act;ss_squ; ss_ave;ss_mar;ss_pla],[PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla]];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -229,8 +236,8 @@ for i=1:length(fig)
       ylabel('_{10}log PMR/SMR, -')
 
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_act;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_act;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -245,6 +252,18 @@ for i=1:length(fig)
         FMR_act(i) = 15.55 * get_FMR(nm_act{i}, W_act(i), T_act(i), 1); % ml O2/min
       end
       %
+      nm_squ = squ(:,3); n_squ = length(nm_squ); FMR_squ = zeros(n_squ,1); 
+      data_squ = cell2mat(squ(:,1)); PMR_squ = data_squ(:,4); SMR_squ = data_squ(:,3); T_squ = data_squ(:,2); W_squ = data_squ(:,1); 
+      for i=1:n_squ
+        FMR_squ(i) = 15.55 * get_FMR(nm_squ{i}, W_squ(i), T_squ(i), 1); % ml O2/min
+      end
+      %
+      nm_ave = ave(:,3); n_ave = length(nm_ave); FMR_ave = zeros(n_ave,1);
+      data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); SMR_ave = data_ave(:,3); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
+      for i=1:n_ave
+        FMR_ave(i) = 15.55 * get_FMR(nm_ave{i}, W_ave(i), T_ave(i), 1); % ml O2/min
+      end
+      %
       nm_mar = mar(:,3); n_mar = length(nm_mar); FMR_mar = zeros(n_mar,1);
       data_mar = cell2mat(mar(:,1)); PMR_mar = data_mar(:,4); SMR_mar = data_mar(:,3); T_mar = data_mar(:,2); W_mar = data_mar(:,1); 
       for i=1:n_mar
@@ -256,27 +275,22 @@ for i=1:length(fig)
       for i=1:n_pla
         FMR_pla(i) = 15.55 * get_FMR(nm_pla{i}, W_pla(i), T_pla(i), 1); % ml O2/min
       end
-      %
-      nm_ave = ave(:,3); n_ave = length(nm_ave); FMR_ave = zeros(n_ave,1);
-      data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); SMR_ave = data_ave(:,3); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
-      for i=1:n_ave
-        FMR_ave(i) = 15.55 * get_FMR(nm_ave{i}, W_ave(i), T_ave(i), 1); % ml O2/min
-      end
       cd(WD0); % return to original directory
 
       Hfig = figure;
       plot([-3;3], [-3;3], 'k', 'linewidth',2); % equality line
       hold on
       plot(log10(FMR_act), log10(SMR_act), '.b', 'MarkerSize',20)
+      plot(log10(FMR_squ), log10(SMR_squ), '.m', 'MarkerSize',20)
+      plot(log10(FMR_ave), log10(SMR_ave), '.r', 'MarkerSize',20)
       plot(log10(FMR_mar), log10(SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
       plot(log10(FMR_pla), log10(SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
-      plot(log10(FMR_ave), log10(SMR_ave), '.r', 'MarkerSize',20)
       xlabel('predicted _{10}log FMR, ml O2/min')
       ylabel('measured _{10}log SMR, ml O2/min')
  
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = log10([[FMR_act;FMR_ave;FMR_mar;FMR_pla],[SMR_act;SMR_ave;SMR_mar;SMR_pla]]);
+      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = log10([[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_act;SMR_ave;SMR_mar;SMR_pla]]);
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -292,6 +306,18 @@ for i=1:length(fig)
         FMR_act(i) = 15.55 * get_FMR(nm_act{i}, W_act(i), T_act(i), 1); % ml O2/min
       end
       %
+      nm_squ = squ(:,3); n_squ = length(nm_squ); FMR_squ = zeros(n_squ,1); ss_squ = read_stat(nm_squ, 's_s');
+      data_squ = cell2mat(squ(:,1)); PMR_squ = data_squ(:,4); SMR_squ = data_squ(:,3); T_squ = data_squ(:,2); W_squ = data_squ(:,1); 
+      for i=1:n_squ
+        FMR_squ(i) = 15.55 * get_FMR(nm_squ{i}, W_squ(i), T_squ(i), 1); % ml O2/min
+      end
+      %
+      nm_ave = ave(:,3); n_ave = length(nm_ave); FMR_ave = zeros(n_ave,1); ss_ave = read_stat(nm_ave, 's_s');
+      data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); SMR_ave = data_ave(:,3); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
+      for i=1:n_ave
+        FMR_ave(i) = 15.55 * get_FMR(nm_ave{i}, W_ave(i), T_ave(i), 1); % ml O2/min
+      end
+      %
       nm_mar = mar(:,3); n_mar = length(nm_mar); FMR_mar = zeros(n_mar,1); ss_mar = read_stat(nm_mar, 's_s');
       data_mar = cell2mat(mar(:,1)); PMR_mar = data_mar(:,4); SMR_mar = data_mar(:,3); T_mar = data_mar(:,2); W_mar = data_mar(:,1); 
       for i=1:n_mar
@@ -303,27 +329,22 @@ for i=1:length(fig)
       for i=1:n_pla
         FMR_pla(i) = 15.55 * get_FMR(nm_pla{i}, W_pla(i), T_pla(i), 1); % ml O2/min
       end
-      %
-      nm_ave = ave(:,3); n_ave = length(nm_ave); FMR_ave = zeros(n_ave,1); ss_ave = read_stat(nm_ave, 's_s');
-      data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); SMR_ave = data_ave(:,3); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
-      for i=1:n_ave
-        FMR_ave(i) = 15.55 * get_FMR(nm_ave{i}, W_ave(i), T_ave(i), 1); % ml O2/min
-      end
       cd(WD0); % return to original directory
 
       Hfig = figure;
       plot(ss_act, log10(PMR_act./FMR_act), '.b', 'MarkerSize',20)
       hold on
+      plot(ss_squ, log10(PMR_squ./FMR_squ), '.m', 'MarkerSize',20)
+      plot(ss_ave, log10(PMR_ave./FMR_ave), '.r', 'MarkerSize',20)
       plot(ss_mar, log10(PMR_mar./FMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
       plot(ss_pla, log10(PMR_pla./FMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
-      plot(ss_ave, log10(PMR_ave./FMR_ave), '.r', 'MarkerSize',20)
       xlabel('supply stress s_s, -')
       xlim([0 4/27])
       ylabel('_{10}log measured PMR/ predicted FMR, -')
        
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_ave;ss_mar;ss_pla], log10([PMR_act;PMR_ave;PMR_mar;PMR_pla]./[FMR_act;FMR_ave;FMR_mar;FMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_act;ss_squ;ss_ave;ss_mar;ss_pla], log10([PMR_act;PMR_squ;PMR_ave;PMR_mar;PMR_pla]./[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -428,9 +449,9 @@ for i=1:length(fig)
       shstat_options('default');
       shstat_options('x_transform', 'none');
 
-      [Hfig Hleg] = shstat({'s_s','s_Hbp'}, legend_mamm, datestr(datenum(date),'yyyy/mm/dd'), 1); 
+      [Hfig, Hleg] = shstat({'s_s','s_Hbp'}, legend_mamm, datestr(datenum(date),'yyyy/mm/dd'), 1); 
       figure(Hfig)
-      xlabel(' supply stress s_s, -')      
+      xlabel('supply stress s_s, -')      
       ylabel('precociality index _{10}log s_H^{bp}, -')
       %saveas(gca,'ss_sHbp.png')
       %saveas(Hleg,'legend_mamm.png')
@@ -487,6 +508,15 @@ end
 %   author = {Christian, K. A. and Conley, K. E.}
 % }
 %
+% @article{GormMill1998,
+%   title = {High hunting costs make African wild dogs vulnerable to kleptoparasitism by hyaenas},
+%   journal = {Nature},
+%   volume = {391},
+%   year = {1998},
+%   pages = {479-481},
+%   author = {Martyn L. Gorman and Michael G. Mills and Jacobus P. Raath and John R. Speakman}
+% }
+%
 % @article{HindBaud1993,
 %   title = {Maximum metabolism and the aerobic factorial scope of endotherms},
 %   journal = {J. Exp. Biol.},
@@ -530,6 +560,15 @@ end
 %   year = {1989},
 %   volume = {163},
 %   pages = {67-73}
+% }
+%
+% @ARTICLE{ScanMill2014,
+%   author = {David M. Scantlebury and Michael G. L. Mills and Rory P. Wilson and John W. Wilson and  Margaret E. J. Mills and Sarah M. Durant and Nigel C. Bennett and Peter Bradford and Nikki J. Marks and John R. Speakman},
+%   title = {Flexible energetics of cheetah hunting strategies provide resistance against kleptoparasitism},
+%   journal = {Science},
+%   year = {2014},
+%   volume = {346},
+%   pages = {79-81}
 % }
 %
 % @ARTICLE{TaylMalo1980,
