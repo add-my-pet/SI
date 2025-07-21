@@ -42,8 +42,8 @@ end
     {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Masupialia'
     {'o', 8, 3, [1 .5 .5], [1 .5 .5]}, 'Placentalia'
   };
-  % Hlegend = shlegend(legend);
-  % saveas(Hlegend,'legend_AS.png')
+  Hlegend = shlegend(legend);
+  saveas(Hlegend,'legend_AS.png')
 
   legend_aves = {...
    %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
@@ -89,20 +89,20 @@ end
     [  4.62 25   0.0119    0.0189    0.0593], 'FuDong2022', 'Mylopharyngodon_piceus'  % 220 350 1100 mg O2/h.kg
     [  7.72 15   0.0093    0.0188    0.0459], 'FuDong2022', 'Spinibarbus_sinensis'    % 103 209  510 mg O2/h.kg
     [  7.71 25   0.0144    0.0255    0.1070], 'FuDong2022', 'Spinibarbus_sinensis'    % 160 283 1190 mg O2/h.kg
-    [ 22.45 15   0.0141    0.0390    0.0642], 'FuDong2022', 'Silurus_meridionalis'     % 54 149  245 mg O2/h.kg
+    [ 22.45 15   0.0141    0.0390    0.0642], 'FuDong2022', 'Silurus_meridionalis'    %  54 149  245 mg O2/h.kg
     [ 12.89 25   0.0171    0.0767    0.1144], 'FuDong2022', 'Silurus_meridionalis'    % 114 510  761 mg O2/h.kg
-    [ 30    23   0.0343    0.0777    0.1228], 'FuDong2022', 'Silurus_asotus'           % 98 222  351 mg O2/h.kg
+    [ 30    23   0.0343    0.0777    0.1228], 'FuDong2022', 'Silurus_asotus'          %  98 222  351 mg O2/h.kg
     [  6.65 25   0.0182    0.0265    0.0791], 'FuDong2022', 'Tachysurus_vachellii'    % 235 341 1020 mg O2/h.kg
-    [520     9   0.2912    0.6613    2.9727], 'FuDong2022', 'Oncorhynchus_tshawytscha' % 48 109  490 mg O2/h.kg
+    [520     9   0.2912    0.6613    2.9727], 'FuDong2022', 'Oncorhynchus_tshawytscha'%  48 109  490 mg O2/h.kg
     [  6    15   0.0132    0.0414    0.0551], 'FuDong2022', 'Oncorhynchus_mykiss'     % 189 591  787 mg O2/h.kg
     [364    22.5 0.4247    0.6795    1.4863], 'FuDong2022', 'Dicentrarchus_labrax'    % 100 160  350 mg O2/h.kg
-    [105    17   0.1593    0.2327    0.4667], 'FuDong2022', 'Pagrus_auratus'          % 130 190  381 mg O2/h.kg
-    [107    21   0.2035    0.3121    5.8434], 'FuDong2022', 'Pagrus_auratus'         %  163 250 4681 mg O2/h.kg
+    [105    17   0.1593    0.4667    0.4667], 'FuDong2022', 'Pagrus_auratus'          % 130 190  381 mg O2/h.kg
+    [107    21   0.3121    0.5843    0.5843], 'FuDong2022', 'Pagrus_auratus'          % 163 250 4681 mg O2/h.kg
     [ 30    17   0.0364    0.0682    0.2401], 'FuDong2022', 'Aldrichetta_forsteri'    % 104 195  686 mg O2/h.kg
     [ 29    21   0.0420    0.0711    0.2703], 'FuDong2022', 'Aldrichetta_forsteri'    % 124 210  799 mg O2/h.kg
     [706    26   1.6473    6.5893   11.2348], 'FuDong2022', 'Coryphaena_hippurus'     % 200 800 1364 mg O2/h.kg
-    [135.5  26   0.1423    0.7003    0.5565], 'FuDong2022', 'Pterois_volitans'         % 90 443  352 mg O2/h.kg
-    [135.5  32   0.2624    0.7762    0.5470], 'FuDong2022', 'Pterois_volitans'        % 166 491  346 mg O2/h.kg
+    [135.5  26   0.1423    0.7003    0.7003], 'FuDong2022', 'Pterois_volitans'        %  90 443  352 mg O2/h.kg
+    [135.5  32   0.2624    0.7762    0.7762], 'FuDong2022', 'Pterois_volitans'        % 166 491  346 mg O2/h.kg
   };
   %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
     
@@ -131,8 +131,17 @@ end
     [55000  36.0 215.05  2473], 'MainKing1989', 'Dromaius_novaehollandiae' %  3.91 ml O2/min.kg, AS 11.5 BundHopl1999
     [130000 34.6 613.6  10738], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
     [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
+    [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
+    [275    4.12  NaN   23.22], 'Kirk1983',     'Dendrocygna autumnalis' % PMR 672 kJ/d; 20.1 kJ/l O2
+    [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
+    [1300   40.6   NaN  64.95], 'Kirk1983',     'Phalacrocorax_pelagicus' % PMR 1880 kJ/d; 20.1 kJ/l O2
+    [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
+    [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
+    [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
+    [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
+   %[30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' %x PMR 110 kJ/d; 20.1 kJ/l O2
   };     
-  %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,mg O2/h.kg', 'PMR,mg O2/h.kg'}, 'Aves')
+  %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
   mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); %x means not in AmP
     [ 1112.5 30.8 10.87  49.86], 'HindBaud1993', 'Ornithorhynchus_anatinus' 
@@ -178,8 +187,13 @@ end
     [217000  36.5   NaN  7860 ], 'TaylMalo1980', 'Taurotragus_oryx' %x 131 ml O2/s
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
-    [ 41000  39.0 4.5e5  1.5e7], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
-    [ 25000  38.0 1.7e5  4.2e6], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
+    [ 41000  39.0 311.2 1.47e4], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
+    [ 25000  38.0 117.5  2.9e3], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
+    [635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus' % PMR 143470 kJ/d; 20.1 kJ/l O2
+    [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
+    [205000  39.0   NaN   2371], 'Kirk1983',     'Sus_domesticus' % PMR 68620 kJ/d; 20.1 kJ/l O2 
+    [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
+    [    86  39.6   NaN   7.34], 'Kirk1983',     'Mustela_nivalis' % PMR 224 kJ/d; 20.1 kJ/l O2
   };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
@@ -190,47 +204,47 @@ for i=1:length(fig)
     
       data = cell2mat(act(:,1)); PMR_SMR_act = data(:,4)./data(:,3);
       ss_act = read_stat(act(:,3),'s_s');
-      Hfig = figure;
-      plot(ss_act, PMR_SMR_act, '.b', 'MarkerSize',20)
-      xlabel('supply stress s_s, -')
-      ylabel('PMR/SMR, -')
+%       Hfig = figure;
+%       plot(ss_act, PMR_SMR_act, '.b', 'MarkerSize',20)
+%       xlabel('supply stress s_s, -')
+%       ylabel('PMR/SMR, -')
       
-      hold on
+%      hold on
       data = cell2mat(squ(:,1)); PMR_SMR_squ = data(:,4)./data(:,3);
       ss_squ = read_stat(squ(:,3),'s_s');
-      plot(ss_squ, PMR_SMR_squ, '.m', 'MarkerSize',20)
-      xlim([0 4/27])
+%       plot(ss_squ, PMR_SMR_squ, '.m', 'MarkerSize',20)
+%       xlim([0 4/27])
       %
       data = cell2mat(ave(:,1)); PMR_SMR_ave = data(:,4)./data(:,3);
       ss_ave = read_stat(ave(:,3),'s_s');
-      plot(ss_ave, PMR_SMR_ave, '.r', 'MarkerSize',20)
-      xlim([0 4/27])
+%       plot(ss_ave, PMR_SMR_ave, '.r', 'MarkerSize',20)
       %
       data = cell2mat(mar(:,1)); PMR_SMR_mar = data(:,4)./data(:,3);
       ss_mar = read_stat(mar(:,3),'s_s');
-      plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
+%      plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
       %
       data = cell2mat(pla(:,1)); PMR_SMR_pla = data(:,4)./data(:,3);
       ss_pla = read_stat(pla(:,3),'s_s');
-      plot(ss_pla, PMR_SMR_pla,'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+%      plot(ss_pla, PMR_SMR_pla,'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
 
-      % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_squ; ss_ave;ss_mar;ss_pla],[PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla]];
-      for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
-      h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
-      datacursormode on % mouse click on plot
+%       % set species names behind markers in plot figure
+%       h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+%       data = [[ss_act;ss_squ; ss_ave;ss_mar;ss_pla],[PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla]];
+%       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
+%       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+%       datacursormode on % mouse click on plot
     
-      prt_tab({entries_txt, data},{'species', 's_s', 'PMR/SMR'}, 'Vertebrates')
+%      prt_tab({entries_txt, data},{'species', 's_s', 'PMR/SMR'}, 'Vertebrates')
     
-      %saveas(gcf,'ss_PSMR.png')
+%      saveas(gcf,'ss_PSMR.png')
     
-      figure
+      Hfig = figure;
       plot(ss_act, log10(PMR_SMR_act), '.b', 'MarkerSize',20)
       hold on
-      plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
-      plot(ss_pla, log10(PMR_SMR_pla),'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+      plot(ss_squ, log10(PMR_SMR_squ), '.m', 'MarkerSize',20)
       plot(ss_ave, log10(PMR_SMR_ave), '.r', 'MarkerSize',20)
+      plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
+      plot(ss_pla, log10(PMR_SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
       xlim([0 4/27])
       xlabel('supply stress s_s, -')
       ylabel('_{10}log PMR/SMR, -')
@@ -373,7 +387,7 @@ for i=1:length(fig)
       colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
       caxis([0 1]) % range for colormap
       view(150,18)
-      %saveas(gcf,'kap_ss_kapRA_vert.png')
+      saveas(gcf,'kap_ss_kapRA_vert.png')
       saveas(Hleg_vert,'legend_vert.png')
 
       [Hfig_invert, Hleg_invert] = shstat(kap_ss_kapRA, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
@@ -388,8 +402,8 @@ for i=1:length(fig)
       colormap(Hfig_invert, Colmap) % set color map to add_my_pet colors 
       caxis([0 1]) % range for colormap
       view(150,18)
-      %saveas(gcf,'kap_ss_kapRA_invert.png')
-      %saveas(Hleg_invert,'legend_invert.png')
+      saveas(gcf,'kap_ss_kapRA_invert.png')
+      saveas(Hleg_invert,'legend_invert.png')
        
     case 5 % kap, s_s, kapRA
         
@@ -498,6 +512,15 @@ end
 %   author = {Brackenbury, J. H. and El-Sayed, M. S.}
 % }
 % 
+% @article{ButtBech2010,
+%   title = {Citrate synthase activity does not account for age-related differences in maximum aerobic performance in House Sparrows (Passer domesticus)},
+%   journal = {Australian Zoologist},
+%   volume = {35(2)},
+%   year = {2010},
+%   pages = {378-382},
+%   author = {William A. Buttemer and Claus Bech and Mark A. Chappell}
+% }
+% 
 % @article{ChriConl1994,
 %   doi = {10.1071/zo9940185},
 %   title = {Activity and Resting Metabolism of Varanid Lizards Compared With Typical Lizards},
@@ -524,6 +547,15 @@ end
 %   year = {1993},
 %   pages = {41-56},
 %   author = {Bishop, C. M.}
+% }
+% 
+% @article{Kirk1983,
+%   title = {A LIMIT TO METABOLISABLE ENERGY INTAKE IN MAMMALS AND BIRDS},
+%   journal = {Comp. Biochem. Physiol.},
+%   volume = {75A(1)},
+%   year = {1993},
+%   pages = {1-3},
+%   author = {James K. Kirkwood}
 % }
 % 
 % @ARTICLE{KooyPong1994,
