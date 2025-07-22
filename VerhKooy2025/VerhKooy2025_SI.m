@@ -79,6 +79,7 @@ end
     [ 3400 25    6.3    10.2], 'GrahDewa1990', 'Negaprion_brevirostris' % 160 257 mg O2/h.kg
     [ 6000 15    7.4    10.8], 'GrahDewa1990', 'Triakis_semifasciata' % 105 154 mg O2/h.kg
     [ 3900 18   13.7    21.2], 'GrahDewa1990', 'Isurus_oxyrinchus' % 300 466 mg O2/h.kg
+    [ 2530 18.5  1.47   7.25], 'PiipMeye1977', 'Scyliorhinus_stellaris' % 0.026 0.128 mmol/kg.min
   };
 
   % 1 mg O2/h = 0.7 ml O2/h
@@ -112,6 +113,7 @@ end
     [135.5  26   0.1423    0.7003    0.7003], 'FuDong2022',   'Pterois_volitans'        %  90 443  352 mg O2/h.kg
     [135.5  32   0.2624    0.7762    0.7762], 'FuDong2022',   'Pterois_volitans'        % 166 491  346 mg O2/h.kg
     [1600   21   5.5014   25.6424   36.0640], 'ClarJeff2011', 'Oncorhynchus_gorbuscha'  % 4.912 22.895 32.2 mg O2/min.kg
+    [  50   15   0.0362    0.2217    NaN   ], 'GrahDewa1990', 'Oncorhynchus_nerka'      % 62 380 mg O2/h.kg
   };
   %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
     
@@ -485,17 +487,12 @@ for i=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'kapRA.png')
         
-    case 6 % ss_sHbp
-      shstat_options('default');
-      shstat_options('x_transform', 'none');
-
-      [Hfig, Hleg] = shstat({'s_s','s_Hbp'}, legend_mamm, datestr(datenum(date),'yyyy/mm/dd'), 1); 
-      figure(Hfig)
-      xlabel('supply stress s_s, -')      
-      ylabel('precociality index _{10}log s_H^{bp}, -')
-      %saveas(gca,'ss_sHbp.png')
-      %saveas(Hleg,'legend_mamm.png')
-  
+    case 6 % simulation of standard DEB model with stochastic searching
+      shtraject % description see DEBtool_M/animal/shtraject
+      saveas(Hfig_O,'organics.png')
+      shtraject_M % description see DEBtool_M/animal/shtraject_M
+      saveas(Hfig_M,'minerals.png')
+      
   end
 end
    
@@ -637,6 +634,15 @@ end
 %   year = {1989},
 %   volume = {163},
 %   pages = {67-73}
+% }
+%
+% @ARTICLE{PiipMeye1977,
+%   author = {J. Piiper and M. Meyer and H. Worth and H. Willmer},
+%   title = {RESPIRATION AND CIRCULATION DURING SWIMMING ACTIVITY IN THE DOGFISH SCYLIORHINUS STELLARIS},
+%   journal = {Respiration Physiology},
+%   year = {1977},
+%   volume = {30},
+%   pages = {221-239}
 % }
 %
 % @ARTICLE{ScanMill2014,
