@@ -36,6 +36,7 @@ if ~exist('fig','var')
 end
 
   legend = { ... % colors from legend_vert
+    {'o', 8, 3, [0 0 1], [0 1 1]}, 'Chondrichthyes'; 
     {'o', 8, 3, [0 0 1], [0 0 1]}, 'Actinopterygii'; 
     {'o', 8, 3, [1 0 1], [1 0 1]}, 'Squamata'; 
     {'o', 8, 3, [1 0 0], [1 0 0]}, 'Aves'; 
@@ -74,35 +75,43 @@ end
   };
 
   % 1 mg O2/h = 0.7 ml O2/h
+  cho = { ... % Chondrichthyes, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min) 
+    [ 3400 25    6.3    10.2], 'GrahDewa1990', 'Negaprion_brevirostris' % 160 257 mg O2/h.kg
+    [ 6000 15    7.4    10.8], 'GrahDewa1990', 'Triakis_semifasciata' % 105 154 mg O2/h.kg
+    [ 3900 18   13.7    21.2], 'GrahDewa1990', 'Isurus_oxyrinchus' % 300 466 mg O2/h.kg
+  };
+
+  % 1 mg O2/h = 0.7 ml O2/h
   act = { ... % Actinopterygii, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min), MMR(ml O2/min) 
-    [  0.45 24   0.0024    0.0038    0.0056], 'FuDong2022', 'Danio_rerio'             % 463 717 1066 mg O2/h.kg
-    [  7    25   0.0166    0.0474    0.1062], 'FuDong2022', 'Zacco_platypus'          % 203 581 1300 mg O2/h.kg
-    [  7.72 25   0.0198    0.0423    0.0612], 'FuDong2022', 'Carassius_auratus'       % 220 470  680 mg O2/h.kg
-    [ 10.49 15   0.0147    0.0317    0.0600], 'FuDong2022', 'Carassius_auratus'       % 120 259  490 mg O2/h.kg
-    [  9.68 25   0.0268    0.0710    0.1242], 'FuDong2022', 'Carassius_auratus'       % 237 629 1100 mg O2/h.kg
-    [  7.42 25   0.0165    0.0256    0.0895], 'FuDong2022', 'Ctenopharyngodon_idella' % 191 296 1034 mg O2/h.kg
-    [ 19.52 25   0.0262    0.0458    0.1776], 'FuDong2022', 'Procypris_rabaudi'       % 115 201  780 mg O2/h.kg
-    [  8.27 15   0.0083    0.0128    0.0528], 'FuDong2022', 'Parabramis_pekinensis'   %  86 133  547 mg O2/h.kg
-    [  4.62 25   0.0156    0.0269    0.0679], 'FuDong2022', 'Parabramis_pekinensis'   % 290 500 1260 mg O2/h.kg
-    [  7.94 15   0.0105    0.0233    0.0583], 'FuDong2022', 'Cyprinus_carpio'         % 113 252  629 mg O2/h.kg
-    [  7.56 25   0.0226    0.0409    0.1005], 'FuDong2022', 'Cyprinus_carpio'         % 256 464 1140 mg O2/h.kg
-    [  4.62 25   0.0119    0.0189    0.0593], 'FuDong2022', 'Mylopharyngodon_piceus'  % 220 350 1100 mg O2/h.kg
-    [  7.72 15   0.0093    0.0188    0.0459], 'FuDong2022', 'Spinibarbus_sinensis'    % 103 209  510 mg O2/h.kg
-    [  7.71 25   0.0144    0.0255    0.1070], 'FuDong2022', 'Spinibarbus_sinensis'    % 160 283 1190 mg O2/h.kg
-    [ 22.45 15   0.0141    0.0390    0.0642], 'FuDong2022', 'Silurus_meridionalis'    %  54 149  245 mg O2/h.kg
-    [ 12.89 25   0.0171    0.0767    0.1144], 'FuDong2022', 'Silurus_meridionalis'    % 114 510  761 mg O2/h.kg
-    [ 30    23   0.0343    0.0777    0.1228], 'FuDong2022', 'Silurus_asotus'          %  98 222  351 mg O2/h.kg
-    [  6.65 25   0.0182    0.0265    0.0791], 'FuDong2022', 'Tachysurus_vachellii'    % 235 341 1020 mg O2/h.kg
-    [520     9   0.2912    0.6613    2.9727], 'FuDong2022', 'Oncorhynchus_tshawytscha'%  48 109  490 mg O2/h.kg
-    [  6    15   0.0132    0.0414    0.0551], 'FuDong2022', 'Oncorhynchus_mykiss'     % 189 591  787 mg O2/h.kg
-    [364    22.5 0.4247    0.6795    1.4863], 'FuDong2022', 'Dicentrarchus_labrax'    % 100 160  350 mg O2/h.kg
-    [105    17   0.1593    0.4667    0.4667], 'FuDong2022', 'Pagrus_auratus'          % 130 190  381 mg O2/h.kg
-    [107    21   0.3121    0.5843    0.5843], 'FuDong2022', 'Pagrus_auratus'          % 163 250 4681 mg O2/h.kg
-    [ 30    17   0.0364    0.0682    0.2401], 'FuDong2022', 'Aldrichetta_forsteri'    % 104 195  686 mg O2/h.kg
-    [ 29    21   0.0420    0.0711    0.2703], 'FuDong2022', 'Aldrichetta_forsteri'    % 124 210  799 mg O2/h.kg
-    [706    26   1.6473    6.5893   11.2348], 'FuDong2022', 'Coryphaena_hippurus'     % 200 800 1364 mg O2/h.kg
-    [135.5  26   0.1423    0.7003    0.7003], 'FuDong2022', 'Pterois_volitans'        %  90 443  352 mg O2/h.kg
-    [135.5  32   0.2624    0.7762    0.7762], 'FuDong2022', 'Pterois_volitans'        % 166 491  346 mg O2/h.kg
+    [  0.45 24   0.0024    0.0038    0.0056], 'FuDong2022',   'Danio_rerio'             % 463 717 1066 mg O2/h.kg
+    [  7    25   0.0166    0.0474    0.1062], 'FuDong2022',   'Zacco_platypus'          % 203 581 1300 mg O2/h.kg
+    [  7.72 25   0.0198    0.0423    0.0612], 'FuDong2022',   'Carassius_auratus'       % 220 470  680 mg O2/h.kg
+    [ 10.49 15   0.0147    0.0317    0.0600], 'FuDong2022',   'Carassius_auratus'       % 120 259  490 mg O2/h.kg
+    [  9.68 25   0.0268    0.0710    0.1242], 'FuDong2022',   'Carassius_auratus'       % 237 629 1100 mg O2/h.kg
+    [  7.42 25   0.0165    0.0256    0.0895], 'FuDong2022',   'Ctenopharyngodon_idella' % 191 296 1034 mg O2/h.kg
+    [ 19.52 25   0.0262    0.0458    0.1776], 'FuDong2022',   'Procypris_rabaudi'       % 115 201  780 mg O2/h.kg
+    [  8.27 15   0.0083    0.0128    0.0528], 'FuDong2022',   'Parabramis_pekinensis'   %  86 133  547 mg O2/h.kg
+    [  4.62 25   0.0156    0.0269    0.0679], 'FuDong2022',   'Parabramis_pekinensis'   % 290 500 1260 mg O2/h.kg
+    [  7.94 15   0.0105    0.0233    0.0583], 'FuDong2022',   'Cyprinus_carpio'         % 113 252  629 mg O2/h.kg
+    [  7.56 25   0.0226    0.0409    0.1005], 'FuDong2022',   'Cyprinus_carpio'         % 256 464 1140 mg O2/h.kg
+    [  4.62 25   0.0119    0.0189    0.0593], 'FuDong2022',   'Mylopharyngodon_piceus'  % 220 350 1100 mg O2/h.kg
+    [  7.72 15   0.0093    0.0188    0.0459], 'FuDong2022',   'Spinibarbus_sinensis'    % 103 209  510 mg O2/h.kg
+    [  7.71 25   0.0144    0.0255    0.1070], 'FuDong2022',   'Spinibarbus_sinensis'    % 160 283 1190 mg O2/h.kg
+    [ 22.45 15   0.0141    0.0390    0.0642], 'FuDong2022',   'Silurus_meridionalis'    %  54 149  245 mg O2/h.kg
+    [ 12.89 25   0.0171    0.0767    0.1144], 'FuDong2022',   'Silurus_meridionalis'    % 114 510  761 mg O2/h.kg
+    [ 30    23   0.0343    0.0777    0.1228], 'FuDong2022',   'Silurus_asotus'          %  98 222  351 mg O2/h.kg
+    [  6.65 25   0.0182    0.0265    0.0791], 'FuDong2022',   'Tachysurus_vachellii'    % 235 341 1020 mg O2/h.kg
+    [520     9   0.2912    0.6613    2.9727], 'FuDong2022',   'Oncorhynchus_tshawytscha'%  48 109  490 mg O2/h.kg
+    [  6    15   0.0132    0.0414    0.0551], 'FuDong2022',   'Oncorhynchus_mykiss'     % 189 591  787 mg O2/h.kg
+    [364    22.5 0.4247    0.6795    1.4863], 'FuDong2022',   'Dicentrarchus_labrax'    % 100 160  350 mg O2/h.kg
+    [105    17   0.1593    0.4667    0.4667], 'FuDong2022',   'Pagrus_auratus'          % 130 190  381 mg O2/h.kg
+    [107    21   0.3121    0.5843    0.5843], 'FuDong2022',   'Pagrus_auratus'          % 163 250 4681 mg O2/h.kg
+    [ 30    17   0.0364    0.0682    0.2401], 'FuDong2022',   'Aldrichetta_forsteri'    % 104 195  686 mg O2/h.kg
+    [ 29    21   0.0420    0.0711    0.2703], 'FuDong2022',   'Aldrichetta_forsteri'    % 124 210  799 mg O2/h.kg
+    [706    26   1.6473    6.5893   11.2348], 'FuDong2022',   'Coryphaena_hippurus'     % 200 800 1364 mg O2/h.kg
+    [135.5  26   0.1423    0.7003    0.7003], 'FuDong2022',   'Pterois_volitans'        %  90 443  352 mg O2/h.kg
+    [135.5  32   0.2624    0.7762    0.7762], 'FuDong2022',   'Pterois_volitans'        % 166 491  346 mg O2/h.kg
+    [1600   21   5.5014   25.6424   36.0640], 'ClarJeff2011', 'Oncorhynchus_gorbuscha'  % 4.912 22.895 32.2 mg O2/min.kg
   };
   %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
     
@@ -210,6 +219,9 @@ for i=1:length(fig)
 %       ylabel('PMR/SMR, -')
       
 %      hold on
+      data = cell2mat(cho(:,1)); PMR_SMR_cho = data(:,4)./data(:,3);
+      ss_cho = read_stat(cho(:,3),'s_s');
+      %
       data = cell2mat(squ(:,1)); PMR_SMR_squ = data(:,4)./data(:,3);
       ss_squ = read_stat(squ(:,3),'s_s');
 %       plot(ss_squ, PMR_SMR_squ, '.m', 'MarkerSize',20)
@@ -237,10 +249,10 @@ for i=1:length(fig)
 %      prt_tab({entries_txt, data},{'species', 's_s', 'PMR/SMR'}, 'Vertebrates')
     
 %      saveas(gcf,'ss_PSMR.png')
-    
       Hfig = figure;
-      plot(ss_act, log10(PMR_SMR_act), '.b', 'MarkerSize',20)
+      plot(ss_cho, log10(PMR_SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
       hold on
+      plot(ss_act, log10(PMR_SMR_act), '.b', 'MarkerSize',20)
       plot(ss_squ, log10(PMR_SMR_squ), '.m', 'MarkerSize',20)
       plot(ss_ave, log10(PMR_SMR_ave), '.r', 'MarkerSize',20)
       plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
@@ -250,8 +262,8 @@ for i=1:length(fig)
       ylabel('_{10}log PMR/SMR, -')
 
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_cho;ss_act;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_cho;PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -260,6 +272,12 @@ for i=1:length(fig)
 
     case 2  % predicted FMR_measured SMR   
       WD0 = pwd; % store original directory
+      nm_cho = cho(:,3); n_cho = length(nm_cho); FMR_cho = zeros(n_cho,1); 
+      data_cho = cell2mat(cho(:,1)); PMR_cho = data_cho(:,4); SMR_cho = data_cho(:,3); T_cho = data_cho(:,2); W_cho = data_cho(:,1); 
+      for i=1:n_cho
+        FMR_cho(i) = 15.55 * get_FMR(nm_cho{i}, W_cho(i), T_cho(i), 1); % ml O2/min
+      end
+      %
       nm_act = act(:,3); n_act = length(nm_act); FMR_act = zeros(n_act,1); 
       data_act = cell2mat(act(:,1)); PMR_act = data_act(:,4); SMR_act = data_act(:,3); T_act = data_act(:,2); W_act = data_act(:,1); 
       for i=1:n_act
@@ -294,6 +312,7 @@ for i=1:length(fig)
       Hfig = figure;
       plot([-3;3], [-3;3], 'k', 'linewidth',2); % equality line
       hold on
+      plot(log10(FMR_cho), log10(SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
       plot(log10(FMR_act), log10(SMR_act), '.b', 'MarkerSize',20)
       plot(log10(FMR_squ), log10(SMR_squ), '.m', 'MarkerSize',20)
       plot(log10(FMR_ave), log10(SMR_ave), '.r', 'MarkerSize',20)
@@ -303,8 +322,8 @@ for i=1:length(fig)
       ylabel('measured _{10}log SMR, ml O2/min')
  
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = log10([[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_act;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
+      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = log10([[FMR_cho;FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_cho;SMR_act;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -314,6 +333,12 @@ for i=1:length(fig)
 
     case 3  % ss_PMR/FMR
       WD0 = pwd; % store original directory
+      nm_cho = cho(:,3); n_cho = length(nm_cho); FMR_cho = zeros(n_cho,1); ss_cho = read_stat(nm_cho, 's_s');
+      data_cho = cell2mat(cho(:,1)); PMR_cho = data_cho(:,4); SMR_cho = data_cho(:,3); T_cho = data_cho(:,2); W_cho = data_cho(:,1); 
+      for i=1:n_cho
+        FMR_cho(i) = 15.55 * get_FMR(nm_cho{i}, W_cho(i), T_cho(i), 1); % ml O2/min
+      end
+      %
       nm_act = act(:,3); n_act = length(nm_act); FMR_act = zeros(n_act,1); ss_act = read_stat(nm_act, 's_s');
       data_act = cell2mat(act(:,1)); PMR_act = data_act(:,4); SMR_act = data_act(:,3); T_act = data_act(:,2); W_act = data_act(:,1); 
       for i=1:n_act
@@ -346,8 +371,9 @@ for i=1:length(fig)
       cd(WD0); % return to original directory
 
       Hfig = figure;
-      plot(ss_act, log10(PMR_act./FMR_act), '.b', 'MarkerSize',20)
+      plot(ss_cho, log10(PMR_cho./FMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
       hold on
+      plot(ss_act, log10(PMR_act./FMR_act), '.b', 'MarkerSize',20)
       plot(ss_squ, log10(PMR_squ./FMR_squ), '.m', 'MarkerSize',20)
       plot(ss_ave, log10(PMR_ave./FMR_ave), '.r', 'MarkerSize',20)
       plot(ss_mar, log10(PMR_mar./FMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
@@ -357,8 +383,8 @@ for i=1:length(fig)
       ylabel('_{10}log measured PMR/ predicted FMR, -')
        
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_act;ss_squ;ss_ave;ss_mar;ss_pla], log10([PMR_act;PMR_squ;PMR_ave;PMR_mar;PMR_pla]./[FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_cho;ss_act;ss_squ;ss_ave;ss_mar;ss_pla], log10([PMR_cho;PMR_act;PMR_squ;PMR_ave;PMR_mar;PMR_pla]./[FMR_cho;FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -531,6 +557,16 @@ end
 %   author = {Christian, K. A. and Conley, K. E.}
 % }
 %
+% @article{ClarJeff2011,
+%   doi = {10.1242/jeb.060517},
+%   title = {Exceptional aerobic scope and cardiovascular performance of pink salmon (Oncorhynchus gorbuscha) may underlie resilience in a warming climate},
+%   journal = {The Journal of Experimental Biology},
+%   volume = {214},
+%   year = {2011},
+%   pages = {3074-3081},
+%   author = {Timothy D. Clark and Kenneth M. Jeffries and Scott G. Hinch and Anthony P. Farrell}
+% }
+%
 % @article{GormMill1998,
 %   title = {High hunting costs make African wild dogs vulnerable to kleptoparasitism by hyaenas},
 %   journal = {Nature},
@@ -538,6 +574,15 @@ end
 %   year = {1998},
 %   pages = {479-481},
 %   author = {Martyn L. Gorman and Michael G. Mills and Jacobus P. Raath and John R. Speakman}
+% }
+%
+% @article{GrahDewa1990,
+%   title = {ASPECTS OF SHARK SWIMMING PERFORMANCE DETERMINED USING A LARGE WATER TUNNEL},
+%   journal = {J. exp. Biol.},
+%   volume = {151},
+%   year = {1990},
+%   pages = {175-192},
+%   author = {Jeffrey B. Graham and Heidi Dewar and N. C. Lai and William R. Lowell and Steve M. Arce}
 % }
 %
 % @article{HindBaud1993,
