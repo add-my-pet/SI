@@ -151,6 +151,9 @@ end
     [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
     [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
     [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
+    [ 5.7   40.7  0.051 0.717], 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, FAS 14
+    [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml/h.g
+    [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml/h.g
   };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
@@ -200,7 +203,8 @@ end
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
     [ 41000  39.0 311.2  14700], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
     [ 25000  38.0 117.5   2900], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
-    [635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' % PMR 143470 kJ/d; 20.1 kJ/l O2
+    [500000  38.0  1600  88000], 'Hodg2025',     'Equus_ferus_caballus' % BMR 2.2-4.2 mL O2/kg/min; FAS 50-60
+   %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' %PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
     [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
     [205000  39.0   NaN   2371], 'Kirk1983',     'Sus_domesticus' % PMR 68620 kJ/d; 20.1 kJ/l O2 
     [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
@@ -498,6 +502,16 @@ end
    
 % References
 % 
+% @article{BergHart1972,
+%   doi = {10.1086/physzool.68.5.30163935}, 
+%   title = {Die Atmung beim Kolibri Amazilia fimbriata w\"{a}hrend des Schwirrfluges bei verschiedenen Umgebungstemperaturen},
+%   journal = {J. Comp. Physiol.},
+%   volume = {81},
+%   year = {1972},
+%   pages = {363-380},
+%   author = {M. Berger and J. S. Hart}
+% }
+% 
 % @article{BevaWoak1995,
 %   doi = {10.1086/physzool.68.5.30163935}, 
 %   title = {Heart Rate and Oxygen Consumption of Exercising Gentoo Penguins},
@@ -654,6 +668,15 @@ end
 %   pages = {79-81}
 % }
 %
+% @ARTICLE{SchuSchm1979,
+%   author = {Karl-L. Schuchmann and  Dagmar Schmidt-Marloh},
+%   title = {Metabolic and Thermal Responses to Heat and Cold in Streamertail Hummingbirds (Trochilus polytmus and Trochilus scitulus, Trochilidae)},
+%   journal = {Biotropica},
+%   year = {1979},
+%   volume = {11(2)},
+%   pages = {123-126}
+% }
+%
 % @ARTICLE{TaylMalo1980,
 %   author = {C. Richard Taylor and Geoffrey M. O. Maloiy and Ewald R. Weibel and Vaughan A. Langman and John M. Z. Kamau and Howard J. Seeherman and Norman C. Heglund},
 %   title = {Design of the mammalion respiratory system {III}. {S}caling maximum aerobic capacity to body mass: wild and domestic animals},
@@ -661,6 +684,13 @@ end
 %   year = {1980},
 %   volume = {44},
 %   pages = {25-37}
+% }
+%
+% @misc{Hodg2025,
+%   author = {David R. Hodgson},
+%   title = {Veterian Key; chapter 8 Thermoregulation},
+%   howpublished = {\url{https://veteriankey.com/thermoregulation/}},
+%   year = {2025/07/23}
 % }
 %
 % @book{WillSton2005,
