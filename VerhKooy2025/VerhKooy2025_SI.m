@@ -127,39 +127,41 @@ end
   };
 
   ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); %x means not in AmP
-    [  36.0 39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
-    [  89.4 40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
-    [  42.1 40.5  1.20   6.57], 'HindBaud1993', 'Synoicus_chinensis' 
+    [55000  36.0 215.05  2473], 'MainKing1989', 'Dromaius_novaehollandiae' %  3.91 ml O2/min.kg, AS 11.5 BundHopl1999
+    [21800  39.0 103.6   3728], 'BundHopl1999', 'Rhea_americana' % 2.85 ml O2/s.kg, AS 36
+    [130000 34.6 613.6  10738], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
     [ 161.0 41.3  4.41  20.48], 'HindBaud1993', 'Coturnix_japonica' 
-    [ 850.3 37.4  9.19  52.08], 'HindBaud1993', 'Porphyrio_martinica' 
+    [  42.1 40.5  1.20   6.57], 'HindBaud1993', 'Synoicus_chinensis' 
+    [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
+    [275    4.12   NaN  23.22], 'Kirk1983',     'Dendrocygna_autumnalis' % PMR 672 kJ/d; 20.1 kJ/l O2
    %[ 944.1 39.7 12.23  61.51], 'HindBaud1993', 'Anas_castanea' %x
+    [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
+    [ 850.3 37.4  9.19  52.08], 'HindBaud1993', 'Porphyrio_martinica' 
     [ 302.0 41.7  4.34  28.24], 'HindBaud1993', 'Columba_livia' 
     [1080.0 38.5 13.31  57.42], 'HindBaud1993', 'Eudyptula_minor' 
-    [  11.3 41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
-    [21800  39.0 103.6   3728], 'BundHopl1999', 'Rhea_americana' % 2.85 ml O2/s.kg, AS 36
-    [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
     [45000  36.0 301.5   2340], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
-    [55000  36.0 215.05  2473], 'MainKing1989', 'Dromaius_novaehollandiae' %  3.91 ml O2/min.kg, AS 11.5 BundHopl1999
-    [130000 34.6 613.6  10738], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
     [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
-    [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
-    [275    4.12   NaN  23.22], 'Kirk1983',     'Dendrocygna_autumnalis' % PMR 672 kJ/d; 20.1 kJ/l O2
-    [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
     [1300   40.6   NaN  64.95], 'Kirk1983',     'Phalacrocorax_pelagicus' % PMR 1880 kJ/d; 20.1 kJ/l O2
-    [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
-    [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
-    [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
-    [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
-    [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
     [ 5.7   40.7  0.051 0.717], 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, FAS 14
     [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml/h.g
     [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml/h.g
-  };     
+    [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
+    [  89.4 40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
+    [  36.0 39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
+    [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
+    [  11.3 41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
+    [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
+    [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
+    [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
+    [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
+};     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
   mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); %x means not in AmP
+   % Prototheria
     [ 1112.5 30.8 10.87  49.86], 'HindBaud1993', 'Ornithorhynchus_anatinus' 
     [ 3293.0 30.8  7.76  47.05], 'HindBaud1993', 'Tachyglossus_aculeatus' 
+   % Marsupialia
     [   15.6 35.0  0.48   2.38], 'HindBaud1993', 'Sminthopsis_crassicaudata' 
     [   16.7 32.7  0.35   2.38], 'HindBaud1993', 'Sminthopsis_macroura'
     [  119.5 35.3  1.52  19.36], 'HindBaud1993', 'Dasyuroides_byrnei'
@@ -169,47 +171,39 @@ end
     [  837.3 35.2  7.01  48.76], 'HindBaud1993', 'Perameles_gunnii'
     [  122.0 34.9  1.40   8.24], 'HindBaud1993', 'Petaurus_breviceps' 
     [  965.7 37.2  9.39  70.07], 'HindBaud1993', 'Bettongia_penicillata'
-    [ 1027.8 35.8  8.72  65.90], 'HindBaud1993', 'Potorous_tridactylus' 
     [ 1385.0 35.6 10.69 100.10], 'HindBaud1993', 'Bettongia_gaimardi' 
+    [ 1027.8 35.8  8.72  65.90], 'HindBaud1993', 'Potorous_tridactylus' 
     [ 2026.5 35.8 13.85  74.65], 'HindBaud1993', 'Trichosurus_vulpecula'
   };
   %  
   pla = {... % Placentalia; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); %x means not in AmP
-    [   38.8 36.2  0.83   3.48], 'HindBaud1993', 'Notomys_alexis'
-   %[  165.7 36.2  2.05  11.51], 'HindBaud1993', 'Rattus_colletti' %x
-    [  181.2 38.0  4.47  21.90],     'Lech1978', 'Rattus_norvegicus' 
-    [  212.3 35.9  2.71  14.85], 'HindBaud1993', 'Conilurus_penicillatus' 
-   %[  247.8 36.0  2.43  14.48], 'HindBaud1993', 'Rattus_villosissimus' %x
-   %[  819.0 34.6  9.51  44.27], 'HindBaud1993', 'Uromys_caudimaculatus' %x
-    [ 1242.0 38.3 14.56  63.58], 'HindBaud1993', 'Oryctolagus_cuniculus'
-    [   28.0 37.0  1.28   6.30],     'Lech1978', 'Myodes_rutilus'
-    [    6.9 36.0  0.24   1.41],     'Lech1978', 'Baiomys_taylori'
-    [   34   37.0  0.88   5.30],     'Lech1978', 'Mus_musculus'
-    [  113   38.0  2.47  11.20],     'Lech1978', 'Mesocricetus_auratus'
-    [   48   38.0  0.93   5.34],     'Lech1978', 'Calomys_callosus'
-    [    3.3 39.0  0.15   1.60],     'Lech1978', 'Sorex_cinereus'
-    [32000   39.5 152.5   9792], 'LindHoka1991', 'Antilocapra_americana' % 5.1 ml O2/s.kg = 9792 ml O2/min; Bish1999 FAS 64.2; BMR 9792/64.2 ml O2/min
-    [70000   37.0 268.3   3733], 'WillSton2005', 'Homo_sapiens' % 0.23, 3.2 ml O2/h.g
+   % Eulipotyphla
+    [    3.3 39.0  0.15   1.60], 'Lech1978',     'Sorex_cinereus'
+    [   8.2  39.6 0.803   3.21], 'OchoTayl2005', 'Sorex_araneus' % BMR 58.1/2.5 kJ/d; PMR 23.5 ml O2/h.g; 20.1 kJ/l O2
+   % Carnivora
    %[  583   39.8   NaN   74.4], 'TaylMalo1980', 'Helogale_parvula' %x 1.24 ml O2/s
    %[ 1151   39.8   NaN  139.8], 'TaylMalo1980', 'Mungos_mungo' %x 2.33 ml O2/s
    %[ 1458   36.7   NaN  154.8], 'TaylMalo1980', 'Genetta_tigrina' %x 2.58 ml O2/s
+    [ 41000  39.0 311.2  14700], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
+    [ 25000  38.0 117.5   2900], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
+    [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
+    [    86  39.6   NaN   7.34], 'Kirk1983',     'Mustela_nivalis' % PMR 224 kJ/d; 20.1 kJ/l O2
+   % Perissodactyla
+    [500000  38.0  1600  88000], 'Hodg2025',     'Equus_ferus_caballus' % BMR 2.2-4.2 mL O2/kg/min; FAS 50-60
+   %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' % PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
+   % Cetartiodactyla
+    [205000  39.0   NaN   2371], 'Kirk1983',     'Sus_domesticus' % PMR 68620 kJ/d; 20.1 kJ/l O2 
    %[ 3500   36.7   NaN  355.2], 'TaylMalo1980', 'Nesotragus_moschatus' %x 5.92 ml O2/s
     [ 4354   39.4   NaN  237.0], 'TaylMalo1980', 'Madoqua_kirkii' % 3.95 ml O2/s
    %[11200   38.9   NaN  600.0], 'TaylMalo1980', 'Gazella_granti' %x 10.0 ml O2/s
+    [32000   39.5 152.5   9792], 'LindHoka1991', 'Antilocapra_americana' % 5.1 ml O2/s.kg = 9792 ml O2/min; Bish1999 FAS 64.2; BMR 9792/64.2 ml O2/min
     [98000   38.0   NaN  4356 ], 'TaylMalo1980', 'Connochaetes_taurinus' % 72.6 ml O2/s
     [114000  39.4   NaN  5388 ], 'TaylMalo1980', 'Kobus_ellipsiprymnus' % 89.8 ml O2/s
     [217000  36.5   NaN  7860 ], 'TaylMalo1980', 'Taurotragus_oryx' % 131 ml O2/s
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
-    [ 41000  39.0 311.2  14700], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
-    [ 25000  38.0 117.5   2900], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
-    [500000  38.0  1600  88000], 'Hodg2025',     'Equus_ferus_caballus' % BMR 2.2-4.2 mL O2/kg/min; FAS 50-60
-   %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' % PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
     [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
-    [205000  39.0   NaN   2371], 'Kirk1983',     'Sus_domesticus' % PMR 68620 kJ/d; 20.1 kJ/l O2 
-    [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
-    [    86  39.6   NaN   7.34], 'Kirk1983',     'Mustela_nivalis' % PMR 224 kJ/d; 20.1 kJ/l O2
-    [   8.2  39.6 0.803   3.21], 'OchoTayl2005', 'Sorex_araneus' % BMR 58.1/2.5 kJ/d; PMR 23.5 ml O2/h.g; 20.1 kJ/l O2
+   % Rodentia
    %[   255  39.0 2.928  29.88], 'Bozi1992',     'Microcavia_niata' %x 175.7 1792.7 ml O2/h
    %[    35  39.6 1.030   5.35], 'Bozi1992',     'Abrothrix_andinus' %x 61.8 321.1 ml O2/h
    %[    29  39.6 0.877   6.91], 'Bozi1992',     'Abrothrix_andinus' %x 52.6 414.6 ml O2/h
@@ -224,6 +218,7 @@ end
    %[    62  39.6 1.622   7.44], 'Bozi1992',     'Loxodontomys_micropus' %x 97.3 446.4 ml O2/h
     [     7  36.0 0.333   1.44], 'Bozi1992',     'Baiomys_taylori' %  20.0 86.1 ml O2/h
     [    48  36.6 1.183   5.44], 'Bozi1992',     'Calomys_callosus' % 71.0 326.4 ml O2/h
+    [    48  38.0  0.93   5.34], 'Lech1978',     'Calomys_callosus'
     [    16  36.6 0.480   3.73], 'Bozi1992',     'Calomys_lepidus' % 28.8 224.0 ml O2/h
     [    17  36.6 0.468   3.00], 'Bozi1992',     'Calomys_musculinus' % 28.1 180.2 ml O2/h
     [    28  36.6 1.283   6.30], 'Bozi1992',     'Myodes_rutilus' % 77.0 378.0 ml O2/h
@@ -249,9 +244,23 @@ end
    %[   176  37.6 3.053  12.91], 'Bozi1992',     'Octodon_bridgesi' %x 183.2 774.4 ml O2/h
     [   195  37.6 3.023  17.88], 'Bozi1992',     'Octodon_degus' % 181.4 1072.5 ml O2/h
    %[   173  37.6 2.855  15.28], 'Bozi1992',     'Octodon_lunatus' %x 171.3 916.9 ml O2/h
+    [   28.0 37.0  1.28   6.30], 'Lech1978',     'Myodes_rutilus'
+    [    6.9 36.0  0.24   1.41], 'Lech1978',     'Baiomys_taylori'
+    [  113   38.0  2.47  11.20], 'Lech1978',     'Mesocricetus_auratus'
+   %[  819.0 34.6  9.51  44.27], 'HindBaud1993', 'Uromys_caudimaculatus' %x
+    [  212.3 35.9  2.71  14.85], 'HindBaud1993', 'Conilurus_penicillatus' 
+    [   38.8 36.2  0.83   3.48], 'HindBaud1993', 'Notomys_alexis'
     [    17  36.9 0.502   3.91], 'Bozi1992',     'Mus_musculus' % 30.1 234.6 ml O2/h
     [    17  36.9 0.500   3.49], 'Bozi1992',     'Mus_musculus' % 30.0 209.1 ml O2/h
+    [   34   37.0  0.88   5.30], 'Lech1978',     'Mus_musculus'
     [   253  37.0 4.470  21.93], 'Bozi1992',     'Rattus_norvegicus' % 268.2 1315.6 ml O2/h
+    [  181.2 38.0  4.47  21.90], 'Lech1978',     'Rattus_norvegicus' 
+   %[  165.7 36.2  2.05  11.51], 'HindBaud1993', 'Rattus_colletti' %x
+   %[  247.8 36.0  2.43  14.48], 'HindBaud1993', 'Rattus_villosissimus' %x
+   % Lagomorpha
+    [ 1242.0 38.3 14.56  63.58], 'HindBaud1993', 'Oryctolagus_cuniculus'
+   % Primates
+    [70000   37.0 268.3   3733], 'WillSton2005', 'Homo_sapiens' % 0.23, 3.2 ml O2/h.g
  };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
@@ -359,7 +368,7 @@ for i=1:length(fig)
       cd(WD0); % return to original directory
 
       Hfig = figure;
-      plot([-3;3], [-3;3], 'k', 'linewidth',2); % equality line
+      plot([-4;4], [-4;4], 'k', 'linewidth',2); % equality line
       hold on
       plot(log10(FMR_cho), log10(SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
       plot(log10(FMR_act), log10(SMR_act), '.b', 'MarkerSize',20)
