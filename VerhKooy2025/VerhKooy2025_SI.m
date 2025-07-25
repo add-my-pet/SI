@@ -188,7 +188,7 @@ end
     [  113   38.0  2.47  11.20],     'Lech1978', 'Mesocricetus_auratus'
     [   48   38.0  0.93   5.34],     'Lech1978', 'Calomys_callosus'
     [    3.3 39.0  0.15   1.60],     'Lech1978', 'Sorex_cinereus'
-    [32000   39.5 152.5   9792], 'LindHoka1991', 'Antilocapra_americana' % 5.1 ml O2/s.kg = 9792 ml O2/min; Bish1999 AS = 64.2; BMR = 9792/64.2 ml O2/min
+    [32000   39.5 152.5   9792], 'LindHoka1991', 'Antilocapra_americana' % 5.1 ml O2/s.kg = 9792 ml O2/min; Bish1999 FAS 64.2; BMR 9792/64.2 ml O2/min
     [70000   37.0 268.3   3733], 'WillSton2005', 'Homo_sapiens' % 0.23, 3.2 ml O2/h.g
    %[  583   39.8   NaN   74.4], 'TaylMalo1980', 'Helogale_parvula' %x 1.24 ml O2/s
    %[ 1151   39.8   NaN  139.8], 'TaylMalo1980', 'Mungos_mungo' %x 2.33 ml O2/s
@@ -204,12 +204,55 @@ end
     [ 41000  39.0 311.2  14700], 'ScanMill2014', 'Acinonyx_jubatus' % FMR=DEE 9006 kJ/d PMR 120 W/kg; 20.1 kJ/l O2
     [ 25000  38.0 117.5   2900], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
     [500000  38.0  1600  88000], 'Hodg2025',     'Equus_ferus_caballus' % BMR 2.2-4.2 mL O2/kg/min; FAS 50-60
-   %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' %PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
+   %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' % PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
     [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
     [205000  39.0   NaN   2371], 'Kirk1983',     'Sus_domesticus' % PMR 68620 kJ/d; 20.1 kJ/l O2 
     [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
     [    86  39.6   NaN   7.34], 'Kirk1983',     'Mustela_nivalis' % PMR 224 kJ/d; 20.1 kJ/l O2
-  };               
+    [   8.2  39.6 0.803   3.21], 'OchoTayl2005', 'Sorex_araneus' % BMR 58.1/2.5 kJ/d; PMR 23.5 ml O2/h.g; 20.1 kJ/l O2
+   %[   255  39.0 2.928  29.88], 'Bozi1992',     'Microcavia_niata' %x 175.7 1792.7 ml O2/h
+   %[    35  39.6 1.030   5.35], 'Bozi1992',     'Abrothrix_andinus' %x 61.8 321.1 ml O2/h
+   %[    29  39.6 0.877   6.91], 'Bozi1992',     'Abrothrix_andinus' %x 52.6 414.6 ml O2/h
+   %[    25  39.6 0.660   6.11], 'Bozi1992',     'Abrothrix_andinus' %x 39.6 366.6 ml O2/h
+   %[    33  39.6 0.977   5.92], 'Bozi1992',     'Abrothrix_andinus' %x 58.6 355.3 ml O2/h
+   %[    23  39.6 0.735   4.87], 'Bozi1992',     'Abrothrix_andinus' %x 44.1 292.3 ml O2/h
+   %[    42  39.6 1.308   6.09], 'Bozi1992',     'Abrothrix_longipilis' %x 78.5 365.4 ml O2/h
+   %[    27  39.6 0.823   4.14], 'Bozi1992',     'Abrothrix_olivaceus' %x 49.4 248.4 ml O2/h
+   %[    31  36.2 0.775   6.10], 'Bozi1992',     'Akodon_albiventer' %x 46.5 365.8 ml O2/h
+   %[    24  39.6 0.760   5.00], 'Bozi1992',     'Abrothrix_lanosus' %x 45.6 300.0 ml O2/h
+   %[    77  39.6 1.848   9.75], 'Bozi1992',     'Auliscomys_boliviensis' %x 110.9 585.2 ml O2/h
+   %[    62  39.6 1.622   7.44], 'Bozi1992',     'Loxodontomys_micropus' %x 97.3 446.4 ml O2/h
+    [     7  36.0 0.333   1.44], 'Bozi1992',     'Baiomys_taylori' %  20.0 86.1 ml O2/h
+    [    48  36.6 1.183   5.44], 'Bozi1992',     'Calomys_callosus' % 71.0 326.4 ml O2/h
+    [    16  36.6 0.480   3.73], 'Bozi1992',     'Calomys_lepidus' % 28.8 224.0 ml O2/h
+    [    17  36.6 0.468   3.00], 'Bozi1992',     'Calomys_musculinus' % 28.1 180.2 ml O2/h
+    [    28  36.6 1.283   6.30], 'Bozi1992',     'Myodes_rutilus' % 77.0 378.0 ml O2/h
+    [    15  36.6 0.813   6.60], 'Bozi1992',     'Myodes_rutilus' % 48.8 396.0 ml O2/h
+    [    21  39.6 0.560   6.66], 'Bozi1992',     'Eligmodontia_typus' % 33.6 399.6 ml O2/h
+    [    18  39.6 0.513   3.45], 'Bozi1992',     'Eligmodontia_typus' % 30.8 207.0 ml O2/h
+   %[    69  39.6 1.392   7.25], 'Bozi1992',     'Graomys_griseoflavus' %x 83.5 434.7 ml O2/h
+   %[    28  36.2 0.845   4.57], 'Bozi1992',     'Oryzomys_longicaudatus' %x 50.7 274.4 ml O2/h
+    [    32  38.4 1.280   6.67], 'Bozi1992',     'Microtus_oeconomus' % 76.8 400.0 ml O2/h
+    [    41  36.4 0.941   3.48], 'Bozi1992',     'Peromyscus_californicus' % 56.5 208.9 ml O2/h
+    [    18  36.6 0.405   2.41], 'Bozi1992',     'Peromyscus_eremicus' % 24.3 144.3 ml O2/h
+    [    19  36.6 0.448   2.41], 'Bozi1992',     'Peromyscus_eremicus' % 26.9 144.4 ml O2/h
+    [    49  39.6 1.093   5.86], 'Bozi1992',     'Phyllotis_darwini' % 65.6 351.4 ml O2/h
+    [    59  39.6 1.190   6.79], 'Bozi1992',     'Phyllotis_darwini' % 71.4 407.1 ml O2/h
+    [    36  39.6 0.757   5.15], 'Bozi1992',     'Phyllotis_darwini' % 45.4 308.9 ml O2/h
+   %[    79  39.6 1.280   9.48], 'Bozi1992',     'Reithrodon_auritus' %x 76.8 569.0 ml O2/h
+    [    33  37.0 0.772   3.79], 'Bozi1992',     'Dipodomys_merriami' % 46.3 227.5 ml O2/h
+    [    34  37.0 0.627   4.29], 'Bozi1992',     'Dipodomys_merriami' % 37.6 257.5 ml O2/h
+    [    45  39.6 0.835   3.34], 'Bozi1992',     'Heteromys_salvini' % 50.1 200.3 ml O2/h
+   %[    20  34.7 0.397   2.84], 'Bozi1992',     'Perognathus_fallax' %x 23.8 170.2 ml O2/h
+   %[    21  34.7 0.463   2.78], 'Bozi1992',     'Perognathus_fallax' %x 27.8 166.6 ml O2/h
+   %[    18  34.7 0.425   2.56], 'Bozi1992',     'Perognathus_fallax' %x 25.5 147.5 ml O2/h
+   %[   176  37.6 3.053  12.91], 'Bozi1992',     'Octodon_bridgesi' %x 183.2 774.4 ml O2/h
+    [   195  37.6 3.023  17.88], 'Bozi1992',     'Octodon_degus' % 181.4 1072.5 ml O2/h
+   %[   173  37.6 2.855  15.28], 'Bozi1992',     'Octodon_lunatus' %x 171.3 916.9 ml O2/h
+    [    17  36.9 0.502   3.91], 'Bozi1992',     'Mus_musculus' % 30.1 234.6 ml O2/h
+    [    17  36.9 0.500   3.49], 'Bozi1992',     'Mus_musculus' % 30.0 209.1 ml O2/h
+    [   253  37.0 4.470  21.93], 'Bozi1992',     'Rattus_norvegicus' % 268.2 1315.6 ml O2/h
+ };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
 for i=1:length(fig)
@@ -531,6 +574,15 @@ end
 %   author = {Bishop, C. M.}
 % }
 % 
+% @article{Bozi1992,
+%   title = {Scaling of Basal and Maximum Metabolic Rate in Rodents and the Aerobic Capacity Model for the Evolution of Endothermy},
+%   journal = {Physiological Zoology},
+%   volume = {65(5)},
+%   year = {1992},
+%   pages = {921-932},
+%   author = {Francisco Bozinovi}
+% }
+% 
 % @article{BracElSa1985,
 %   title = {Comparison of running energetics in males and femlae domestic fowl},
 %   journal = {Proc. R. Soc. Lond. B},
@@ -648,6 +700,15 @@ end
 %   year = {1989},
 %   volume = {163},
 %   pages = {67-73}
+% }
+%
+% @ARTICLE{OchoTayl2005,
+%   author = {Dorota Ochoci\'{n}ska and Jan R. E. Taylor},
+%   title = {Living at the Physiological Limits: Field and Maximum Metabolic Rates of the Common Shrew (Sorex araneus)},
+%   journal = {Physiological and Biochemical Zoology},
+%   year = {2005},
+%   volume = {78(5)},
+%   pages = {808–818}
 % }
 %
 % @ARTICLE{PiipMeye1977,
