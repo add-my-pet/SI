@@ -550,7 +550,7 @@ for i=1:length(fig)
       saveas(Hfig_M,'minerals.png')
       
     case 7 % ss_var(j_Oi)
-      ssJOiW = read_allStat({'s_s', 'J_Oi', 'Ww_i', 'c_T'}); s_s = ssJOiW(:,1); jT_Oi = ssJOiW(:,2)./ssJOiW(:,3); j_Oi = jT_Oi./ssJOiW(:,4);
+      ssJOiW = read_allStat({'s_s', 'J_Oi', 'Ww_i', 'c_T'}); s_s = ssJOiW(:,1); Wwi = ssJOiW(:,3); jT_Oi = ssJOiW(:,2)./Wwi; j_Oi = jT_Oi./ssJOiW(:,4);
       ss_int = linspace(0,4/27,20)'; ss = mean([ss_int(1:19),ss_int(2:20)],2); n = nan(19,1); std_jTOi = n; std_jOi = n;
       for j = 1:19
         sel = s_s>ss_int(j) & s_s<ss_int(j+1); 
@@ -568,6 +568,29 @@ for i=1:length(fig)
       xlabel('supply stress, -')
       ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
       saveas(gca,'ss_stdjOi.png')
+      
+      figure
+      plot(s_s, log10(1e3*j_Oi), 'or')
+      xlabel('supply stress, -')
+      ylabel('_{10}log spec ultimate resp, mmol O_2/d.g')
+
+      figure
+      plot(s_s, log10(Wwi), 'or')
+      xlabel('supply stress, -')
+      ylabel('_{10}log ultimate body weight, g')
+      
+      jOi_min = min(j_Oi); jOi_max = max(j_Oi);  jO_int = linspace(jOi_min,jOi_max,20)'; 
+      jO = mean([jO_int(1:19),jO_int(2:20)],2); n = nan(19,1); std_jO = n; 
+      for j = 1:19
+        sel = s_s>jO_int(j) & s_s<jO_int(j+1); 
+        jO2 = j_Oi(sel); std_jO(j) = std(jO2); n(j)=length(jO2);
+      end
+
+      figure
+      plot(1e3*jO, 1e3*std_jO, 'or')
+      xlabel('spec ultimate respiration mmol O2/d.g')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+
 
   end
 end

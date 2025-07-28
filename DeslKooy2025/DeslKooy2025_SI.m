@@ -173,6 +173,15 @@ end
         ylabel('_{10}log [p_M], J/d.cm^3');
         % saveas(gcf,'T_typical_pM.png')
 
+      case 8 % pM_am
+        shstat_options('default');
+        pmAmcT = read_allStat({'p_M','a_m','c_T'}); p_M = pmAmcT(:,1); aT_m = pmAmcT(:,2).*pmAmcT(:,3); 
+        [Hfig, Hleg] = shstat([aT_m, p_M], legend_Scor, ['Scorpaenoidei @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items
+    
+        figure(Hfig) % add items to figure
+        xlabel('_{10}log life span, d')
+        ylabel('_{10}log [p_M], J/d.cm^3');
+        % saveas(gcf,'am_pM.png')
     end
        
 end
