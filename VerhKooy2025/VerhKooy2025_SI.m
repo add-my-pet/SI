@@ -14,6 +14,7 @@ function VerhKooy2025_SI(fig)
 %    Goto AmPdata in dropdown "COLLECTION", unpack the zip-file, save the 2 .mat-files in a directory, set the path in Matlab to this directory.
 % 3) Copy DEBtool from http://www.github.com/add-my-pet/DEBtool_M/ in a directory, set the path in Matlab to this directory.
 % 4) Copy AmPtool from http://www.github.com/add-my-pet/AmPtool/ in a directory, set the path in Matlab to this directory.
+% 5) Copy wget.exe from e.g. https://eternallybored.org/misc/wget/ and make a path to it in the system-setting (Windows/Mac OS)
 %
 % Set Path in Matlab is in the toolbar of the Command Window of Matlab if full-screen
 % Load this script-file in the Matlab Editor
@@ -368,7 +369,7 @@ for i=1:length(fig)
       cd(WD0); % return to original directory
 
       Hfig = figure;
-      plot([-4;4], [-4;4], 'k', 'linewidth',2); % equality line
+      plot([-3;4], [-3;4], 'k', 'linewidth',2); % equality line
       hold on
       plot(log10(FMR_cho), log10(SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
       plot(log10(FMR_act), log10(SMR_act), '.b', 'MarkerSize',20)
@@ -546,7 +547,6 @@ for i=1:length(fig)
     case 6 % simulation of standard DEB model with stochastic searching
       shtraject % description see DEBtool_M/animal/shtraject
       saveas(Hfig_O,'organics.png')
-      shtraject_M % description see DEBtool_M/animal/shtraject_M
       saveas(Hfig_M,'minerals.png')
       
   end
