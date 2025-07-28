@@ -549,6 +549,26 @@ for i=1:length(fig)
       saveas(Hfig_O,'organics.png')
       saveas(Hfig_M,'minerals.png')
       
+    case 7 % ss_var(j_Oi)
+      ssJOiW = read_allStat({'s_s', 'J_Oi', 'Ww_i', 'c_T'}); s_s = ssJOiW(:,1); jT_Oi = ssJOiW(:,2)./ssJOiW(:,3); j_Oi = jT_Oi./ssJOiW(:,4);
+      ss_int = linspace(0,4/27,20)'; ss = mean([ss_int(1:19),ss_int(2:20)],2); n = nan(19,1); std_jTOi = n; std_jOi = n;
+      for j = 1:19
+        sel = s_s>ss_int(j) & s_s<ss_int(j+1); 
+        jTO = jT_Oi(sel); jO = j_Oi(sel); std_jTOi(j) = std(jTO); std_jOi(j) = std(jO); n(j)=length(jTO);
+      end
+      
+      figure
+      plot(ss, 1e3*std_jTOi, 'ob')
+      xlabel('supply stress, -')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+      saveas(gca,'ss_stdjTOi.png')
+
+      figure
+      plot(ss, 1e3*std_jOi, 'ob')
+      xlabel('supply stress, -')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+      saveas(gca,'ss_stdjOi.png')
+
   end
 end
    
