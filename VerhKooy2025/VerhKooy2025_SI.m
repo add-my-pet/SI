@@ -41,7 +41,7 @@ end
     {'o', 8, 3, [0 0 1], [0 0 1]}, 'Actinopterygii'; 
     {'o', 8, 3, [1 0 1], [1 0 1]}, 'Squamata'; 
     {'o', 8, 3, [1 0 0], [1 0 0]}, 'Aves'; 
-    {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Masupialia'
+    {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Marsupialia'
     {'o', 8, 3, [1 .5 .5], [1 .5 .5]}, 'Placentalia'
   };
   %Hlegend = shlegend(legend);
@@ -138,23 +138,89 @@ end
    %[ 944.1 39.7 12.23  61.51], 'HindBaud1993', 'Anas_castanea' %x
     [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
     [ 850.3 37.4  9.19  52.08], 'HindBaud1993', 'Porphyrio_martinica' 
-    [ 302.0 41.7  4.34  28.24], 'HindBaud1993', 'Columba_livia' 
+   %[ 302.0 41.7  4.34  28.24], 'HindBaud1993', 'Columba_livia' 
+    [ 419   41.7  7.08  162.8], 'Pear1964',     'Columba_livia' % PMR 112 kcal/h.kg (4.184 J/cal; 20.1 kJ/l O2); FAS 23 
     [1080.0 38.5 13.31  57.42], 'HindBaud1993', 'Eudyptula_minor' 
     [45000  36.0 301.5   2340], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
     [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
+    [277    40.9  8.13  45.97], 'BernThom1973', 'Leucophaeus_atricilla' % 0.0099 0.056 W/g
+    [58.4   41.0  1.94  10.41], 'ThomSwan2019', 'Calidris_melanotos' % 
+    [19.4   41.0  0.84   4.62], 'ThomSwan2019', 'Calidris_minutilla' %  
+    [16.0   41.0  1.38   3.19], 'WillTiel2007', 'Calidris_minutilla' % 40.0 92.3 kJ/d; 20.1 kJ/l O2
+    [41.1   41.0  3.02   7.71], 'WillTiel2007', 'Calidris_alpina' % 87.45 223.11 kJ/d; 20.1 kJ/l O2
+    [61.0   41.0  3.63   8.62], 'WillTiel2007', 'Tringa_flavipes' % 105.2 249.4 kJ/d; 20.1 kJ/l O2
+    [55.0   41.0  2.38   7.60], 'WillTiel2007', 'Limnodromus_griseus' % 68.88 220.04 kJ/d; 20.1 kJ/l O2
+    [75.4   40.9  3.72  11.18], 'WillTiel2007', 'Pluvialis_dominica' % 107.8 323.6 kJ/d; 20.1 kJ/l O2
+    [151.0  41.0  7.08  16.41], 'WillTiel2007', 'Limosa_haemastica' % 204.8 474.9 kJ/d; 20.1 kJ/l O2
+    [190.0  41.0  7.79  23.38], 'WillTiel2007', 'Numenius_phaeopus' % 225.6 676.6 kJ/d; 20.1 kJ/l O2
     [1300   40.6   NaN  64.95], 'Kirk1983',     'Phalacrocorax_pelagicus' % PMR 1880 kJ/d; 20.1 kJ/l O2
     [ 5.7   40.7  0.051 0.717], 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, FAS 14
+    [ 3.3   34    0.198 1.815], 'Lasi1963',     'Archilochus_alexandri' % PMR 33 ml/h.g SMR 3.6 ml/h.g
+    [ 4.1   39    0.232 9.157], 'Lasi1963',     'Selasphorus_rufus' % PMR 124 ml/h.g SMR 3.4 ml/h.g
+    [ 3.2   36.2  0.192 7.147], 'Lasi1963',     'Selasphorus_sasin' % PMR 134 ml/h.g SMR 3.6 ml/h.g
+    [ 2.3   36    0.153 2.542], 'Lasi1963',     'Selasphorus_calliope' % PMR 66.3 ml/h.g SMR 4.0 ml/h.g
+    [ 4.1   35.5  0.260 4.647], 'Lasi1963',     'Calypte_anna' % PMR 68 ml/h.g SMR 3.8 ml/h.g
+    [ 3.2   36.7  0.155 4.053], 'Lasi1963',     'Calypte_costae' % PMR 76 ml/h.g SMR 2.9 ml/h.g
     [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml/h.g
     [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml/h.g
     [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
-    [  89.4 40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
-    [  36.0 39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
+    [89.4   40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
+    [36.0   39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
+    [275    41.6 10.67  68.13], 'BernThom1973', 'Corvus_ossifragus' % 0.013 0.083 W/g
     [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
-    [  11.3 41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
+    [11.3   41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
     [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
     [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
     [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
     [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
+   %[41.2   41.6   NaN   9.91], 'WierChap2007', 'Arremonops_conirostris' % PMR 3.32 W; 20.1 kJ/l O2
+   %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' % PMR 1.18 W; 20.1 kJ/l O2
+   %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' % PMR 0.96 W; 20.1 kJ/l O2
+   %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' % PMR 1.01 W; 20.1 kJ/l O2
+    [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2
+    [40.5   42.1   NaN   8.54], 'WierChap2007', 'Columbina_talpacoti' % PMR 2.86 W; 20.1 kJ/l O2
+   %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' % PMR 2.18 W; 20.1 kJ/l O2
+   %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' % PMR 3.2 W; 20.1 kJ/l O2
+   %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' % PMR 2.16 W; 20.1 kJ/l O2
+   %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' % PMR 2.76 W; 20.1 kJ/l O2
+   %[28.9   41.6   NaN   3.88], 'WierChap2007', 'Euphonia_laniirostris' % PMR 1.3 W; 20.1 kJ/l O2
+   %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' % PMR 2.67 W; 20.1 kJ/l O2
+   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' % PMR 1.5 W; 20.1 kJ/l O2
+   %[12.0   41.1   NaN   1.46], 'WierChap2007', 'Hylophylax_naevioides' % PMR 0.49 W; 20.1 kJ/l O2
+   %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' % PMR 1.5 W; 20.1 kJ/l O2
+   %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' % PMR 4.91 W; 20.1 kJ/l O2
+    [61.5   41.6   NaN   2.23], 'WierChap2007', 'Mionectes_oleagineus' % PMR 0.75 W; 20.1 kJ/l O2
+    [10.0   41.6   NaN   3.34], 'WierChap2007', 'Myiobius_atricaudus' % PMR 1.12 W; 20.1 kJ/l O2
+   %[12.0   41.6   NaN  11.91], 'WierChap2007', 'Myiodynastes_maculatus' % PMR 3.99 W; 20.1 kJ/l O2
+    [46.5   41.6   NaN   6.30], 'WierChap2007', 'Myiozetetes_similis' % PMR 2.11 W; 20.1 kJ/l O2
+   %[22.5   41.3   NaN   6.00], 'WierChap2007', 'Myrmeciza_longipes' % PMR 2.01 W; 20.1 kJ/l O2
+   %[29.0   41.6   NaN   1.94], 'WierChap2007', 'Myrmotherula_fulviventris' % PMR 0.65 W; 20.1 kJ/l O2
+   %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' % PMR 0.47 W; 20.1 kJ/l O2
+   %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' % PMR 1.37 W; 20.1 kJ/l O2
+   %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' % PMR 1.66 W; 20.1 kJ/l O2
+    [13.5   41.9   NaN   9.04], 'WierChap2007', 'Progne_chalybea' % PMR 3.03 W; 20.1 kJ/l O2
+   %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' % PMR 0.76 W; 20.1 kJ/l O2
+   %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' % PMR 2.74 W; 20.1 kJ/l O2
+   %[25.7   40.7   NaN   3.16], 'WierChap2007', 'Rhynchocyclus_olivaceus' % PMR 1.06 W; 20.1 kJ/l O2
+   %[39.0   41.6   NaN   7.79], 'WierChap2007', 'Saltator_striatipectus' % PMR 2.61 W; 20.1 kJ/l O2
+   %[39.0   41.4   NaN   7.88], 'WierChap2007', 'Sclerurus_guatemalensis' % PMR 2.64 W; 20.1 kJ/l O2
+   %[36.5   41.6   NaN   4.09], 'WierChap2007', 'Sporophila_americana' % PMR 1.37 W; 20.1 kJ/l O2
+   %[10.1   41.6   NaN   4.39], 'WierChap2007', 'Sporophila_nigricollis' % PMR 1.47 W; 20.1 kJ/l O2
+    [ 9.0   42.1   NaN   3.52], 'WierChap2007', 'Tachycineta_albilinea' % PMR 1.18 W; 20.1 kJ/l O2
+   %[27.5   41.6   NaN   6.27], 'WierChap2007', 'Thamnophilus_doliatus' % PMR 2.1 W; 20.1 kJ/l O2
+    [29.7   41.3   NaN   7.28], 'WierChap2007', 'Thraupis_episcopus' % PMR 2.44 W; 20.1 kJ/l O2
+   %[30.5   41.6   NaN   6.42], 'WierChap2007', 'Thraupis_palmarum' % PMR 2.15 W; 20.1 kJ/l O2
+   %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' % PMR 1.74 W; 20.1 kJ/l O2
+   %[20.3   42.7   NaN   6.21], 'WierChap2007', 'Thryothorus_leucotis' % PMR 2.08 W; 20.1 kJ/l O2
+   %[15.0   41.6   NaN   3.94], 'WierChap2007', 'Thryothorus_rutilus' % PMR 1.32 W; 20.1 kJ/l O2
+   %[ 6.5   41.6   NaN   2.18], 'WierChap2007', 'Todirostrum_cinereum' % PMR 0.73 W; 20.1 kJ/l O2
+   %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' % PMR 1.4 W; 20.1 kJ/l O2
+    [13.5   42.0   NaN   5.28], 'WierChap2007', 'Troglodytes_aedon' % PMR 1.77 W; 20.1 kJ/l O2
+   %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' % PMR 5.09 W; 20.1 kJ/l O2
+   %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' % PMR 0.82 W; 20.1 kJ/l O2
+    [40.0   41.6   NaN   7.88], 'WierChap2007', 'Tyrannus_melancholicus' % PMR 2.64 W; 20.1 kJ/l O2
+   %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' % PMR 1.74 W; 20.1 kJ/l O2
+   %[10.8   41.5   NaN   4.21], 'WierChap2007', 'Xenops_minutus' % PMR 1.41 W; 20.1 kJ/l O2    
 };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
@@ -607,6 +673,15 @@ end
 %   author = {M. Berger and J. S. Hart}
 % }
 % 
+% @article{BernThom1973,
+%   title = {POWER INPUT DURING FLIGHT OF THE FISH CROW, CORVUS OSSIFRAGUS},
+%   journal = {J. Exp. Biol.},
+%   volume = {58},
+%   year = {1973},
+%   pages = {401-410},
+%   author = {Marvin H. Bernstein and Steven P. Thomas and Knut Schmidt-Nielsen}
+% }
+% 
 % @article{BevaWoak1995,
 %   doi = {10.1086/physzool.68.5.30163935}, 
 %   title = {Heart Rate and Oxygen Consumption of Exercising Gentoo Penguins},
@@ -709,6 +784,13 @@ end
 %   author = {Bishop, C. M.}
 % }
 % 
+% @misc{Hodg2025,
+%   author = {David R. Hodgson},
+%   title = {Veterian Key; chapter 8 Thermoregulation},
+%   howpublished = {\url{https://veteriankey.com/thermoregulation/}},
+%   year = {2025/07/23}
+% }
+%
 % @article{Kirk1983,
 %   title = {A LIMIT TO METABOLISABLE ENERGY INTAKE IN MAMMALS AND BIRDS},
 %   journal = {Comp. Biochem. Physiol.},
@@ -727,6 +809,15 @@ end
 %   pages = {199–209}
 % }
 %
+% @article{Lasi1963,
+%   title = {Oxygen Consumption of Torpid, Resting, Active, and Flying Hummingbirds},
+%   journal = {Physiological Zoology},
+%   volume = {36(2)},
+%   year = {1963},
+%   pages = {29-44},
+%   author = {Robert C. Lasiewski}
+% }
+% 
 % @article{Lech1978,
 %   title = {The scaling of maximal oxygen consumption and pulmonary dimensions in small mammals},
 %   journal = {Resp. Physiol.},
@@ -761,6 +852,16 @@ end
 %   year = {2005},
 %   volume = {78(5)},
 %   pages = {808–818}
+% }
+%
+% @ARTICLE{Pear1964,
+%   condor = {10.2307/1365642},
+%   author = {Oliver P. Pearson},
+%   title = {METABOLISM AND HEAT LOSS DURING FLIGHT IN PIGEONS},
+%   journal = {Condor},
+%   year = {1964},
+%   volume = {30},
+%   pages = {221-239}
 % }
 %
 % @ARTICLE{PiipMeye1977,
@@ -799,11 +900,32 @@ end
 %   pages = {25-37}
 % }
 %
-% @misc{Hodg2025,
-%   author = {David R. Hodgson},
-%   title = {Veterian Key; chapter 8 Thermoregulation},
-%   howpublished = {\url{https://veteriankey.com/thermoregulation/}},
-%   year = {2025/07/23}
+% @ARTICLE{ThomSwan2019,
+%   doi = {10.1111/jav.02062},
+%   author = {Nathan E. Thomas and David L. Swanson},
+%   title = {Do the high energy lifestyles of shorebirds result in high maximal metabolic rates? Basal and maximal metabolic rates in least and pectoral sandpipers during migration},
+%   journal = {Journal of Avian Biology},
+%   year = {2019},
+%   pages = {e02062}
+% }
+%
+% @ARTICLE{WierChap2007,
+%   doi = {10.1073pnas.0707683104},
+%   author = {Popko Wiersma and Mark A. Chappell and Joseph B. Williams},
+%   title = {Cold- and exercise-induced peak metabolic rates in tropical birds},
+%   journal = {PNAS},
+%   volume = {104(52)},
+%   year = {2007},
+%   pages = {20866–20871}
+% }
+%
+% @ARTICLE{WillTiel2007,
+%   author = {Joseph B. Williams and B. Irene Tieleman and G. Henk Visser and Robert E. Ricklefs},
+%   title = {Does Growth Rate Determine the Rate of Metabolism in Shorebird Chicks Living in the Arctic?},
+%   journal = {Physiological and Biochemical Zoology :. },
+%   volume = {80(5)},
+%   year = {2007},
+%   pages = {300-513}
 % }
 %
 % @book{WillSton2005,

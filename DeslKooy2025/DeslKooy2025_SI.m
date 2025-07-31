@@ -181,7 +181,10 @@ end
         figure(Hfig) % add items to figure
         xlabel('_{10}log life span, d')
         ylabel('_{10}log [p_M], J/d.cm^3');
-        % saveas(gcf,'am_pM.png')
+        saveas(gcf,'am_pM.png')
+        
+        figure(Hleg)
+        saveas(gcf,'legend_Scor.png')
     end
        
 end
