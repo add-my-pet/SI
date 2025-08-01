@@ -39,13 +39,14 @@ end
   legend = { ... % colors from legend_vert
     {'o', 8, 3, [0 0 1], [0 1 1]}, 'Chondrichthyes'; 
     {'o', 8, 3, [0 0 1], [0 0 1]}, 'Actinopterygii'; 
+    {'o', 8, 3, [1 0 1], [0 1 1]}, 'Amphibia'; 
     {'o', 8, 3, [1 0 1], [1 0 1]}, 'Squamata'; 
     {'o', 8, 3, [1 0 0], [1 0 0]}, 'Aves'; 
     {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Marsupialia'
     {'o', 8, 3, [1 .5 .5], [1 .5 .5]}, 'Placentalia'
   };
-  %Hlegend = shlegend(legend);
-  %saveas(Hlegend,'legend_AS.png')
+  Hlegend = shlegend(legend);
+  saveas(Hlegend,'legend_AS.png')
 
   legend_aves = {...
    %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
@@ -81,6 +82,12 @@ end
     [ 6000 15    7.4    10.8], 'GrahDewa1990', 'Triakis_semifasciata' % 105 154 mg O2/h.kg
     [ 3900 18   13.7    21.2], 'GrahDewa1990', 'Isurus_oxyrinchus' % 300 466 mg O2/h.kg
     [ 2530 18.5  1.47   7.25], 'PiipMeye1977', 'Scyliorhinus_stellaris' % 0.026 0.128 mmol/kg.min
+  };
+
+  % 1 mg O2/h = 0.7 ml O2/h
+  amp = { ... % Amphibia, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min) 
+    [ 2  13 0.0007  0.0075], 'Fede1986', 'Desmognathus_ochrophaeus' % 0.9 10 mumol/h.g
+    [4.1 13  0.005  0.0376], 'Full1985', 'Plethodon_jordani' % PMR 0.55 ml O2/h.g; FAS 6-9
   };
 
   % 1 mg O2/h = 0.7 ml O2/h
@@ -144,6 +151,7 @@ end
     [45000  36.0 301.5   2340], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
     [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
     [277    40.9  8.13  45.97], 'BernThom1973', 'Leucophaeus_atricilla' % 0.0099 0.056 W/g
+    [63.4   41.0 1.409 16.906], 'Putt1980',     'Calidris_ferruginea' % 1699 kJ/h; FAS 12; 20.1 kJ/l O2
     [58.4   41.0  1.94  10.41], 'ThomSwan2019', 'Calidris_melanotos' % 
     [19.4   41.0  0.84   4.62], 'ThomSwan2019', 'Calidris_minutilla' %  
     [16.0   41.0  1.38   3.19], 'WillTiel2007', 'Calidris_minutilla' % 40.0 92.3 kJ/d; 20.1 kJ/l O2
@@ -173,54 +181,65 @@ end
     [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
     [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
     [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
-   %[41.2   41.6   NaN   9.91], 'WierChap2007', 'Arremonops_conirostris' % PMR 3.32 W; 20.1 kJ/l O2
-   %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' % PMR 1.18 W; 20.1 kJ/l O2
-   %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' % PMR 0.96 W; 20.1 kJ/l O2
-   %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' % PMR 1.01 W; 20.1 kJ/l O2
+   %[41.2   41.6   NaN   9.91], 'WierChap2007', 'Arremonops_conirostris' %x PMR 3.32 W; 20.1 kJ/l O2
+   %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' %x PMR 1.18 W; 20.1 kJ/l O2
+   %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' %x PMR 0.96 W; 20.1 kJ/l O2
+   %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' %x PMR 1.01 W; 20.1 kJ/l O2
     [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2
     [40.5   42.1   NaN   8.54], 'WierChap2007', 'Columbina_talpacoti' % PMR 2.86 W; 20.1 kJ/l O2
-   %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' % PMR 2.18 W; 20.1 kJ/l O2
-   %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' % PMR 3.2 W; 20.1 kJ/l O2
-   %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' % PMR 2.16 W; 20.1 kJ/l O2
-   %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' % PMR 2.76 W; 20.1 kJ/l O2
-   %[28.9   41.6   NaN   3.88], 'WierChap2007', 'Euphonia_laniirostris' % PMR 1.3 W; 20.1 kJ/l O2
-   %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' % PMR 2.67 W; 20.1 kJ/l O2
-   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' % PMR 1.5 W; 20.1 kJ/l O2
-   %[12.0   41.1   NaN   1.46], 'WierChap2007', 'Hylophylax_naevioides' % PMR 0.49 W; 20.1 kJ/l O2
-   %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' % PMR 1.5 W; 20.1 kJ/l O2
-   %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' % PMR 4.91 W; 20.1 kJ/l O2
+   %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' %x PMR 2.18 W; 20.1 kJ/l O2
+   %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' %x PMR 3.2 W; 20.1 kJ/l O2
+   %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' %x PMR 2.16 W; 20.1 kJ/l O2
+   %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' %x PMR 2.76 W; 20.1 kJ/l O2
+   %[28.9   41.6   NaN   3.88], 'WierChap2007', 'Euphonia_laniirostris' %x PMR 1.3 W; 20.1 kJ/l O2
+   %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' %x PMR 2.67 W; 20.1 kJ/l O2
+   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' %x PMR 1.5 W; 20.1 kJ/l O2
+   %[12.0   41.1   NaN   1.46], 'WierChap2007', 'Hylophylax_naevioides' %x PMR 0.49 W; 20.1 kJ/l O2
+   %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' %x PMR 1.5 W; 20.1 kJ/l O2
+   %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' %x PMR 4.91 W; 20.1 kJ/l O2
     [61.5   41.6   NaN   2.23], 'WierChap2007', 'Mionectes_oleagineus' % PMR 0.75 W; 20.1 kJ/l O2
     [10.0   41.6   NaN   3.34], 'WierChap2007', 'Myiobius_atricaudus' % PMR 1.12 W; 20.1 kJ/l O2
-   %[12.0   41.6   NaN  11.91], 'WierChap2007', 'Myiodynastes_maculatus' % PMR 3.99 W; 20.1 kJ/l O2
+   %[12.0   41.6   NaN  11.91], 'WierChap2007', 'Myiodynastes_maculatus' %x PMR 3.99 W; 20.1 kJ/l O2
     [46.5   41.6   NaN   6.30], 'WierChap2007', 'Myiozetetes_similis' % PMR 2.11 W; 20.1 kJ/l O2
-   %[22.5   41.3   NaN   6.00], 'WierChap2007', 'Myrmeciza_longipes' % PMR 2.01 W; 20.1 kJ/l O2
-   %[29.0   41.6   NaN   1.94], 'WierChap2007', 'Myrmotherula_fulviventris' % PMR 0.65 W; 20.1 kJ/l O2
-   %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' % PMR 0.47 W; 20.1 kJ/l O2
-   %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' % PMR 1.37 W; 20.1 kJ/l O2
-   %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' % PMR 1.66 W; 20.1 kJ/l O2
+   %[22.5   41.3   NaN   6.00], 'WierChap2007', 'Myrmeciza_longipes' %x PMR 2.01 W; 20.1 kJ/l O2
+   %[29.0   41.6   NaN   1.94], 'WierChap2007', 'Myrmotherula_fulviventris' %x PMR 0.65 W; 20.1 kJ/l O2
+   %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' %x PMR 0.47 W; 20.1 kJ/l O2
+   %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' %x PMR 1.37 W; 20.1 kJ/l O2
+   %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' %x PMR 1.66 W; 20.1 kJ/l O2
     [13.5   41.9   NaN   9.04], 'WierChap2007', 'Progne_chalybea' % PMR 3.03 W; 20.1 kJ/l O2
-   %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' % PMR 0.76 W; 20.1 kJ/l O2
-   %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' % PMR 2.74 W; 20.1 kJ/l O2
-   %[25.7   40.7   NaN   3.16], 'WierChap2007', 'Rhynchocyclus_olivaceus' % PMR 1.06 W; 20.1 kJ/l O2
-   %[39.0   41.6   NaN   7.79], 'WierChap2007', 'Saltator_striatipectus' % PMR 2.61 W; 20.1 kJ/l O2
-   %[39.0   41.4   NaN   7.88], 'WierChap2007', 'Sclerurus_guatemalensis' % PMR 2.64 W; 20.1 kJ/l O2
-   %[36.5   41.6   NaN   4.09], 'WierChap2007', 'Sporophila_americana' % PMR 1.37 W; 20.1 kJ/l O2
-   %[10.1   41.6   NaN   4.39], 'WierChap2007', 'Sporophila_nigricollis' % PMR 1.47 W; 20.1 kJ/l O2
+   %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' %x PMR 0.76 W; 20.1 kJ/l O2
+   %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' %x PMR 2.74 W; 20.1 kJ/l O2
+   %[25.7   40.7   NaN   3.16], 'WierChap2007', 'Rhynchocyclus_olivaceus' %x PMR 1.06 W; 20.1 kJ/l O2
+   %[39.0   41.6   NaN   7.79], 'WierChap2007', 'Saltator_striatipectus' %x PMR 2.61 W; 20.1 kJ/l O2
+   %[39.0   41.4   NaN   7.88], 'WierChap2007', 'Sclerurus_guatemalensis' %x PMR 2.64 W; 20.1 kJ/l O2
+   %[36.5   41.6   NaN   4.09], 'WierChap2007', 'Sporophila_americana' %x PMR 1.37 W; 20.1 kJ/l O2
+   %[10.1   41.6   NaN   4.39], 'WierChap2007', 'Sporophila_nigricollis' %x PMR 1.47 W; 20.1 kJ/l O2
     [ 9.0   42.1   NaN   3.52], 'WierChap2007', 'Tachycineta_albilinea' % PMR 1.18 W; 20.1 kJ/l O2
-   %[27.5   41.6   NaN   6.27], 'WierChap2007', 'Thamnophilus_doliatus' % PMR 2.1 W; 20.1 kJ/l O2
+   %[27.5   41.6   NaN   6.27], 'WierChap2007', 'Thamnophilus_doliatus' %x PMR 2.1 W; 20.1 kJ/l O2
     [29.7   41.3   NaN   7.28], 'WierChap2007', 'Thraupis_episcopus' % PMR 2.44 W; 20.1 kJ/l O2
-   %[30.5   41.6   NaN   6.42], 'WierChap2007', 'Thraupis_palmarum' % PMR 2.15 W; 20.1 kJ/l O2
-   %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' % PMR 1.74 W; 20.1 kJ/l O2
-   %[20.3   42.7   NaN   6.21], 'WierChap2007', 'Thryothorus_leucotis' % PMR 2.08 W; 20.1 kJ/l O2
-   %[15.0   41.6   NaN   3.94], 'WierChap2007', 'Thryothorus_rutilus' % PMR 1.32 W; 20.1 kJ/l O2
-   %[ 6.5   41.6   NaN   2.18], 'WierChap2007', 'Todirostrum_cinereum' % PMR 0.73 W; 20.1 kJ/l O2
-   %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' % PMR 1.4 W; 20.1 kJ/l O2
+   %[30.5   41.6   NaN   6.42], 'WierChap2007', 'Thraupis_palmarum' %x PMR 2.15 W; 20.1 kJ/l O2
+   %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' %x PMR 1.74 W; 20.1 kJ/l O2
+   %[20.3   42.7   NaN   6.21], 'WierChap2007', 'Thryothorus_leucotis' %x PMR 2.08 W; 20.1 kJ/l O2
+   %[15.0   41.6   NaN   3.94], 'WierChap2007', 'Thryothorus_rutilus' %x PMR 1.32 W; 20.1 kJ/l O2
+   %[ 6.5   41.6   NaN   2.18], 'WierChap2007', 'Todirostrum_cinereum' %x PMR 0.73 W; 20.1 kJ/l O2
+   %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' %x PMR 1.4 W; 20.1 kJ/l O2
     [13.5   42.0   NaN   5.28], 'WierChap2007', 'Troglodytes_aedon' % PMR 1.77 W; 20.1 kJ/l O2
-   %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' % PMR 5.09 W; 20.1 kJ/l O2
-   %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' % PMR 0.82 W; 20.1 kJ/l O2
-    [40.0   41.6   NaN   7.88], 'WierChap2007', 'Tyrannus_melancholicus' % PMR 2.64 W; 20.1 kJ/l O2
-   %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' % PMR 1.74 W; 20.1 kJ/l O2
-   %[10.8   41.5   NaN   4.21], 'WierChap2007', 'Xenops_minutus' % PMR 1.41 W; 20.1 kJ/l O2    
+   %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' %x PMR 5.09 W; 20.1 kJ/l O2
+   %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' %x PMR 0.82 W; 20.1 kJ/l O2
+    [40.0   41.6   NaN   7.88], 'WierChap2007', 'Tyrannus_melancholicus' %x PMR 2.64 W; 20.1 kJ/l O2
+   %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' %x PMR 1.74 W; 20.1 kJ/l O2
+   %[10.8   41.5   NaN   4.21], 'WierChap2007', 'Xenops_minutus' %x PMR 1.41 W; 20.1 kJ/l O2   
+   %[14.0   41.5 0.595  3.867], 'DuteSwan1996', 'Contopus_virens' %x 
+   %[34.4   41.5 1.469  8.247], 'DuteSwan1996', 'Dumetella_carolinensis' %x 
+    [10.5   41.6 0.555  4.083], 'DuteSwan1996', 'Troglodytes_aedon'  
+    [13.7   41.6 1.092  7.714], 'DuteSwan1996', 'Poecile_atricapillus'  
+    [27.2   41.6 1.314 10.605], 'DuteSwan1996', 'Passer_domesticus'   
+    [20.0   41.6 1.423  8.619], 'DuteSwan1996', 'Junco_hyemalis'    
+    [12.8   41.6 0.722  4.539], 'DuteSwan1996', 'Spizella_pusilla' 
+    [18.6   41.6 1.209  7.478], 'DuteSwan1996', 'Spizelloides_arborea'
+    [ 9.3   41.6 0.546  3.018], 'DuteSwan1996', 'Setophaga_petechia' 
+    [40.7   41.6 1.564  8.922], 'DuteSwan1996', 'Pheucticus_ludovicianus' 
+    [20.8   41.6 0.971  2.392], 'DawsButt1985', 'Haemorhous_mexicanus' % 2.8 6.9 cm^3 O2/h.g % cold stress down to 0C; at lower temp MR might be higher 
 };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
@@ -270,6 +289,7 @@ end
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
     [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
+    [5.318e6 36.0  6633  39635], 'WortWort2013', 'Orcinus_orca' % 8.0 47.8 MJ/h; 20.1 kJ/l O2 
    % Rodentia
    %[   255  39.0 2.928  29.88], 'Bozi1992',     'Microcavia_niata' %x 175.7 1792.7 ml O2/h
    %[    35  39.6 1.030   5.35], 'Bozi1992',     'Abrothrix_andinus' %x 61.8 321.1 ml O2/h
@@ -331,64 +351,48 @@ end
  };               
   %prt_tab({[mar(:,[3 2]);pla(:,[3 2])], [cell2mat(mar(:,1));cell2mat(pla(:,1))]},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Mammalia')
          
-for i=1:length(fig)
+for c=1:length(fig)
  
-  switch fig(i)
+  switch fig(c)
     case 1 % ss_AS
     
       data = cell2mat(act(:,1)); PMR_SMR_act = data(:,4)./data(:,3);
       ss_act = read_stat(act(:,3),'s_s');
-%       Hfig = figure;
-%       plot(ss_act, PMR_SMR_act, '.b', 'MarkerSize',20)
-%       xlabel('supply stress s_s, -')
-%       ylabel('PMR/SMR, -')
-      
-%      hold on
+      %
       data = cell2mat(cho(:,1)); PMR_SMR_cho = data(:,4)./data(:,3);
       ss_cho = read_stat(cho(:,3),'s_s');
       %
+      data = cell2mat(amp(:,1)); PMR_SMR_amp = data(:,4)./data(:,3);
+      ss_amp = read_stat(amp(:,3),'s_s');
+      %
       data = cell2mat(squ(:,1)); PMR_SMR_squ = data(:,4)./data(:,3);
       ss_squ = read_stat(squ(:,3),'s_s');
-%       plot(ss_squ, PMR_SMR_squ, '.m', 'MarkerSize',20)
-%       xlim([0 4/27])
       %
       data = cell2mat(ave(:,1)); PMR_SMR_ave = data(:,4)./data(:,3);
       ss_ave = read_stat(ave(:,3),'s_s');
-%       plot(ss_ave, PMR_SMR_ave, '.r', 'MarkerSize',20)
       %
       data = cell2mat(mar(:,1)); PMR_SMR_mar = data(:,4)./data(:,3);
       ss_mar = read_stat(mar(:,3),'s_s');
-%      plot(ss_mar, PMR_SMR_mar, 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
       %
       data = cell2mat(pla(:,1)); PMR_SMR_pla = data(:,4)./data(:,3);
       ss_pla = read_stat(pla(:,3),'s_s');
-%      plot(ss_pla, PMR_SMR_pla,'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
 
-%       % set species names behind markers in plot figure
-%       h = datacursormode(Hfig); entries_txt = [act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-%       data = [[ss_act;ss_squ; ss_ave;ss_mar;ss_pla],[PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla]];
-%       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
-%       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
-%       datacursormode on % mouse click on plot
-    
-%      prt_tab({entries_txt, data},{'species', 's_s', 'PMR/SMR'}, 'Vertebrates')
-    
-%      saveas(gcf,'ss_PSMR.png')
       Hfig = figure;
-      plot(ss_cho, log10(PMR_SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
+      plot(ss_cho, log10(PMR_SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
       hold on
       plot(ss_act, log10(PMR_SMR_act), '.b', 'MarkerSize',20)
+      plot(ss_amp, log10(PMR_SMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_squ, log10(PMR_SMR_squ), '.m', 'MarkerSize',20)
       plot(ss_ave, log10(PMR_SMR_ave), '.r', 'MarkerSize',20)
-      plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
-      plot(ss_pla, log10(PMR_SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+      plot(ss_mar, log10(PMR_SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
+      plot(ss_pla, log10(PMR_SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
       xlim([0 4/27])
       xlabel('supply stress s_s, -')
       ylabel('_{10}log PMR/SMR, -')
 
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_cho;ss_act;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_cho;PMR_SMR_act;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); amp(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_cho;ss_act;ss_amp;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_SMR_cho;PMR_SMR_act;PMR_SMR_amp;PMR_SMR_squ;PMR_SMR_ave;PMR_SMR_mar;PMR_SMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -407,6 +411,12 @@ for i=1:length(fig)
       data_act = cell2mat(act(:,1)); PMR_act = data_act(:,4); SMR_act = data_act(:,3); T_act = data_act(:,2); W_act = data_act(:,1); 
       for i=1:n_act
         FMR_act(i) = 15.55 * get_FMR(nm_act{i}, W_act(i), T_act(i), 1); % ml O2/min
+      end
+      %
+      nm_amp = amp(:,3); n_amp = length(nm_amp); FMR_amp = zeros(n_amp,1); 
+      data_amp = cell2mat(amp(:,1)); PMR_amp = data_amp(:,4); SMR_amp = data_amp(:,3); T_amp = data_amp(:,2); W_amp = data_amp(:,1); 
+      for i=1:n_amp
+        FMR_amp(i) = 15.55 * get_FMR(nm_amp{i}, W_amp(i), T_amp(i), 1); % ml O2/min
       end
       %
       nm_squ = squ(:,3); n_squ = length(nm_squ); FMR_squ = zeros(n_squ,1); 
@@ -437,18 +447,19 @@ for i=1:length(fig)
       Hfig = figure;
       plot([-3;4], [-3;4], 'k', 'linewidth',2); % equality line
       hold on
-      plot(log10(FMR_cho), log10(SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
+      plot(log10(FMR_cho), log10(SMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
       plot(log10(FMR_act), log10(SMR_act), '.b', 'MarkerSize',20)
+      plot(log10(FMR_amp), log10(SMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
       plot(log10(FMR_squ), log10(SMR_squ), '.m', 'MarkerSize',20)
       plot(log10(FMR_ave), log10(SMR_ave), '.r', 'MarkerSize',20)
-      plot(log10(FMR_mar), log10(SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
-      plot(log10(FMR_pla), log10(SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+      plot(log10(FMR_mar), log10(SMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
+      plot(log10(FMR_pla), log10(SMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
       xlabel('predicted _{10}log FMR, ml O2/min')
       ylabel('measured _{10}log SMR, ml O2/min')
  
       % set species names behind markers in plot figure
       h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = log10([[FMR_cho;FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_cho;SMR_act;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
+      data = log10([[FMR_cho;FMR_act;FMR_amp;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_cho;SMR_act;SMR_amp;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -468,6 +479,12 @@ for i=1:length(fig)
       data_act = cell2mat(act(:,1)); PMR_act = data_act(:,4); SMR_act = data_act(:,3); T_act = data_act(:,2); W_act = data_act(:,1); 
       for i=1:n_act
         FMR_act(i) = 15.55 * get_FMR(nm_act{i}, W_act(i), T_act(i), 1); % ml O2/min
+      end
+      %
+      nm_amp = amp(:,3); n_amp = length(nm_amp); FMR_amp = zeros(n_amp,1); ss_amp = read_stat(nm_amp, 's_s');
+      data_amp = cell2mat(amp(:,1)); PMR_amp = data_amp(:,4); SMR_amp = data_amp(:,3); T_amp = data_amp(:,2); W_amp = data_amp(:,1); 
+      for i=1:n_amp
+        FMR_amp(i) = 15.55 * get_FMR(nm_amp{i}, W_amp(i), T_amp(i), 1); % ml O2/min
       end
       %
       nm_squ = squ(:,3); n_squ = length(nm_squ); FMR_squ = zeros(n_squ,1); ss_squ = read_stat(nm_squ, 's_s');
@@ -496,20 +513,21 @@ for i=1:length(fig)
       cd(WD0); % return to original directory
 
       Hfig = figure;
-      plot(ss_cho, log10(PMR_cho./FMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 1 1], 'MarkerEdgeColor',[0 0 1])
+      plot(ss_cho, log10(PMR_cho./FMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
       hold on
       plot(ss_act, log10(PMR_act./FMR_act), '.b', 'MarkerSize',20)
+      plot(ss_amp, log10(PMR_amp./FMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_squ, log10(PMR_squ./FMR_squ), '.m', 'MarkerSize',20)
       plot(ss_ave, log10(PMR_ave./FMR_ave), '.r', 'MarkerSize',20)
-      plot(ss_mar, log10(PMR_mar./FMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
-      plot(ss_pla, log10(PMR_pla./FMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+      plot(ss_mar, log10(PMR_mar./FMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
+      plot(ss_pla, log10(PMR_pla./FMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
       xlabel('supply stress s_s, -')
       xlim([0 4/27])
       ylabel('_{10}log measured PMR/ predicted FMR, -')
        
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
-      data = [[ss_cho;ss_act;ss_squ;ss_ave;ss_mar;ss_pla], log10([PMR_cho;PMR_act;PMR_squ;PMR_ave;PMR_mar;PMR_pla]./[FMR_cho;FMR_act;FMR_squ;FMR_ave;FMR_mar;FMR_pla])];
+      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); amp(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      data = [[ss_cho;ss_act;ss_amp;ss_squ;ss_ave;ss_mar;ss_pla], log10([PMR_cho;PMR_act;PMR_amp;PMR_squ;PMR_ave;PMR_mar;PMR_pla]./[FMR_cho;FMR_act;FMR_amp;FMR_squ;FMR_ave;FMR_mar;FMR_pla])];
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
@@ -757,6 +775,44 @@ end
 %   author = {Timothy D. Clark and Kenneth M. Jeffries and Scott G. Hinch and Anthony P. Farrell}
 % }
 %
+% @article{DawsButt1985,
+%   doi = {10.1242/jeb.060517},
+%   title = {A REEXAMINATION OF THE METABOLIC RESPONSE OF HOUSE FINCHES TO TEMPERATURE },
+%   journal = {The Condor},
+%   volume = {87},
+%   year = {1085},
+%   pages = {424-427},
+%   author = {William R. Dawson and William A. Buttemer and Cynthia Carey}
+% }
+%
+% @article{DuteSwan1996,
+%   doi = {10.1086/physzool.69.5.30164255},
+%   title = {Relationship of Basal to Summit Metabolic Rate in Passerine Birds and the Aerobic Capacity Model for the Evolution of Endothermy},
+%   journal = {Physiological Zoology},
+%   volume = {69(5)},
+%   year = {1996},
+%   pages = {1232–1254},
+%   author = {Dutenhoffer, M. S. and Swanson, D. L.}
+% }
+%
+% @article{Fede1986,
+%   title = {EFFECT OF THERMAL ACCLIMATION ON LOCOMOTOR ENERGETICS AND LOCOMOTOR PERFORMANCE IN A LUNGLESS SALAMANDER, DESMOGNATHUS OCHROPHAEUS},
+%   journal = {J. exp. Biol.},
+%   volume = {121},
+%   year = {1986},
+%   pages = {271-283},
+%   author = {Martin E. Feder}
+% }
+%
+% @article{Full1985,
+%   title = {Exercising without lungs: energetics and endurance in a lungless salamander, Plethodon jordani},
+%   journal = {Physiologist},
+%   volume = {28},
+%   year = {1985},
+%   pages = {R775-R780},
+%   author = {Full, R. J.}
+% }
+%
 % @article{GormMill1998,
 %   title = {High hunting costs make African wild dogs vulnerable to kleptoparasitism by hyaenas},
 %   journal = {Nature},
@@ -791,6 +847,16 @@ end
 %   year = {2025/07/23}
 % }
 %
+% @article{HindBaud1993,
+%   doi = {10.1242/jeb.246899}, 
+%   title = {Conservation energetics of beluga whales: using resting and swimming metabolism to understand threats to an endangered population},
+%   journal = {Journal of Experimental Biology},
+%   volume = {182},
+%   year = {2024},
+%   pages = {1-12},
+%   author = {Jason S. John and Dennis R. Christen and Katherine L. Flammer and Traci L. Kendall and Emily C. Nazario and Beau P. Richter and Verena Gill and Terrie M. Williams}
+% }
+% 
 % @article{Kirk1983,
 %   title = {A LIMIT TO METABOLISABLE ENERGY INTAKE IN MAMMALS AND BIRDS},
 %   journal = {Comp. Biochem. Physiol.},
@@ -873,6 +939,15 @@ end
 %   pages = {221-239}
 % }
 %
+% @ARTICLE{Putt1980,
+%   author = {Gillian M. Puttick},
+%   title = {Energy Budgets of Curlew Sandpipers at Langebaan Lagoon, South Africa},
+%   journal = {Estuarlne and Coastal Marine Science},
+%   year = {1980},
+%   volume = {11},
+%   pages = {207-215}
+% }
+%
 % @ARTICLE{ScanMill2014,
 %   author = {David M. Scantlebury and Michael G. L. Mills and Rory P. Wilson and John W. Wilson and  Margaret E. J. Mills and Sarah M. Durant and Nigel C. Bennett and Peter Bradford and Nikki J. Marks and John R. Speakman},
 %   title = {Flexible energetics of cheetah hunting strategies provide resistance against kleptoparasitism},
@@ -922,7 +997,7 @@ end
 % @ARTICLE{WillTiel2007,
 %   author = {Joseph B. Williams and B. Irene Tieleman and G. Henk Visser and Robert E. Ricklefs},
 %   title = {Does Growth Rate Determine the Rate of Metabolism in Shorebird Chicks Living in the Arctic?},
-%   journal = {Physiological and Biochemical Zoology :. },
+%   journal = {Physiological and Biochemical Zoology},
 %   volume = {80(5)},
 %   year = {2007},
 %   pages = {300-513}
@@ -934,3 +1009,15 @@ end
 %   year = {2005},
 %   author = {Willmer, P. W. and Stone, G. and Johnston, I.}
 % }
+%
+% @ARTICLE{WortWort2013,
+%   doi = {10.1111/mms.12091}, 
+%   author = {Graham A. J. Worthy and Tamara A. M. Worthy and Pamela K. Yochem},
+%   title = {Basal metabolism of an adult male killer whale (Orcinus orca)},
+%   journal = {Marime Mammal Science},
+%   volume = {80(5)},
+%   year = {2013},
+%   pages = {1-9}
+% }
+%
+
