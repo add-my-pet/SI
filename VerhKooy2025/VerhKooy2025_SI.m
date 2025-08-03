@@ -248,6 +248,7 @@ end
    % Prototheria
     [ 1112.5 30.8 10.87  49.86], 'HindBaud1993', 'Ornithorhynchus_anatinus' 
     [ 3293.0 30.8  7.76  47.05], 'HindBaud1993', 'Tachyglossus_aculeatus' 
+    [ 3900.0 30.8  9.75  91.00], 'HampNels2010', 'Tachyglossus_aculeatus' % 0.15 1.4 ml O2/h.g
    % Marsupialia
     [   15.6 35.0  0.48   2.38], 'HindBaud1993', 'Sminthopsis_crassicaudata' 
     [   16.7 32.7  0.35   2.38], 'HindBaud1993', 'Sminthopsis_macroura'
@@ -321,6 +322,7 @@ end
     [    41  36.4 0.941   3.48], 'Bozi1992',     'Peromyscus_californicus' % 56.5 208.9 ml O2/h
     [    18  36.6 0.405   2.41], 'Bozi1992',     'Peromyscus_eremicus' % 24.3 144.3 ml O2/h
     [    19  36.6 0.448   2.41], 'Bozi1992',     'Peromyscus_eremicus' % 26.9 144.4 ml O2/h
+    [  17.3  36.6 1.510   4.15], 'Haye2010',     'Peromyscus_maniculatus' % 4.45 mL CO2/h.g, 0.24 ml O2/min.g; 0.85 mL CO2/mL O2
     [    49  39.6 1.093   5.86], 'Bozi1992',     'Phyllotis_darwini' % 65.6 351.4 ml O2/h
     [    59  39.6 1.190   6.79], 'Bozi1992',     'Phyllotis_darwini' % 71.4 407.1 ml O2/h
     [    36  39.6 0.757   5.15], 'Bozi1992',     'Phyllotis_darwini' % 45.4 308.9 ml O2/h
@@ -347,8 +349,11 @@ end
     [  181.2 38.0  4.47  21.90], 'Lech1978',     'Rattus_norvegicus' 
    %[  165.7 36.2  2.05  11.51], 'HindBaud1993', 'Rattus_colletti' %x
    %[  247.8 36.0  2.43  14.48], 'HindBaud1993', 'Rattus_villosissimus' %x
+    [ 3200.0 37.0  10.1  80.00], 'HampNels2010', 'Marmota_marmota' %  0.19 1.5 ml O2/h.g 
+   %[  800.0 35.5  6.67  35.33], 'HampNels2010', 'Urocitellus_parryii' %x 0.5 2.65 ml O2/h.g 
+    [  240.0 35.5  4.47  21.90], 'HampNels2010', 'Ictidomys_tridecemlineatus' % 0.96 4.7 ml O2/h.g 
    % Lagomorpha
-    [ 1242.0 38.3 14.56  63.58], 'HindBaud1993', 'Oryctolagus_cuniculus'
+    [ 1242.0 38.3  8.84  18.8], 'HindBaud1993', 'Oryctolagus_cuniculus'
    % Primates
     [70000   37.0 268.3   3733], 'WillSton2005', 'Homo_sapiens' % 0.23, 3.2 ml O2/h.g
  };               
@@ -400,6 +405,7 @@ for c=1:length(fig)
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
 
+      saveas(gcf,'ss_PSMR.fig')
       saveas(gcf,'ss_PSMR.png')
 
     case 2  % predicted FMR_measured SMR   
@@ -468,6 +474,7 @@ for c=1:length(fig)
       datacursormode on % mouse click on plot
 
       %prt_tab({nm_act, W_act, T_act, FMR_act, SMR_act, PMR_act},{'species', 'weight, g', 'T, C', 'FMR, ml O2/min', 'SMR, ml O2/min', 'PMR, ml O2/min'}, 'act')
+      saveas(gcf,'FMR_SMR.fig')
       saveas(gcf,'FMR_SMR.png')
 
     case 3  % ss_PMR/FMR
@@ -536,6 +543,7 @@ for c=1:length(fig)
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
        
+      saveas(gcf,'ss_PFMR.fig')
       saveas(gcf,'ss_PFMR.png')
       %prt_tab({entries_txt, data},{'species', 's_s, -', 'PMR/FMR, -'}, 'PMR/FMR')
        
@@ -575,6 +583,7 @@ for c=1:length(fig)
       colormap(Hfig_invert, Colmap) % set color map to add_my_pet colors 
       caxis([0 1]) % range for colormap
       view(150,18)
+      saveas(gcf,'kap_ss_kapRA_invert.fig')
       saveas(gcf,'kap_ss_kapRA_invert.png')
       saveas(Hleg_invert,'legend_invert.png')
        
@@ -679,7 +688,6 @@ for c=1:length(fig)
       xlabel('spec ultimate respiration mmol O2/d.g')
       ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
 
-
   end
 end
    
@@ -712,6 +720,15 @@ end
 %   year = {1995},
 %   pages = {855–877},
 %   author = {Bevan, R. M. and Woakes, A. J. and Butler, P. J. and Croxall, J. P.}
+% }
+% 
+% @article{Bish1993,
+%   title = {Maximum metabolism and the aerobic factorial scope of endotherms},
+%   journal = {J. Exp. Biol.},
+%   volume = {182},
+%   year = {1993},
+%   pages = {41-56},
+%   author = {Bishop, C. M.}
 % }
 % 
 % @article{Bish1999,
@@ -854,13 +871,24 @@ end
 %   author = {Jeffrey B. Graham and Heidi Dewar and N. C. Lai and William R. Lowell and Steve M. Arce}
 % }
 %
-% @article{HindBaud1993,
-%   title = {Maximum metabolism and the aerobic factorial scope of endotherms},
-%   journal = {J. Exp. Biol.},
-%   volume = {182},
-%   year = {1993},
-%   pages = {41-56},
-%   author = {Bishop, C. M.}
+% @article{HampNels2010,
+%   doi = {10.1152/ajpregu.00273.2010}, 
+%   title = {Circulation and metabolic rates in a natural hibernator: an integrative physiological model},
+%   journal = {American Journal of Physiology-Regulatory},
+%   volume = {299(6)},
+%   year = {2010},
+%   pages = {R1478–R1488},
+%   author = {Hampton, M. and Nelson, B. T. and Andrews, M. T.}
+% }
+% 
+% @article{Haye2010,
+%   doi = {10.1086/physzool.62.3.30157924}, 
+%   title = {Field and Maximal Metabolic Rates of Deer Mice (Peromyscus maniculatus) at Low and High Altitudes},
+%   journal = {Physiological Zoology},
+%   volume = {62(3)},
+%   year = {2010},
+%   pages = {732–744},
+%   author = {Hayes, J. P.}
 % }
 % 
 % @misc{Hodg2025,
