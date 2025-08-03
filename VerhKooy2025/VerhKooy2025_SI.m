@@ -45,8 +45,8 @@ end
     {'o', 8, 3, [1 .5 .5], [0 0 0]}, 'Marsupialia'
     {'o', 8, 3, [1 .5 .5], [1 .5 .5]}, 'Placentalia'
   };
-  Hlegend = shlegend(legend);
-  saveas(Hlegend,'legend_AS.png')
+  %Hlegend = shlegend(legend);
+  %saveas(Hlegend,'legend_AS.png')
 
   legend_aves = {...
    %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
@@ -85,12 +85,6 @@ end
   };
 
   % 1 mg O2/h = 0.7 ml O2/h
-  amp = { ... % Amphibia, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min) 
-    [ 2  13 0.0007  0.0075], 'Fede1986', 'Desmognathus_ochrophaeus' % 0.9 10 mumol/h.g
-    [4.1 13  0.005  0.0376], 'Full1985', 'Plethodon_jordani' % PMR 0.55 ml O2/h.g; FAS 6-9
-  };
-
-  % 1 mg O2/h = 0.7 ml O2/h
   act = { ... % Actinopterygii, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min), MMR(ml O2/min) 
     [  0.45 24   0.0024    0.0038    0.0056], 'FuDong2022',   'Danio_rerio'             % 463 717 1066 mg O2/h.kg
     [  7    25   0.0166    0.0474    0.1062], 'FuDong2022',   'Zacco_platypus'          % 203 581 1300 mg O2/h.kg
@@ -124,7 +118,13 @@ end
     [  50   15   0.0362    0.2217    NaN   ], 'GrahDewa1990', 'Oncorhynchus_nerka'      % 62 380 mg O2/h.kg
   };
   %prt_tab({act(:,[3 2]), cell2mat(act(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min', 'MMR,ml O2/min'}, 'Actinop')
-    
+
+  % 1 mg O2/h = 0.7 ml O2/h; %x means not in AmP
+  amp = { ... % Amphibia, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min) 
+    [ 2  13 0.0007  0.0075], 'Fede1986', 'Desmognathus_ochrophaeus' % 0.9 10 mumol/h.g
+    [4.1 13  0.005  0.0376], 'Full1985', 'Plethodon_jordani' % PMR 0.55 ml O2/h.g; FAS 6-9
+  };
+
   squ = { ... % Squamata mass (g), Tb (C), SMR (mg O2/min) PMR (mg O2/min); %x means not in AmP
     [ 517  35  1.6    5.4], 'ChriConl1994', 'Tiliqua_rugosa'  
     [1136 35   NaN   16.9], 'ChriConl1994', 'Cyclura_nubila' 
@@ -132,6 +132,7 @@ end
    %[1086 35   1.9   24.5], 'ChriConl1994', 'Varanus_gouldii' %x
    %[ 931 35   2.1   20.8], 'ChriConl1994', 'Varanus_panoptes' %x
    %[ 904 35   1.2   13.7], 'ChriConl1994', 'Varanus_mertensi' %x
+    [ 580 35  0.841 9.783], 'Glee1979',     'Amblyrhynchus_cristatus' % 0.087	1.012 ml O2/h.g
   };
 
   ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); %x means not in AmP
@@ -274,6 +275,7 @@ end
     [ 25000  38.0 117.5   2900], 'GormMill1998', 'Canis_familiaris' % BMR 3.4 MJ/d canid AS 25; 20.1 kJ/l O2
     [450000  36.8   NaN   5782], 'Kirk1983',     'Ursus_maritimus' % PMR 167360 kJ/d; 20.1 kJ/l O2
     [    86  39.6   NaN   7.34], 'Kirk1983',     'Mustela_nivalis' % PMR 224 kJ/d; 20.1 kJ/l O2
+    [   63e3 37   289.8    945], 'DaviWill1985', 'Phoca_vitulina' % 4.6 15 ml O2/min.kg   
    % Perissodactyla
     [500000  38.0  1600  88000], 'Hodg2025',     'Equus_ferus_caballus' % BMR 2.2-4.2 mL O2/kg/min; FAS 50-60
    %[635000  38.0   NaN   4957], 'Kirk1983',     'Equus_ferus_caballus' % PMR 143470 kJ/d; 20.1 kJ/l O2. Reliable? PMR is less than for a cow
@@ -289,6 +291,7 @@ end
     [ 21150  39.3   NaN  1098 ], 'TaylMalo1980', 'Capra_hircus' % 18.3 ml O2/s
     [ 22650  38.8   NaN  1050 ], 'TaylMalo1980', 'Ovis_aries' % 17.5 ml O2/s
     [550000  38.6   NaN   6082], 'Kirk1983',     'Bos_primigenius_Holstein' % PMR 176040 kJ/d; 20.1 kJ/l O2 (milk production)
+    [  817e3 35.5  3315  10897], 'JohnChri2024', 'Delphinapterus_leucas' % 4.058 13.338 ml O2/min.kg
     [5.318e6 36.0  6633  39635], 'WortWort2013', 'Orcinus_orca' % 8.0 47.8 MJ/h; 20.1 kJ/l O2 
    % Rodentia
    %[   255  39.0 2.928  29.88], 'Bozi1992',     'Microcavia_niata' %x 175.7 1792.7 ml O2/h
@@ -458,7 +461,7 @@ for c=1:length(fig)
       ylabel('measured _{10}log SMR, ml O2/min')
  
       % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [cho(:,3); act(:,3); squ(:,3); ave(:,3); mar(:,3); pla(:,3)]; 
+      h = datacursormode(Hfig); entries_txt = [cho(:,3);act(:,3);amp(:,3);squ(:,3);ave(:,3);mar(:,3);pla(:,3)]; 
       data = log10([[FMR_cho;FMR_act;FMR_amp;FMR_squ;FMR_ave;FMR_mar;FMR_pla],[SMR_cho;SMR_act;SMR_amp;SMR_squ;SMR_ave;SMR_mar;SMR_pla]]);
       for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
@@ -513,8 +516,9 @@ for c=1:length(fig)
       cd(WD0); % return to original directory
 
       Hfig = figure;
-      plot(ss_cho, log10(PMR_cho./FMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
+      plot([0;4/27],[1/2;3/2],'-', 'Color',[.85 .85 .85], 'LineWidth',15)
       hold on
+      plot(ss_cho, log10(PMR_cho./FMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_act, log10(PMR_act./FMR_act), '.b', 'MarkerSize',20)
       plot(ss_amp, log10(PMR_amp./FMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_squ, log10(PMR_squ./FMR_squ), '.m', 'MarkerSize',20)
@@ -775,12 +779,22 @@ end
 %   author = {Timothy D. Clark and Kenneth M. Jeffries and Scott G. Hinch and Anthony P. Farrell}
 % }
 %
+% @article{DaviWill1985,
+%   doi = {10.1086/physzool.58.5.30158585},
+%   title = {Swimming Metabolism of Yearling and Adult Harbor Seals Phoca vitulina},
+%   journal = {Physiological Zoology},
+%   volume = {58(5)},
+%   year = {1985},
+%   pages = {590–596},
+%   author = {Davis, R. W. and Williams, T. M. and Kooyman, G. L.}
+% }
+%
 % @article{DawsButt1985,
 %   doi = {10.1242/jeb.060517},
 %   title = {A REEXAMINATION OF THE METABOLIC RESPONSE OF HOUSE FINCHES TO TEMPERATURE },
 %   journal = {The Condor},
 %   volume = {87},
-%   year = {1085},
+%   year = {1985},
 %   pages = {424-427},
 %   author = {William R. Dawson and William A. Buttemer and Cynthia Carey}
 % }
@@ -811,6 +825,15 @@ end
 %   year = {1985},
 %   pages = {R775-R780},
 %   author = {Full, R. J.}
+% }
+%
+% @article{Glee1979,
+%   title = {Foraging and Transport Costs in the Galapagos Marine Iguana, Amblyrhynchus cristatus},
+%   journal = {Physiological Zoology},
+%   volume = {52(4)},
+%   year = {1979},
+%   pages = {549-557},
+%   author = {Todd T. Gleeson}
 % }
 %
 % @article{GormMill1998,
@@ -847,7 +870,7 @@ end
 %   year = {2025/07/23}
 % }
 %
-% @article{HindBaud1993,
+% @article{JohnChri2024,
 %   doi = {10.1242/jeb.246899}, 
 %   title = {Conservation energetics of beluga whales: using resting and swimming metabolism to understand threats to an endangered population},
 %   journal = {Journal of Experimental Biology},
