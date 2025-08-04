@@ -172,6 +172,7 @@ end
     [ 3.2   36.7  0.155 4.053], 'Lasi1963',     'Calypte_costae' % PMR 76 ml/h.g SMR 2.9 ml/h.g
     [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml/h.g
     [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml/h.g
+    [19.9   41.4  0.675 2.390], 'LasiWeat1967', 'Patagona_gigas' % 2.131 7.547 ml/h.g
     [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
     [89.4   40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
     [36.0   39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
@@ -935,6 +936,15 @@ end
 %   author = {Robert C. Lasiewski}
 % }
 % 
+% @article{LasiWeat1967
+%   author = {Robert C. Lasiewski and Wesley W. Weathers and Marvin H. Bernstein}, 
+%   year = {1967},
+%   title  = {PHYSIOLOGICAL RESPONSES OF THE GIANT HUMMINGBIRD, \emph{Patagona gigas}},
+%   journal = {Comp. Biochem. Physiol.}, 
+%   vol = {23}
+%   pages = {797-813}
+% }
+%
 % @article{Lech1978,
 %   title = {The scaling of maximal oxygen consumption and pulmonary dimensions in small mammals},
 %   journal = {Resp. Physiol.},
