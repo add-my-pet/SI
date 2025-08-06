@@ -136,33 +136,27 @@ end
   };
 
   ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min); %x means not in AmP
+    % Casuariiformes
     [55000  36.0 215.05  2473], 'MainKing1989', 'Dromaius_novaehollandiae' %  3.91 ml O2/min.kg, AS 11.5 BundHopl1999
+    % Rheiformes
     [21800  39.0 103.6   3728], 'BundHopl1999', 'Rhea_americana' % 2.85 ml O2/s.kg, AS 36
+    % Struthioniformes
     [130000 34.6 613.6  10738], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
-    [ 161.0 41.3  4.41  20.48], 'HindBaud1993', 'Coturnix_japonica' 
+    % Galliformes
+    [ 161.0 41.3  4.41  20.48], 'HindBaud1993', 'Coturnix_japonica' % 
     [  42.1 40.5  1.20   6.57], 'HindBaud1993', 'Synoicus_chinensis' 
     [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
+    % Anseriformes
     [275    4.12   NaN  23.22], 'Kirk1983',     'Dendrocygna_autumnalis' % PMR 672 kJ/d; 20.1 kJ/l O2
    %[ 944.1 39.7 12.23  61.51], 'HindBaud1993', 'Anas_castanea' %x
     [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
-    [ 850.3 37.4  9.19  52.08], 'HindBaud1993', 'Porphyrio_martinica' 
+    % Columbiformes
    %[ 302.0 41.7  4.34  28.24], 'HindBaud1993', 'Columba_livia' 
     [ 419   41.7  7.08  162.8], 'Pear1964',     'Columba_livia' % PMR 112 kcal/h.kg (4.184 J/cal; 20.1 kJ/l O2); FAS 23 
-    [1080.0 38.5 13.31  57.42], 'HindBaud1993', 'Eudyptula_minor' 
-    [45000  36.0 301.5   2340], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
-    [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
-    [277    40.9  8.13  45.97], 'BernThom1973', 'Leucophaeus_atricilla' % 0.0099 0.056 W/g
-    [63.4   41.0 1.409 16.906], 'Putt1980',     'Calidris_ferruginea' % 1699 kJ/h; FAS 12; 20.1 kJ/l O2
-    [58.4   41.0  1.94  10.41], 'ThomSwan2019', 'Calidris_melanotos' % 
-    [19.4   41.0  0.84   4.62], 'ThomSwan2019', 'Calidris_minutilla' %  
-    [16.0   41.0  1.38   3.19], 'WillTiel2007', 'Calidris_minutilla' % 40.0 92.3 kJ/d; 20.1 kJ/l O2
-    [41.1   41.0  3.02   7.71], 'WillTiel2007', 'Calidris_alpina' % 87.45 223.11 kJ/d; 20.1 kJ/l O2
-    [61.0   41.0  3.63   8.62], 'WillTiel2007', 'Tringa_flavipes' % 105.2 249.4 kJ/d; 20.1 kJ/l O2
-    [55.0   41.0  2.38   7.60], 'WillTiel2007', 'Limnodromus_griseus' % 68.88 220.04 kJ/d; 20.1 kJ/l O2
-    [75.4   40.9  3.72  11.18], 'WillTiel2007', 'Pluvialis_dominica' % 107.8 323.6 kJ/d; 20.1 kJ/l O2
-    [151.0  41.0  7.08  16.41], 'WillTiel2007', 'Limosa_haemastica' % 204.8 474.9 kJ/d; 20.1 kJ/l O2
-    [190.0  41.0  7.79  23.38], 'WillTiel2007', 'Numenius_phaeopus' % 225.6 676.6 kJ/d; 20.1 kJ/l O2
-    [1300   40.6   NaN  64.95], 'Kirk1983',     'Phalacrocorax_pelagicus' % PMR 1880 kJ/d; 20.1 kJ/l O2
+    [40.5   42.1   NaN   8.54], 'WierChap2007', 'Columbina_talpacoti' % PMR 2.86 W; 20.1 kJ/l O2
+    % Gruiformes
+    [ 850.3 37.4  9.19  52.08], 'HindBaud1993', 'Porphyrio_martinica' 
+    % Apodiformes
     [ 5.7   40.7  0.051 0.717], 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, FAS 14
     [ 3.3   34    0.198 1.815], 'Lasi1963',     'Archilochus_alexandri' % PMR 33 ml/h.g SMR 3.6 ml/h.g
     [ 4.1   39    0.232 9.157], 'Lasi1963',     'Selasphorus_rufus' % PMR 124 ml/h.g SMR 3.4 ml/h.g
@@ -170,12 +164,39 @@ end
     [ 2.3   36    0.153 2.542], 'Lasi1963',     'Selasphorus_calliope' % PMR 66.3 ml/h.g SMR 4.0 ml/h.g
     [ 4.1   35.5  0.260 4.647], 'Lasi1963',     'Calypte_anna' % PMR 68 ml/h.g SMR 3.8 ml/h.g
     [ 3.2   36.7  0.155 4.053], 'Lasi1963',     'Calypte_costae' % PMR 76 ml/h.g SMR 2.9 ml/h.g
-    [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml/h.g
-    [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml/h.g
-    [19.9   41.4  0.675 2.390], 'LasiWeat1967', 'Patagona_gigas' % 2.131 7.547 ml/h.g
+    [ 6.3   38.5  0.051 2.50 ], 'SchuSchm1979', 'Trochilus_polytmus' % PMR 4.9 23.8 ml O2/h.g
+    [ 4.9   41.4  0.054 1.89 ], 'SchuSchm1979', 'Trochilus_scitulus' % PMR 6.6 23.1 ml O2/h.g
+    [19.9   41.4  0.675 2.390], 'LasiWeat1967', 'Patagona_gigas' % 2.131 7.547 ml O2/h.g
+    [ 6.0   38.5  0.317 2.651], 'RezeSwan2002', 'Sephanoides_sephaniodes' % 3.17 26.51 ml O2/h.g
+    % Sphenisciformes
+    [1080.0 38.5 13.31  57.42], 'HindBaud1993', 'Eudyptula_minor' 
+    [45000  36.0 301.5   2340], 'KooyPong1994', 'Aptenodytes_forsteri' % 6.7, 52 ml O2/min.kg
+    [6210   38.2  59.2 219.46], 'BevaWoak1995', 'Pygoscelis_papua' %  9.54, 35.34 ml O2/min.kg
+    % Suliformes
+    [1300   40.6   NaN  64.95], 'Kirk1983',     'Phalacrocorax_pelagicus' % PMR 1880 kJ/d; 20.1 kJ/l O2
+    % Charadriiformes
+    [277    40.9  8.13  45.97], 'BernThom1973', 'Leucophaeus_atricilla' % 0.0099 0.056 W/g
+    [63.4   41.0 1.409 16.906], 'Putt1980',     'Calidris_ferruginea' % 1699 kJ/h; FAS 12; 20.1 kJ/l O2
+    [58.4   41.0  1.94  10.41], 'ThomSwan2019', 'Calidris_melanotos' % 
+    [19.4   41.0  0.84   4.62], 'ThomSwan2019', 'Calidris_minutilla' %  
+    [16.0   41.0  1.38   3.19], 'WillTiel2007', 'Calidris_minutilla' % 40.0 92.3 kJ/d; 20.1 kJ/l O2
+    [41.1   41.0  3.02   7.71], 'WillTiel2007', 'Calidris_alpina' % 87.45 223.11 kJ/d; 20.1 kJ/l O2
+    [125.5  41.0  3.58  23.88], 'VeziGers2017', 'Calidris_canutus' % 1.2 8.0 W; 20.1 kJ/l O2
+    [61.0   41.0  3.63   8.62], 'WillTiel2007', 'Tringa_flavipes' % 105.2 249.4 kJ/d; 20.1 kJ/l O2
+    [55.0   41.0  2.38   7.60], 'WillTiel2007', 'Limnodromus_griseus' % 68.88 220.04 kJ/d; 20.1 kJ/l O2
+    [75.4   40.9  3.72  11.18], 'WillTiel2007', 'Pluvialis_dominica' % 107.8 323.6 kJ/d; 20.1 kJ/l O2
+    [151.0  41.0  7.08  16.41], 'WillTiel2007', 'Limosa_haemastica' % 204.8 474.9 kJ/d; 20.1 kJ/l O2
+    [190.0  41.0  7.79  23.38], 'WillTiel2007', 'Numenius_phaeopus' % 225.6 676.6 kJ/d; 20.1 kJ/l O2
+    % Strigiformes
+    [ 76    41.0  1.86   8.85], 'RezeSwan2002', 'Glaucidium_nana' % 1.47 6.67 ml O2/h.g; (weight 98 g is given, but 76 g is max)
+    % Falconiformes
     [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
+    % Piciformes
+    [ 25    41.0  1.275  7.94], 'RezeSwan2002', 'Dryobates_pubescens' % 3.06 19.05  ml O2/h.g
+    % Psittaciformes
     [89.4   40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
     [36.0   39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
+    % Passeriformes
     [275    41.6 10.67  68.13], 'BernThom1973', 'Corvus_ossifragus' % 0.013 0.083 W/g
     [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
     [11.3   41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
@@ -188,7 +209,6 @@ end
    %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' %x PMR 0.96 W; 20.1 kJ/l O2
    %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' %x PMR 1.01 W; 20.1 kJ/l O2
     [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2
-    [40.5   42.1   NaN   8.54], 'WierChap2007', 'Columbina_talpacoti' % PMR 2.86 W; 20.1 kJ/l O2
    %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' %x PMR 2.18 W; 20.1 kJ/l O2
    %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' %x PMR 3.2 W; 20.1 kJ/l O2
    %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' %x PMR 2.16 W; 20.1 kJ/l O2
@@ -569,6 +589,7 @@ for c=1:length(fig)
       colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
       caxis([0 1]) % range for colormap
       view(150,18)
+      saveas(gcf,'kap_ss_kapRA_vert.fig')
       saveas(gcf,'kap_ss_kapRA_vert.png')
       saveas(Hleg_vert,'legend_vert.png')
 
@@ -1009,6 +1030,16 @@ end
 %   pages = {207-215}
 % }
 %
+% @ARTICLE{RezeSwan2002,
+%   doi = {10.1093/czoolo/56.6.741},
+%   author = {Enrico L. Rezende and David L. Swanson and F. Fernando Novoa and Francisco Bozinovic},
+%   title = {Passerines versus nonpasserines: so far, no statistical differences in the scaling of avian energetics},
+%   journal = {The Journal of Experimental Biology},
+%   year = {2002},
+%   volume = {205},
+%   pages = {101–107}
+% }
+%
 % @ARTICLE{ScanMill2014,
 %   author = {David M. Scantlebury and Michael G. L. Mills and Rory P. Wilson and John W. Wilson and  Margaret E. J. Mills and Sarah M. Durant and Nigel C. Bennett and Peter Bradford and Nikki J. Marks and John R. Speakman},
 %   title = {Flexible energetics of cheetah hunting strategies provide resistance against kleptoparasitism},
@@ -1043,6 +1074,16 @@ end
 %   journal = {Journal of Avian Biology},
 %   year = {2019},
 %   pages = {e02062}
+% }
+%
+% @ARTICLE{VeziGers2017,
+%   doi = {10.1152/ajpregu.00453.2016},
+%   author = {Fran\c{c}ois V\'{e}zina and Alexander R. Gerson and Christopher G. Guglielmo and Theunis Piersma},
+%   title = {The performing animal: causes and consequences of body remodeling and metabolic adjustments in red knots facing contrasting thermal environments},
+%   journal = {Am J Physiol Regul Integr Comp Physiol},
+%   year = {2017},
+%   volume = {313}, 
+%   pages = {R120–R131}
 % }
 %
 % @ARTICLE{WierChap2007,
