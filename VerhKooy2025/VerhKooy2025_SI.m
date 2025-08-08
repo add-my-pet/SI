@@ -196,72 +196,99 @@ end
     % Psittaciformes
     [89.4   40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
     [36.0   39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
-    % Passeriformes
-    [275    41.6 10.67  68.13], 'BernThom1973', 'Corvus_ossifragus' % 0.013 0.083 W/g
-    [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2
-    [11.3   41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' 
-    [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2
-    [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2
-    [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min
-    [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2
-   %[41.2   41.6   NaN   9.91], 'WierChap2007', 'Arremonops_conirostris' %x PMR 3.32 W; 20.1 kJ/l O2
-   %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' %x PMR 1.18 W; 20.1 kJ/l O2
-   %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' %x PMR 0.96 W; 20.1 kJ/l O2
-   %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' %x PMR 1.01 W; 20.1 kJ/l O2
-    [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2
-   %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' %x PMR 2.18 W; 20.1 kJ/l O2
-   %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' %x PMR 3.2 W; 20.1 kJ/l O2
-   %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' %x PMR 2.16 W; 20.1 kJ/l O2
-   %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' %x PMR 2.76 W; 20.1 kJ/l O2
-   %[28.9   41.6   NaN   3.88], 'WierChap2007', 'Euphonia_laniirostris' %x PMR 1.3 W; 20.1 kJ/l O2
-   %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' %x PMR 2.67 W; 20.1 kJ/l O2
-   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' %x PMR 1.5 W; 20.1 kJ/l O2
-   %[12.0   41.1   NaN   1.46], 'WierChap2007', 'Hylophylax_naevioides' %x PMR 0.49 W; 20.1 kJ/l O2
-   %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' %x PMR 1.5 W; 20.1 kJ/l O2
-   %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' %x PMR 4.91 W; 20.1 kJ/l O2
-    [61.5   41.6   NaN   2.23], 'WierChap2007', 'Mionectes_oleagineus' % PMR 0.75 W; 20.1 kJ/l O2
-    [10.0   41.6   NaN   3.34], 'WierChap2007', 'Myiobius_atricaudus' % PMR 1.12 W; 20.1 kJ/l O2
    %[12.0   41.6   NaN  11.91], 'WierChap2007', 'Myiodynastes_maculatus' %x PMR 3.99 W; 20.1 kJ/l O2
-    [46.5   41.6   NaN   6.30], 'WierChap2007', 'Myiozetetes_similis' % PMR 2.11 W; 20.1 kJ/l O2
-   %[22.5   41.3   NaN   6.00], 'WierChap2007', 'Myrmeciza_longipes' %x PMR 2.01 W; 20.1 kJ/l O2
-   %[29.0   41.6   NaN   1.94], 'WierChap2007', 'Myrmotherula_fulviventris' %x PMR 0.65 W; 20.1 kJ/l O2
-   %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' %x PMR 0.47 W; 20.1 kJ/l O2
-   %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' %x PMR 1.37 W; 20.1 kJ/l O2
-   %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' %x PMR 1.66 W; 20.1 kJ/l O2
-    [13.5   41.9   NaN   9.04], 'WierChap2007', 'Progne_chalybea' % PMR 3.03 W; 20.1 kJ/l O2
-   %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' %x PMR 0.76 W; 20.1 kJ/l O2
-   %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' %x PMR 2.74 W; 20.1 kJ/l O2
-   %[25.7   40.7   NaN   3.16], 'WierChap2007', 'Rhynchocyclus_olivaceus' %x PMR 1.06 W; 20.1 kJ/l O2
-   %[39.0   41.6   NaN   7.79], 'WierChap2007', 'Saltator_striatipectus' %x PMR 2.61 W; 20.1 kJ/l O2
-   %[39.0   41.4   NaN   7.88], 'WierChap2007', 'Sclerurus_guatemalensis' %x PMR 2.64 W; 20.1 kJ/l O2
-   %[36.5   41.6   NaN   4.09], 'WierChap2007', 'Sporophila_americana' %x PMR 1.37 W; 20.1 kJ/l O2
-   %[10.1   41.6   NaN   4.39], 'WierChap2007', 'Sporophila_nigricollis' %x PMR 1.47 W; 20.1 kJ/l O2
-    [ 9.0   42.1   NaN   3.52], 'WierChap2007', 'Tachycineta_albilinea' % PMR 1.18 W; 20.1 kJ/l O2
-   %[27.5   41.6   NaN   6.27], 'WierChap2007', 'Thamnophilus_doliatus' %x PMR 2.1 W; 20.1 kJ/l O2
-    [29.7   41.3   NaN   7.28], 'WierChap2007', 'Thraupis_episcopus' % PMR 2.44 W; 20.1 kJ/l O2
-   %[30.5   41.6   NaN   6.42], 'WierChap2007', 'Thraupis_palmarum' %x PMR 2.15 W; 20.1 kJ/l O2
-   %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' %x PMR 1.74 W; 20.1 kJ/l O2
-   %[20.3   42.7   NaN   6.21], 'WierChap2007', 'Thryothorus_leucotis' %x PMR 2.08 W; 20.1 kJ/l O2
-   %[15.0   41.6   NaN   3.94], 'WierChap2007', 'Thryothorus_rutilus' %x PMR 1.32 W; 20.1 kJ/l O2
-   %[ 6.5   41.6   NaN   2.18], 'WierChap2007', 'Todirostrum_cinereum' %x PMR 0.73 W; 20.1 kJ/l O2
-   %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' %x PMR 1.4 W; 20.1 kJ/l O2
-    [13.5   42.0   NaN   5.28], 'WierChap2007', 'Troglodytes_aedon' % PMR 1.77 W; 20.1 kJ/l O2
-   %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' %x PMR 5.09 W; 20.1 kJ/l O2
-   %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' %x PMR 0.82 W; 20.1 kJ/l O2
-    [40.0   41.6   NaN   7.88], 'WierChap2007', 'Tyrannus_melancholicus' %x PMR 2.64 W; 20.1 kJ/l O2
-   %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' %x PMR 1.74 W; 20.1 kJ/l O2
-   %[10.8   41.5   NaN   4.21], 'WierChap2007', 'Xenops_minutus' %x PMR 1.41 W; 20.1 kJ/l O2   
-   %[14.0   41.5 0.595  3.867], 'DuteSwan1996', 'Contopus_virens' %x 
-   %[34.4   41.5 1.469  8.247], 'DuteSwan1996', 'Dumetella_carolinensis' %x 
-    [10.5   41.6 0.555  4.083], 'DuteSwan1996', 'Troglodytes_aedon'  
-    [13.7   41.6 1.092  7.714], 'DuteSwan1996', 'Poecile_atricapillus'  
-    [27.2   41.6 1.314 10.605], 'DuteSwan1996', 'Passer_domesticus'   
-    [20.0   41.6 1.423  8.619], 'DuteSwan1996', 'Junco_hyemalis'    
-    [12.8   41.6 0.722  4.539], 'DuteSwan1996', 'Spizella_pusilla' 
-    [18.6   41.6 1.209  7.478], 'DuteSwan1996', 'Spizelloides_arborea'
-    [ 9.3   41.6 0.546  3.018], 'DuteSwan1996', 'Setophaga_petechia' 
-    [40.7   41.6 1.564  8.922], 'DuteSwan1996', 'Pheucticus_ludovicianus' 
-    [20.8   41.6 0.971  2.392], 'DawsButt1985', 'Haemorhous_mexicanus' % 2.8 6.9 cm^3 O2/h.g % cold stress down to 0C; at lower temp MR might be higher 
+    % Passeriformes
+    % % Tyrannides
+   %[27.5   41.6   NaN   6.27], 'WierChap2007', 'Thamnophilus_doliatus' %x PMR 2.1 W; 20.1 kJ/l O2 Thamnophilidae
+   %[22.5   41.3   NaN   6.00], 'WierChap2007', 'Myrmeciza_longipes' %x PMR 2.01 W; 20.1 kJ/l O2 Thamnophilidae
+   %[29.0   41.6   NaN   1.94], 'WierChap2007', 'Myrmotherula_fulviventris' %x PMR 0.65 W; 20.1 kJ/l O2 Thamnophilidae
+   %[12.0   41.1   NaN   1.46], 'WierChap2007', 'Hylophylax_naevioides' %x PMR 0.49 W; 20.1 kJ/l O2 Thamnophilidae
+   %[39.0   41.4   NaN   7.88], 'WierChap2007', 'Sclerurus_guatemalensis' %x PMR 2.64 W; 20.1 kJ/l O2 Furnariidae
+   %[27.9   41.6   NaN   9.55], 'WierChap2007', 'Dendrocincla_fuliginosa' %x PMR 3.2 W; 20.1 kJ/l O2 Furnariidae
+   %[10.8   41.5   NaN   4.21], 'WierChap2007', 'Xenops_minutus' %x PMR 1.41 W; 20.1 kJ/l O2 Furnariidae  
+    [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2 Pipridae
+   %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' %x PMR 1.66 W; 20.1 kJ/l O2 Pipridae
+   %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' %x PMR 1.5 W; 20.1 kJ/l O2 Pipridae
+   %[42.0   41.6  1.491 8.183], 'RezeSwan2002', 'Phytotoma_rara' %x 2.13 11.69 ml O2/h.g Cotingidae
+   %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' %x PMR 0.47 W; 20.1 kJ/l O2 Tyrannidae
+   %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' %x PMR 2.16 W; 20.1 kJ/l O2 Tyrannidae
+   %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' %x PMR 0.82 W; 20.1 kJ/l O2 Tyrannidae
+    [40.0   41.6   NaN   7.88], 'WierChap2007', 'Tyrannus_melancholicus' %x PMR 2.64 W; 20.1 kJ/l O2 Tyrannidae
+    [37.0   41.6 1.369  8.060], 'RezeSwan2002', 'Tyrannus_tyrannus' %x PMR 2.22 13.07 ml O2/h.g O2 Tyrannidae
+   %[25.7   40.7   NaN   3.16], 'WierChap2007', 'Rhynchocyclus_olivaceus' %x PMR 1.06 W; 20.1 kJ/l O2 Tyrannidae
+   %[ 6.5   41.6   NaN   2.87], 'WierChap2007', 'Camptostoma_obsoletum' %x PMR 0.96 W; 20.1 kJ/l O2 Tyrannidae
+   %[ 7.0   41.6   NaN   3.01], 'WierChap2007', 'Capsiempis_flaveola' %x PMR 1.01 W; 20.1 kJ/l O2 Tyrannidae
+   %[ 6.5   41.6   NaN   2.18], 'WierChap2007', 'Todirostrum_cinereum' %x PMR 0.73 W; 20.1 kJ/l O2 Tyrannidae
+    [46.5   41.6   NaN   6.30], 'WierChap2007', 'Myiozetetes_similis' % PMR 2.11 W; 20.1 kJ/l O2 Tyrannidae
+    [61.5   41.6   NaN   2.23], 'WierChap2007', 'Mionectes_oleagineus' % PMR 0.75 W; 20.1 kJ/l O2 Tyrannidae
+   %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' %x PMR 1.4 W; 20.1 kJ/l O2 Tyrannidae
+   %[14.0   41.6 0.642   3.87], 'RezeSwan2002', 'Contopus_virens' %x  2.75 16.57 ml O2/h.g  Tyrannidae
+   %[14.0   41.5 0.595  3.867], 'DuteSwan1996', 'Contopus_virens' %x  Tyrannidae
+    [10.0   41.6   NaN   3.34], 'WierChap2007', 'Myiobius_atricaudus' % PMR 1.12 W; 20.1 kJ/l O2 Onychorhynchidae
+    % % Passeri
+    [275    41.6 10.67  68.13], 'BernThom1973', 'Corvus_ossifragus' % 0.013 0.083 W/g Corvidae
+    [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2 Hirundinidae
+   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' %x PMR 1.5 W; 20.1 kJ/l O2 Vireonidae
+   %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' %x PMR 4.91 W; 20.1 kJ/l O2 Mimidae
+    [34.0   41.6 1.552  8.149], 'RezeSwan2002', 'Dumetella_carolinensis' % 2.74 14.38 cm^3 O2/h.g Mimidae
+    [34.4   41.5 1.469  8.247], 'DuteSwan1996', 'Dumetella_carolinensis' % Mimidae
+    [13.5   41.9   NaN   9.04], 'WierChap2007', 'Progne_chalybea' % PMR 3.03 W; 20.1 kJ/l O2 Hirundinidae
+    [20.0   41.9 1.103  6.717], 'RezeSwan2002', 'Sitta_carolinensis' % 3.31 20.15 ml O2/h.g Sittidae
+    [ 9.0   42.1   NaN   3.52], 'WierChap2007', 'Tachycineta_albilinea' % PMR 1.18 W; 20.1 kJ/l O2 Hirundinidae
+   %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' %x PMR 0.76 W; 20.1 kJ/l O2 Polioptilidae
+   %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' %x PMR 2.74 W; 20.1 kJ/l O2 Polioptilidae
+   %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' %x PMR 1.74 W; 20.1 kJ/l O2 Troglodytidae
+   %[20.3   42.7   NaN   6.21], 'WierChap2007', 'Thryothorus_leucotis' %x PMR 2.08 W; 20.1 kJ/l O2 Troglodytidae
+   %[15.0   41.6   NaN   3.94], 'WierChap2007', 'Thryothorus_rutilus' %x PMR 1.32 W; 20.1 kJ/l O2 Troglodytidae
+    [13.5   42.0   NaN   5.28], 'WierChap2007', 'Troglodytes_aedon' % PMR 1.77 W; 20.1 kJ/l O2 Troglodytidae
+    [10.5   41.6 0.555  4.083], 'DuteSwan1996', 'Troglodytes_aedon'  % Troglodytidae
+    [11.0   41.6 0.422  2.867], 'RezeSwan2002', 'Zosterops_lateralis' % 2.30 15.64 ml O2/h.g Zosteropidae
+    [ 5.9   41.6   NaN  2.324], 'RezeSwan2002', 'Corthylio_calendula'  % PMR 23.63 ml O2/h.g Regulidae
+    [ 5.8   41.6   NaN  2.510], 'RezeSwan2002', 'Regulus_satrapa'  % PMR 25.97 ml O2/h.g Regulidae
+   %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' %x PMR 5.09 W; 20.1 kJ/l O2 Turdidae
+   %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' %x PMR 1.74 W; 20.1 kJ/l O2 Vireonidae
+   %[13.0   41.9 0.685  4.108], 'RezeSwan2002', 'Vireo_gilvus' %x 3.16 18.96 ml O2/h.g Vireonidae
+    [13.7   41.6 1.092  7.714], 'DuteSwan1996', 'Poecile_atricapillus' % Paridae 
+    [11.0   41.6 0.744  4.670], 'RezeSwan2002', 'Poecile_gambeli' % 4.06 25.47 ml O2/h.g Paridae 
+    % % % Passerida
+    [11.3   41.0  0.68   4.03], 'HindBaud1993', 'Taeniopygia_guttata' % Estrildidae
+    [12.0   41.6 0.722  4.098], 'RezeSwan2002', 'Taeniopygia_guttata' % 3.61 20.49 ml O2/h.g Estrildidae 
+    [23.1   41.6  0.97   9.99], 'ButtBech2010', 'Passer_domesticus' % for adults; juveniles 22.34 g, 1.06, 8.81 ml O2/min Passeridae
+    [27.2   41.6 1.314 10.605], 'DuteSwan1996', 'Passer_domesticus'  %  Passeridae 
+   %[28.9   41.6   NaN   3.88], 'WierChap2007', 'Euphonia_laniirostris' %x PMR 1.3 W; 20.1 kJ/l O2 Fringillidae
+    [30.0   41.6   NaN   3.80], 'Kirk1983',     'Fringilla_coelebs' % PMR 110 kJ/d; 20.1 kJ/l O2 Fringillidae
+    [20.8   41.6 0.971  2.392], 'DawsButt1985', 'Haemorhous_mexicanus' % 2.8 6.9 cm^3 O2/h.g Fringillidae % cold stress down to 0C; at lower temp MR might be higher 
+    [14.0   41.6 0.863  5.088], 'RezeSwan2002', 'Acanthis_flammea' %  3.70 21.80  cm^3 O2/h.g Fringillidae
+    [13.0   41.6 0.867  4.314], 'RezeSwan2002', 'Spinus_tristis' % 4.0 19.91 cm^3 O2/h.g Fringillidae
+    [40.7   41.6 1.564  8.922], 'DuteSwan1996', 'Pheucticus_ludovicianus' % Cardinalidae 
+   %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' %x PMR 2.18 W; 20.1 kJ/l O2 Cardinalidae
+   %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' %x PMR 2.67 W; 20.1 kJ/l O2 Cardinalidae
+    [46.0   41.6 NaN    9.721], 'RezeSwan2002', 'Cardinalis_cardinalis' % 12.68 cm^3 O2/h.g Cardinalidae
+   %[27.0   41.6   NaN   6.21], 'RezeSwan2002', 'Phrygilus_gayi' %x PMR 13.80 ml O2/h.g Thraupidae
+   %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' %x PMR 1.37 W; 20.1 kJ/l O2 Thraupidae
+   %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' %x PMR 2.76 W; 20.1 kJ/l O2 Thraupidae
+   %[39.0   41.6   NaN   7.79], 'WierChap2007', 'Saltator_striatipectus' %x PMR 2.61 W; 20.1 kJ/l O2 Thraupidae
+   %[36.5   41.6   NaN   4.09], 'WierChap2007', 'Sporophila_americana' %x PMR 1.37 W; 20.1 kJ/l O2 Thraupidae
+   %[10.1   41.6   NaN   4.39], 'WierChap2007', 'Sporophila_nigricollis' %x PMR 1.47 W; 20.1 kJ/l O2 Thraupidae
+    [29.7   41.3   NaN   7.28], 'WierChap2007', 'Thraupis_episcopus' % PMR 2.44 W; 20.1 kJ/l O2 Thraupidae
+   %[30.5   41.6   NaN   6.42], 'WierChap2007', 'Thraupis_palmarum' %x PMR 2.15 W; 20.1 kJ/l O2 Thraupidae
+    [34.0   41.6  NaN   9.100], 'RezeSwan2002', 'Diuca_diuca' % 16.06 cm^3 O2/h.g Thraupidae
+   %[41.2   41.6   NaN   9.91], 'WierChap2007', 'Arremonops_conirostris' %x PMR 3.32 W; 20.1 kJ/l O2 Passerellidae
+    [32.4   41.6   NaN   4.46], 'Kirk1983',     'Zonotrichia_leucophrys' % PMR 129 kJ/d; 20.1 kJ/l O2 Passerellidae
+    [28.0   41.6   NaN   4.91], 'Kirk1983',     'Zonotrichia_albicollis' % PMR 142 kJ/d; 20.1 kJ/l O2 Passerellidae
+    [20.0   41.6 1.037  5.433], 'RezeSwan2002', 'Zonotrichia_capensis' % 3.11 16.30 ml O2/h.g Passerellidae
+    [12.8   41.6 0.722  4.539], 'DuteSwan1996', 'Spizella_pusilla' % Passerellidae
+    [18.6   41.6 1.209  7.478], 'DuteSwan1996', 'Spizelloides_arborea' % Passerellidae
+    [20.0   41.6 1.423  8.619], 'DuteSwan1996', 'Junco_hyemalis' % Passerellidae   
+    [17.0   41.6 0.941  5.879], 'RezeSwan2002', 'Junco_hyemalis' % 3.32 20.75 ml O2/h.g Passerellidae   
+    [19.0   41.6 1.311  7.638], 'RezeSwan2002', 'Spizelloides_arborea' % 4.14 24.12 ml O2/h.g Passerellidae   
+    [11.0   41.6 0.638  3.584], 'RezeSwan2002', 'Spizella_passerina' % 3.48 19.55 ml O2/h.g Passerellidae   
+    [13.0   41.6 0.789  4.611], 'RezeSwan2002', 'Spizella_pusilla' % 3.64 21.28 ml O2/h.g Passerellidae   
+   %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' %x PMR 1.18 W; 20.1 kJ/l O2 Parulidae
+    [ 9.3   41.6 0.546  3.018], 'DuteSwan1996', 'Setophaga_petechia' % Parulidae
+    [ 9.0   41.6 0.744  3.894], 'RezeSwan2002', 'Setophaga_petechia' % 3.72 19.47 cm^3 O2/h.g Parulidae
+   %[12.0   41.6 0.746  3.937], 'RezeSwan2002', 'Setophaga_coronata' %x 3.73 19.69 cm^3 O2/h.g Parulidae
+    [32.0   41.6 1.499  7.242], 'RezeSwan2002', 'Icterus_galbula' % 2.81 13.58 cm^3 O2/h.g Icteridae
 };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
