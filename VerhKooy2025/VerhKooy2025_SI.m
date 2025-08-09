@@ -193,6 +193,7 @@ end
     [106    40.0   NaN  11.09], 'Kirk1983',     'Falco_tinnunculus' % PMR 321 kJ/d; 20.1 kJ/l O2
     % Piciformes
     [ 25    41.0  1.275  7.94], 'RezeSwan2002', 'Dryobates_pubescens' % 3.06 19.05  ml O2/h.g
+    [ 25.8  41.0   NaN   6.69], 'SwanLikn2006', 'Leuconotopicus_villosus' % PMR 2.24 W; 20.1 kJ/l O2
     % Psittaciformes
     [89.4   40.0   NaN  12.79], 'HindBaud1993', 'Platycercus_elegans' % actually Platycercus_eximius
     [36.0   39.7  1.28   7.91], 'HindBaud1993', 'Melopsittacus_undulatus' % BundHopl1999 give AS 21
@@ -222,19 +223,19 @@ end
     [46.5   41.6   NaN   6.30], 'WierChap2007', 'Myiozetetes_similis' % PMR 2.11 W; 20.1 kJ/l O2 Tyrannidae
     [61.5   41.6   NaN   2.23], 'WierChap2007', 'Mionectes_oleagineus' % PMR 0.75 W; 20.1 kJ/l O2 Tyrannidae
    %[14.5   41.6   NaN   4.18], 'WierChap2007', 'Tolmomyias_assimillis' %x PMR 1.4 W; 20.1 kJ/l O2 Tyrannidae
-   %[14.0   41.6 0.642   3.87], 'RezeSwan2002', 'Contopus_virens' %x  2.75 16.57 ml O2/h.g  Tyrannidae
-   %[14.0   41.5 0.595  3.867], 'DuteSwan1996', 'Contopus_virens' %x  Tyrannidae
+    [14.0   41.6 0.642   3.87], 'RezeSwan2002', 'Contopus_virens' %  2.75 16.57 ml O2/h.g  Tyrannidae
+    [14.0   41.5 0.595  3.867], 'DuteSwan1996', 'Contopus_virens' %  Tyrannidae
     [10.0   41.6   NaN   3.34], 'WierChap2007', 'Myiobius_atricaudus' % PMR 1.12 W; 20.1 kJ/l O2 Onychorhynchidae
     % % Passeri
     [275    41.6 10.67  68.13], 'BernThom1973', 'Corvus_ossifragus' % 0.013 0.083 W/g Corvidae
     [18.2   41.6   NaN   3.26], 'Kirk1983',     'Delichon_urbicum' % PMR 94.5 kJ/d; 20.1 kJ/l O2 Hirundinidae
-   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' %x PMR 1.5 W; 20.1 kJ/l O2 Vireonidae
    %[14.8   41.6   NaN  14.66], 'WierChap2007', 'Mimus_gilvus' %x PMR 4.91 W; 20.1 kJ/l O2 Mimidae
     [34.0   41.6 1.552  8.149], 'RezeSwan2002', 'Dumetella_carolinensis' % 2.74 14.38 cm^3 O2/h.g Mimidae
     [34.4   41.5 1.469  8.247], 'DuteSwan1996', 'Dumetella_carolinensis' % Mimidae
+    [35.4   41.5   NaN 10.209], 'SwanLikn2006', 'Eremophila_alpestris' % PMR 3.42 W; 20.1 kJ/l O2 Alaudidae
     [13.5   41.9   NaN   9.04], 'WierChap2007', 'Progne_chalybea' % PMR 3.03 W; 20.1 kJ/l O2 Hirundinidae
-    [20.0   41.9 1.103  6.717], 'RezeSwan2002', 'Sitta_carolinensis' % 3.31 20.15 ml O2/h.g Sittidae
     [ 9.0   42.1   NaN   3.52], 'WierChap2007', 'Tachycineta_albilinea' % PMR 1.18 W; 20.1 kJ/l O2 Hirundinidae
+    [20.0   41.9 1.103  6.717], 'RezeSwan2002', 'Sitta_carolinensis' % 3.31 20.15 ml O2/h.g Sittidae
    %[36.8   41.6   NaN   2.27], 'WierChap2007', 'Ramphocaenus_melanurus' %x PMR 0.76 W; 20.1 kJ/l O2 Polioptilidae
    %[ 9.5   41.6   NaN   8.18], 'WierChap2007', 'Ramphocelus_dimidiatus' %x PMR 2.74 W; 20.1 kJ/l O2 Polioptilidae
    %[24.5   41.6   NaN   5.19], 'WierChap2007', 'Thryothorus_fasciatoventris' %x PMR 1.74 W; 20.1 kJ/l O2 Troglodytidae
@@ -247,7 +248,9 @@ end
     [ 5.8   41.6   NaN  2.510], 'RezeSwan2002', 'Regulus_satrapa'  % PMR 25.97 ml O2/h.g Regulidae
    %[72.0   42.1   NaN  15.19], 'WierChap2007', 'Turdus_grayi' %x PMR 5.09 W; 20.1 kJ/l O2 Turdidae
    %[18.2   41.9   NaN   5.19], 'WierChap2007', 'Vireo_flavoviridis' %x PMR 1.74 W; 20.1 kJ/l O2 Vireonidae
-   %[13.0   41.9 0.685  4.108], 'RezeSwan2002', 'Vireo_gilvus' %x 3.16 18.96 ml O2/h.g Vireonidae
+    [ 9.2   41.9   NaN  2.537], 'SwanLikn2006', 'Vireo_bellii' % PMR 0.85 W; 20.1 kJ/l O2  Vireonidae
+    [13.0   41.9 0.685  4.108], 'RezeSwan2002', 'Vireo_gilvus' % 3.16 18.96 ml O2/h.g Vireonidae
+   %[38.7   41.6   NaN   4.48], 'WierChap2007', 'Hylophilus_flavipes' %x PMR 1.5 W; 20.1 kJ/l O2 Vireonidae
     [13.7   41.6 1.092  7.714], 'DuteSwan1996', 'Poecile_atricapillus' % Paridae 
     [11.0   41.6 0.744  4.670], 'RezeSwan2002', 'Poecile_gambeli' % 4.06 25.47 ml O2/h.g Paridae 
     % % % Passerida
@@ -264,6 +267,7 @@ end
    %[27.9   41.6   NaN   6.51], 'WierChap2007', 'Cyanocompsa_cyanoides' %x PMR 2.18 W; 20.1 kJ/l O2 Cardinalidae
    %[13.2   41.6   NaN   7.97], 'WierChap2007', 'Habia_fuscicauda' %x PMR 2.67 W; 20.1 kJ/l O2 Cardinalidae
     [46.0   41.6 NaN    9.721], 'RezeSwan2002', 'Cardinalis_cardinalis' % 12.68 cm^3 O2/h.g Cardinalidae
+    [13.9   41.6 NaN    3.881], 'SwanLikn2006', 'Passerina_cyanea' % 1.3 W; 20.1 kJ/l O2 Cardinalidae
    %[27.0   41.6   NaN   6.21], 'RezeSwan2002', 'Phrygilus_gayi' %x PMR 13.80 ml O2/h.g Thraupidae
    %[ 7.5   41.6   NaN   4.09], 'WierChap2007', 'Oryzoborus_angolensis' %x PMR 1.37 W; 20.1 kJ/l O2 Thraupidae
    %[21.8   41.6   NaN   8.24], 'WierChap2007', 'Eucometis_penicillata' %x PMR 2.76 W; 20.1 kJ/l O2 Thraupidae
@@ -289,6 +293,7 @@ end
     [ 9.0   41.6 0.744  3.894], 'RezeSwan2002', 'Setophaga_petechia' % 3.72 19.47 cm^3 O2/h.g Parulidae
    %[12.0   41.6 0.746  3.937], 'RezeSwan2002', 'Setophaga_coronata' %x 3.73 19.69 cm^3 O2/h.g Parulidae
     [32.0   41.6 1.499  7.242], 'RezeSwan2002', 'Icterus_galbula' % 2.81 13.58 cm^3 O2/h.g Icteridae
+    [20.4   41.6  NaN   5.015], 'SwanLikn2006', 'Icterus_spurius' % 1.68 W; 20.1 kJ/l O2 Icteridae
 };     
   %prt_tab({ave(:,[3 2]), cell2mat(ave(:,1))},{'species', 'bibkey', 'mass,g', 'temp,C', 'SMR,ml O2/min', 'PMR,ml O2/min'}, 'Aves')
 
@@ -1083,6 +1088,16 @@ end
 %   year = {1979},
 %   volume = {11(2)},
 %   pages = {123-126}
+% }
+%
+% @ARTICLE{SwanLikn2006,
+%   doi = {10.1242/jeb.02024}, 
+%   author = {David L. Swanso and Eric T. Liknes},
+%   title = {A comparative analysis of thermogenic capacity and cold tolerance in small birds},
+%   journal = {Journal of Experimental Biology},
+%   year = {2006},
+%   volume = {209(3)},
+%   pages = {466–474}
 % }
 %
 % @ARTICLE{TaylMalo1980,
