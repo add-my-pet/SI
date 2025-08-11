@@ -143,13 +143,20 @@ end
     % Struthioniformes
     [130000 34.6 613.6  10738], 'MainKing1989', 'Struthio_camelus' %  4.72 ml O2/min.kg, AS 17.5 BundHopl1999
     % Galliformes
-    [ 161.0 41.3  4.41  20.48], 'HindBaud1993', 'Coturnix_japonica' % 
+    [ 2200  40.4 28.20 140.55], 'SeymRunc2008', 'Alectura_lathami'  
+    [ 161.0 41.3  4.41  20.48], 'HindBaud1993', 'Coturnix_japonica'  
     [  42.1 40.5  1.20   6.57], 'HindBaud1993', 'Synoicus_chinensis' 
+    [  42   40.5  1.46   3.40], 'FedaPins1974', 'Synoicus_chinensis' % 2.08 4.856 ml O2/h.g
     [ 2800  41.0  24.1 299.60], 'BracElSa1985', 'Gallus_gallus_WL' % 8.6, 107 ml CO2/min.kg
+    [ 4306  41.2  40.19 332.7], 'FedaPins1974', 'Meleagris_gallopavo' % 0.56 4.636 ml O2/h.g
+    [ 1207  40.7  21.12 92.70], 'FedaPins1974', 'Numida_meleagris' % 1.05 4.608 ml O2/h.g    
+    [  489  40.7  11.00 34.66], 'FedaPins1974', 'Alectoris_graeca' % 1.35 4.253 ml O2/h.g    
+    [  194  38.9   4.33 11.97], 'FedaPins1974', 'Colinus_virginianus' % 1.34 3.703 ml O2/h.g    
     % Anseriformes
     [275    4.12   NaN  23.22], 'Kirk1983',     'Dendrocygna_autumnalis' % PMR 672 kJ/d; 20.1 kJ/l O2
    %[ 944.1 39.7 12.23  61.51], 'HindBaud1993', 'Anas_castanea' %x
     [190    41.2   NaN  21.39], 'Kirk1983',     'Aythya_affinis' % PMR 619 kJ/d; 20.1 kJ/l O2
+    [3813   41.2 40.03 197.51], 'FedaPins1974', 'Anser_anser' % 0.63 3.108 ml O2/h.g
     % Columbiformes
    %[ 302.0 41.7  4.34  28.24], 'HindBaud1993', 'Columba_livia' 
     [ 419   41.7  7.08  162.8], 'Pear1964',     'Columba_livia' % PMR 112 kcal/h.kg (4.184 J/cal; 20.1 kJ/l O2); FAS 23 
@@ -187,6 +194,8 @@ end
     [75.4   40.9  3.72  11.18], 'WillTiel2007', 'Pluvialis_dominica' % 107.8 323.6 kJ/d; 20.1 kJ/l O2
     [151.0  41.0  7.08  16.41], 'WillTiel2007', 'Limosa_haemastica' % 204.8 474.9 kJ/d; 20.1 kJ/l O2
     [190.0  41.0  7.79  23.38], 'WillTiel2007', 'Numenius_phaeopus' % 225.6 676.6 kJ/d; 20.1 kJ/l O2
+    % Ciconiiformes 
+    [6000   40.5 52.37 178.05], 'BamfMalo1980', 'Leptoptilos_crumeniferus' 
     % Strigiformes
     [ 76    41.0  1.86   8.85], 'RezeSwan2002', 'Glaucidium_nana' % 1.47 6.67 ml O2/h.g; (weight 98 g is given, but 76 g is max)
     % Falconiformes
@@ -741,11 +750,25 @@ for c=1:length(fig)
       plot(1e3*jO, 1e3*std_jO, 'or')
       xlabel('spec ultimate respiration mmol O2/d.g')
       ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
-
+      
+    case 8 % FMR_BMR for mammals
+      % data from GenoIsle2018
+      GenoIsle2018 % the plotting is in this script
+      
   end
 end
    
 % References
+% 
+% @article{BamfMalo1980,
+%   doi = {10.1152/jappl.1980.49.3.491}, 
+%   title = {Energy metabolism and heart rate during treadmill exercise in the Marabou stork},
+%   journal = {J. Appl. Physiol. Respir. Environ. Exerc. Physiol.},
+%   volume = {49(3)},
+%   year = {1980},
+%   pages = {491-496},
+%   author = {S. Bamford and G. M. Maloiy}
+% }
 % 
 % @article{BergHart1972,
 %   doi = {10.1086/physzool.68.5.30163935}, 
@@ -880,6 +903,15 @@ end
 %   author = {Dutenhoffer, M. S. and Swanson, D. L.}
 % }
 %
+% @article{FedaPins1974,
+%   title = {Energy cost of bipedal running},
+%   journal = {American Journal of Physiology},
+%   volume = {227(5)},
+%   year = {1974},
+%   pages = {1038-1044},
+%   author = {Michael A. Fedak and Berry Pinshow and Knut Schmidt-Nielsen}
+% }
+%
 % @article{Fede1986,
 %   title = {EFFECT OF THERMAL ACCLIMATION ON LOCOMOTOR ENERGETICS AND LOCOMOTOR PERFORMANCE IN A LUNGLESS SALAMANDER, DESMOGNATHUS OCHROPHAEUS},
 %   journal = {J. exp. Biol.},
@@ -896,6 +928,16 @@ end
 %   year = {1985},
 %   pages = {R775-R780},
 %   author = {Full, R. J.}
+% }
+%
+% @article{GenoIsle2018,
+%   doi = {10.1111/brv.12350}, 
+%   title = {Comparative analyses of basal rate of metabolism in mammals: data selection does matter},
+%   journal = {Biol. Rev.},
+%   volume = {93(1)},
+%   year = {2018},
+%   pages = {404-438},
+%   author = {Michel Genoud and Karin Isler and Robert D. Martin}
 % }
 %
 % @article{Glee1979,
@@ -1088,6 +1130,16 @@ end
 %   year = {1979},
 %   volume = {11(2)},
 %   pages = {123-126}
+% }
+%
+% @ARTICLE{SeymRunc2008,
+%   doi = {10.1016/j.cbpa.2006.03.018}, 
+%   author = {Seymour, R. S. and Runciman, S. and Baudinette, R. V.},
+%   title = {Development of maximum metabolic rate and pulmonary diffusing capacity in the superprecocial Australian Brush Turkey Alectura lathami: An allometric and morphometric study},
+%   journal = {Comparative Biochemistry and Physiology Part A: Molecular \& Integrative Physiology\},
+%   year = {2008},
+%   volume = {150(2)},
+%   pages = {169–175}
 % }
 %
 % @ARTICLE{SwanLikn2006,
