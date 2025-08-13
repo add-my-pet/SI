@@ -821,7 +821,7 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 nm=Mamm(:,1); nm=strrep(nm,' ','_'); data=cell2mat(Mamm(:,2:3)); data(:,2)=data(:,2)/60; % convert to ml O2/min
 mamm_AmP=select('Mammalia'); sel=ismember(nm,mamm_AmP); nm=nm(sel); data=data(sel,:); 
 n=length(nm); FMR = zeros(n,1);
-for i=1:n; FMR(i) = 15.55 * get_FMR(nm{i},data(i,1)); end % convert mol/d to ml O2/min
+for j=1:n; FMR(j) = 15.55 * get_FMR(nm{j},data(j,1)); end % convert mol/d to ml O2/min
 [~,n]= ismember('Antechinus_flavipes',nm); % first marsupial
 
 Hfig = figure;
@@ -833,7 +833,7 @@ xlabel('predicted _{10}log FMR, ml O2/min')
 ylabel('measured _{10}log BMR, ml O2/min')
 
  % set species names behind markers in plot figure
- h = datacursormode(Hfig); entries_txt = nm; 
+ h = datacursormode(Hfig); entries_txt = strrep(nm, '_', ' ');
  data = log10([FMR,data(:,2)]);
  h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
  datacursormode on % mouse click on plot

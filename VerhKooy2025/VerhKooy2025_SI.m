@@ -754,7 +754,60 @@ for c=1:length(fig)
     case 8 % FMR_BMR for mammals
       % data from GenoIsle2018
       GenoIsle2018 % the plotting is in this script
-      
+ 
+    case 9 % FMR_BMR for birds
+      % data from GavrGolu2023
+      GavrGolu2023 % the plotting is in this script
+
+    case 10 % GavrGolu2023
+        
+      legend_GavrGolu2023 = {...
+        {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Prototheria'   % 0.26
+        {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
+        {'o', 5, 2, [1 .5 .5], [0 0 1]}, 'Placentalia'   % 0.57
+        {'o', 5, 2, [1 0 0], [0 0 0]}, 'Paleognathae'  % 0.53
+        {'o', 5, 2, [1 0 0], [1 1 1]}, 'Passeriformes' % 1.00
+        {'o', 5, 2, [1 0 0], [1 0 0]}, 'Neognathae'    % 0.75  Neognathae - Passeriformes
+      };
+
+     shstat_options('default');
+
+     JOiW = read_allStat({'J_Oi','Ww_i','c_T'}); %WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3)];
+     WJOi = JOiW(:,[2 1]); % at typical temperatures
+     [Hfig, Hleg] = shstat(WJOi, legend_GavrGolu2023);
+     
+     figure(Hfig)
+     xlabel('_{10}log ultimate weight W_w^\infty, g')
+     ylabel('_{10}log O_2 consumption J_O^\infty, mol/d')
+     
+     sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+     [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
+     [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+     [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+     [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+     [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+     [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+     
+     slope_T = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+
+     WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,3)]; % at T_ref
+     [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+     [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+     [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+     [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+     sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+     [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
+     [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+
+     slope_20 = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+     
+     slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
+     n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
+     n_AmP = [2; 45; 703; 7; 642; 380];
+     
+     prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
+     prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
+
   end
 end
    
@@ -929,6 +982,16 @@ end
 %   pages = {R775-R780},
 %   author = {Full, R. J.}
 % }
+%
+%  @article{GavrGolu2023,
+%    doi = {10.3897/zookeys.1148.93458},
+%    title = {Metabolic rate, sleep duration, and body temperature in evolution of mammals and birds: the influence of geological time of principal groups divergence},
+%    journal = {ZooKeys},
+%    volume = {1148},
+%    year = {2013},
+%    pages = {1-27},
+%    author = {Valery M. Gavrilov and Tatiana B. Golubeva and Andrey V. Bushuev}
+%  }
 %
 % @article{GenoIsle2018,
 %   doi = {10.1111/brv.12350}, 
