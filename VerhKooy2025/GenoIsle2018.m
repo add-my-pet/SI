@@ -818,25 +818,63 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Tachyglossus aculeatus'	2140.00'	280.30
 'Zaglossus bruijni'	10300.00'	1215.40};
 
-nm=Mamm(:,1); nm=strrep(nm,' ','_'); data=cell2mat(Mamm(:,2:3)); data(:,2)=data(:,2)/60; % convert to ml O2/min
-mamm_AmP=select('Mammalia'); sel=ismember(nm,mamm_AmP); nm=nm(sel); data=data(sel,:); 
-n=length(nm); FMR = zeros(n,1);
-for j=1:n; FMR(j) = 15.55 * get_FMR(nm{j},data(j,1)); end % convert mol/d to ml O2/min
-[~,n]= ismember('Antechinus_flavipes',nm); % first marsupial
+% nm=Mamm(:,1); nm=strrep(nm,' ','_'); data=cell2mat(Mamm(:,2:3)); data(:,2)=data(:,2)/60; % convert to ml O2/min
+% mamm_AmP=select('Mammalia'); sel=ismember(nm,mamm_AmP); nm=nm(sel); data=data(sel,:); 
+% n=length(nm); FMR = zeros(n,1);
+% for j=1:n; FMR(j) = 15.55 * get_FMR(nm{j},data(j,1)); end % convert mol/d to ml O2/min
+% [~,n]= ismember('Antechinus_flavipes',nm); % first marsupial
+% 
+% Hfig = figure;
+% plot([-1;4], [-1;4], '-k', 'LineWidth', 2);
+% hold on
+% plot(log10(FMR(1:n-1)), log10(data(1:n-1,2)), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
+% plot(log10(FMR(n:end)), log10(data(n:end,2)), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
+% xlabel('predicted _{10}log FMR, ml O2/min')
+% ylabel('measured _{10}log BMR, ml O2/min')
+% 
+%  % set species names behind markers in plot figure
+%  h = datacursormode(Hfig); entries_txt = strrep(nm, '_', ' ');
+%  data = log10([FMR,data(:,2)]);
+%  h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+%  datacursormode on % mouse click on plot
+% 
+%  saveas(gcf,'FMR_BMR_GenoIsle2017.fig')
+%  saveas(gcf,'FMR_BMR_GenoIsle2017.png')
 
-Hfig = figure;
-plot([-1;4], [-1;4], '-k', 'LineWidth', 2);
-hold on
-plot(log10(FMR(1:n-1)), log10(data(1:n-1,2)), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
-plot(log10(FMR(n:end)), log10(data(n:end,2)), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
-xlabel('predicted _{10}log FMR, ml O2/min')
-ylabel('measured _{10}log BMR, ml O2/min')
+  % check scaling exponents as given in GavrGolu2023
+ nm=Mamm(:,1); nm=strrep(nm,' ','_'); data=cell2mat(Mamm(:,2:3)); data(:,2)=data(:,2)/60; % convert to ml O2/min
+ [~,n_mar]= ismember('Antechinus_flavipes',nm); % first marsupial
+ [~,n_mon]= ismember('Ornithorhynchus_anatinus',nm); % first monotremata
+ data_pla = data(1:n_mar-1,:); data_mar = data(n_mar:n_mon-1,:); data_mon = data(n_mon:end,:); Wrange = [0;7];
+ [~,slope_pla,Jrange_pla] = get_axis(log10(data_pla),Wrange); n_pla = size(data_pla,1);
+ [~,slope_mar,Jrange_mar] = get_axis(log10(data_mar),Wrange); n_mar = size(data_mar,1);
+ [~,slope_mon,Jrange_mon] = get_axis(log10(data_mon),Wrange); n_mon = size(data_mon,1);
 
- % set species names behind markers in plot figure
- h = datacursormode(Hfig); entries_txt = strrep(nm, '_', ' ');
- data = log10([FMR,data(:,2)]);
- h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
- datacursormode on % mouse click on plot
+ figure;
+ plot(Wrange,Jrange_pla,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_pla(:,1)),log10(data_pla(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')
+ title(['scaling exponent ',num2str(slope_pla),' for ', num2str(n_pla),' Placentalia of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_pla_GavrGolu2023.png')
+ 
+ figure;
+ plot(Wrange,Jrange_mar,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_mar(:,1)),log10(data_mar(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')  
+ title(['scaling exponent ',num2str(slope_neo),' for ', num2str(n_neo),' Marsupialia of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_mar_GavrGolu2023.png')
+ 
+ 
+ figure;
+ plot(Wrange,Jrange_mon,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_mon(:,1)),log10(data_mon(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 1 1], 'MarkerEdgeColor',[1 .5 .5])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')
+ title(['scaling exponent ',num2str(slope_mon),' for ', num2str(n_mon),' Monotremata of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_mon_GavrGolu2023.png')
 
- saveas(gcf,'FMR_BMR_GenoIsle2017.fig')
- saveas(gcf,'FMR_BMR_GenoIsle2017.png')

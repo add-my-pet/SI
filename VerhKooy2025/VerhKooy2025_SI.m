@@ -762,9 +762,9 @@ for c=1:length(fig)
     case 10 % GavrGolu2023
         
       legend_GavrGolu2023 = {...
-        {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Prototheria'   % 0.26
+        {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
         {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
-        {'o', 5, 2, [1 .5 .5], [0 0 1]}, 'Placentalia'   % 0.57
+        {'o', 5, 2, [1 .5 .5], [1 .5 .5]}, 'Placentalia'   % 0.57
         {'o', 5, 2, [1 0 0], [0 0 0]}, 'Paleognathae'  % 0.53
         {'o', 5, 2, [1 0 0], [1 1 1]}, 'Passeriformes' % 1.00
         {'o', 5, 2, [1 0 0], [1 0 0]}, 'Neognathae'    % 0.75  Neognathae - Passeriformes

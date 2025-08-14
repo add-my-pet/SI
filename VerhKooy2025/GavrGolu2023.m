@@ -1077,3 +1077,40 @@ ylabel('measured _{10}log BMR, ml O2/min')
  saveas(gcf,'FMR_BMR_GavrGolu2023.fig')
  saveas(gcf,'FMR_BMR_GavrGolu2023.png')
  
+ % check scaling exponents as given in GavrGolu2023
+ nm=Aves(:,1); nm=strrep(nm,' ','_'); data=cell2mat(Aves(:,2:3)); data(:,2)=data(:,2)/60; % convert to ml O2/min
+ [~,n_neo]= ismember('Accipiter_cooperii',nm); % first Neognathae
+ [~,n_pas]= ismember('Abroscopus_superciliaris',nm); % first Passeriformes
+ data_pal = data(1:n_neo-1,:); data_neo = data(n_neo:n_pas-1,:); data_pas = data(n_pas:end,:); Wrange = [0.5;5];
+ [~,slope_pal,Jrange_pal] = get_axis(log10(data_pal),Wrange); n_pal = size(data_pal,1);
+ [~,slope_neo,Jrange_neo] = get_axis(log10(data_neo),Wrange); n_neo = size(data_neo,1);
+ [~,slope_pas,Jrange_pas] = get_axis(log10(data_pas),Wrange); n_pas = size(data_pas,1);
+
+ figure;
+ plot(Wrange,Jrange_pal,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_pal(:,1)),log10(data_pal(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 0 0])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')
+ title(['scaling exponent ',num2str(slope_pal),' for ', num2str(n_pal),' Paleognathae of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_pal_GavrGolu2023.png')
+ 
+ figure;
+ plot(Wrange,Jrange_neo,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_neo(:,1)),log10(data_neo(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 0 0], 'MarkerEdgeColor',[1 0 0])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')
+ title(['scaling exponent ',num2str(slope_neo),' for ', num2str(n_neo),' Neognathae-non Pass of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_neo_GavrGolu2023.png')
+ 
+ 
+ figure;
+ plot(Wrange,Jrange_pas,'k', 'LineWidth',2)
+ hold on
+ plot(log10(data_pas(:,1)),log10(data_pas(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 1 1], 'MarkerEdgeColor',[1 0 0])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/min')
+ title(['scaling exponent ',num2str(slope_pas),' for ', num2str(n_pas),' Passeriformes of GavrGolu2023']);
+ saveas(gcf, 'W_BMR_pas_GavrGolu2023.png')
+
