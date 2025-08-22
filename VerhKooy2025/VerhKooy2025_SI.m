@@ -315,7 +315,7 @@ end
     [   15.6 35.0  0.48   2.38], 'HindBaud1993', 'Sminthopsis_crassicaudata' 
     [   16.7 32.7  0.35   2.38], 'HindBaud1993', 'Sminthopsis_macroura'
     [  119.5 35.3  1.52  19.36], 'HindBaud1993', 'Dasyuroides_byrnei'
-   %[  532.3 33.7  3.20  29.85], 'HindBaud1993', 'Dasyurus_hallucatus' %x
+    [  532.3 33.7  3.20  29.85], 'HindBaud1993', 'Dasyurus_hallucatus'
     [ 1054.0 35.1  6.28  69.60], 'HindBaud1993', 'Dasyurus_viverrinus' 
     [  717.2 33.9  3.71  43.43], 'HindBaud1993', 'Isoodon_obesulus'
     [  837.3 35.2  7.01  48.76], 'HindBaud1993', 'Perameles_gunnii'
@@ -324,6 +324,7 @@ end
     [ 1385.0 35.6 10.69 100.10], 'HindBaud1993', 'Bettongia_gaimardi' 
     [ 1027.8 35.8  8.72  65.90], 'HindBaud1993', 'Potorous_tridactylus' 
     [ 2026.5 35.8 13.85  74.65], 'HindBaud1993', 'Trichosurus_vulpecula'
+    [   34   30   21.42  70.04] ,'WithThom2000', 'Notoryctes_caurinus' % 0.63 2.06 mL O2/h.g
   };
   %  
   pla = {... % Placentalia; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2/min); %x means not in AmP
@@ -803,7 +804,8 @@ for c=1:length(fig)
      
      slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
      n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
-     n_AmP = [2; 45; 703; 7; 642; 380];
+     n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
+
      
      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
@@ -1279,4 +1281,13 @@ end
 %   pages = {1-9}
 % }
 %
+% @ARTICLE{WithThom2000,
+%   doi = {10.1071/ZO99073},
+%   title = {Metabolic physiology of the north-western marsupial mole, \emph{Notoryctes caurinus} ({M}arsupialia: {N}otoryctidae)},
+%   journal = {Australian Journal of Zoology},
+%   volume = {48},
+%   year = {2000},
+%   pages = {241–258},
+%   author = {P. C. Withers and G. G. Thompson and R. S. Seymour}
+% }
 

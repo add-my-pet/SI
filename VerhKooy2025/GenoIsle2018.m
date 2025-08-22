@@ -865,7 +865,7 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
  plot(log10(data_mar(:,1)),log10(data_mar(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
  xlabel('_{10}log body mass, g')
  ylabel('_{10}log BMR, mg O_2/min')  
- title(['scaling exponent ',num2str(slope_neo),' for ', num2str(n_neo),' Marsupialia of GavrGolu2023']);
+ title(['scaling exponent ',num2str(slope_mar),' for ', num2str(n_mar),' Marsupialia of GavrGolu2023']);
  saveas(gcf, 'W_BMR_mar_GavrGolu2023.png')
  
  
@@ -878,3 +878,13 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
  title(['scaling exponent ',num2str(slope_mon),' for ', num2str(n_mon),' Monotremata of GavrGolu2023']);
  saveas(gcf, 'W_BMR_mon_GavrGolu2023.png')
 
+% reference
+%  @article{GenoIsle2018,
+%   doi = {10.1111/brv.12350}, 
+%   title = {Comparative analyses of basal rate of metabolism in mammals: data selection does matter},
+%   journal = {Biol. Rev.},
+%   volume = {93(1)},
+%   year = {2018},
+%   pages = {404-438},
+%   author = {Michel Genoud and Karin Isler and Robert D. Martin}
+% }
