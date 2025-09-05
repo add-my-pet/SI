@@ -366,10 +366,10 @@ end
    %[    23  39.6 0.735   4.87], 'Bozi1992',     'Abrothrix_andinus' %x 44.1 292.3 ml O2/h
    %[    42  39.6 1.308   6.09], 'Bozi1992',     'Abrothrix_longipilis' %x 78.5 365.4 ml O2/h
    %[    27  39.6 0.823   4.14], 'Bozi1992',     'Abrothrix_olivaceus' %x 49.4 248.4 ml O2/h
-   %[    31  36.2 0.775   6.10], 'Bozi1992',     'Akodon_albiventer' %x 46.5 365.8 ml O2/h
    %[    24  39.6 0.760   5.00], 'Bozi1992',     'Abrothrix_lanosus' %x 45.6 300.0 ml O2/h
+   %[    31  36.2 0.775   6.10], 'Bozi1992',     'Akodon_albiventer' %x 46.5 365.8 ml O2/h
    %[    77  39.6 1.848   9.75], 'Bozi1992',     'Auliscomys_boliviensis' %x 110.9 585.2 ml O2/h
-   %[    62  39.6 1.622   7.44], 'Bozi1992',     'Loxodontomys_micropus' %x 97.3 446.4 ml O2/h
+    [    62  39.6 1.622   7.44], 'Bozi1992',     'Loxodontomys_micropus' % 97.3 446.4 ml O2/h
     [     7  36.0 0.333   1.44], 'Bozi1992',     'Baiomys_taylori' %  20.0 86.1 ml O2/h
     [    48  36.6 1.183   5.44], 'Bozi1992',     'Calomys_callosus' % 71.0 326.4 ml O2/h
     [    48  38.0  0.93   5.34], 'Lech1978',     'Calomys_callosus'
@@ -393,9 +393,9 @@ end
     [    33  37.0 0.772   3.79], 'Bozi1992',     'Dipodomys_merriami' % 46.3 227.5 ml O2/h
     [    34  37.0 0.627   4.29], 'Bozi1992',     'Dipodomys_merriami' % 37.6 257.5 ml O2/h
     [    45  39.6 0.835   3.34], 'Bozi1992',     'Heteromys_salvini' % 50.1 200.3 ml O2/h
-   %[    20  34.7 0.397   2.84], 'Bozi1992',     'Perognathus_fallax' %x 23.8 170.2 ml O2/h
-   %[    21  34.7 0.463   2.78], 'Bozi1992',     'Perognathus_fallax' %x 27.8 166.6 ml O2/h
-   %[    18  34.7 0.425   2.56], 'Bozi1992',     'Perognathus_fallax' %x 25.5 147.5 ml O2/h
+    [    20  34.7 0.397   2.84], 'Bozi1992',     'Perognathus_fallax' % 23.8 170.2 ml O2/h
+    [    21  34.7 0.463   2.78], 'Bozi1992',     'Perognathus_fallax' % 27.8 166.6 ml O2/h
+    [    18  34.7 0.425   2.56], 'Bozi1992',     'Perognathus_fallax' % 25.5 147.5 ml O2/h
    %[   176  37.6 3.053  12.91], 'Bozi1992',     'Octodon_bridgesi' %x 183.2 774.4 ml O2/h
     [   195  37.6 3.023  17.88], 'Bozi1992',     'Octodon_degus' % 181.4 1072.5 ml O2/h
    %[   173  37.6 2.855  15.28], 'Bozi1992',     'Octodon_lunatus' %x 171.3 916.9 ml O2/h
@@ -413,7 +413,7 @@ end
    %[  165.7 36.2  2.05  11.51], 'HindBaud1993', 'Rattus_colletti' %x
    %[  247.8 36.0  2.43  14.48], 'HindBaud1993', 'Rattus_villosissimus' %x
     [ 3200.0 37.0  10.1  80.00], 'HampNels2010', 'Marmota_marmota' %  0.19 1.5 ml O2/h.g 
-   %[  800.0 35.5  6.67  35.33], 'HampNels2010', 'Urocitellus_parryii' %x 0.5 2.65 ml O2/h.g 
+    [  800.0 35.5  6.67  35.33], 'HampNels2010', 'Urocitellus_parryii' % 0.5 2.65 ml O2/h.g 
     [  240.0 35.5  4.47  21.90], 'HampNels2010', 'Ictidomys_tridecemlineatus' % 0.96 4.7 ml O2/h.g 
    % Lagomorpha
     [ 1242.0 38.3  8.84  18.8], 'HindBaud1993', 'Oryctolagus_cuniculus'

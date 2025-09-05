@@ -1113,4 +1113,15 @@ ylabel('measured _{10}log BMR, ml O2/min')
  ylabel('_{10}log BMR, mg O_2/min')
  title(['scaling exponent ',num2str(slope_pas),' for ', num2str(n_pas),' Passeriformes of GavrGolu2023']);
  saveas(gcf, 'W_BMR_pas_GavrGolu2023.png')
+ 
+% reference
+%  @article{GavrGolu2023,
+%    doi = {10.3897/zookeys.1148.93458},
+%    title = {Metabolic rate, sleep duration, and body temperature in evolution of mammals and birds: the influence of geological time of principal groups divergence},
+%    journal = {ZooKeys},
+%    volume = {1148},
+%    year = {2013},
+%    pages = {1-27},
+%    author = {Valery M. Gavrilov and Tatiana B. Golubeva and Andrey V. Bushuev}
+%  }
 

@@ -1,826 +1,657 @@
 % Supporting information for White and Seymour (2003) Proc. Natl. Acad. Sci. USA, 10.1073/pnas.0436428100
 
-Mamm = [ ... % weight (g), BMR (ml O2/h)
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Antilocapra americana'          }         37800         10586
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Alcelaphus buselaphus'          }         98000         30024
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Connochaetes taurinus'          }       1.4e+05         27440
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Gazella gazella'                }         16300          6275
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Gazella spekei'                 }         12400          5926
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Gazella subgutturosa'           }         17100        4595.8
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Kobus ellipsiprymnus'           }         1e+05         26667
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Madoqua kirkii'                 }          4850          2671
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Madoqua saltiana'               }          2000         851.5
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Nanger soemmerringii'           }         35100          9213
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Oreamnos americanus'            }         32000          8320
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Oryx gazella'                   }       1.8e+05         43560
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Oryx leucoryx'                  }         93050         17353
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Ovibos moschatus'               }     1.955e+05         26988
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Ovis canadensis'                }         78500         16245
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Philantomba monticola'          }          4267        1834.8
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Raphicerus campestris'          }          8377        3225.1
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Taurotragus oryx'               }      3.83e+05         86353
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Camelus dromedarius'            }     2.808e+05         28980
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Alces americanus'               }       3.5e+05         56029
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Capreolus capreolus'            }         21500          8616
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Cervus elaphus'                 }         58000         16420
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Odocoileus virginianus'         }         51190         11481
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Rangifer tarandus'              }         94100         23748
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Pecari tajacu'                  }         20200          5858
-    {'Mammalia'}    {'Eutheria'   }    {'Artiodactyla'       }    {'Tragulus javanicus'             }          1613         869.4
-    {'Mammalia'}    {'Eutheria'   }    {'Cetacea'            }    {'Orcinus orca'                   }    4.0375e+06     3.872e+05
-    {'Mammalia'}    {'Eutheria'   }    {'Cetacea'            }    {'Tursiops truncatus'             }    1.9072e+05         43503
-    {'Mammalia'}    {'Eutheria'   }    {'Cetacea'            }    {'Delphinapterus leucas'          }      6.25e+05    1.1409e+05
-    {'Mammalia'}    {'Eutheria'   }    {'Cetacea'            }    {'Phocoena phocoena'              }         28500         19380
-    {'Mammalia'}    {'Eutheria'   }    {'Perissodactyla'     }    {'Equus asinus'                   }     1.775e+05         29400
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Canis latrans'                  }         10000          2688
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Canis lupus'                    }         35500          8305
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Canis mesomelas'                }          7720          3760
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Lycalopex culpaeus'             }          5418        2034.5
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Lycaon pictus'                  }          8750          5469
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Cerdocyon thous'                }          5444        1497.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Nyctereutes procyonoides'       }          7575          3045
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes rueppellii'              }          1546         798.9
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes cana'                    }          1285         631.2
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes zerda'                   }          1106           396
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes lagopus'                 }          3970        1709.5
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes macrotis'                }          1769        1078.4
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Vulpes vulpes'                  }          3060          1501
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Fossa fossana'                  }          2260         906.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Acinonyx jubatus'               }         37900        8982.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Felis margarita'                }          1925         898.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Felis silvestris'               }          2618         983.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Puma concolor'                  }         37200        8841.7
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Leopardus pardalis'             }         10500        3126.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Leopardus wiedii'               }          3550         937.2
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Leptailurus serval'             }         10120          3140
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Lynx rufus'                     }          9400        4220.6
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Panthera leo'                   }         98000         16954
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Panthera onca'                  }         69000         12834
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Panthera tigris'                }     1.379e+05         23995
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Puma yagouaroundi'              }          8350          1737
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Galerella sanguinea'            }           500           380
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Herpestes javanicus'            }           611         403.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Suricata suricatta'             }           850         310.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Hyaena hyaena'                  }         34300        5728.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Proteles cristata'              }          8100          2194
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mephitis mephitis'              }          5667        1507.5
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Spilogale putorius'             }           624         265.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Eira barbara'                   }          2950        1221.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Enhydra lutris'                 }         18000         12960
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Gulo gulo'                      }         12700          5842
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Lutra lutra'                    }          7967          4362
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Martes americana'               }          1038         685.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Martes martes'                  }           920           736
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Meles meles'                    }         11050          2984
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela erminea'                }         161.5           337
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela eversmanii'             }           612         434.5
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela frenata'                }           225           236
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela nigripes'               }           920           460
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela nivalis'                }          89.5         171.6
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Mustela putorius'               }          1575          1268
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Neovison vison'                 }           704         515.3
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Taxidea taxus'                  }          9000          2700
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Nandinia binotata'              }          4270         862.5
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Callorhinus ursinus'            }         32000         21701
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Eumetopias jubatus'             }    1.7187e+05         46460
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Zalophus californianus'         }         94660         36348
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Halichoerus grypus'             }     1.907e+05         33806
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Leptonychotes weddellii'        }     3.885e+05         74592
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Histriophoca fasciata'          }         54000         17795
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Pagophilus groenlandicus'       }     1.495e+05         34236
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Phoca vitulina'                 }         86800         30120
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Pusa hispida'                   }         46600         13800
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Ailurus fulgens'                }          5740         878.2
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Bassariscus astutus'            }           865           371
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Bassariscus sumichrasti'        }          1282         634.6
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Nasua narica'                   }          3665        1205.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Nasua nasua'                    }          3850        1010.6
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Potos flavus'                   }          2400           758
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Procyon cancrivorus'            }          1160         460.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Procyon lotor'                  }          6480          1873
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Melursus ursinus'               }         66957          8437
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Ursus americanus'               }     1.295e+05         15341
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Ursus arctos'                   }      1.36e+05         17400
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Ursus maritimus'                }    1.8133e+05         22376
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Arctictis binturong'            }         14280        1128.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Arctogalidia trivirgata'        }          2010         552.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Genetta genetta'                }        1203.2         596.8
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Genetta tigrina'                }          1732         762.1
-    {'Mammalia'}    {'Eutheria'   }    {'Carnivora'          }    {'Paradoxurus hermaphroditus'     }          3160           760
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Peropteryx macrotis'            }           5.1         11.78 % Chiroptera
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Saccopteryx bilineata'          }           7.8          14.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Saccopteryx leptura'            }           4.2          9.49
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Taphozous mauritianus'          }         26.17         31.14
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Aselliscus tricuspidatus'       }           4.2          7.14
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Hipposideros diadema'           }          37.2            33
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Hipposideros cervinus'          }           8.3          8.96
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Hipposideros galeritus'         }           8.5          9.35
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Hipposideros maggietaylorae'    }          18.2          21.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Hipposideros armiger'           }          53.1          32.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rhinonicteris aurantia'         }          8.27          16.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Macroderma gigas'               }         107.2          94.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nycteris thebaica'              }         11.65         18.76
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Miniopterus natalensis'         }          9.77          4.89
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Miniopterus schreibersii'       }          11.1          25.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Eumops perotis'                 }            56          39.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Molossus molossus'              }          16.5          20.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Mops condylurus'                }          23.2          32.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Sauromys petrophilus'           }         10.98          6.74
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Tadarida brasiliensis'          }            11           8.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Tadarida teniotis'              }            32          34.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Mormoops blainvillei'           }          8.91          8.29
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Mormoops megalophylla'          }          16.5          24.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteronotus davyi'               }           9.4          15.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteronotus parnellii'           }          19.2          30.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteronotus personatus'          }            14            23
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteronotus quadridens'          }           4.8             6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Natalus tumidirostris'          }           5.4          8.32
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Noctilio albiventris'           }          38.6         38.22
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Noctilio leporinus'             }            61            47
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Ametrida centurio'              }          10.5          21.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Anoura caudifer'                }          11.5          35.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Anoura latidens'                }          13.5          36.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus cinereus'              }          10.5          21.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus concolor'              }          19.7          32.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus fimbriatus'            }          63.9         77.96
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus jamaicensis'           }          45.2          56.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus lituratus'             }          70.1          84.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Artibeus hirsutus'              }          51.5         121.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Carollia perspicillata'         }          14.9          31.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Chiroderma doriae'              }          19.9          31.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Choeroniscus godmani'           }          10.1          19.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Chrotopterus auritus'           }          96.1         101.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Desmodus rotundus'              }          29.4          26.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Diaemus youngi'                 }          36.6            34
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Diphylla ecaudata'              }          27.8          33.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Erophylla bombifrons'           }         16.41          18.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Glossophaga longirostris'       }          13.5          26.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Glossophaga soricina'           }           9.6          21.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Leptonycteris curasoae'         }            24          34.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Leptonycteris yerbabuenae'      }            22          36.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Macrotus californicus'          }          11.7          14.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Monophyllus redmani'            }          8.81          11.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Phyllostomus discolor'          }          33.5          34.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Phyllostomus elongatus'         }          35.6          38.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Phyllostomus hastatus'          }          84.2          70.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Platyrrhinus lineatus'          }          21.9          32.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rhinophylla pumilio'            }           9.5          16.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Sturnira erythromos'            }          15.9          39.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Sturnira lilium'                }          21.9          39.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Sturnira tildae'                }          20.5          39.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Tonatia bidens'                 }          27.4          39.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Uroderma bilobatum'             }          16.2          26.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Vampyressa nymphaea'            }          10.5          21.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Vampyressa pusilla'             }           8.8          18.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Cynopterus brachyotis'          }          37.4          47.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Dobsonia anderseni'             }           241           174
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Dobsonia minor'                 }          73.7          74.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Dobsonia moluccensis'           }         404.3         367.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Dobsonia praedatrix'            }         179.5         142.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Eonycteris spelaea'             }          51.6            48
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Epomophorus wahlbergi'          }         101.7        105.16
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Macroglossus minimus'           }          16.4          14.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Megaloglossus woermanni'        }         11.28            18
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Melonycteris melanops'          }          53.3          43.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctimene albiventer'           }          30.9          27.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctimene cyclotis'             }          40.4          64.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctimene robinsoni'            }          54.8          54.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Paranyctimene raptor'           }          23.6          24.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus giganteus'             }         562.2         290.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus hypomelanus'           }         520.8         290.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus poliocephalus'         }           598         316.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus pumilus'               }         194.2         126.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus rodricensis'           }         254.5         134.9
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus scapulatus'            }           362         242.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pteropus vampyrus'              }        1024.3         804.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rousettus aegyptiacus'          }           146         122.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rousettus amplexicaudatus'      }          91.5         104.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Syconycteris australis'         }          16.3         16.95
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rhinolophus capensis'           }          11.9          7.14
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Rhinolophus clivosus'           }         16.83         13.46
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Antrozous pallidus'             }            22          19.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Chalinolobus gouldii'           }          17.5          25.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Eptesicus fuscus'               }            15         16.98
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Eptesicus serotinus'            }            27          43.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Histiotus velatus'              }          11.2          9.97
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Lasiurus borealis'              }          12.2         17.45
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Lasiurus cinereus'              }          19.9         16.52
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Lasiurus intermedius'           }          22.6          18.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Lasiurus seminolus'             }           9.8          13.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis austroriparius'          }           7.5         8.625
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis bechsteinii'             }           8.9           9.6
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis chiloensis'              }          5.78         10.17
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis daubentonii'             }           7.8           7.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis lucifugus'               }             6          10.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis yumanensis'              }          6.75          13.5
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis myotis'                  }            25          40.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis nattereri'               }           7.1           8.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis nigricans'               }           3.7          4.81
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis thysanodes'              }           8.7          15.1
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis tricolor'                }         12.71          6.36
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctalus noctula'               }            20            15
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nycticeius humeralis'           }             9          10.7
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctophilus bifax'              }           9.9         12.67
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctophilus geoffroyi'          }             8          11.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctophilus gouldi'             }            10          12.2
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Nyctophilus timoriensis'        }          13.6          20.4
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Otonycteris hemprichii'         }          25.4          16.3
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pipistrellus kuhlii'            }          6.99          9.31
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Pipistrellus pipistrellus'      }           4.6             8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Myotis vivesi'                  }            25          35.8
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Plecotus auritus'               }          10.7         14.69
-    {'Mammalia'}    {'Eutheria'   }    {'Chirootera'         }    {'Vespadelus vulturnus'           }             4          4.08
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Atelerix albiventris'           }           450         146.7
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Atelerix frontalis'             }           375         86.25
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Echinosorex gymnura'            }           721           505
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Erinaceus concolor'             }           823           347
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Erinaceus europaeus'            }           749         337.1
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Hemiechinus auritus'            }           397         150.9
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Hylomys suillus'                }          77.3          80.4
-    {'Mammalia'}    {'Eutheria'   }    {'Erinaceidae'        }    {'Paraechinus aethiopicus'        }           453         113.3
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Blarina brevicauda'             }            21          52.5
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Blarina carolinensis'           }          10.2          33.3
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura hildegardeae'         }            10            26
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura jouvenetae'           }          10.2          22.4
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura leucodon'             }          11.7          29.8
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura luna'                 }          11.8          24.8
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura olivieri'             }          38.9          58.4
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura poensis'              }          17.3          31.1
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura russula'              }          11.3          22.4
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura suaveolens'           }           6.5          18.9
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Crocidura viaria'               }          14.7          22.1
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Cryptotis parva'                }           6.2            19
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Myosorex varius'                }         12.32         23.86
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Neomys anomalus'                }         13.42         66.83
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Neomys fodiens'                 }          13.5          39.2
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Notiosorex crawfordi'           }             4          12.6
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex alpinus'                  }           7.9          48.2
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex araneus'                  }           7.5          44.7
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex cinereus'                 }             5         32.75
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex coronatus'                }           9.1          51.9
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex minutus'                  }           3.3          28.4
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex ornatus'                  }           4.7            25
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex palustris'                }          14.4         70.65
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Sorex vagrans'                  }           5.2         19.71
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Suncus etruscus'                }           2.2          7.04
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Suncus murinus'                 }          52.4            88
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Condylura cristata'             }            49         110.3
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Neurotrichus gibbsii'           }          11.8          46.5
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Scalopus aquaticus'             }            48          67.7
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Scapanus latimanus'             }            61          76.3
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Scapanus orarius'               }          61.2          64.1
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Scapanus townsendii'            }         130.1         108.9
-    {'Mammalia'}    {'Eutheria'   }    {'Soricidae'          }    {'Parascalops breweri'            }          57.6         130.8
-    {'Mammalia'}    {'Eutheria'   }    {'Pholidota'          }    {'Manis crassicaudata'            }         15910          1241
-    {'Mammalia'}    {'Eutheria'   }    {'Pholidota'          }    {'Manis javanica'                 }          4220          1106
-    {'Mammalia'}    {'Eutheria'   }    {'Pholidota'          }    {'Manis pentadactyla'             }          3638         667.9
-    {'Mammalia'}    {'Eutheria'   }    {'Pholidota'          }    {'Manis tetradactyla'             }          1430           242
-    {'Mammalia'}    {'Eutheria'   }    {'Pholidota'          }    {'Manis tricuspis'                }          2730         831.3
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Echinops telfairi'              }         152.5          40.1
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Geogale aurita'                 }           6.9          7.73
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Hemicentetes nigriceps'         }         101.9          72.5
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Hemicentetes semispinosus'      }           133          64.1
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Limnogale mergulus'             }          77.7          72.3
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Microgale cowani'               }          10.3            27
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Microgale dobsoni'              }          44.6          41.7
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Microgale drouhardi'            }          11.9        28.386
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Microgale talazaci'             }            44          43.5
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Oryzorictes hova'               }          44.4          68.7
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Setifer setosus'                }         159.5         56.85
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Tenrec ecaudatus'               }           790         260.5
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Amblysomus hottentotus'         }          65.5          73.5
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Chrysochloris asiatica'         }            44          51.5
-    {'Mammalia'}    {'Eutheria'   }    {'Afrosoricida'       }    {'Eremitalpa granti'              }          26.1         13.57
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus brachyrhynchus'    }          45.3         43.72
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus edwardii'          }          49.8         54.28
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus intufi'            }          46.5         52.03
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus myurus'            }            63          66.3
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus rozeti'            }          45.3          47.8
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus rufescens'         }            53         56.87
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Elephantulus rupestris'         }          59.7         53.17
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Macroscelides proboscideus'     }          38.8         51.99
-    {'Mammalia'}    {'Eutheria'   }    {'Macroscelidea'      }    {'Petrodromus tetradactylus'      }         206.1         179.5
-    {'Mammalia'}    {'Eutheria'   }    {'Proboscidea'        }    {'Elephas maximus'                }     3.672e+06    4.2535e+05
-    {'Mammalia'}    {'Eutheria'   }    {'Proboscidea'        }    {'Loxodonta africana'             }     1.542e+06    2.5289e+05
-    {'Mammalia'}    {'Eutheria'   }    {'Hyracoidea'         }    {'Dendrohyrax dorsalis'           }          2210         752.1
-    {'Mammalia'}    {'Eutheria'   }    {'Hyracoidea'         }    {'Heterohyrax brucei'             }          1287         669.2
-    {'Mammalia'}    {'Eutheria'   }    {'Hyracoidea'         }    {'Procavia capensis'              }          2400           648
-    {'Mammalia'}    {'Eutheria'   }    {'Sirenia'            }    {'Trichechus inunguis'            }     1.705e+05          8531
-    {'Mammalia'}    {'Eutheria'   }    {'Sirenia'            }    {'Trichechus manatus'             }     4.277e+05         10992
-    {'Mammalia'}    {'Eutheria'   }    {'Tubulidentata'      }    {'Orycteropus afer'               }         48000          6144
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Aotus trivirgatus'              }          1030           496
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Alouatta palliata'              }          4670          2060
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Callimico goeldii'              }           557           278
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Callithrix jacchus'             }         356.7           163
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Callithrix pygmaea'             }           153          97.8
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Leontopithecus rosalia'         }           733           382
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Saguinus geoffroyi'             }           225         234.4
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Saguinus oedipus'               }           296         265.5
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Saimiri boliviensis'            }           850           592
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Saimiri sciureus'               }         839.8         694.9
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Cercocebus torquatus'           }          3750          1600
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Cercopithecus mitis'            }          8500          3392
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Colobus guereza'                }         10500          2980
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Erythrocebus patas'             }          3000         644.7
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Macaca fascicularis'            }          7100          3458
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Macaca fuscata'                 }          9575          4149
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Macaca mulatta'                 }          6225          2165
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Papio anubis'                   }          9500          3058
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Papio cynocephalus'             }         14350          7950
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Papio papio'                    }          6233          2622
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Papio ursinus'                  }         16380          4986
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Daubentonia madagascariensis'   }          2562        1393.9
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Cheirogaleus medius'            }           300           159
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Microcebus griseorufus'         }          51.5         44.29
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Microcebus murinus'             }          84.5          82.7
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Euoticus elegantulus'           }           262           216
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Galago demidoff'                }            68          62.7
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Galago moholi'                  }           181          86.9
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Galago senegalensis'            }           275           198
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Otolemur crassicaudatus'        }          1039         519.5
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Otolemur garnettii'             }           947           411
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Pan troglodytes'                }         38000          9462
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Pongo pygmaeus'                 }         16200          4970
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Hylobates lar'                  }          1900          1073
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Propithecus coquereli'          }          4052        1012.3
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Propithecus verreauxi'          }          3400         641.2
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Eulemur fulvus'                 }          2330           324
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Eulemur mongoz'                 }          1382          1143
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Lemur catta'                    }          2527         651.4
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Varecia variegata'              }          3053           590
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Lepilemur ruficaudatus'         }           693           225
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Arctocebus calabarensis'        }           206           131
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Loris tardigradus'              }           284           128
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Nycticebus coucang'             }          1300           307
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Nycticebus pygmaeus'            }         469.5           172
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Perodicticus potto'             }           898           337
-    {'Mammalia'}    {'Eutheria'   }    {' Primates'          }    {'Tarsius syrichta'               }           114            77
-    {'Mammalia'}    {'Eutheria'   }    {'Scandentia'         }    {'Ptilocercus lowii'              }          57.5          43.1
-    {'Mammalia'}    {'Eutheria'   }    {'Scandentia'         }    {'Tupaia glis'                    }           123          93.5
-    {'Mammalia'}    {'Eutheria'   }    {'Scandentia'         }    {'Tupaia belangeri'               }           186         126.5
-    {'Mammalia'}    {'Eutheria'   }    {'Scandentia'         }    {'Urogale everetti'               }           264         229.7
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Brachylagus idahoensis'         }           432         384.5
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus alleni'                   }          3362          1516
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus americanus'               }          1438          1216
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus arcticus'                 }          3004          1081
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus californicus'             }          1989          1118
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus capensis'                 }          1400           525
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus europaeus'                }          2800          1512
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus timidus'                  }          3096        2637.8
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Lepus townsendii'               }          2430          1263
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Sylvilagus audubonii'           }         672.4         436.9
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Sylvilagus floridanus'          }           981         557.2
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Ochotona curzoniae'             }         128.2           218
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Ochotona dauurica'              }         127.7           249
-    {'Mammalia'}    {'Eutheria'   }    {'Lagomorpha'         }    {'Ochotona princeps'              }         109.3         167.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Bathyergus janetta'             }           406         219.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Bathyergus suillus'             }           712         341.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys amatus'               }          77.3          48.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys anselli'              }          81.9          62.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys bocagei'              }          94.4          69.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys damarensis'           }           125          82.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys darlingi'             }            60          58.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys hottentotus'          }           102           105
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cryptomys mechowi'              }           267         160.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Georychus capensis'             }           132         126.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Heliophobius argenteocinereus'  }           223           154
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Heterocephalus glaber'          }            39          25.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Capromys pilorides'             }          2630           597
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Geocapromys brownii'            }          2456         736.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Geocapromys ingrahami'          }           775         265.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cavia magna'                    }           544           473
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Dolichotis salinicola'          }          1613         725.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Galea musteloides'              }           322           264
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Hydrochoeris hydrochaeris'      }         26385        6596.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Kerodon rupestris'              }           733         366.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Microcavia niata'               }         255.2         175.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Chinchilla lanigera'            }           426         225.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Chinchilla chinchilla'          }         454.4         226.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Lagidium viscacia'              }          2056           699
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Lagostomus maximus'             }          6784          1886
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys australis'             }         293.8         146.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'NA'                             }         140.7         112.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys fulvus'                }           275           176
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys magellanicus'          }         263.1         184.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys maulinus'              }           215         187.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys opimus'                }         218.4         128.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys peruanus'              }           490         220.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys porteousi'             }         195.7         150.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys talarum'               }        181.95        162.91
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Ctenomys tuconax'               }         325.8         208.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Cuniculus paca'                 }          9156        2746.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Dasyprocta azarae'              }          3849          1886
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Dasyprocta leporina'            }          2687        1558.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Myoprocta acouchy'              }           914         502.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Proechimys semispinosus'        }           265         338.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Thrichomys apereoides'          }           323         206.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Coendou prehensilis'            }          3280           925
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Erethizon dorsata'              }          6100        3074.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Sphiggurus villosus'            }           812           580
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Hystrix africaeaustralis'       }         10700          2033
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Myocastor coypus'               }          4325        3027.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Aconaemys fuscus'               }           112           121
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Octodon bridgesi'               }         176.1         183.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Octodon degus'                  }           206         191.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Octodon lunatus'                }         173.2         171.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Octodontomys gliroides'         }           152         130.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Octomys mimax'                  }         118.6           115
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Spalacopus cyanus'              }           136         101.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodHystricomorpha'  }    {'Tympanoctomys barrerae'         }          71.4          76.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodAnomaluromorphal'}    {'Pedetes capensis'               }          2300         793.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Castor canadensis'              }         15270          4688
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Geomys bursarius'               }           197         137.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Geomys pinetis'                 }           200           142
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Thomomys bottae'                }           143         120.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Thomomys talpoides'             }          82.6         102.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Thomomys townsendii'            }           249         189.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Thomomys umbrinus'              }          95.3          72.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus baileyi'            }          29.1         34.54
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus californicus'       }            22          21.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus fallax'             }          19.6         26.85
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus formosus'           }          15.1         18.42
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus hispidus'           }          39.5          49.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus intermedius'        }          14.6          15.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Chaetodipus penicillatus'       }            16          22.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys agilis'               }          60.6          63.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys deserti'              }           106          92.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys heermanni'            }          63.3          73.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys merriami'             }          34.7         41.64
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys microps'              }          57.2          66.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys nitratoides'          }          37.8          46.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys ordii'                }          48.8          57.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys panamintinus'         }          56.9         62.59
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Dipodomys spectabilis'          }           100           114
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Heteromys anomalus'             }          69.3         100.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Heteromys desmarestianus'       }          75.8          99.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Liomys irroratus'               }          48.1          53.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Liomys salvini'                 }          43.8          46.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Microdipodops megacephalus'     }          11.7          25.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Microdipodops pallidus'         }          15.2          19.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Perognathus flavus'             }           8.3          17.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Perognathus longimembris'       }           8.9          9.52
-    {'Mammalia'}    {'Eutheria'   }    {'RodCastorimorpha'   }    {'Perognathus parvus'             }          19.2          28.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Abrothrix andinus'              }          34.6          64.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Abrothrix lanosus'              }            24          45.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Abrothrix longipilis'           }          42.3          57.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Abrothrix olivaceus'            }            27          49.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Akodon albiventer'              }            31          46.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Akodon azarae'                  }          22.5          38.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Alticola argentatus'            }          52.9           127
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Arborimus pomo'                 }          21.8          58.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Arvicola amphibius'             }          97.5         113.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Auliscomys boliviensis'         }          76.8         110.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Baiomys taylori'                }           7.3          14.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Calomys callosus'               }            48         71.04
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Calomys lepidus'                }            16         27.36
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Calomys musculinus'             }          16.9         27.89
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Calomys venustus'               }          49.5         70.79
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Chelemys macronyx'              }            62         84.32
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Chionomys nivalis'              }          37.5         117.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Cricetulus barabensis'          }          37.3         52.97
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Cricetulus migratorius'         }          30.7         45.74
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Cricetus cricetus'              }         369.6         192.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Dicrostonyx groenlandicus'      }          62.3         105.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Dicrostonyx torquatus'          }          69.8         138.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Eligmodontia puerulus'          }            21          33.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Eligmodontia typus'             }          17.5          29.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Eothenomys melanogaster'        }          25.2          62.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Eothenomys miletus'             }         41.23         79.57
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Eothenomys olitor'              }         34.26          89.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Euneomys chinchilloides'        }          65.4          84.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Graomys griseoflavus'           }          69.4         83.97
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Isthmomys pirrensis'            }           138         121.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lasiopodomys brandtii'          }          61.8          88.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lemmiscus curtatus'             }          30.3          50.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lemmus lemmus'                  }          60.6         141.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lemmus trimucronatus'           }            44          70.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lemmus sibiricus'               }          95.4         201.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Loxodontomys micropus'          }          62.3          97.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Megadontomys thomasi'           }         110.8           124
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mesocricetus auratus'           }         119.3         102.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus agrestis'              }            28          63.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus arvalis'               }          33.9          61.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus breweri'               }          53.1          73.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus cabrerae'              }            43         48.59
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus californicus'          }            44         67.92
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus canicaudus'            }          30.4          77.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus guentheri'             }          43.8         80.15
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus longicaudus'           }          30.2          62.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus maximowiczii'          }         41.67         92.09
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus mexicanus'             }          28.8         46.57
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus montanus'              }          51.2          89.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus ochrogaster'           }          47.4          66.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus oeconomus'             }          35.4         100.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus pennsylvanicus'        }          44.7          80.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus pinetorum'             }          23.8          55.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus richardsoni'           }            80         172.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus socialis'              }          61.2          85.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus subterraneus'          }          17.8         49.48
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus townsendii'            }          52.2          85.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Microtus xanthognathus'         }          68.5          98.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myodes californicus'            }          18.3         61.12
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myodes gapperi'                 }          22.8         44.46
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myodes glareolus'               }          20.9          52.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myodes rufocanus'               }         23.05         83.44
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myodes rutilus'                 }            28            77
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myopus schisticolor'            }          26.4            95
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neofiber alleni'                }         258.1         216.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma albigula'               }         193.6         141.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma cinerea'                }         158.1         120.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma floridana'              }           160           274
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma lepida'                 }         110.3          87.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma macrotis'               }         186.7         147.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Neotoma stephensi'              }         191.3           138
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Ochrotomys nuttalli'            }          19.5          27.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Oligoryzomys longicaudatus'     }          28.2            51
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Ondatra zibethicus'             }        1004.6         642.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Onychomys torridus'             }          19.1          29.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Oryzomys talamancae'            }            20            35
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Oxymycterus roberti'            }          83.5         91.02
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus boylii'              }          23.2         54.29
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus californicus'        }          49.6            58
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus crinitus'            }          20.9          30.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus eremicus'            }          21.5          31.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus gossypinus'          }          21.5         36.98
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus keeni'               }          28.3          46.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus leucopus'            }          21.2          35.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus maniculatus'         }          19.1            39
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus megalops'            }          66.2         90.64
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus polionotus'          }            12         21.48
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Peromyscus truei'               }          33.3          62.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phenacomys intermedius'         }          21.5         67.23
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phodopus campbelli'             }          31.4         59.03
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phodopus roborovskii'           }          21.8          30.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phodopus sungorus'              }          31.3         39.13
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phyllotis darwini'              }          72.1         66.95
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phyllotis magister'             }          50.7          61.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Phyllotis xanthopygus'          }          35.9          45.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Podomys floridanus'             }          30.8         51.74
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Reithrodon auritus'             }          78.7          76.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Reithrodontomys humilis'        }           8.4          36.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Reithrodontomys megalotis'      }          7.85         20.65
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Scotinomys teguina'             }            12          33.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Scotinomys xerampelinus'        }          15.2          31.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon planifrons'            }         155.6           207
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon alleni'                }         120.1         194.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon fulviventer'           }         166.4         244.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon toltecus'              }          87.8         212.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon mascotensis'           }         116.2         177.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon hirsutus'              }         109.8         184.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon hispidus'              }         152.4         126.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon leucotis'              }         128.6         186.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sigmodon ochrognathus'          }         115.1         154.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Tscherskia triton'              }           132         162.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Dipus sagitta'                  }          79.2          90.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Jaculus jaculus'                }          74.5          91.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Jaculus orientalis'             }         139.1         139.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Napaeozapus insignis'           }          21.6          38.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sicista betulina'               }          11.5            38
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Zapus hudsonius'                }            30            45
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Zapus princeps'                 }          27.5          56.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Acomys cahirinus'               }            42          46.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Acomys russatus'                }          51.1         40.84
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Acomys spinosissimus'           }         27.02         44.15
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Acomys subspinosus'             }         32.26         83.46
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus agrarius'              }         24.37         80.18
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus alpicola'              }          31.1          55.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus argenteus'             }          15.7          49.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus chevrieri'             }         32.56         87.91
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus flavicollis'           }          33.3          67.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus mystacinus'            }          31.1          51.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus speciosus'             }          34.2         53.69
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus sylvaticus'            }          25.3          42.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Apodemus witherbyi'             }          19.6          47.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Conilurus penicillatus'         }         212.3         162.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Desmodillus auricularis'        }          71.9         87.72
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Dipodillus campestris'          }          42.2          46.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Dipodillus dasyurus'            }          27.6         29.26
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbilliscus afra'              }         106.5         182.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbilliscus leucogaster'       }         157.6         132.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillurus paeba'              }         31.13         27.71
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillurus setzeri'            }          46.1         37.02
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillurus tytonis'            }          29.9         31.69
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillurus vallinus'           }          38.8         34.77
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus andersoni'            }          35.3         38.83
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus gerbillus'            }          29.7         42.47
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus nanus'                }          28.4         22.41
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus perpallidus'          }          52.4          48.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus pusillus'             }          12.6         13.48
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Gerbillus pyramidum'            }         108.5          72.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Golunda ellioti'                }          56.2          60.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Hydromys chrysogaster'          }           780         458.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Lemniscomys rosalia'            }          48.8         59.05
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mastomys natalensis'            }          41.5         32.79
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Meriones crassus'               }         119.8         154.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Meriones hurrianae'             }          72.3          53.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Meriones meridianus'            }            45          61.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Meriones tristrami'             }           112         98.56
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Meriones unguiculatus'          }          63.6          65.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Micaelamys namaquensis'         }          66.3         52.38
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Micromys minutus'               }           7.4         21.16
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Millardia meltada'              }          67.4         58.64
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mus macedonicus'                }         14.04         19.38
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mus minutoides'                 }          8.27         21.68
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mus musculus'                   }          22.8          35.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mus spretus'                    }          21.8         61.91
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myotomys sloggetti'             }         113.3           134
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Myotomys unisulcatus'           }            96         106.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Notomys alexis'                 }            33          40.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Notomys cervinus'               }          34.2         41.72
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Otomys irroratus'               }         102.1         84.95
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Parotomys brantsii'             }          86.5          83.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Psammomys obesus'               }         127.6         74.39
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Pseudomys albocinereus'         }          27.9         43.52
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Pseudomys gracilicaudatus'      }          79.8         83.79
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Pseudomys hermannsburgensis'    }          11.7         16.97
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus colletti'                }         165.7           123
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus fuscipes'                }          77.4          68.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus lutreolus'               }         109.1          63.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus niobe'                   }          42.3          53.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus norvegicus'              }         224.3         283.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus rattus'                  }           117         137.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rattus villosissimus'           }         184.4           107
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Rhabdomys pumilio'              }          48.3         43.95
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Sekeetamys calurus'             }          59.5          46.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Stochomys longicaudatus'        }          89.3         102.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Tatera indica'                  }          86.8          75.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Thallomys paedulcus'            }         124.7          68.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Uromys caudimaculatus'          }           819         570.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Cricetomys gambianus'           }        1870.9          1141
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Macrotarsomys ingens'           }          64.3         53.35
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Malacothrix typica'             }          21.7         20.62
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Mystromys albicaudatus'         }         93.78         126.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Petromyscus collinus'           }         20.41         20.61
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Saccostomus campestris'         }          78.1         48.24
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Steatomys pratensis'            }          27.5         36.16
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Cannomys badius'                }           344           172
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Spalax carmeli'                 }           117          99.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Spalax galili'                  }           128         110.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Spalax golani'                  }         133.8          70.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Spalax judaei'                  }           121            75
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Spalax leucodon'                }           201         148.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodMyomorpha'       }    {'Tachyoryctes splendens'         }           191         150.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Dryomys nitedula'               }          25.1          88.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Eliomys quercinus'              }          44.3            77
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Glis glis'                      }         151.3         92.29
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Muscardinus avellanarius'       }          20.6         75.19
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Graphiurus ocularis'            }          67.8         66.24
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Graphiurus murinus'             }          38.4         40.36
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Aplodontia rufa'                }           630         277.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Ammospermophilus leucurus'      }         112.8            98
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Cynomys ludovicianus'           }        1112.3           426
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Epixerus ebii'                  }           460         241.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Funisciurus congicus'           }         112.3          97.7
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Funisciurus isabella'           }            90          79.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Funisciurus anerythrus'         }           185         127.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Funisciurus lemniscatus'        }            95         89.59
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Funisciurus pyrropus'           }           244         181.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Glaucomys volans'               }          61.5         64.58
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Heliosciurus rufobrachium'      }           271         162.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Marmota flaviventris'           }          2790         848.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Marmota marmota'                }          3599          1332
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Marmota monax'                  }          2650           651
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Paraxerus cepapi'               }         223.6         145.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Paraxerus palliatus'            }           206         179.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Paraxerus poensis'              }            97         127.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Protoxerus stangeri'            }           696         434.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Sciurus aberti'                 }           624         430.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Sciurus carolinensis'           }           440         369.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Sciurus variegatoides'          }           130           178
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus armatus'           }         306.2         165.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus beecheyi'          }         402.3         217.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus beldingi'          }         283.3         153.2
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus citellus'          }           243         239.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus dauricus'          }           347         182.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus franklinii'        }           607         388.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus lateralis'         }         260.2         129.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus mexicanus'         }           199         278.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus mohavensis'        }         239.5         111.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus undulatus'         }           680           588
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus parryii'           }         565.6         397.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus richardsonii'      }         258.8         130.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus saturatus'         }         252.2           163
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus spilosoma'         }         148.8          88.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus tereticaudus'      }         167.2          93.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus townsendii'        }         198.7         114.4
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Spermophilus tridecemlineatus'  }         182.3         104.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias alpinus'                 }          39.1         57.87
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias amoenus'                 }          52.7          76.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias merriami'                }            75          78.8
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias minimus'                 }          33.5          51.3
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias palmeri'                 }          69.4         113.1
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias speciosus'               }          70.7         104.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamias striatus'                }          87.4            90
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tamiasciurus hudsonicus'        }           268         246.6
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Xerus inauris'                  }           528         317.9
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Xerus princeps'                 }           608         343.5
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Cabassous centralis'            }          3810         811.5 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Chaetophractus nationi'         }          2150           559 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Chaetophractus vellerosus'      }          1110         306.4 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Chaetophractus villosus'        }          4540         808.1 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Dasypus novemcinctus'           }          4180         779.7 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Dasypus sabanicola'             }          1380         310.9 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Euphractus sexcinctus'          }          8190          1237 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Priodontes maximus'             }         45190          3028 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'RodSciuromorpha'    }    {'Tolypeutes matacus'             }          1160           210 % Cingulata
-    {'Mammalia'}    {'Eutheria'   }    {'Cingulata'          }    {'Zaedyus pichiy'                 }          1740         393.2
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Bradypus tridactylus'           }          3746         580.6
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Bradypus variegatus'            }          3790           686
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Cyclopes didactylus'            }           240         114.5
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Choloepus hoffmanni'            }          4250           799
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Myrmecophaga tridactyla'        }         30600          2601
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Tamandua mexicana'              }          4210         850.4
-    {'Mammalia'}    {'Eutheria'   }    {'Pilosa'             }    {'Tamandua tetradactyla'          }          3500         885.5
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Antechinomys laniger'           }          24.2         23.72
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Antechinus flavipes'            }            45            45
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Antechinus stuartii'            }          36.5          36.6
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Antechinus swainsonii'          }          66.9         63.82
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasycercus cristicauda'         }          88.8         46.18
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasykaluta rosamondae'          }          35.5         19.53
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasyuroides byrnei'             }         118.2         82.74
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasyurus geoffroii'             }          1385           500
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasyurus hallucatus'            }           516           250
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasyurus maculatus'             }          3840          1195
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Dasyurus viverrinus'            }         909.9         409.5
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Ningaui yvonnae'                }          11.6         15.66
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Phascogale calura'              }          34.7          28.8
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Phascogale tapoatafa'           }         157.2         127.3
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Planigale gilesi'               }           9.5         12.16
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Planigale ingrami'              }           7.1         11.29
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Planigale maculata'             }           8.5         10.71
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Planigale tenuirostris'         }           5.7          7.11
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Pseudantechinus macdonnellensis'}          43.1         27.15
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sarcophilus harrisii'           }          5050          1414
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sminthopsis crassicaudata'      }          17.7         22.13
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sminthopsis macroura'           }            22         23.54
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sminthopsis murina'             }            19         21.41
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sminthopsis ooldea'             }          10.6          18.9
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Sminthopsis psammophila'        }          43.6          34.7
-    {'Mammalia'}    {'Marsupialia'}    {'Dasyuromorphia'     }    {'Myrmecobius fasciatus'          }           488         180.6
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Caluromys derbianus'            }           357         203.5
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Caluromys philander'            }           170         127.5
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Chironectes minimus'            }         922.9         366.5
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Didelphis aurita'               }          1256        1141.7
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Didelphis marsupialis'          }          1329         611.3
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Didelphis virginiana'           }          3257        1074.8
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Gracilinanus agilis'            }          31.4          31.4
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Gracilinanus microtarsus'       }            13         18.92
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Lutreolina crassicaudata'       }           812         405.9
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Marmosa robinsoni'              }           122          97.6
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Metachirus nudicaudatus'        }           261         156.6
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Micoureus paraguayanus'         }         170.1         129.3
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Monodelphis brevicaudata'       }           111          75.5
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Monodelphis domestica'          }           104         59.49
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Philander opossum'              }           249         186.8
-    {'Mammalia'}    {'Marsupialia'}    {'Didelphimorphia'    }    {'Thylamys elegans'               }          40.2         43.01
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Acrobates pygmaeus'             }            14         15.12
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Burramys parvus'                }          44.3         36.85
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Cercartetus concinnus'          }          18.6         22.32
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Cercartetus lepidus'            }          12.6         18.77
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Cercartetus nanus'              }            36         23.76
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Dendrolagus matschiei'          }          6960        1426.8
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Lagorchestes conspicillatus'    }          2660         851.2
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Macropus eugenii'               }          4796          1382
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Macropus giganteus'             }         26400          5861
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Macropus robustus'              }         22716          4543
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Macropus rufogriseus'           }          4800          2160
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Macropus rufus'                 }         32490          5791
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Setonix brachyurus'             }          2654         823.3
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Gymnobelideus leadbeateri'      }         166.3         103.1
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Petaurus breviceps'             }         127.7         76.37
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phalanger carmelitae'           }        1389.7         534.9
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phalanger gymnotis'             }        1565.5         518.2
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phalanger intercastellanus'     }        1671.4         658.4
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phalanger orientalis'           }        2181.3         883.4
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phalanger sericeus'             }        1353.2         428.8
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Spilocuscus maculatus'          }          4250          1020
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Trichosurus vulpecula'          }          1982           625
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Phascolarctos cinereus'         }          4765          1053
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Aepyprymnus rufescens'          }          2820          1069
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Bettongia gaimardi'             }          2070         952.2
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Bettongia penicillata'          }          1070           592
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Potorous tridactylus'           }           950           437
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Pseudocheirus peregrinus'       }           917         302.6
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Petauroides volans'             }          1000         432.8
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Tarsipes rostratus'             }           5.4          13.6
-    {'Mammalia'}    {'Marsupialia'}    {' Diprotodontia'     }    {'Lasiorhinus latifrons'          }         25250          2525
-    {'Mammalia'}    {'Marsupialia'}    {'Microbiotheriidae'  }    {'Dromiciops gliroides'           }          40.2         31.76
-    {'Mammalia'}    {'Marsupialia'}    {'Notoryctemorphia'   }    {'Notoryctes caurinus'            }            34         21.42
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Echymipera kalubu'              }           695           344
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Echymipera rufescens'           }          1276           541
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Isoodon auratus'                }           428         149.8
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Isoodon macrourus'              }          1551         580.1
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Isoodon obesulus'               }          1380         448.5
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Perameles bougainville'         }           255           161
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Perameles gunnii'               }           681           375
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Perameles nasuta'               }           645         316.1
-    {'Mammalia'}    {'Marsupialia'}    {'Peramelemorphia'    }    {'Macrotis lagotis'               }          1577         544.1
-    {'Mammalia'}    {'Monotremata'}    {'Monotremata'        }    {'Ornithorhynchus anatinus'       }          1284           475
-    {'Mammalia'}    {'Monotremata'}    {'Monotremata'        }    {'Tachyglossus aculeatus'         }          2140         280.3
-    {'Mammalia'}    {'Monotremata'}    {'Monotremata'        }    {'Zaglossus bruijni'              }         10300        1215.4
+% revised version by Craig White (the SI for the PNAS paper is wrong; Craig White pers comm 2025/09/03)
+Mamm = [ ... % weight (g), body temp (C), BMR (ml O2/h), 
+    {'Antilocapra americana'           }        37800      NaN                   9318             
+    {'Connochaetes taurinus'           }    1.965e+05      NaN                  41242             
+    {'Ovis canadensis'                 }        69125      NaN                  19120             
+    {'Alces alces'                     }     3.25e+05     38.6                  51419             
+    {'Capreolus capreolus'             }        21500      NaN                   8308             
+    {'Odocoileus virginianus'          }        58588       39                  25609             
+    {'Pecari tajacu'                   }        20500     37.5                   5945             
+    {'Alopex lagopus'                  }         3600     38.6                   1374             
+    {'Canis latrans'                   }        10000       37                   2687             
+    {'Canis mesomelas'                 }         7720       38                   3860             
+    {'Cerdocyon thous'                 }         5444     38.2                   1524             
+    {'Fennecus zerda'                  }         1215     38.8                    583             
+    {'Vulpes macrotis'                 }         1769       38                    887             
+    {'Vulpes vulpes'                   }         4440     38.7                   2442             
+    {'Vulpes vulpes alascensis'        }         4725      NaN                   2481             
+    {'Acinonyx jubatus'                }        37900       39                   8982             
+    {'Felis concolor'                  }        37200     37.6                   8842             
+    {'Felis pardalis'                  }        10500       38                   3126             
+    {'Felis rufus'                     }         9400      NaN                   4220             
+    {'Felis serval'                    }        10100     36.5                   3137             
+    {'Felis wiedii'                    }         3600       38                    937             
+    {'Felis yagouaroundi'              }         8400     38.4                   1737             
+    {'Panthera leo'                    }        98000     37.9                  16954             
+    {'Panthera onca'                   }        50400      NaN                  11189             
+    {'Panthera tigris'                 }    1.379e+05     37.5                  23995             
+    {'Galerella sanguinea'             }          540     38.7                    410             
+    {'Herpestes javanicus'             }          611     39.8                    403             
+    {'Suricata suricatta'              }          850     36.3                    310             
+    {'Hyaena hyaena'                   }        34300      NaN                   5728             
+    {'Proteles cristatus'              }         8100     36.4                   2194             
+    {'Eira barbara'                    }         2950     38.4                   1221             
+    {'Gulo gulo'                       }        12700      NaN                   5694             
+    {'Lutra lutra'                     }        10000     38.1                   4500             
+    {'Martes americana'                }          900       38                    595             
+    {'Martes martes'                   }          920      NaN                    717             
+    {'Meles meles'                     }        11050      NaN                   2984             
+    {'Mustela erminea'                 }           75     39.6                    165             
+    {'Mustela frenata'                 }          225       39                    241             
+    {'Mustela vison'                   }          660       39                    488             
+    {'Spilogale putorius'              }          624     36.4                    300             
+    {'Taxidea taxus'                   }         9000       38                   2700             
+    {'Ailurus fulgens'                 }         5740     37.6                    878             
+    {'Bassariscus sumichrasti'         }         1280     38.8                    634             
+    {'Nasua narica'                    }         3670     38.6                   1207             
+    {'Nasua nasua'                     }         4000     36.4                    992             
+    {'Potos flavus'                    }         2343     36.1                    796             
+    {'Procyon cancrivorus'             }         1160      NaN                    464             
+    {'Procyon lotor'                   }         5075       38                   1599             
+    {'Ursus ursinus'                   }         6696      NaN                    844             
+    {'Arctictis binturong'             }        14280     36.7                   2285             
+    {'Arctogalidia trivirgata'         }         2010     36.2                    553             
+    {'Fossa fossana'                   }         2260     37.9                    906             
+    {'Genetta tigrina'                 }         1698      NaN                    747             
+    {'Nandinia binotata'               }         4270     37.4                    863             
+    {'Paradoxurus hermaphroditus'      }         3160     36.5                    760             
+    {'Peropteryx macrotis'             }            5     34.4                   11.6             
+    {'Saccopteryx bilineata'           }          7.8     35.5                   14.5             
+    {'Hipposideros galeritus'          }          8.5     31.9                    9.4             
+    {'Rhinonycteris aurantius'         }         8.27     36.1                   16.2             
+    {'Macroderma gigas'                }          148       37                  139.1             
+    {'Eumops perotis'                  }           56     32.6                   39.8             
+    {'Molossus molossus'               }         15.6     31.4                   22.5             
+    {'Tadarida brasiliensis'           }         16.9       36                   20.3             
+    {'Mormoops blainvilli'             }          8.6       32                      8             
+    {'Mormoops megalophylla'           }         16.5     36.9                   24.4             
+    {'Pteronotus davyi'                }          9.4     38.8                   15.3             
+    {'Pteronotus parnellii'            }         19.2     36.4                   30.7             
+    {'Pteronotus personatus'           }           14     37.5                     23             
+    {'Pteronotus quadridens'           }          4.9       31                    6.1             
+    {'Natalus tumidirostris'           }          5.4     32.2                    8.3             
+    {'Noctilio albiventris'            }           27       32                   31.6             
+    {'Noctilio leporinus'              }           61     33.8                   70.8             
+    {'Anoura caudifera'                }         11.5     36.5                   42.7             
+    {'Artibeus fimbriatus'             }         63.9      NaN                     78             
+    {'Artibeus jamaicensis'            }         45.2     36.4                   76.8             
+    {'Artibeus lituratus'              }         70.1     37.3                    108             
+    {'Carollia perspicillata'          }         14.9     36.4                   43.1             
+    {'Chiroderma doriae'               }         19.9      NaN                   31.1             
+    {'Chrotopterus auritus'            }         96.1     37.2                  141.3             
+    {'Desmodus rotundus'               }         29.4       35                   34.7             
+    {'Diaemus youngi'                  }         36.6     31.1                   37.3             
+    {'Diphylla ecaudata'               }         27.8     32.4                   38.6             
+    {'Erophylla bombifrons'            }         16.1       32                   17.7             
+    {'Glossophaga soricina'            }          9.6     35.5                   29.4             
+    {'Koopmania concolor'              }         19.7     35.3                   39.8             
+    {'Leptonycteris curasoae'          }           22     35.7                     44             
+    {'Macrotus californicus'           }         11.7       35                   14.6             
+    {'Monophyllus redmani'             }          8.7       34                   11.1             
+    {'Phyllostomus discolor'           }         33.5     34.6                   47.9             
+    {'Phyllostomus elongatus'          }         35.6      NaN                   38.8             
+    {'Phyllostomus hastatus'           }         84.2     34.7                  100.2             
+    {'Platyrrhinus lineatus'           }         21.9     36.4                   44.9             
+    {'Rhinophylla fischerae'           }          9.5      NaN                   16.2             
+    {'Rhinophylla pumilio'             }          9.5     34.7                   18.6             
+    {'Sturnia tildae'                  }         20.5      NaN                   39.9             
+    {'Sturnira lilium'                 }         21.9     36.4                   53.2             
+    {'Tonatia bidens'                  }         27.4       37                   55.1             
+    {'Uroderma bilobatum'              }         16.2     35.1                   31.6             
+    {'Vampyressa pusilla'              }          8.8      NaN                   18.6             
+    {'Cynopterus brachyotis'           }         37.4     36.5                   47.5             
+    {'Dobsonia anderseni'              }        241.4     36.4                    174             
+    {'Dobsonia minor'                  }         73.7     36.5                   74.4             
+    {'Dobsonia moluccensis'            }        404.3     36.8                  367.9             
+    {'Dobsonia praedatrix'             }        179.5     37.1                  142.5             
+    {'Eonycteris spelaea'              }         51.6       34                     48             
+    {'Macroglossus minimus'            }         15.9     36.2                   18.5             
+    {'Megaloglossus woermanni'         }         12.4      NaN                   21.7             
+    {'Melonycteris melanops'           }         53.3     34.9                   43.3             
+    {'Nyctimene albiventer'            }         30.9     35.9                   27.3             
+    {'Nyctimene cyclotis'              }         40.4       36                   64.6             
+    {'Nyctimene major'                 }         13.6       33                   20.4             
+    {'Paranyctimene raptor'            }         23.6     33.8                   24.5             
+    {'Pteropus giganteus'              }        562.2     36.7                  290.7             
+    {'Pteropus hypomelanus'            }        520.8     35.7                  290.1             
+    {'Pteropus poliocephalus'          }          598     36.5                  316.9             
+    {'Pteropus pumilus'                }        194.2     36.1                  126.4             
+    {'Pteropus rodricensis'            }        254.5     36.5                  134.9             
+    {'Pteropus scapulatus'             }          362       37                  242.5             
+    {'Pteropus vampyrus'               }       1024.3     36.9                  804.1             
+    {'Rousettus aegyptiacus'           }          146     34.8                  122.6             
+    {'Rousettus amplexicaudatus'       }         91.5     36.5                  104.3             
+    {'Syconycteris australis'          }         15.9     35.9                   21.9             
+    {'Antrozous pallidus'              }           22      NaN                   18.7             
+    {'Chalinolobus gouldii'            }         17.5     31.1                   25.2             
+    {'Eptesicus fuscus'                }         10.4       36                   20.8             
+    {'Histiotus velatus'               }         11.2     30.5                   15.7             
+    {'Miniopterus gigas australis?'    }        107.2     35.6                   94.3             
+    {'Miniopterus schreibersi'         }        10.91     37.7                     26             
+    {'Myotis lucifuga'                 }          5.2       37                    8.9             
+    {'Myotis nigricans'                }          3.7      NaN                    4.8             
+    {'Nyctophilus geoffroyi'           }            8     31.6                   11.2             
+    {'Plecotus auritus'                }        10.25      NaN                   12.5             
+    {'Heterohyrax brucei'              }         2000     36.7                    720             
+    {'Dendrohyrax dorsalis'            }         2210      NaN                    751             
+    {'Procavia capensis'               }         2400       37                    660             
+    {'Procavia habessinica'            }         2250       38                    900             
+    {'Procavia johnstoni'              }         2750       39                   1179             
+    {'Amblysomus hottentotus'          }           70      NaN                   84.7             
+    {'Chrysochloris asiatica'          }           44       34                   51.5             
+    {'Eremitalpa granti namibensis'    }           20     33.6                     10             
+    {'Atelerix albiventris'            }          450     35.2                  148.5             
+    {'Echinosorex gymnura'             }        721.2     36.3                  504.8             
+    {'Erinaceus concolor'              }        822.7     35.2                  347.2             
+    {'Erinaceus europaeus'             }          750       34                  337.5             
+    {'Hemiechinus auritus'             }          400     33.8                    152             
+    {'Hylomys suillus'                 }         57.8     37.3                   60.1             
+    {'Paraechinus aethiopicus'         }          450     34.2                  112.5             
+    {'Blarina brevicaudata'            }         20.5     38.3                   65.6             
+    {'Blarina carolinensis'            }         10.2     36.8                   33.7             
+    {'Crocidura crossei'               }         10.2     34.3                   22.4             
+    {'Crocidura flavescens'            }         33.2      NaN                   44.5             
+    {'Crocidura hildegardeae'          }           10     35.7                     26             
+    {'Crocidura leucodon'              }         11.7      NaN                   29.8             
+    {'Crocidura luna'                  }         11.8     34.8                   24.8             
+    {'Crocidura olivieri'              }         38.9     35.3                   58.4             
+    {'Crocidura poensis'               }         17.3     35.5                   31.1             
+    {'Crocidura russula'               }         10.4     34.7                   22.9             
+    {'Crocidura suaveolens'            }          6.5     35.1                   18.9             
+    {'Crocidura viaria'                }         14.7     34.5                   22.1             
+    {'Cryptotis parva'                 }          6.2       37                   19.2             
+    {'Neomys anomalus'                 }         13.1      NaN                   66.8             
+    {'Neomys fodiens'                  }         17.1     37.3                   54.7             
+    {'Notiosorex crawfordi'            }            4     37.6                   13.2             
+    {'Sorex alpinus'                   }          7.9     38.6                   48.2             
+    {'Sorex araneus'                   }         8.05      NaN                   60.2             
+    {'Sorex cinereus'                  }          3.5     38.4                   31.5             
+    {'Sorex coronatus'                 }          9.1     37.6                   51.9             
+    {'Sorex minutus'                   }            4     38.5                   30.8             
+    {'Sorex ornatus'                   }          9.7      NaN                   52.3             
+    {'Sorex vagrans'                   }          5.2       38                   28.1             
+    {'Suncus etruscus'                 }          2.4       36                   14.4             
+    {'Suncus murinus'                  }         30.2     38.7                   59.5             
+    {'Condylura cristata'              }           49     37.7                  110.3             
+    {'Neurotrichus gibbsii'            }         11.8     38.4                   46.5             
+    {'Scalopus aquaticus'              }           48       36                   67.7             
+    {'Scapanus latimanus'              }           61      NaN                   76.2             
+    {'Scapanus orarius'                }         61.2      NaN                   64.1             
+    {'Scapanus townsendii'             }        130.1      NaN                  108.9             
+    {'Echinops telfari'                }        116.4      NaN                  133.9             
+    {'Geogale aurita'                  }          6.9     30.8                    7.7             
+    {'Hemicentetes nigriceps'          }        101.9      NaN                   72.5             
+    {'Hemicentetes semispinosus'       }          133      NaN                   64.1             
+    {'Limnogale mergulus'              }         77.7      NaN                   55.9             
+    {'Microgale cowani'                }         12.2       33                     32             
+    {'Microgale dobsoni'               }         44.6     30.9                   56.4             
+    {'Microgale talazaci'              }           44     30.8                   43.6             
+    {'Setifer setosus'                 }          530     32.2                  121.9             
+    {'Tenrec ecaudatus'                }          650       33                  130.7             
+    {'Lepus alleni'                    }         3000     37.9                   1650             
+    {'Lepus americanus'                }         1581     39.8                   1518             
+    {'Lepus arcticus'                  }       3004.4     38.9                   1082             
+    {'Lepus californicus'              }         2300     39.2                   1311             
+    {'Lepus timidus'                   }         3025     39.7                   2118             
+    {'Lepus townsendii'                }         2430     38.2                   1264             
+    {'Oryctolagus cuniculus'           }         2000       39                   1140             
+    {'Sylvilagus audubonii'            }        672.4     38.3                    438             
+    {'Ochotona princeps'               }          109     40.1                    167             
+    {'Ochotona dauurica'               }        127.7      NaN                    249             
+    {'Elephantulus brachyrhynchus'     }         45.3     37.5                   43.7             
+    {'Elephantulus edwardii'           }           50     37.6                   54.5             
+    {'Elephantulus intufi'             }        46.49     37.2                     52             
+    {'Elephantulus myurus'             }        62.97     36.9                   66.3             
+    {'Elephantulus rozeti'             }        45.31     37.1                   47.8             
+    {'Elephantulus rufescens'          }           53     37.3                   56.9             
+    {'Macroscelides proboscideus'      }           39     36.2                   52.3             
+    {'Petrodromus tetradactylus'       }       206.11     37.5                  179.5             
+    {'Manis crassicaudata'             }        15910     33.4                   1241             
+    {'Manis javanica'                  }         4220     32.3                   1106             
+    {'Manis tetradactyla'              }         1430       33                    229             
+    {'Manis pentadactyla'              }       3637.5     33.4                    668             
+    {'Manis tricuspis'                 }         1365     32.6                    276             
+    {'Callithrix jacchus'              }          190      NaN                    152             
+    {'Cebuella pygmaea'                }        116.8      NaN                    117             
+    {'Saguinus geoffroyi'              }          225      NaN                    234             
+    {'Alouatta palliata'               }         4670      NaN                   2055             
+    {'Aotus trivirgatus'               }          820       38                    442             
+    {'Saimiri sciureus'                }          875       38                    801             
+    {'Cercopithecus mitis'             }         8500     37.5                   3392             
+    {'Colobus guereza'                 }        10450       37                   2978             
+    {'Erythrocebus patas'              }         3000     39.3                   1068             
+    {'Papio anubis'                    }         9500     37.3                   2778             
+    {'Papio ursinus'                   }        16900       37                   5147             
+    {'Cheirogaleus medius'             }          300       38                    195             
+    {'Propithecus verreauxi'           }         3350      NaN                    670             
+    {'Eulemur fulvus'                  }         2330     36.5                    746             
+    {'Arctocebus calabarensis'         }          206      NaN                    131             
+    {'Euoticus elegantulus'            }        261.5      NaN                    216             
+    {'Galago moholi'                   }          170      NaN                     51             
+    {'Galago senegalensis'             }        171.5     37.9                    137             
+    {'Galagoides demidoff'             }         63.8      NaN                     59             
+    {'Loris tardigradus'               }          284     35.5                    128             
+    {'Nycticebus coucang'              }         1160     35.4                    273             
+    {'Otolemur crassicaudatus'         }          950      NaN                    412             
+    {'Otolemur garnettii'              }         1314      NaN                    704             
+    {'Perodicticus potto'              }          964     36.1                    327             
+    {'Tarsius syrichta'                }          113     33.8                     77             
+    {'Tarsius spectrum'                }          173      NaN                    149             
+    {'Agouti paca'                     }         9156     37.2                 2746.8             
+    {'Aplodontia rufa'                 }          630       38                  277.2             
+    {'Bathyergus janetta'              }          406     34.7                  215.2             
+    {'Bathyergus suillus'              }          620     35.3                  303.8             
+    {'Cryptomys bocagei'               }           94     33.7                   69.6             
+    {'Cryptomys damarensis'            }          138     35.2                   78.7             
+    {'Cryptomys darlingi'              }           60     33.3                   58.8             
+    {'Cryptomys hottentotus'           }           75     34.4                   67.5             
+    {'Cryptomys hottentotus amatus'    }         79.5       35                   55.5             
+    {'Cryptomys hottentotus natalensis'}          102      NaN                   81.6             
+    {'Cryptomys mechowi'               }          267       34                  160.2             
+    {'Georychus capensis'              }          195     36.4                  115.7             
+    {'Heliophobius argentocinereus'    }           88     35.1                   74.8             
+    {'Heterocephalus glaber'           }           32     32.1                   20.5             
+    {'Capromys pilorides'              }         2630     35.7                  604.9             
+    {'Geocapromys ingrahami'           }          775      NaN                  265.8             
+    {'Geocapromys brownii'             }         2456      NaN                  736.8             
+    {'Cavia porcellus'                 }          629       39                    346             
+    {'Dolichotis salinicola'           }         1613     38.4                  725.9             
+    {'Galea musteloides'               }          322     37.3                    264             
+    {'Kerodon ruprestris'              }          801     38.2                  360.5             
+    {'Microcavia niata'                }          255      NaN                  175.7             
+    {'Chinchilla laniger'              }          426     35.7                  200.2             
+    {'Lagostomus maximus'              }         6784     36.8                 1899.5             
+    {'Ctenomys australis'              }          340     37.3                  116.6             
+    {'Ctenomys fulvus'                 }          300     36.2                    189             
+    {'Ctenomys maulinus'               }          215     36.2                  187.1             
+    {'Ctenomys opimus'                 }          214       36                  109.7             
+    {'Ctenomys peruanus'               }          490     35.2                  220.5             
+    {'Ctenomys talarum'                }          121     36.1                  109.6             
+    {'Dasyprocta azarae'               }         3849     37.5                   1886             
+    {'Dasyprocta leporina'             }         2687     38.3                 1558.5             
+    {'Myoprocta acouchy'               }          914     35.4                  502.7             
+    {'Dipus sagitta?'                  }          160     36.8                  121.2             
+    {'Jaculus jaculus'                 }           75     37.5                   92.3             
+    {'Jaculus orientalis'              }          139       37                    139             
+    {'Napaeozapus insignis'            }           22       37                   39.6             
+    {'Sicista betulina'                }           10      NaN                     32             
+    {'Zapus hudsonicus'                }         23.8     37.3                   35.7             
+    {'Proechimys semispinosus'         }          498     37.9                  313.7             
+    {'Thrichomys apereoides'           }          323     37.6                  206.7             
+    {'Coendou prehensilis'             }         3280     36.7                  918.4             
+    {'Erethizon dorsatum'              }        11136      NaN                   2784             
+    {'Geomys bursaris'                 }          197       35                  137.9             
+    {'Geomys pinetis'                  }          173     36.3                  133.2             
+    {'Thomomys bottae'                 }          143       36                  120.1             
+    {'Thomomys talpoides'              }        106.8     36.2                    142             
+    {'Thomomys umbrinus'               }           85     34.6                   72.3             
+    {'Chaetodipus baileyi'             }         29.1     32.5                   34.5             
+    {'Chaetodipus californicus'        }           22       38                   21.3             
+    {'Chaetodipus fallax'              }         19.6     32.6                   26.9             
+    {'Chaetodipus hispidus'            }         39.5     36.8                   49.4             
+    {'Chaetodipus intermedius'         }           15       36                   17.9             
+    {'Chaetodipus penicillatus'        }           16      NaN                   22.4             
+    {'Dipodomys agilis'                }         60.6       37                   63.6             
+    {'Dipodomys deserti'               }          106     36.8                   92.2             
+    {'Dipodomys heermanni'             }         63.3      NaN                   73.2             
+    {'Dipodomys merriami'              }         36.5       37                   42.5             
+    {'Dipodomys microps'               }         57.2       35                   66.9             
+    {'Dipodomys nitratoides'           }         37.8      NaN                   46.1             
+    {'Dipodomys ordii'                 }         46.8     34.6                   64.2             
+    {'Dipodomys panamintinus'          }         64.2     36.9                   74.3             
+    {'Heteromys anomalus'              }         69.3       36                  100.5             
+    {'Heteromys desmarestianus'        }         75.8     33.8                   99.1             
+    {'Liomys irroratus'                }         48.1       37                   53.9             
+    {'Liomys salvani'                  }         43.8       37                   46.9             
+    {'Microdipodops megacephalus'      }           11     32.8                   30.2             
+    {'Microdipodops pallidus'          }         15.2     39.3                   19.8             
+    {'Perognathus flavus'              }          8.3     34.6                   17.3             
+    {'Perognathus longimembris'        }          8.9     34.7                    9.5             
+    {'Hydrochaeris hydrochaeris'       }        26385     37.1                 6596.3             
+    {'Hystrix africaeaustralis'        }        11300     37.5                 2361.7             
+    {'Abrothrix lanosus'               }           24      NaN                   45.6             
+    {'Abrothrix longipilis'            }         42.3     37.4                   57.5             
+    {'Acomys cahirinus'                }           42     37.5                   46.2             
+    {'Acomys russatus'                 }        55.55     37.3                   42.9             
+    {'Acomys spinosissimus'            }        27.02      NaN                   44.1             
+    {'Acomys subspinosus'              }        32.25      NaN                   83.4             
+    {'Aethomys namaquensis'            }         64.2     36.8                   56.8             
+    {'Akodon albiventer'               }           31      NaN                   46.5             
+    {'Akodon azarae'                   }           24     37.7                   40.8             
+    {'Alticola argentatus'             }         37.7      NaN                    121             
+    {'Apodemus flavicollis'            }         23.9     36.7                   43.3             
+    {'Apodemus hermonensis'            }         20.5       37                     50             
+    {'Apodemus mystacinus'             }         40.4     35.5                     56             
+    {'Apodemus sylvaticus'             }         23.9     36.7                   43.3             
+    {'Arborimus longicaudus'           }         21.8     37.3                   58.9             
+    {'Arvicola terrestris'             }           92     37.5                  106.7             
+    {'Auliscomys micropus'             }         62.3     37.4                   97.8             
+    {'Baiomys taylori'                 }         7.15       36                   17.1             
+    {'Calomys ducilla?'                }           16      NaN                   28.8             
+    {'Calomys musculinus'              }         16.9     36.2                   27.6             
+    {'Calomys venustus'                }         50.1     37.1                   74.7             
+    {'Cannomys badius'                 }          344       36                    172             
+    {'Chelemys macronyx'               }           62     36.8                   84.3             
+    {'Chionomys nivalis'               }         32.8      NaN                     81             
+    {'Chroeomys anadinus'              }         34.6     37.7                   64.7             
+    {'Chroeomys olivaceus'             }           27     37.2                   49.4             
+    {'Cleithrionomys glareolus'        }         23.4      NaN                   63.4             
+    {'Cleithrionomys rufocanus'        }           27      NaN                   59.4             
+    {'Cleithrionomys rutilus'          }           28      NaN                     77             
+    {'Clethrionomys californicus'      }         18.3     37.5                   61.1             
+    {'Clethrionomys gapperi'           }         22.3     37.9                   49.3             
+    {'Conilurus penicillatus'          }        213.2      NaN                  162.7             
+    {'Cricetomys gambianus'            }         1870     35.6                 1140.7             
+    {'Cricetulus migratorius'          }         30.7     38.1                   43.9             
+    {'Cricetus cricetus'               }          362     39.5                  231.7             
+    {'Desmodillus auricularis'         }        71.93     35.9                   87.8             
+    {'Dicrostonyx groenlandicus'       }        59.62     38.4                   98.8             
+    {'Eligmodontia typus'              }         17.5     36.4                   29.9             
+    {'Euneomys chinchilloides'         }         65.4      NaN                   84.4             
+    {'Gerbillurus paeba'               }         33.9     38.7                   34.8             
+    {'Gerbillurus setzeri'             }         46.1     37.6                     37             
+    {'Gerbillurus tytonis'             }         29.9     36.9                   31.7             
+    {'Gerbillurus vallinus'            }         38.8     37.4                   34.8             
+    {'Gerbillus allenybi'              }         35.3     36.3                   38.8             
+    {'Gerbillus dasyurus'              }         27.6     38.6                   29.3             
+    {'Gerbillus gerbillus'             }         29.7     37.2                   42.5             
+    {'Gerbillus nanus'                 }         28.4     38.8                   22.2             
+    {'Gerbillus perpallidus'           }         52.4      NaN                   43.5             
+    {'Gerbillus pusillus'              }         12.6     34.6                   13.5             
+    {'Gerbillus pyramidum'             }        108.5     36.1                   81.4             
+    {'Graomys griseoflavus'            }         69.4     36.1                     84             
+    {'Hydromys chrysogaster'           }          900     36.6                  528.3             
+    {'Isthmomys pirrensis'             }        137.9     37.6                  121.4             
+    {'Lagurus curtatus'                }         30.3     37.1                   50.3             
+    {'Lemmus lemmus'                   }           80     37.8                    192             
+    {'Lemmus sibericus'                }         50.2     38.3                   90.2             
+    {'Lemniscomys griselda'            }         47.5     36.9                   57.6             
+    {'Lemniscomys rosalia'             }        50.53     36.5                   61.5             
+    {'Malacothrix typica'              }         21.7       37                   20.6             
+    {'Maresomys boliviensis'           }         76.8     36.3                  110.6             
+    {'Mastomys natalensis'             }         41.5       38                   32.8             
+    {'Megadontomys thomasi'            }        110.8     37.8                  124.1             
+    {'Meriones hurriane'               }           69     36.1                   54.5             
+    {'Meriones tristrami'              }          112     36.5                   98.6             
+    {'Meriones unguiculatus'           }           67     38.2                   77.1             
+    {'Mesocricetus auratus'            }           98     38.1                    147             
+    {'Micromys minutus'                }         7.37       38                   21.1             
+    {'Microtus agrestis'               }           28     37.6                   63.6             
+    {'Microtus arvalis'                }           20       37                     62             
+    {'Microtus brandti'                }         40.2     36.2                   76.8             
+    {'Microtus breweri'                }         53.1     37.3                   73.8             
+    {'Microtus californicus'           }           44     38.8                   68.2             
+    {'Microtus guentheri'              }         43.8     38.3                   80.2             
+    {'Microtus longicaudus'            }         28.6       38                   67.5             
+    {'Microtus mexicanus'              }         28.8     37.9                   46.9             
+    {'Microtus montanus'               }         35.1     35.3                   83.3             
+    {'Microtus ochrogaster'            }         46.7     37.9                   79.1             
+    {'Microtus oeconomus'              }         33.7     38.4                  100.9             
+    {'Microtus pennsylvanicus'         }         38.9     38.5                   75.1             
+    {'Microtus pinetorum'              }         25.5     38.3                   58.4             
+    {'Microtus richardsoni'            }        65.65     38.7                    128             
+    {'Microtus subterraneus'           }         17.8      NaN                   49.5             
+    {'Microtus townsendii'             }         52.2      NaN                   90.4             
+    {'Microtus xanthognathus'          }         68.5       38                   98.6             
+    {'Millardia meltada'               }         67.4      NaN                   58.6             
+    {'Mus minutoides'                  }         8.06     36.3                     24             
+    {'Mus spretus'                     }         21.8      NaN                   61.9             
+    {'Myopus schisticolor'             }         26.4       39                   93.5             
+    {'Mystromys albicaudatus'          }        93.78       33                  126.8             
+    {'Nannospalax ehrenbergi 2n = 52'  }          138     34.9                  118.7             
+    {'Nannospalax ehrenbergi 2n = 54'  }          134     35.8                  101.8             
+    {'Nannospalax ehrenbergi 2n = 58'  }          135       36                  114.8             
+    {'Nannospalax ehrenbergi 2n = 60'  }          134     35.5                   82.8             
+    {'Nannospalax leucodon'            }          201     36.3                  148.7             
+    {'Neofiber alleni'                 }        258.1     37.1                  216.8             
+    {'Neotoma albigula'                }          183      NaN                  134.5             
+    {'Neotoma cinerea'                 }        205.1      NaN                  168.6             
+    {'Neotoma fuscipes'                }          187     36.6                  147.7             
+    {'Neotoma lepida'                  }          110     36.8                   86.9             
+    {'Notomys alexis'                  }         32.3       38                   45.2             
+    {'Notomys cervinus'                }         34.2     38.5                   41.7             
+    {'Ochrotomys nuttalli'             }         19.5     36.4                   27.1             
+    {'Oligoryzomys longicaudatus'      }         28.2     37.3                     51             
+    {'Ondatra zibethicus'              }       1004.6     37.4                  642.9             
+    {'Onychomys torridus'              }         19.1      NaN                   29.6             
+    {'Otomys irroratus'                }          102     37.6                   84.9             
+    {'Otomys sloggetti'                }       113.29       38                  133.7             
+    {'Otomys unisulcatus'              }           96     34.8                  106.6             
+    {'Oxymycterus roberti'             }         83.5     38.3                     91             
+    {'Parotomys brantsii'              }         86.5     35.1                   83.9             
+    {'Peromyscus boylii'               }         23.2      NaN                   54.3             
+    {'Peromyscus californicus'         }         47.6     36.4                   52.4             
+    {'Peromyscus c. insignis'          }         45.5       36                   45.5             
+    {'Peromyscus c. parasiticus'       }         49.6     36.4                     58             
+    {'Peromyscus crinitus'             }         15.9     35.7                   25.1             
+    {'Peromyscus eremicus'             }         21.5     36.6                   33.1             
+    {'Peromyscus gossypinus'           }         21.5     37.5                     37             
+    {'Peromyscus leucopus'             }           20     36.7                   33.2             
+    {'Peromyscus l. noveboracensis'    }           26     37.5                   57.2             
+    {'Peromyscus maniculatus'          }         22.8     36.6                   36.9             
+    {'Peromyscus m.artemisidae'        }        23.19     37.2                   46.1             
+    {'Peromyscus m. austerus'          }        19.53     36.3                   39.8             
+    {'Peromyscus m. gambeli'           }         19.1     36.8                     39             
+    {'Peromyscus m. nebrascensis'      }        18.93     35.9                   39.4             
+    {'Peromyscus m. sonoriensis'       }        20.38     36.7                   37.5             
+    {'Peromyscus megalops'             }         66.2      NaN                   90.7             
+    {'Peromyscus oreas'                }        24.58     36.2                   43.5             
+    {'Peromyscus polionotus'           }           12      NaN                   21.5             
+    {'Peromyscus sitkensis'            }         28.3       36                   46.7             
+    {'Peromyscus truei gilberti'       }         33.3     36.4                   62.6             
+    {'Peromyscus truei truei'          }         33.2     36.7                   50.8             
+    {'Phenacomys intermedius'          }         21.5     37.9                   67.3             
+    {'Phodopus sungorus'               }         25.7     36.1                   40.9             
+    {'Phyllotis darwini chilensis'     }           49      NaN                   65.7             
+    {'Phyllotis darwini darwini'       }           59     36.2                   71.4             
+    {'Phyllotis darwini rupestris'     }           36     37.1                   45.4             
+    {'Phyllotis magister'              }         62.8      NaN                     69             
+    {'Phyllotis xanthopygus'           }           55     37.3                   56.7             
+    {'Podomys floridanus'              }         30.8      NaN                   51.7             
+    {'Pseudomys gracilicaudatus'       }         79.8     36.8                   83.8             
+    {'Pseudomys hermannsburgensis'     }         12.2     37.8                   23.3             
+    {'Rattus colletti'                 }        165.7      NaN                    123             
+    {'Rattus fuscipes'                 }           76     37.5                   84.4             
+    {'Rattus lutreolis'                }          109     36.7                   63.2             
+    {'Rattus sordidus'                 }          187      NaN                  106.6             
+    {'Rattus villosissimus'            }        250.6     35.9                  145.8             
+    {'Reithrodon auritus'              }         78.7      NaN                   76.8             
+    {'Reithrodontomys megalotis'       }            9     36.8                   22.5             
+    {'Rhabdomys pumilio'               }         39.6       37                   32.1             
+    {'Saccostomus campestris'          }         61.3     35.3                   51.5             
+    {'Scotinomys teguina'              }           12     37.6                   31.2             
+    {'Scotinomys xerampelinus'         }         15.2     36.2                   31.9             
+    {'Sekeetamys calurus'              }         56.9     37.5                   44.4             
+    {'Sigmodon alleni'                 }        137.8      NaN                  203.3             
+    {'Sigmodon fulviventer'            }        137.8      NaN                  207.4             
+    {'Sigmodon hispidus'               }        139.3     38.1                  230.4             
+    {'Sigmodon leucotis'               }        128.6      NaN                  186.5             
+    {'Sigmodon ochrognathus'           }        115.1      NaN                  154.2             
+    {'Steatomys pratensis'             }        37.54     34.1                   18.8             
+    {'Stochomys longicaudatus'         }         84.2      NaN                   97.5             
+    {'Tachyoryctes splendens'          }          191     35.9                  150.9             
+    {'Tatera afra'                     }        106.5       34                  182.1             
+    {'Tatera indica'                   }           87      NaN                   75.7             
+    {'Tatera leucogaster'              }       157.62     35.1                  132.6             
+    {'Thallomys paedulcus'             }        132.4     36.7                   87.3             
+    {'Uromys caudimaculatus'           }          812      NaN                  570.8             
+    {'Myoxus glis'                     }          200     37.7                    158             
+    {'Muscardenis avellanarius'        }         23.5     35.8                     63             
+    {'Graphiurus ocularis'             }         67.8      NaN                   66.4             
+    {'Aconaemys fuscus'                }          112     37.3                    121             
+    {'Octodon bridgesi'                }        176.1      NaN                  183.3             
+    {'Octodon degus'                   }          193     37.6                  170.2             
+    {'Octodon lunatus'                 }        173.2      NaN                  171.5             
+    {'Octodontomys gliroides'          }          152     37.2                  130.7             
+    {'Octomys mimax'                   }        118.6     36.7                    115             
+    {'Spalacopus cyanus'               }          135     36.5                  106.8             
+    {'Tympanoctomys barrerae'          }         71.4     35.7                   77.1             
+    {'Pedetes capensis'                }         2300     35.9                  793.5             
+    {'Ammospermophilus leucurus'       }         95.7     37.5                   93.9             
+    {'Cynomys ludovicanus'             }       1112.3     36.7                  422.7             
+    {'Epixerus wilsoni'                }          460      NaN                  241.5             
+    {'Funisciurus congicus'            }        112.3     39.3                   95.5             
+    {'Funisciurus isabella'            }           60      NaN                  102.1             
+    {'Funisciurus lemnisciatus'        }           95      NaN                   89.6             
+    {'Funisciurus pyrrhopus'           }          244      NaN                  181.3             
+    {'Glaucomys volans'                }        64.25       39                   67.5             
+    {'Heliosciurus rufobrachium'       }          230      NaN                  133.4             
+    {'Marmota flaviventris'            }         4295     36.5                 1546.2             
+    {'Marmota monax'                   }         2650       37                  662.5             
+    {'Paraxerus cepapi'                }        223.6     39.1                  145.3             
+    {'Paraxerus palliatus ornatus'     }        366.6     39.3                  260.3             
+    {'Paraxerus palliatus tongensis'   }          206     38.8                  175.1             
+    {'Sciurus aberti'                  }          624     40.7                  430.6             
+    {'Sciurus carolinensis'            }          440     38.7                  369.6             
+    {'Spermophilus armatus'            }          320     35.7                  147.2             
+    {'Spermophilus beecheyi'           }        599.6     37.6                  317.8             
+    {'Spermophilus beldingi'           }          303     35.5                  127.3             
+    {'Spermophilus citellus'           }          240     37.5                    228             
+    {'Spermophilus lateralis'          }          237     36.3                  143.4             
+    {'Spermophilus mohavensis'         }          240       37                  112.8             
+    {'Spermophilus parryi'             }          650       37                    520             
+    {'Spermophilus richardsoni'        }          274     35.5                  131.5             
+    {'Spermophilus satutatus'          }        252.2      NaN                  161.4             
+    {'Spermophilus spilosoma'          }          174     36.1                   92.2             
+    {'Spermophilus tereticaudus'       }          167     36.3                   93.5             
+    {'Spermophilus townsendii'         }          229     35.6                  105.3             
+    {'Spermophilus tridecemlineatus'   }        205.4     35.7                  140.4             
+    {'Spermophilus undulatus'          }          680       38                  667.1             
+    {'Tamias alpinus'                  }           39      NaN                   57.7             
+    {'Tamias amoenus'                  }         57.1       37                   96.3             
+    {'Tamias merriami'                 }           75       37                   78.8             
+    {'Tamias minimus'                  }         45.8       37                   72.7             
+    {'Tamias palmeri'                  }         69.4      NaN                  113.1             
+    {'Tamias striatus'                 }         87.4     38.2                     90             
+    {'Tamiasciurus hudsonicus'         }        228.3     38.7                  254.6             
+    {'Tamiasciurus hudsonicus preblei' }          202      NaN                  323.2             
+    {'Xerus inauris'                   }          542     36.8                  326.3             
+    {'Xerus princeps'                  }          602     37.6                  340.1             
+    {'Pltilocerus lowii'               }           58     36.5                   43.5             
+    {'Tupaia glis'                     }          123       37                   93.5             
+    {'Urogale everetti'                }        260.6      NaN                  224.1             
+    {'Orycteropus afer'                }        48000     34.5                   6144             
+    {'Bradypus variegatus'             }         3790       33                    686             
+    {'Cabassous centralis'             }         4330     33.6                    917             
+    {'Chaetophractus nationi'          }         2150     35.5                    559             
+    {'Chaetophractus vellerosus'       }         1110     34.4                    306             
+    {'Chaetophractus villosus'         }         4540     35.1                    808             
+    {'Dasypus novemcinctus'            }         3510     34.5                    865             
+    {'Euphractus sexcinctus'           }         8190     34.2                   1237             
+    {'Priodontes maximus'              }        45190     33.6                   3028             
+    {'Tolypeutes matacus'              }         1160       33                    210             
+    {'Zaedyus pichi'                   }         1740     35.2                    393             
+    {'Choloepus hoffmanni'             }         3770     34.4                    603             
+    {'Cyclopes didactylus'             }          240       33                    114             
+    {'Myrmecophaga tridactyla'         }        30600     32.5                   2607             
+    {'Tamandua mexicana'               }         3977       32                    992             
+    {'Tamandua tetradactyla'           }         3500     33.5                    899             
+    {'Antechinomys laniger'            }         25.8     35.8                   25.3             
+    {'Antechinomys laniger ‘spenceri’' }         24.2      NaN                   23.7             
+    {'Antechinus flavipes'             }         46.5       35                   45.1             
+    {'Antechinus stuartii'             }         28.2     35.1                   33.8             
+    {'Antechinus swainsoni'            }         66.9       36                     63             
+    {'Dasycercus cristicaudata'        }          101     36.9                     51             
+    {'Dasyuroides byrnei'              }         91.7     35.2                   71.7             
+    {'Dasyurus geoffroyi'              }         1354     36.2                  568.7             
+    {'Dasyurus hallucatus'             }          558     35.9                    243             
+    {'Dasyurus maculatus'              }         1782     36.9                  588.1             
+    {'Dasyurus viverrinus'             }          982     35.9                  396.2             
+    {'Ningaui yvonnae'                 }         11.6     34.4                   15.7             
+    {'Phascogale tapoatafa'            }          157     37.4                  127.2             
+    {'Planigale gilesi'                }          9.1     35.1                      7             
+    {'Planigale ingrami'               }          7.1      NaN                   11.3             
+    {'Planigale maculata'              }         10.8     34.5                     12             
+    {'Planigale tenuirostris'          }          7.1     34.5                   11.3             
+    {'Pseudantechinus macdonnellensis' }         43.1     34.2                   27.2             
+    {'Sarcophilus harrisii'            }         5775     35.8                 1325.4             
+    {'Sminthopsis crassicaudata'       }         16.4     35.2                   25.1             
+    {'Sminthopsis macroura'            }        19.35     33.3                   22.5             
+    {'Sminthopsis murina'              }           19       35                   21.5             
+    {'Myrmecobius fasciatus'           }          400     32.5                  142.4             
+    {'Caluromys derbianus'             }          329       35                    225             
+    {'Chironectes minimus'             }          935       35                    457             
+    {'Didelphis marsupialis'           }         1165       35                    571             
+    {'Didelphis virginiana'            }         2488       35                    832             
+    {'Lutreolina crassicaudata'        }          812     35.8                    406             
+    {'Philander opossum'               }          751     35.8                    338             
+    {'Gracilinanus microtarsus'        }           13       35                     19             
+    {'Marmosa robinsoni'               }          122       34                     98             
+    {'Metachirus nudicaudatus'         }          336       35                    205             
+    {'Monodelphis brevicaudata'        }         75.5     33.7                     57             
+    {'Monodelphis domestica'           }          104     32.6                     60             
+    {'Acrobates pygmaeus'              }           14     34.7                   15.1             
+    {'Burramys parvus'                 }         44.3     36.1                   36.8             
+    {'Cercartetus conncinnus'          }         18.6     34.4                   22.3             
+    {'Cercartetus lepidus'             }         12.6     33.7                   18.8             
+    {'Cercartetus nanus'               }           70     35.6                   60.2             
+    {'Dendrolagus matschiei'           }         6960     36.3                 1426.8             
+    {'Lagorchestes conspicillatus'     }         2660       36                  851.2             
+    {'Macropus eugenii'                }         4878     36.5                 1390.2             
+    {'Macropus robustus'               }        29300     36.1                 5684.2             
+    {'Macropus rufus'                  }        32490     35.9                 5848.2             
+    {'Setonyx brachyurus'              }         2674     36.3                  834.3             
+    {'Petaurus breviceps'              }          127     35.9                   89.9             
+    {'Gymnobelideus leadbeateri'       }          166      NaN                  102.9             
+    {'Spilocuscus maculatus'           }         4250     34.7                 1143.3             
+    {'Trichosurus vulpecula'           }         2005       36                  731.6             
+    {'Phascolarctos cinereus'          }         4765     35.8                   1034             
+    {'Bettongia gaimardi'              }         1385     35.6                  641.3             
+    {'Bettongia penicillata'           }         1018     37.2                  561.4             
+    {'Potorous tridactylus'            }          976     35.9                  416.4             
+    {'Aepyprimnus rufescens'           }         2820     36.5                 1071.6             
+    {'Petauroides volans'              }         1141     35.4                  573.9             
+    {'Pseudocheirus occidentalis'      }          861     36.5                    409             
+    {'Pseudocheirus peregrinus'        }          916     37.4                  430.5             
+    {'Tarsipes rostratus'              }           10     36.6                     29             
+    {'Lasiorhinus latifrons'           }        29917     35.3                 2991.7             
+    {'Notoryctes caurinus'             }           34     30.8                   21.4             
+    {'Echymipera kalabu'               }          695       35                    341             
+    {'Echymipera rufescens australis'  }          616     34.6                    302             
+    {'Echymipera rufescens rufescens'  }         1276     35.2                    541             
+    {'Isoodon auratus'                 }          428     33.8                    150             
+    {'Isoodon macrourus'               }         1551     35.9                    574             
+    {'Isoodon obesulus'                }          717     33.9                    222             
+    {'Macrotis lagotis'                }         1294       35                    450             
+    {'Perameles gunni'                 }          837     35.2                    420             
+    {'Perameles nasuta'                }          645     36.1                    316             
+    {'Ornithorhynchus anatinus'        }          693       34                    194             
+    {'Zaglossus bruijni'               }        10300     30.8                   1215             
+    {'Tachyglossus aculeatus'          }         2725     30.7                    431             
+    {'Tachyglossus setosus'            }         3580       30                    548             
   ];
-nm = strrep(Mamm(:,4),' ','_'); data = cell2mat(Mamm(:,5:6));
 
+    
+    
+  nm = strrep(Mamm(:,1),' ','_'); data = cell2mat(Mamm(:,2:4)); Wrange = [0;7];
+ [~,slope_mamm,Jrange_mamm] = get_axis(log10(data(:,[1 3])),Wrange); n_mamm = size(data,1);
+
+ close all
+ 
+ figure
+ plot(Wrange,Jrange_mamm,'k', 'LineWidth',2)
+ hold on
+ text(1,4,'T = T_{body}')
+ plot(log10(data(:,1)),log10(data(:,3)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/h')
+ title(['scaling exponent ',num2str(slope_mamm),' for ', num2str(n_mamm),' mammals of WhitSeym2003']);
+ saveas(gcf, 'W_BMR_mamm_WhitSeym2003_Tb.png')
+ 
+ figure
+ data(:,3) = data(:,3)./tempcorr(C2K(data(:,2)),C2K(36.2),8000); Data = log10(data(:,[1 3])); Data = Data(~isnan(Data(:,2)),:);
+ [~,slope_mamm,Jrange_mamm] = get_axis(Data,Wrange); n_mamm=size(Data,1);
+ plot(Wrange,Jrange_mamm,'k', 'LineWidth',2)
+ hold on
+ text(1,4,'T = 36.2 C')
+ plot(log10(data(:,1)),log10(data(:,3)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
+ xlabel('_{10}log body mass, g')
+ ylabel('_{10}log BMR, mg O_2/h')
+ title(['scaling exponent ',num2str(slope_mamm),' for ', num2str(n_mamm),' mammals of WhitSeym2003']);
+ saveas(gcf, 'W_BMR_mamm_WhitSeym2003_36C.png')
+ 
 % reference
 % @ARTICLE{WhitSeym2003,
 %   doi = {0.1073/pnas.0436428100}, 
