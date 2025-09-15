@@ -1,174 +1,184 @@
+% trailing % means present in AmP
 Aves = [ ... % species, mass (g), BMR (ml O2/h)
-    {'Apteryx australis'              }      3137       830
-    {'Apteryx haastii'                }      2529       951
-    {'Apteryx owenii'                 }      1377     710.5
-    {'Casuarius bennetti'             }     17600      4501
-    {'Dromaius novaehollandiae'       }     38900      6302
-    {'Rhea americana'                 }     21700      6900
-    {'Struthio camelus'               }     92400     10483
-    {'Crypturellus soui'              }     220.8       140
-    {'Nothoprocta perdicaria'         }       458     317.5
+    % Paleognathae
+    {'Apteryx australis'              }      3137       830%
+    {'Apteryx haastii'                }      2529       951%
+    {'Apteryx owenii'                 }      1377     710.5%
+    {'Casuarius bennetti'             }     17600      4501%
+    {'Dromaius novaehollandiae'       }     38900      6302%
+    {'Rhea americana'                 }     21700      6900%
+    {'Struthio camelus'               }     92400     10483%
+    {'Crypturellus soui'              }     220.8       140%
+    {'Nothoprocta perdicaria'         }       458     317.5%
     % Neognathae
-    {'Accipiter cooperii'             }       452       383
-    {'Accipiter nisus'                }       135       171
-    {'Accipiter striatus'             }     173.4     94.55
-    {'Accipiter striatus'             }        83       126
-    {'Aquila chrysaetos'              }      3000       890
-    {'Aquila rapax'                   }      2398     813.5
-    {'Buteo buteo'                    }      1012       676
-    {'Buteo jamaicensis'              }      1475     571.5
-    {'Buteo lineatus'                 }       658       380
-    {'Geranoaetus melanoleucus'       }      2860     924.5
-    {'Gypaetus barbatus'              }      5070      1989
-    {'Ictinia mississippiensis'       }       232     164.5
-    {'Pandion haliaetus'              }      1495       994
-    {'Parabuteo unicinctus'           }       572     253.5
-    {'Pernis apivorus'                }       652     420.5
+    {'Accipiter cooperii'             }       452       383%
+    {'Accipiter nisus'                }       135       171%
+    {'Accipiter striatus'             }     173.4     94.55%
+    {'Accipiter striatus'             }        83       126%
+    {'Aquila chrysaetos'              }      3000       890%
+    {'Aquila rapax'                   }      2398     813.5%
+    {'Buteo buteo'                    }      1012       676%
+    {'Buteo jamaicensis'              }      1475     571.5%
+    {'Buteo lineatus'                 }       658       380%
+    {'Geranoaetus melanoleucus'       }      2860     924.5%
+    {'Gypaetus barbatus'              }      5070      1989%
+    {'Ictinia mississippiensis'       }       232     164.5%
+    {'Pandion haliaetus'              }      1495       994%
+    {'Parabuteo unicinctus'           }       572     253.5%
+    {'Pernis apivorus'                }       652     420.5%
+    % Anseriformes
     {'Aix sponsa'                     }       448     404.5
-    {'Anas acuta'                     }       721     785.5
+    {'Anas acuta'                     }       721     785.5%
     {'Anas aucklandica'               }     373.1     337.5
     {'Anas castanea'                  }     483.3       343
     {'Anas chlorotis'                 }     528.8     417.5
     {'Anas crecca'                    }       250       300
     {'Anas gracilis'                  }     393.7       599
     {'Anas nesiotis'                  }     371.1       297
-    {'Anas platyrhynchos'             }      1020       732
-    {'Anser anser'                    }      3250    1950.5
-    {'Anser caerulescens'             }      2930      1395
+    {'Anas platyrhynchos'             }      1020       732%
+    {'Anser anser'                    }      3250    1950.5%
+    {'Anser caerulescens'             }      2930      1395%
     {'Anser canagicus'                }      2609    1612.5
-    {'Aythya affinis'                 }     561.5     516.5
+    {'Aythya affinis'                 }     561.5     516.5%
     {'Aythya collaris'                }     681.5       592
     {'Aythya ferina'                  }       816      1047
-    {'Aythya fuligula'                }       574     486.5
+    {'Aythya fuligula'                }       574     486.5%
     {'Aythya novaeseelandiae'         }     488.4       420
     {'Aythya nyroca'                  }       440       589
-    {'Branta bernicla'                }      1253      1091
-    {'Chauna chavaria'                }      2620    1238.5
+    {'Branta bernicla'                }      1253      1091%
+    {'Chauna chavaria'                }      2620    1238.5%
     {'Cygnus buccinator'              }      8800    3646.5
-    {'Cygnus olor'                    }      8538      5606
-    {'Hymenolaimus malacorhynchos'    }     717.1     565.5
-    {'Lophodytes cucullatus'          }     413.3     351.5
+    {'Cygnus olor'                    }      8538      5606%
+    {'Hymenolaimus malacorhynchos'    }     717.1     565.5%
+    {'Lophodytes cucullatus'          }     413.3     351.5%
     {'Mareca penelope'                }       723     507.5
-    {'Mareca strepera'                }       791    1116.5
-    {'Netta rufina'                   }      1237      1278
-    {'Somateria mollissima'           }      1660    1099.5
+    {'Mareca strepera'                }       791    1116.5%
+    {'Netta rufina'                   }      1237      1278%
+    {'Somateria mollissima'           }      1660    1099.5%
     {'Spatula clypeata'               }       554       698
     {'Spatula querquedula'            }       289       402
     {'Spatula rhynchotis'             }       508     473.5
     {'Tadorna variegata'              }    1193.6       602
-    {'Adelomyia melanogenys'          }       3.5     14.55
-    {'Aerodramus germani'             }      10.8     40.04
+    % Apodiformes
+    {'Adelomyia melanogenys'          }       3.5     14.55%
+    {'Aerodramus germani'             }      10.8     40.04% Aerodramus fuciphagus
     {'Aerodramus vanikorensis'        }      11.6      21.5
-    {'Aglaeactis castelnaudii'        }       6.9     18.18
+    {'Aglaeactis castelnaudii'        }       6.9     18.18%
     {'Aglaeactis cupripennis'         }       7.2     21.82
-    {'Apus apus'                      }      44.9      78.5
-    {'Archilochus alexandri'          }       3.3      11.5
-    {'Boissonneaua matthewsii'        }       7.5     36.36
-    {'Calypte anna'                   }       4.8        21
-    {'Calypte costae'                 }       3.2       9.5
-    {'Chaetocercus mulsant'           }       3.6     12.73
-    {'Chalcostigma ruficeps'          }       3.6     27.27
+    {'Apus apus'                      }      44.9      78.5%
+    {'Archilochus alexandri'          }       3.3      11.5%
+    {'Boissonneaua matthewsii'        }       7.5     36.36%
+    {'Calypte anna'                   }       4.8        21%
+    {'Calypte costae'                 }       3.2       9.5%
+    {'Chaetocercus mulsant'           }       3.6     12.73%
+    {'Chalcostigma ruficeps'          }       3.6     27.27%
     {'Coeligena coeligena'            }       7.1     34.55
     {'Coeligena violifer'             }       7.8     25.45
-    {'Colibri coruscans'              }       8.4     27.27
+    {'Colibri coruscans'              }       8.4     27.27%
     {'Colibri thalassinus'            }       6.2     29.09
-    {'Collocalia esculenta'           }       6.8      14.5
-    {'Doryfera ludovicae'             }       5.9     29.09
-    {'Eugenes fulgens'                }       6.6      18.5
-    {'Eulampis jugularis'             }       8.4      69.5
-    {'Eutoxeres condamini'            }        10        40
-    {'Glaucis hirsutus'               }       6.9     32.73
-    {'Haplophaedia aureliae'          }       4.8     25.45
-    {'Heliangelus amethysticollis'    }       5.8     27.27
-    {'Heliodoxa leadbeateri'          }       7.5     34.55
-    {'Lafresnaya lafresnayi'          }       5.7     25.45
-    {'Lampornis clemenciae'           }       7.9      18.5
-    {'Metallura tyrianthina'          }       3.8     18.18
-    {'Ocreatus underwoodii'           }       3.3     14.55
-    {'Oreotrochilus estella'          }       8.4      34.5
-    {'Patagona gigas'                 }      19.1      51.5
+    {'Collocalia esculenta'           }       6.8      14.5%
+    {'Doryfera ludovicae'             }       5.9     29.09%
+    {'Eugenes fulgens'                }       6.6      18.5%
+    {'Eulampis jugularis'             }       8.4      69.5%
+    {'Eutoxeres condamini'            }        10        40%
+    {'Glaucis hirsutus'               }       6.9     32.73%
+    {'Haplophaedia aureliae'          }       4.8     25.45%
+    {'Heliangelus amethysticollis'    }       5.8     27.27%
+    {'Heliodoxa leadbeateri'          }       7.5     34.55%
+    {'Lafresnaya lafresnayi'          }       5.7     25.45%
+    {'Lampornis clemenciae'           }       7.9      18.5%
+    {'Metallura tyrianthina'          }       3.8     18.18%
+    {'Ocreatus underwoodii'           }       3.3     14.55%
+    {'Oreotrochilus estella'          }       8.4      34.5%
+    {'Patagona gigas'                 }      19.1      51.5%
     {'Phaethornis guy'                }       5.9     23.64
     {'Phaethornis hispidus'           }       4.9     25.45
     {'Phaethornis koepckeae'          }       5.4     23.64
     {'Phaethornis superciliosus'      }       5.2     25.45
-    {'Phlogophilus harterti'          }       2.8     27.27
-    {'Pterophanes cyanopterus'        }      10.8        20
-    {'Ramphomicron microrhynchum'     }       3.9     14.55
-    {'Schistes geoffroyi'             }       4.8     32.73
-    {'Selasphorus calliope'           }         3        12
-    {'Selasphorus rufus'              }       3.8      12.5
-    {'Selasphorus sasin'              }       3.7      12.5
-    {'Sephanoides sephaniodes'        }       5.7      18.5
-    {'Streptoprocne rutila'           }      16.1     43.64
-    {'Taphrospilus hypostictus'       }       7.5     23.64
-    {'Thalurania furcata'             }       3.8     23.64
-    {'Threnetes leucurus'             }       9.4     27.27
-    {'Caprimulgus europaeus'          }      77.4       116
-    {'Caprimulgus macrurus'           }     73.43     73.49
-    {'Caprimulgus macrurus'           }      68.6        56
-    {'Chordeiles minor'               }        72      79.5
-    {'Eurostopodus argus'             }        88      73.5
-    {'Eurostopodus argus'             }        88      73.5
+    {'Phlogophilus harterti'          }       2.8     27.27%
+    {'Pterophanes cyanopterus'        }      10.8        20%
+    {'Ramphomicron microrhynchum'     }       3.9     14.55%
+    {'Schistes geoffroyi'             }       4.8     32.73%
+    {'Selasphorus calliope'           }         3        12%
+    {'Selasphorus rufus'              }       3.8      12.5%
+    {'Selasphorus sasin'              }       3.7      12.5%
+    {'Sephanoides sephaniodes'        }       5.7      18.5%
+    {'Streptoprocne rutila'           }      16.1     43.64%
+    {'Taphrospilus hypostictus'       }       7.5     23.64%
+    {'Thalurania furcata'             }       3.8     23.64%
+    {'Threnetes leucurus'             }       9.4     27.27%
+    % Caprimulgiformes & Podargiformes
+    {'Caprimulgus europaeus'          }      77.4       116%
+    {'Caprimulgus macrurus'           }     73.43     73.49%
+    {'Caprimulgus macrurus'           }      68.6        56%
+    {'Chordeiles minor'               }        72      79.5%
+    {'Eurostopodus argus'             }        88      73.5%
+    {'Eurostopodus argus'             }        88      73.5%
     {'Eurostopodus mystacalis'        }       162      86.5
-    {'Lyncornis macrotis'             }     162.8     147.4
-    {'Nyctidromus albicollis'         }        43        83
-    {'Phalaenoptilus nuttallii'       }        40        32
+    {'Lyncornis macrotis'             }     162.8     147.4%
+    {'Nyctidromus albicollis'         }        43        83%
+    {'Phalaenoptilus nuttallii'       }        40        32%
     {'Podargus ocellatus'             }       145       102
     {'Podargus papuensis'             }     314.6     192.5
-    {'Podargus strigoides'            }     380.3       186
-    {'Uropsalis lyra'                 }      77.5     94.55
+    {'Podargus strigoides'            }     380.3       186%
+    {'Uropsalis lyra'                 }      77.5     94.55%
     {'Uropsalis segmentata'           }      34.7     98.18
-    {'Cathartes aura'                 }      1100       515
-    {'Coragyps atratus'               }      1700       798
-    {'Coragyps atratus'               }      2120    1171.5
-    {'Alca torda'                     }       589       648
-    {'Alle alle'                      }     152.5       370
-    {'Arenaria interpres'             }        90       166
-    {'Calidris canutus'               }       130     158.5
-    {'Cepphus grylle'                 }     342.2       546
+    % Accipitriformes
+    {'Cathartes aura'                 }      1100       515%
+    {'Coragyps atratus'               }      1700       798%
+    {'Coragyps atratus'               }      2120    1171.5%
+    % Charadriiformes
+    {'Alca torda'                     }       589       648%
+    {'Alle alle'                      }     152.5       370%
+    {'Arenaria interpres'             }        90       166%
+    {'Calidris canutus'               }       130     158.5%
+    {'Cepphus grylle'                 }     342.2       546%
     {'Charadrius dubius'              }        36        75
-    {'Chroicocephalus ridibundus'     }       306       335
-    {'Fratercula arctica'             }       329     462.5
-    {'Haematopus ostralegus'          }       554       524
+    {'Chroicocephalus ridibundus'     }       306       335%
+    {'Fratercula arctica'             }       329     462.5%
+    {'Haematopus ostralegus'          }       554       524%
     {'Jacana jacana'                  }       107       181
-    {'Larus argentatus'               }       924     891.5
-    {'Larus canus'                    }       431       405
+    {'Larus argentatus'               }       924     891.5%
+    {'Larus canus'                    }       431       405%
     {'Larus hyperboreus'              }      1600      2664
-    {'Larus pacificus'                }      1210    1107.5
+    {'Larus pacificus'                }      1210    1107.5%
     {'Limosa lapponica'               }       240     273.5
-    {'Pluvialis apricaria'            }       151     223.5
-    {'Pluvialis squatarola'           }       226     320.5
-    {'Rhodostethia rosea'             }       155     191.5
-    {'Rissa tridactyla'               }       305       494
-    {'Scolopax minor'                 }     156.7     192.5
+    {'Pluvialis apricaria'            }       151     223.5%
+    {'Pluvialis squatarola'           }       226     320.5%
+    {'Rhodostethia rosea'             }       155     191.5%
+    {'Rissa tridactyla'               }       305       494%
+    {'Scolopax minor'                 }     156.7     192.5%
     {'Scolopax rusticola'             }       430       389
-    {'Stercorarius maccormicki'       }      1130    1547.5
-    {'Stercorarius parasiticus'       }       351     414.5
-    {'Stercorarius skua'              }       970       855
-    {'Stercorarius skua'              }      1159      1121
-    {'Thinocorus rumicivorus'         }      55.5        56
+    {'Stercorarius maccormicki'       }      1130    1547.5%
+    {'Stercorarius parasiticus'       }       351     414.5%
+    {'Stercorarius skua'              }       970       855%
+    {'Stercorarius skua'              }      1159      1121%
+    {'Thinocorus rumicivorus'         }      55.5        56%
     {'Tringa ochropus'                }        90       166
-    {'Turnix suscitator'              }        66     73.25
-    {'Uria aalge'                     }       771     812.5
-    {'Uria lomvia'                    }       819     912.5
+    {'Turnix suscitator'              }        66     73.25%
+    {'Uria aalge'                     }       771     812.5%
+    {'Uria lomvia'                    }       819     912.5%
+    % Ciconiiformes
     {'Jabiru mycteria'                }      5470    2372.5
     {'Leptoptilos javanicus'          }      5710      2678
-    {'Mycteria americana'             }      2500    1753.5
+    {'Mycteria americana'             }      2500    1753.5%
+    % Coliiformes
     {'Colius castanotus'              }        69        83
     {'Colius colius'                  }      35.1        32
     {'Colius striatus'                }        51      42.5
     {'Urocolius indicus'              }      53.5       129
-    {'Urocolius macrourus'            }      51.3        43
-    {'Caloenas nicobarica'            }       613     326.5
+    {'Urocolius macrourus'            }      51.3        43%
+    % Columbiformes
+    {'Caloenas nicobarica'            }       613     326.5%
     {'Chalcophaps indica'             }    115.95    132.76
     {'Chalcophaps indica'             }       124     142.5
     {'Columba leucomela'              }       456     438.5
-    {'Columba livia'                  }       368     298.5
-    {'Columba palumbus'               }       493       357
+    {'Columba livia'                  }       368     298.5%
+    {'Columba palumbus'               }       493       357%
     {'Columba vitiensis'              }     467.9       260
     {'Columbina inca'                 }      41.5        47
     {'Columbina inca'                 }      40.5      45.5
-    {'Columbina talpacoti'            }      45.7      74.5
+    {'Columbina talpacoti'            }      45.7      74.5%
     {'Drepanoptila holosericea'       }       198     148.5
     {'Ducula pacifica'                }     333.4       143
     {'Ducula pinon'                   }     583.8     320.5
@@ -188,7 +198,7 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Geotrygon montana'              }     107.3     121.5
     {'Goura cristata'                 }    2313.4       768
     {'Gymnophaps albertisii'          }     241.6       170
-    {'Hemiphaga novaeseelandiae'      }     435.6       339
+    {'Hemiphaga novaeseelandiae'      }     435.6       339%
     {'Leptotila rufaxilla'            }     150.6    125.45
     {'Leptotila verreauxi'            }       131     159.5
     {'Leucosarcia melanoleuca'        }       468       301
@@ -204,84 +214,91 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Ptilinopus superbus'            }     120.4       136
     {'Spilopelia chinensis'           }     143.8    166.63
     {'Spilopelia senegalensis'        }       108     152.5
-    {'Streptopelia decaocto'          }       170       171
-    {'Streptopelia roseogrisea'       }       150       159
+    {'Streptopelia decaocto'          }       170       171%
+    {'Streptopelia roseogrisea'       }       150       159%
     {'Streptopelia tranquebarica'     }     96.37    125.65
     {'Streptopelia turtur'            }       154       205
-    {'Zenaida macroura'               }      91.4     116.5
+    {'Zenaida macroura'               }      91.4     116.5%
     {'Zentrygon frenata'              }     322.4       160
-    {'Alcedo atthis'                  }      24.1     46.82
-    {'Alcedo atthis'                  }      34.3        68
+    % Coraciiformes
+    {'Alcedo atthis'                  }      24.1     46.82%
+    {'Alcedo atthis'                  }      34.3        68%
     {'Alcedo meninting'               }     18.28     40.04
-    {'Baryphthengus martii'           }     127.1       100
-    {'Ceryle rudis'                   }      70.3    103.21
-    {'Ceyx erithaca'                  }     12.89     30.33
-    {'Chloroceryle aenea'             }      11.8      31.5
-    {'Dacelo novaeguineae'            }       336       201
+    {'Baryphthengus martii'           }     127.1       100%
+    {'Ceryle rudis'                   }      70.3    103.21%
+    {'Ceyx erithaca'                  }     12.89     30.33%
+    {'Chloroceryle aenea'             }      11.8      31.5%
+    {'Dacelo novaeguineae'            }       336       201%
     {'Halcyon coromanda'              }      66.5     92.17
     {'Halcyon smyrnensis'             }     71.59     80.59
-    {'Lacedo pulchella'               }     49.28        57
+    {'Lacedo pulchella'               }     49.28        57%
     {'Merops leschenaulti'            }     23.53     55.34
-    {'Merops viridis'                 }      33.8      53.5
-    {'Momotus aequatorialis'          }     158.5    105.45
-    {'Momotus momota'                 }     123.1     94.55
-    {'Momotus momota'                 }     102.4      88.5
-    {'Nyctyornis athertoni'           }     89.32    117.86
-    {'Pelargopsis capensis'           }    161.39    135.42
-    {'Phoeniculus purpureus'          }      74.1      62.5
-    {'Rhyticeros plicatus'            }    1781.6     816.5
-    {'Todus mexicanus'                }       6.3      20.5
-    {'Upupa epops'                    }        67      99.5
-    {'Cacomantis merulinus'           }     24.63     41.73
+    {'Merops viridis'                 }      33.8      53.5%
+    {'Momotus aequatorialis'          }     158.5    105.45%
+    {'Momotus momota'                 }     123.1     94.55%
+    {'Momotus momota'                 }     102.4      88.5%
+    {'Nyctyornis athertoni'           }     89.32    117.86%
+    {'Pelargopsis capensis'           }    161.39    135.42%
+    {'Phoeniculus purpureus'          }      74.1      62.5%
+    {'Rhyticeros plicatus'            }    1781.6     816.5%
+    {'Todus mexicanus'                }       6.3      20.5%
+    % Bucerotiformes
+    {'Upupa epops'                    }        67      99.5%
+    % Cuculiformes & Opisthocomiformes
+    {'Cacomantis merulinus'           }     24.63     41.73%
     {'Cacomantis sonneratii'          }      31.3     54.07
     {'Cacomantis variolosus'          }      23.8        22
     {'Centropus bengalensis'          }     104.5    101.96
-    {'Centropus senegalensis'         }       175     271.5
-    {'Centropus sinensis'             }     240.4    200.22
+    {'Centropus senegalensis'         }       175     271.5%
+    {'Centropus sinensis'             }     240.4    200.22%
     {'Clamator coromandus'            }      54.8     57.41
-    {'Cuculus canorus'                }     111.6       151
+    {'Cuculus canorus'                }     111.6       151%
     {'Eudynamys scolopaceus'          }       188       296
-    {'Geococcyx californianus'        }     294.6     227.5
-    {'Opisthocomus hoazin'            }       598       288
+    {'Geococcyx californianus'        }     294.6     227.5%
+    {'Opisthocomus hoazin'            }       598       288%
     {'Phaenicophaeus tristis'         }       111    125.18
+    % Falconiformes
     {'Daptrius ater'                  }       362       216
-    {'Falco mexicanus'                }       430     349.5
-    {'Falco sparverius'               }       116       119
+    {'Falco mexicanus'                }       430     349.5%
+    {'Falco sparverius'               }       116       119%
     {'Falco subbuteo'                 }       208     233.5
-    {'Falco tinnunculus'              }       131     139.5
+    {'Falco tinnunculus'              }       131     139.5%
     {'Micrastur gilvicollis'          }     170.5    189.09
     {'Micrastur ruficollis'           }     304.1    130.91
     {'Microhierax caerulescens'       }      39.1     74.82
-    {'Micromonacha lanceolata'        }      21.9     65.45
+    % Piciformes
+    {'Micromonacha lanceolata'        }      21.9     65.45%
     {'Notharchus macrorhynchos'       }      43.2        57
-    {'Alectoris chukar'               }       475       353
-    {'Alectoris graeca'               }       633       456
+    % Galliformes
+    {'Alectoris chukar'               }       475       353%
+    {'Alectoris graeca'               }       633       456%
     {'Arborophila chloropus'          }     251.9    200.88
-    {'Bonasa umbellus'                }       644       429
-    {'Callipepla californica'         }     137.1       138
+    {'Bonasa umbellus'                }       644       429%
+    {'Callipepla californica'         }     137.1       138%
     {'Callipepla gambelii'            }     126.1       136
-    {'Colinus virginianus'            }       194     200.5
-    {'Coturnix coturnix'              }        97     160.5
-    {'Coturnix japonica'              }       115       176
+    {'Colinus virginianus'            }       194     200.5%
+    {'Coturnix coturnix'              }        97     160.5%
+    {'Coturnix japonica'              }       115       176%
     {'Coturnix pectoralis'            }      95.8     114.5
     {'Crax alberti'                   }      2800    1186.5
-    {'Dendragapus obscurus'           }      1131     892.5
+    {'Dendragapus obscurus'           }      1131     892.5%
     {'Excalfactoria chinensis'        }      44.9        66
     {'Francolinus pintadeanus'        }     286.8    166.21
-    {'Gallus gallus'                  }     835.3    566.04
-    {'Lagopus lagopus'                }       658       505
-    {'Lagopus leucura'                }       326       425
-    {'Lagopus muta'                   }       465       493
+    {'Gallus gallus'                  }     835.3    566.04%
+    {'Lagopus lagopus'                }       658       505%
+    {'Lagopus leucura'                }       326       425%
+    {'Lagopus muta'                   }       465       493%
     {'Odontophorus stellatus'         }     296.5    209.09
     {'Penelope purpurascens'          }      2040       977
-    {'Perdix perdix'                  }       501     387.5
-    {'Tetrao urogallus'               }      3900      2146
+    {'Perdix perdix'                  }       501     387.5%
+    {'Tetrao urogallus'               }      3900      2146%
+    % Gruiformes
     {'Amaurornis phoenicurus'         }     195.2    142.85
-    {'Antigone canadensis'            }      3890    1465.5
+    {'Antigone canadensis'            }      3890    1465.5%
     {'Aramides cajaneus'              }     374.3     277.5
     {'Atlantisia rogersi'             }      39.4      40.5
-    {'Crex crex'                      }        96     141.5
-    {'Fulica atra'                    }       412       368
+    {'Crex crex'                      }        96     141.5%
+    {'Fulica atra'                    }       412       368%
     {'Gallinula tenebrosa'            }     512.4       421
     {'Gallirallus australis'          }     813.5       329
     {'Gallirallus owstoni'            }     198.8       165
@@ -293,23 +310,26 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Porzana cinerea'                }      47.9        89
     {'Tribonyx mortierii'             }     954.4     573.5
     {'Tribonyx ventralis'             }     309.2     290.5
-    {'Turnix suscitator'              }      58.1      69.5
-    {'Ardea herodias'                 }      1870    1116.5
+    {'Turnix suscitator'              }      58.1      69.5%
+    % Pelecaniformes
+    {'Ardea herodias'                 }      1870    1116.5%
     {'Ardeola bacchus'                }     202.4    176.63
     {'Botaurus lentiginosus'          }       600     488.5
-    {'Bubulcus ibis'                  }     299.2       237
-    {'Egretta caerulea'               }     290.3     179.5
-    {'Egretta thula'                  }       314     244.5
-    {'Egretta tricolor'               }       309       306
-    {'Eudocimus albus'                }       940     741.5
+    {'Bubulcus ibis'                  }     299.2       237%
+    {'Egretta caerulea'               }     290.3     179.5%
+    {'Egretta thula'                  }       314     244.5%
+    {'Egretta tricolor'               }       309       306%
+    {'Eudocimus albus'                }       940     741.5%
     {'Ixobrychus cinnamomeus'         }     121.6    115.26
     {'Ixobrychus sinensis'            }      70.1     61.64
     {'Pelecanus conspicillatus'       }      5090    3262.5
-    {'Pelecanus occidentalis'         }      3510      2303
-    {'Phoenicopterus roseus'          }      3040    1875.5
+    {'Pelecanus occidentalis'         }      3510      2303%
+    % Phoenicopteriformes
+    {'Phoenicopterus roseus'          }      3040    1875.5%
+    % Piciformes
     {'Andigena hypoglauca'            }     282.9    310.91
-    {'Aulacorhynchus prasinus'        }       137    178.18
-    {'Aulacorhynchus prasinus'        }     174.7     149.5
+    {'Aulacorhynchus prasinus'        }       137    178.18%
+    {'Aulacorhynchus prasinus'        }     174.7     149.5%
     {'Aulacorhynchus sulcatus'        }     131.7       122
     {'Bucco macrodactylus'            }      23.7     32.73
     {'Celeus loricatus'               }      83.1     123.5
@@ -318,11 +338,11 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Colaptes rivolii'               }      81.5    169.09
     {'Dendrocopos major'              }        98       161
     {'Dinopium javanense'             }     85.14    123.65
-    {'Dryobates pubescens'            }      23.3      59.5
+    {'Dryobates pubescens'            }      23.3      59.5%
     {'Galbula cyanescens'             }        24     41.82
     {'Gecinulus grantia'              }      72.1    104.16
     {'Hemicircus canente'             }     41.05     77.98
-    {'Jynx torquilla'                 }      31.8      64.5
+    {'Jynx torquilla'                 }      31.8      64.5%
     {'Malacoptila fulvogularis'       }      49.6     96.36
     {'Malacoptila semicincta'         }      47.1        60
     {'Melanerpes rubricapillus'       }      48.7      96.5
@@ -337,127 +357,135 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Psilopogon faiostrictus'        }      75.3    166.85
     {'Psilopogon lineatus'            }     116.7    131.65
     {'Pteroglossus aracari'           }     200.7       160
-    {'Pteroglossus bailloni'          }       133     126.5
-    {'Ramphastos dicolorus'           }     328.9     227.5
-    {'Ramphastos toco'                }       582       436
+    {'Pteroglossus bailloni'          }       133     126.5%
+    {'Ramphastos dicolorus'           }     328.9     227.5%
+    {'Ramphastos toco'                }       582       436%
     {'Ramphastos tucanus'             }     420.3     307.5
     {'Sasia ochracea'                 }      8.35     33.59
     {'Selenidera reinwardtii'         }     173.6    218.18
     {'Trachyphonus darnaudii'         }      36.6      39.5
     {'Veniliornis nigriceps'          }      43.4     89.09
-    {'Podiceps nigricollis'           }       317     385.5
-    {'Aphrodroma brevirostris'        }       315       319
-    {'Diomedea exulans'               }      8130    3658.5
-    {'Fulmarus glacialis'             }       728     687.5
-    {'Halobaena caerulea'             }       191       319
-    {'Macronectes giganteus'          }      4780      2404
-    {'Oceanodroma furcata'            }      44.6      79.5
-    {'Oceanodroma leucorhoa'          }        42     110.5
-    {'Pelecanoides georgicus'         }       127       177
-    {'Phoebastria immutabilis'        }      2522      1345
-    {'Phoebetria fusca'               }      2875    1489.5
-    {'Procellaria aequinoctialis'     }      1287    1135.5
-    {'Procellaria cinerea'            }      1014       902
-    {'Pterodroma hypoleuca'           }       169       228
-    {'Pterodroma macroptera'          }       479     485.5
-    {'Pterodroma mollis'              }       274     314.5
-    {'Puffinus puffinus'              }       367       419
-    {'Thalassarche chrysostoma'       }      3753    1531.5
+    % Podicipediformes
+    {'Podiceps nigricollis'           }       317     385.5%
+    % Procellariiformes
+    {'Aphrodroma brevirostris'        }       315       319%
+    {'Diomedea exulans'               }      8130    3658.5%
+    {'Fulmarus glacialis'             }       728     687.5%
+    {'Halobaena caerulea'             }       191       319%
+    {'Macronectes giganteus'          }      4780      2404%
+    {'Oceanodroma furcata'            }      44.6      79.5%
+    {'Oceanodroma leucorhoa'          }        42     110.5%
+    {'Pelecanoides georgicus'         }       127       177%
+    {'Phoebastria immutabilis'        }      2522      1345%
+    {'Phoebetria fusca'               }      2875    1489.5%
+    {'Procellaria aequinoctialis'     }      1287    1135.5%
+    {'Procellaria cinerea'            }      1014       902%
+    {'Pterodroma hypoleuca'           }       169       228%
+    {'Pterodroma macroptera'          }       479     485.5%
+    {'Pterodroma mollis'              }       274     314.5%
+    {'Puffinus puffinus'              }       367       419%
+    {'Thalassarche chrysostoma'       }      3753    1531.5%
+    % Psittaciformes
     {'Agapornis fischeri'             }      56.7        95
-    {'Agapornis roseicollis'          }      48.1      83.5
+    {'Agapornis roseicollis'          }      48.1      83.5%
     {'Barnardius zonarius'            }     131.8     142.5
-    {'Bolborhynchus lineola'          }      54.5     106.5
+    {'Bolborhynchus lineola'          }      54.5     106.5%
     {'Bolborhynchus orbygnesius'      }      46.4     69.09
     {'Brotogeris jugularis'           }      63.5     103.5
     {'Cyanoramphus auriceps'          }      52.9      88.5
-    {'Cyanoramphus novaezelandiae'    }      56.1       112
+    {'Cyanoramphus novaezelandiae'    }      56.1       112%
     {'Cyanoramphus unicolor'          }     129.4     194.5
     {'Loriculus galgulus'             }        27        93
     {'Loriculus vernalis'             }      26.7     58.45
-    {'Melopsittacus undulatus'        }      33.7      66.5
-    {'Myiopsitta monachus'            }      80.4      94.5
+    {'Melopsittacus undulatus'        }      33.7      66.5%
+    {'Myiopsitta monachus'            }      80.4      94.5%
     {'Neophema petrophila'            }      48.4       114
     {'Neophema pulchella'             }        40     104.5
     {'Neopsephotus bourkii'           }        40        97
     {'Psittacula alexandri'           }     114.8    151.17
-    {'Trichoglossus haematodus'       }     137.1       215
-    {'Pterocles orientalis'           }     386.4     350.5
-    {'Aptenodytes forsteri'           }     23370    7709.5
-    {'Aptenodytes patagonicus'        }     11080    3933.5
-    {'Eudyptes chrysocome'            }      2330      1050
-    {'Eudyptes chrysolophus'          }      3870    1556.5
-    {'Eudyptes pachyrhynchus'         }      2600      1246
-    {'Eudyptula minor'                }      1100     574.5
-    {'Eudyptula minor'                }      1150    1190.5
-    {'Megadyptes antipodes'           }      4800    2072.5
-    {'Pygoscelis adeliae'             }      3970      2202
-    {'Pygoscelis papua'               }      5775    5950.5
-    {'Spheniscus humboldti'           }      3870      1707
-    {'Aegolius acadicus'              }     118.1     112.5
-    {'Aegolius funereus'              }       130     203.5
-    {'Asio flammeus'                  }       406     309.5
-    {'Asio otus'                      }       252     171.5
-    {'Athene cunicularia'             }     146.7       140
-    {'Athene cunicularia'             }     132.4     139.5
-    {'Bubo scandiacus'                }      2026       592
-    {'Bubo virginianus'               }      1000       781
-    {'Glaucidium brasilianum'         }      60.6     78.18
+    {'Trichoglossus haematodus'       }     137.1       215%
+    % Pterocliformes
+    {'Pterocles orientalis'           }     386.4     350.5%
+    % Sphenisciformes
+    {'Aptenodytes forsteri'           }     23370    7709.5%
+    {'Aptenodytes patagonicus'        }     11080    3933.5%
+    {'Eudyptes chrysocome'            }      2330      1050%
+    {'Eudyptes chrysolophus'          }      3870    1556.5%
+    {'Eudyptes pachyrhynchus'         }      2600      1246%
+    {'Eudyptula minor'                }      1100     574.5%
+    {'Eudyptula minor'                }      1150    1190.5%
+    {'Megadyptes antipodes'           }      4800    2072.5%
+    {'Pygoscelis adeliae'             }      3970      2202%
+    {'Pygoscelis papua'               }      5775    5950.5%
+    {'Spheniscus humboldti'           }      3870      1707%
+    % Strigiformes
+    {'Aegolius acadicus'              }     118.1     112.5%
+    {'Aegolius funereus'              }       130     203.5%
+    {'Asio flammeus'                  }       406     309.5%
+    {'Asio otus'                      }       252     171.5%
+    {'Athene cunicularia'             }     146.7       140%
+    {'Athene cunicularia'             }     132.4     139.5%
+    {'Bubo scandiacus'                }      2026       592%
+    {'Bubo virginianus'               }      1000       781%
+    {'Glaucidium brasilianum'         }      60.6     78.18%
     {'Glaucidium cuculoides'          }     129.9     99.31
     {'Glaucidium cuculoides'          }       163     156.5
     {'Glaucidium gnoma'               }        52      83.5
     {'Glaucidium jardinii'            }      60.6    123.64
-    {'Megascops asio'                 }     165.5       108
-    {'Megascops trichopsis'           }      99.8        75
-    {'Micrathene whitneyi'            }        45      45.5
+    {'Megascops asio'                 }     165.5       108%
+    {'Megascops trichopsis'           }      99.8        75%
+    {'Micrathene whitneyi'            }        45      45.5%
     {'Ninox scutulata'                }    187.45    166.38
     {'Ninox theomacha'                }     151.4     188.5
     {'Otus lettia'                    }     108.9    102.41
     {'Otus scops'                     }      78.9        85
     {'Otus sunia'                     }      76.7     74.48
-    {'Strix aluco'                    }       520       375
-    {'Strix occidentalis'             }       571     481.5
-    {'Surnia ulula'                   }       333     306.5
-    {'Tyto alba'                      }     533.2       323
+    {'Strix aluco'                    }       520       375%
+    {'Strix occidentalis'             }       571     481.5%
+    {'Surnia ulula'                   }       333     306.5%
+    {'Tyto alba'                      }     533.2       323%
     {'Tyto tenebricosa'               }       770       518
     {'Uroglaux dimorpha'              }     245.3     263.5
-    {'Anhinga anhinga'                }      1040     574.5
-    {'Fregata magnificens'            }      1080       501
-    {'Leucocarbo atriceps'            }      2600    2693.5
-    {'Morus bassanus'                 }      2574      2248
-    {'Phalacrocorax aristotelis'      }      1619    1539.5
-    {'Phalacrocorax auritus'          }      1330     988.5
-    {'Harpactes oreskios'             }     51.37     89.47
-    {'Trogon personatus'              }        59    150.91
-    {'Trogon rufus'                   }        53      77.5
-    {'Abroscopus superciliaris'       }      6.71     26.68
+    % Suliformes
+    {'Anhinga anhinga'                }      1040     574.5%
+    {'Fregata magnificens'            }      1080       501%
+    {'Leucocarbo atriceps'            }      2600    2693.5%
+    {'Morus bassanus'                 }      2574      2248%
+    {'Phalacrocorax aristotelis'      }      1619    1539.5%
+    {'Phalacrocorax auritus'          }      1330     988.5%
+    % Trogoniformes
+    {'Harpactes oreskios'             }     51.37     89.47%
+    {'Trogon personatus'              }        59    150.91%
+    {'Trogon rufus'                   }        53      77.5%
     % Passeriformes
-    {'Acanthagenys rufogularis'       }      43.4       114
-    {'Acanthis flammea'               }      14.7      62.5
-    {'Acanthiza chrysorrhoa'          }       8.3      40.2
+    {'Abroscopus superciliaris'       }      6.71     26.68%
+    {'Acanthagenys rufogularis'       }      43.4       114%
+    {'Acanthis flammea'               }      14.7      62.5%
+    {'Acanthiza chrysorrhoa'          }       8.3      40.2%
     {'Acanthiza lineata'              }       7.3      28.8
     {'Acanthiza pusilla'              }       6.4      40.2
     {'Acanthiza uropygialis'          }       6.6      31.8
-    {'Acanthorhynchus tenuirostris'   }      11.3      49.8
-    {'Acridotheres cristatellus'      }     109.4     217.5
-    {'Acridotheres tristis'           }     102.3       159
-    {'Acrocephalus arundinaceus'      }      21.9        46
+    {'Acanthorhynchus tenuirostris'   }      11.3      49.8%
+    {'Acridotheres cristatellus'      }     109.4     217.5%
+    {'Acridotheres tristis'           }     102.3       159%
+    {'Acrocephalus arundinaceus'      }      21.9        46%
     {'Acrocephalus bistrigiceps'      }      7.01     28.67
     {'Acrocephalus bistrigiceps'      }       7.9        23
-    {'Acrocephalus palustris'         }      10.8      36.5
+    {'Acrocephalus palustris'         }      10.8      36.5%
     {'Acrocephalus schoenobaenus'     }      11.5        39
     {'Acrocephalus orientalis'        }     20.79     46.01
-    {'Aegithalos caudatus'            }       8.9        36
-    {'Aegithina lafresnayei'          }     18.22     44.51
+    {'Aegithalos caudatus'            }       8.9        36%
+    {'Aegithina lafresnayei'          }     18.22     44.51%
     {'Aegithina tiphia'               }     12.05     29.09
     {'Aethomyias papuensis'           }      10.4        33
-    {'Aethomyias perspicillatus'      }       8.8        39
+    {'Aethomyias perspicillatus'      }       8.8        39%
     {'Aethopyga christinae'           }       5.2        24
-    {'Aethopyga siparaja'             }      6.16     24.97
-    {'Aethopyga siparaja'             }       6.8      26.5
-    {'Agelaius phoeniceus'            }      43.1        87
-    {'Akletos goeldii'                }      42.4     76.36
+    {'Aethopyga siparaja'             }      6.16     24.97%
+    {'Aethopyga siparaja'             }       6.8      26.5%
+    {'Agelaius phoeniceus'            }      43.1        87%
+    {'Akletos goeldii'                }      42.4     76.36%
     {'Alaemon alaudipes'              }      37.7        77
-    {'Alauda arvensis'                }      31.7       130
+    {'Alauda arvensis'                }      31.7       130%
     {'Alcippe grotei'                 }      15.4     67.55
     {'Aleadryas rufinucha'            }      38.6        75
     {'Alophoixus bres'                }        35        64
@@ -466,7 +494,7 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Amadina fasciata'               }      17.2      38.5
     {'Amblycercus holosericeus'       }      50.4    103.64
     {'Ammodramus aurifrons'           }      16.4     47.27
-    {'Ammodramus savannarum'          }      13.8        32
+    {'Ammodramus savannarum'          }      13.8        32%
     {'Amphispiza bilineata'           }      11.6      35.5
     {'Anabacerthia striaticollis'     }      24.2     63.64
     {'Anabazenops dorsalis'           }      39.2     81.82
@@ -475,13 +503,13 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Anisognathus igniventris'       }        35        80
     {'Anthreptes orientalis'          }      11.8      27.5
     {'Anthus campestris'              }      21.8        69
-    {'Anthus pratensis'               }      18.9        54
+    {'Anthus pratensis'               }      18.9        54%
     {'Anthus rufulus'                 }      20.1      52.5
     {'Anthus trivialis'               }      19.7        61
     {'Arachnothera flavigaster'       }      36.3        54
     {'Arachnothera longirostra'       }     11.19     36.72
     {'Arachnothera longirostra'       }        13        34
-    {'Arremon castaneiceps'           }      35.7     96.36
+    {'Arremon castaneiceps'           }      35.7     96.36%
     {'Arremon taciturnus'             }      27.7     76.36
     {'Arremon torquatus'              }      42.8     85.45
     {'Arremonops conirostris'         }      39.7      81.5
@@ -489,32 +517,32 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Arundinax aedon'                }     19.35     63.26
     {'Asthenes helleri'               }        15     34.55
     {'Astrapia stephaniae'            }     148.2       290
-    {'Atlapetes melanolaemus'         }      25.5     61.82
+    {'Atlapetes melanolaemus'         }      25.5     61.82%
     {'Attila spadiceus'               }      32.7     25.45
     {'Auriparus flaviceps'            }       6.8      29.5
     {'Automolus melanopezus'          }      31.6     69.09
     {'Automolus ochrolaemus'          }      36.7    114.55
     {'Automolus rufipileatus'         }      36.2     83.64
     {'Automolus subulatus'            }      30.2     89.09
-    {'Basileuterus tristriatus'       }      12.6     45.45
+    {'Basileuterus tristriatus'       }      12.6     45.45%
     {'Bombycilla garrulus'            }      72.5     171.5
     {'Buthraupis montana'             }      89.7    185.45
     {'Cacicus chrysonotus'            }        94    154.55
-    {'Calamospiza melanocorys'        }        33        79
-    {'Calendulauda erythrochlamys'    }      27.3        75
+    {'Calamospiza melanocorys'        }        33        79%
+    {'Calendulauda erythrochlamys'    }      27.3        75%
     {'Calliope calliope'              }     18.34     50.42
     {'Camptostoma obsoletum'          }      12.5      47.5
     {'Cantorchilus leucotis'          }        18        38
-    {'Cardinalis cardinalis'          }        41      90.5
+    {'Cardinalis cardinalis'          }        41      90.5%
     {'Cardinalis sinuatus'            }        32      70.5
-    {'Carduelis carduelis'            }      16.5      62.5
+    {'Carduelis carduelis'            }      16.5      62.5%
     {'Carpodacus erythrinus'          }      21.2      66.5
     {'Catamblyrhynchus diadema'       }        17     45.45
-    {'Catharus dryas'                 }      35.9     83.64
-    {'Catharus fuscescens'            }        28      90.5
+    {'Catharus dryas'                 }      35.9     83.64%
+    {'Catharus fuscescens'            }        28      90.5%
     {'Catharus guttatus'              }      27.8      85.5
-    {'Catharus minimus'               }      24.8      82.5
-    {'Catharus ustulatus'             }      27.9        84
+    {'Catharus minimus'               }      24.8      82.5%
+    {'Catharus ustulatus'             }      27.9        84%
     {'Ceratopipra chloromeros'        }      16.2     52.73
     {'Ceratopipra mentalis'           }      12.3        35
     {'Cercomacroides tyrannina'       }      15.4        34
@@ -523,17 +551,17 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Chalcomitra rubescens'          }        10        33
     {'Chalcomitra senegalensis'       }      13.7        43
     {'Chalcoparia singalensis'        }      7.34     26.22
-    {'Chiroxiphia boliviana'          }        17     54.55
-    {'Chiroxiphia lanceolata'         }      18.4        61
+    {'Chiroxiphia boliviana'          }        17     54.55%
+    {'Chiroxiphia lanceolata'         }      18.4        61%
     {'Chloris chloris'                }      28.2      85.5
-    {'Chlorochrysa calliparaea'       }      16.9     45.45
-    {'Chlorodrepanis virens'          }      15.3        53
-    {'Chlorodrepanis virens'          }      10.7      37.5
+    {'Chlorochrysa calliparaea'       }      16.9     45.45%
+    {'Chlorodrepanis virens'          }      15.3        53%
+    {'Chlorodrepanis virens'          }      10.7      37.5%
     {'Chloropsis aurifrons'           }      27.9      62.6
     {'Chloropsis cochinchinensis'     }      21.2     47.58
     {'Chloropsis sonnerati'           }      39.7        68
     {'Chlorornis riefferii'           }      49.8     92.73
-    {'Chlorospingus flavigularis'     }      26.5        60
+    {'Chlorospingus flavigularis'     }      26.5        60%
     {'Chlorospingus parvirostris'     }      23.1        60
     {'Cicinnurus regius'              }        54       105
     {'Cinclus mexicanus'              }      50.2        83

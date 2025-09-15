@@ -623,8 +623,6 @@ Mamm = [ ... % weight (g), body temp (C), BMR (ml O2/h),
     {'Tachyglossus setosus'            }         3580       30                    548             
   ];
 
-    
-    
   nm = strrep(Mamm(:,1),' ','_'); data = cell2mat(Mamm(:,2:4)); Wrange = [0;7];
  [~,slope_mamm,Jrange_mamm] = get_axis(log10(data(:,[1 3])),Wrange); n_mamm = size(data,1);
 

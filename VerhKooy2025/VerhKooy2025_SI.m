@@ -219,7 +219,7 @@ end
     [18.5   41.6   NaN   6.03], 'WierChap2007', 'Chiroxiphia_lanceolata' % PMR 2.02 W; 20.1 kJ/l O2 Pipridae
    %[12.3   41.6   NaN   4.96], 'WierChap2007', 'Pipra_mentalis' %x PMR 1.66 W; 20.1 kJ/l O2 Pipridae
    %[18.2   41.6   NaN   4.48], 'WierChap2007', 'Manacus_vitellinus' %x PMR 1.5 W; 20.1 kJ/l O2 Pipridae
-   %[42.0   41.6  1.491 8.183], 'RezeSwan2002', 'Phytotoma_rara' %x 2.13 11.69 ml O2/h.g Cotingidae
+    [42.0   41.6  1.491 8.183], 'RezeSwan2002', 'Phytotoma_rara' % 2.13 11.69 ml O2/h.g Cotingidae
    %[ 9.0   41.6   NaN   1.40], 'WierChap2007', 'Oncostoma_olivaceum' %x PMR 0.47 W; 20.1 kJ/l O2 Tyrannidae
    %[33.5   41.6   NaN   6.45], 'WierChap2007', 'Elaenia_chiriquensis' %x PMR 2.16 W; 20.1 kJ/l O2 Tyrannidae
    %[ 7.0   41.6   NaN   2.45], 'WierChap2007', 'Tyrannulus_elatus' %x PMR 0.82 W; 20.1 kJ/l O2 Tyrannidae
@@ -300,7 +300,7 @@ end
    %[11.0   41.6   NaN   3.52], 'WierChap2007', 'Basileuterus_rufifrons' %x PMR 1.18 W; 20.1 kJ/l O2 Parulidae
     [ 9.3   41.6 0.546  3.018], 'DuteSwan1996', 'Setophaga_petechia' % Parulidae
     [ 9.0   41.6 0.744  3.894], 'RezeSwan2002', 'Setophaga_petechia' % 3.72 19.47 cm^3 O2/h.g Parulidae
-   %[12.0   41.6 0.746  3.937], 'RezeSwan2002', 'Setophaga_coronata' %x 3.73 19.69 cm^3 O2/h.g Parulidae
+    [12.0   41.6 0.746  3.937], 'RezeSwan2002', 'Setophaga_coronata' % 3.73 19.69 cm^3 O2/h.g Parulidae
     [32.0   41.6 1.499  7.242], 'RezeSwan2002', 'Icterus_galbula' % 2.81 13.58 cm^3 O2/h.g Icteridae
     [20.4   41.6  NaN   5.015], 'SwanLikn2006', 'Icterus_spurius' % 1.68 W; 20.1 kJ/l O2 Icteridae
 };     
@@ -771,44 +771,56 @@ for c=1:length(fig)
         {'o', 5, 2, [1 0 0], [1 0 0]}, 'Neognathae'    % 0.75  Neognathae - Passeriformes
       };
 
-     shstat_options('default');
+      shstat_options('default');
 
-     JOiW = read_allStat({'J_Oi','Ww_i','c_T'}); %WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3)];
-     WJOi = JOiW(:,[2 1]); % at typical temperatures
-     [Hfig, Hleg] = shstat(WJOi, legend_GavrGolu2023);
+      JOiW = read_allStat({'J_Oi','Ww_i','c_T'}); %WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3)];
+      WJOi = JOiW(:,[2 1]); % at typical temperatures
+      [Hfig, Hleg] = shstat(WJOi, legend_GavrGolu2023);
      
-     figure(Hfig)
-     xlabel('_{10}log ultimate weight W_w^\infty, g')
-     ylabel('_{10}log O_2 consumption J_O^\infty, mol/d')
+      figure(Hfig)
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log O_2 consumption J_O^\infty, mol/d')
      
-     sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
-     [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
-     [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
-     [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
-     [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
-     [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
-     [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
+      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
      
-     slope_T = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+      slope_T = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
 
-     WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,3)]; % at T_ref
-     [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
-     [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
-     [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
-     [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
-     sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
-     [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
-     [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+      WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,3)]; % at T_ref
+      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
+      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
 
-     slope_20 = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+      slope_20 = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
      
-     slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
-     n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
-     n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
+      slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
+      n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
+      n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
 
      
-     prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
-     prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
+      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
+      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
+
+    case 11 % ss_jOi
+      shstat_options('default');
+      shstat_options('x_transform', 'none');
+
+      JOiW = read_allStat({'J_Oi','Ww_i','c_T','s_s'}); s_s = JOiW(:,4); jOi = JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3);
+      [Hfig, Hleg] = shstat([s_s, log10(jOi)], legend, datestr(datenum(date),'yyyy/mm/dd'));
+      
+      figure(Hfig)
+      xlabel('supply stress, s_s, -')
+      ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
+      saveas(gca,'ss_jOi.png')
 
   end
 end
