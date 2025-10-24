@@ -1,112 +1,113 @@
+% trailing % means: present in AmP
 Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
-'Antilocapra americana'	37800.00'	10586.00
-'Alcelaphus buselaphus'	98000.00'	30024.00
-'Connochaetes taurinus'	140000.00'	27440.00
+'Antilocapra americana'	37800.00'	10586.00 %
+'Alcelaphus buselaphus'	98000.00'	30024.00 %
+'Connochaetes taurinus'	140000.00'	27440.00 %
 'Gazella gazella'	16300.00'	6275.00
-'Gazella spekei'	12400.00'	5926.00
-'Gazella subgutturosa'	17100.00'	4595.80
-'Kobus ellipsiprymnus'	100000.00'	26667.00
-'Madoqua kirkii'	4850.00'	2671.00
-'Madoqua saltiana'	2000.00'	851.50
-'Nanger soemmerringii'	35100.00'	9213.00
-'Oreamnos americanus'	32000.00'	8320.00
-'Oryx gazella'	180000.00'	43560.00
-'Oryx leucoryx'	93050.00'	17353.00
-'Ovibos moschatus'	195500.00'	26988.00
-'Ovis canadensis'	78500.00'	16245.00
-'Philantomba monticola'	4267.00'	1834.80
-'Raphicerus campestris'	8377.00'	3225.10
-'Taurotragus oryx'	383000.00'	86353.00
-'Camelus dromedarius'	280800.00'	28980.00
-'Alces americanus'	350000.00'	56029.00
-'Capreolus capreolus'	21500.00'	8616.00
-'Cervus elaphus'	58000.00'	16420.00
-'Odocoileus virginianus'	51190.00'	11481.00
-'Rangifer tarandus'	94100.00'	23748.00
-'Pecari tajacu'	20200.00'	5858.00
-'Tragulus javanicus'	1613.00'	869.40
-'Orcinus orca'	4037500.00'	387196.00
-'Tursiops truncatus'	190720.00'	43503.00
-'Delphinapterus leucas'	625000.00'	114090.00
-'Phocoena phocoena'	28500.00'	19380.00
+'Gazella spekei'	12400.00'	5926.00      %
+'Gazella subgutturosa'	17100.00'	4595.80  %
+'Kobus ellipsiprymnus'	100000.00'	26667.00 %
+'Madoqua kirkii'	4850.00'	2671.00      %
+'Madoqua saltiana'	2000.00'	851.50       %
+'Nanger soemmerringii'	35100.00'	9213.00  %
+'Oreamnos americanus'	32000.00'	8320.00  %
+'Oryx gazella'	180000.00'	43560.00         %
+'Oryx leucoryx'	93050.00'	17353.00         %
+'Ovibos moschatus'	195500.00'	26988.00     %
+'Ovis canadensis'	78500.00'	16245.00     %
+'Philantomba monticola'	4267.00'	1834.80  %
+'Raphicerus campestris'	8377.00'	3225.10  %
+'Taurotragus oryx'	383000.00'	86353.00     %
+'Camelus dromedarius'	280800.00'	28980.00 %
+'Alces americanus'	350000.00'	56029.00     %
+'Capreolus capreolus'	21500.00'	8616.00  %
+'Cervus elaphus'	58000.00'	16420.00     %
+'Odocoileus virginianus'	51190.00'	11481.00 %
+'Rangifer tarandus'	94100.00'	23748.00     %
+'Pecari tajacu'	20200.00'	5858.00          %
+'Tragulus javanicus'	1613.00'	869.40   %
+'Orcinus orca'	4037500.00'	387196.00        %
+'Tursiops truncatus'	190720.00'	43503.00 %
+'Delphinapterus leucas'	625000.00'	114090.00%
+'Phocoena phocoena'	28500.00'	19380.00     %
 'Equus asinus'	177500.00'	29400.00
-'Canis latrans'	10000.00'	2688.00
-'Canis lupus'	35500.00'	8305.00
-'Canis mesomelas'	7720.00'	3760.00
-'Lycalopex culpaeus'	5418.00'	2034.50
-'Lycaon pictus'	8750.00'	5469.00
-'Cerdocyon thous'	5444.00'	1497.10
-'Nyctereutes procyonoides'	7575.00'	3045.00
-'Vulpes rueppellii'	1546.00'	798.90
+'Canis latrans'	10000.00'	2688.00          %
+'Canis lupus'	35500.00'	8305.00          %
+'Canis mesomelas'	7720.00'	3760.00      %
+'Lycalopex culpaeus'	5418.00'	2034.50  %
+'Lycaon pictus'	8750.00'	5469.00          %
+'Cerdocyon thous'	5444.00'	1497.10      %
+'Nyctereutes procyonoides'	7575.00'	3045.00%
+'Vulpes rueppellii'	1546.00'	798.90       %
 'Vulpes cana'	1285.00'	631.20
-'Vulpes zerda'	1106.00'	396.00
-'Vulpes lagopus'	3970.00'	1709.50
-'Vulpes macrotis'	1769.00'	1078.40
-'Vulpes vulpes'	3060.00'	1501.00
-'Fossa fossana'	2260.00'	906.30
-'Acinonyx jubatus'	37900.00'	8982.30
-'Felis margarita'	1925.00'	898.80
-'Felis silvestris'	2618.00'	983.80
-'Puma concolor'	37200.00'	8841.70
-'Leopardus pardalis'	10500.00'	3126.30
-'Leopardus wiedii'	3550.00'	937.20
-'Leptailurus serval'	10120.00'	3140.00
-'Lynx rufus'	9400.00'	4220.60
-'Panthera leo'	98000.00'	16954.00
-'Panthera onca'	69000.00'	12834.00
-'Panthera tigris'	137900.00'	23994.60
-'Puma yagouaroundi'	8350.00'	1737.00
-'Galerella sanguinea'	500.00'	380.00
-'Herpestes javanicus'	611.00'	403.30
-'Suricata suricatta'	850.00'	310.30
-'Hyaena hyaena'	34300.00'	5728.10
-'Proteles cristata'	8100.00'	2194.00
-'Mephitis mephitis'	5667.00'	1507.50
-'Spilogale putorius'	624.00'	265.80
-'Eira barbara'	2950.00'	1221.30
-'Enhydra lutris'	18000.00'	12960.00
-'Gulo gulo'	12700.00'	5842.00
-'Lutra lutra'	7967.00'	4362.00
-'Martes americana'	1038.00'	685.10
-'Martes martes'	920.00'	736.00
-'Meles meles'	11050.00'	2984.00
-'Mustela erminea'	161.50'	337.00
-'Mustela eversmanii'	612.00'	434.50
-'Mustela frenata'	225.00'	236.00
-'Mustela nigripes'	920.00'	460.00
-'Mustela nivalis'	89.50'	171.60
-'Mustela putorius'	1575.00'	1268.00
-'Neovison vison'	704.00'	515.30
-'Taxidea taxus'	9000.00'	2700.00
-'Nandinia binotata'	4270.00'	862.50
-'Callorhinus ursinus'	32000.00'	21701.00
-'Eumetopias jubatus'	171867.00'	46460.00
-'Zalophus californianus'	94660.00'	36348.00
-'Halichoerus grypus'	190700.00'	33806.00
-'Leptonychotes weddellii'	388500.00'	74592.00
-'Histriophoca fasciata'	54000.00'	17795.00
-'Pagophilus groenlandicus'	149500.00'	34236.00
-'Phoca vitulina'	86800.00'	30120.00
-'Pusa hispida'	46600.00'	13800.00
-'Ailurus fulgens'	5740.00'	878.20
-'Bassariscus astutus'	865.00'	371.00
-'Bassariscus sumichrasti'	1282.00'	634.60
-'Nasua narica'	3665.00'	1205.80
-'Nasua nasua'	3850.00'	1010.60
-'Potos flavus'	2400.00'	758.00
-'Procyon cancrivorus'	1160.00'	460.10
-'Procyon lotor'	6480.00'	1873.00
-'Melursus ursinus'	66957.00'	8437.00
-'Ursus americanus'	129500.00'	15341.00
-'Ursus arctos'	136000.00'	17400.00
-'Ursus maritimus'	181333.00'	22376.00
-'Arctictis binturong'	14280.00'	1128.10
-'Arctogalidia trivirgata'	2010.00'	552.80
-'Genetta genetta'	1203.20'	596.80
-'Genetta tigrina'	1732.00'	762.10
-'Paradoxurus hermaphroditus'	3160.00'	760.00
-'Peropteryx macrotis'	5.10'	11.78
-'Saccopteryx bilineata'	7.80'	14.50
+'Vulpes zerda'	1106.00'	396.00           %
+'Vulpes lagopus'	3970.00'	1709.50      %
+'Vulpes macrotis'	1769.00'	1078.40      %
+'Vulpes vulpes'	3060.00'	1501.00          %
+'Fossa fossana'	2260.00'	906.30           %
+'Acinonyx jubatus'	37900.00'	8982.30      %
+'Felis margarita'	1925.00'	898.80       %
+'Felis silvestris'	2618.00'	983.80       %
+'Puma concolor'	37200.00'	8841.70          %
+'Leopardus pardalis'	10500.00'	3126.30  %
+'Leopardus wiedii'	3550.00'	937.20       %
+'Leptailurus serval'	10120.00'	3140.00  %
+'Lynx rufus'	9400.00'	4220.60          %
+'Panthera leo'	98000.00'	16954.00         %
+'Panthera onca'	69000.00'	12834.00         %
+'Panthera tigris'	137900.00'	23994.60     %
+'Puma yagouaroundi'	8350.00'	1737.00      %
+'Galerella sanguinea'	500.00'	380.00       %
+'Herpestes javanicus'	611.00'	403.30       %
+'Suricata suricatta'	850.00'	310.30       %
+'Hyaena hyaena'	34300.00'	5728.10          %
+'Proteles cristata'	8100.00'	2194.00      %
+'Mephitis mephitis'	5667.00'	1507.50      %     
+'Spilogale putorius'	624.00'	265.80       %
+'Eira barbara'	2950.00'	1221.30          %
+'Enhydra lutris'	18000.00'	12960.00     %
+'Gulo gulo'	12700.00'	5842.00              %
+'Lutra lutra'	7967.00'	4362.00          %
+'Martes americana'	1038.00'	685.10       %
+'Martes martes'	920.00'	736.00               %
+'Meles meles'	11050.00'	2984.00          %
+'Mustela erminea'	161.50'	337.00           %         
+'Mustela eversmanii'	612.00'	434.50       %
+'Mustela frenata'	225.00'	236.00           %
+'Mustela nigripes'	920.00'	460.00           %
+'Mustela nivalis'	89.50'	171.60           %
+'Mustela putorius'	1575.00'	1268.00      %
+'Neogale vison'	704.00'	515.30               %
+'Taxidea taxus'	9000.00'	2700.00          %
+'Nandinia binotata'	4270.00'	862.50       %
+'Callorhinus ursinus'	32000.00'	21701.00 %
+'Eumetopias jubatus'	171867.00'	46460.00 %
+'Zalophus californianus'	94660.00'	36348.00 %
+'Halichoerus grypus'	190700.00'	33806.00 %
+'Leptonychotes weddellii'	388500.00'	74592.00 %
+'Histriophoca fasciata'	54000.00'	17795.00 %
+'Pagophilus groenlandicus'	149500.00'	34236.00 %
+'Phoca vitulina'	86800.00'	30120.00     %
+'Pusa hispida'	46600.00'	13800.00         %
+'Ailurus fulgens'	5740.00'	878.20       %
+'Bassariscus astutus'	865.00'	371.00       %
+'Bassariscus sumichrasti'	1282.00'	634.60 %
+'Nasua narica'	3665.00'	1205.80          %
+'Nasua nasua'	3850.00'	1010.60          %
+'Potos flavus'	2400.00'	758.00           %
+'Procyon cancrivorus'	1160.00'	460.10   %
+'Procyon lotor'	6480.00'	1873.00          %
+'Melursus ursinus'	66957.00'	8437.00      %
+'Ursus americanus'	129500.00'	15341.00     %
+'Ursus arctos'	136000.00'	17400.00         %
+'Ursus maritimus'	181333.00'	22376.00     %
+'Arctictis binturong'	14280.00'	1128.10  %
+'Arctogalidia trivirgata'	2010.00'	552.80 %
+'Genetta genetta'	1203.20'	596.80       %
+'Genetta tigrina'	1732.00'	762.10       %
+'Paradoxurus hermaphroditus'	3160.00'	760.00 %
+'Peropteryx macrotis'	5.10'	11.78        %
+'Saccopteryx bilineata'	7.80'	14.50        %
 'Saccopteryx leptura'	4.20'	9.49
 'Taphozous mauritianus'	26.17'	31.14
 'Aselliscus tricuspidatus'	4.20'	7.14
@@ -114,29 +115,29 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Hipposideros cervinus'	8.30'	8.96
 'Hipposideros galeritus'	8.50'	9.35
 'Hipposideros maggietaylorae'	18.20'	21.10
-'Hipposideros armiger'	53.10'	32.90
-'Rhinonicteris aurantia'	8.27'	16.20
-'Macroderma gigas'	107.20'	94.30
+'Hipposideros armiger'	53.10'	32.90           %
+'Rhinonicteris aurantia'	8.27'	16.20       %
+'Macroderma gigas'	107.20'	94.30               %
 'Nycteris thebaica'	11.65'	18.76
 'Miniopterus natalensis'	9.77'	4.89
-'Miniopterus schreibersii'	11.10'	25.40
-'Eumops perotis'	56.00'	39.80
-'Molossus molossus'	16.50'	20.10
+'Miniopterus schreibersii'	11.10'	25.40       %
+'Eumops perotis'	56.00'	39.80               %
+'Molossus molossus'	16.50'	20.10               %
 'Mops condylurus'	23.20'	32.20
 'Sauromys petrophilus'	10.98'	6.74
-'Tadarida brasiliensis'	11.00'	8.60
+'Tadarida brasiliensis'	11.00'	8.60            %
 'Tadarida teniotis'	32.00'	34.40
 'Mormoops blainvillei'	8.91'	8.29
-'Mormoops megalophylla'	16.50'	24.40
-'Pteronotus davyi'	9.40'	15.30
+'Mormoops megalophylla'	16.50'	24.40           %
+'Pteronotus davyi'	9.40'	15.30               %
 'Pteronotus parnellii'	19.20'	30.70
 'Pteronotus personatus'	14.00'	23.00
 'Pteronotus quadridens'	4.80'	6.00
 'Natalus tumidirostris'	5.40'	8.32
-'Noctilio albiventris'	38.60'	38.22
+'Noctilio albiventris'	38.60'	38.22           %
 'Noctilio leporinus'	61.00'	47.00
 'Ametrida centurio'	10.50'	21.90
-'Anoura caudifer'	11.50'	35.10
+'Anoura caudifer'	11.50'	35.10               %
 'Anoura latidens'	13.50'	36.60
 'Artibeus cinereus'	10.50'	21.90
 'Artibeus concolor'	19.70'	32.90
@@ -144,8 +145,8 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Artibeus jamaicensis'	45.20'	56.50
 'Artibeus lituratus'	70.10'	84.80
 'Artibeus hirsutus'	51.50'	121.50
-'Carollia perspicillata'	14.90'	31.40
-'Chiroderma doriae'	19.90'	31.10
+'Carollia perspicillata'	14.90'	31.40       %
+'Chiroderma doriae'	19.90'	31.10               %
 'Choeroniscus godmani'	10.10'	19.10
 'Chrotopterus auritus'	96.10'	101.90
 'Desmodus rotundus'	29.40'	26.80
@@ -856,7 +857,10 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
  plot(log10(data_pla(:,1)),log10(data_pla(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 .5 .5], 'MarkerEdgeColor',[1 .5 .5])
  xlabel('_{10}log body mass, g')
  ylabel('_{10}log BMR, mg O_2/min')
- title(['scaling exponent ',num2str(slope_pla),' for ', num2str(n_pla),' Placentalia of GavrGolu2023']);
+ text(0.5,3.0, 'Placentalia')
+ text(0.5,2.5, ['scaling exp ',num2str(slope_pla)])
+ text(0.5,2.0, ['n = ',num2str(n_pla)])
+ title('Data from GavrGolu2023');
  saveas(gcf, 'W_BMR_pla_GavrGolu2023.png')
  
  figure;
@@ -865,7 +869,10 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
  plot(log10(data_mar(:,1)),log10(data_mar(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[0 0 0], 'MarkerEdgeColor',[1 .5 .5])
  xlabel('_{10}log body mass, g')
  ylabel('_{10}log BMR, mg O_2/min')  
- title(['scaling exponent ',num2str(slope_mar),' for ', num2str(n_mar),' Marsupialia of GavrGolu2023']);
+ text(0.5,3.0, 'Marsupialia')
+ text(0.5,2.5, ['scaling exp ',num2str(slope_mar)])
+ text(0.5,2.0, ['n = ',num2str(n_mar)])
+ title('Data from GavrGolu2023');
  saveas(gcf, 'W_BMR_mar_GavrGolu2023.png')
  
  
@@ -875,7 +882,10 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
  plot(log10(data_mon(:,1)),log10(data_mon(:,2)),'o', 'MarkerSize',5, 'LineWidth',2, 'MarkerFaceColor',[1 1 1], 'MarkerEdgeColor',[1 .5 .5])
  xlabel('_{10}log body mass, g')
  ylabel('_{10}log BMR, mg O_2/min')
- title(['scaling exponent ',num2str(slope_mon),' for ', num2str(n_mon),' Monotremata of GavrGolu2023']);
+ text(0.5,3.0, 'Monotremata')
+ text(0.5,2.5, ['scaling exp ',num2str(slope_mon)])
+ text(0.5,2.0, ['n = ',num2str(n_mon)])
+ title('Data from GavrGolu2023');
  saveas(gcf, 'W_BMR_mon_GavrGolu2023.png')
 
 % reference
