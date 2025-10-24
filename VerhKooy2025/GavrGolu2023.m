@@ -11,6 +11,7 @@ Aves = [ ... % species, mass (g), BMR (ml O2/h)
     {'Crypturellus soui'              }     220.8       140%
     {'Nothoprocta perdicaria'         }       458     317.5%
     % Neognathae
+    % Accipitriformes (below some more)
     {'Accipiter cooperii'             }       452       383%
     {'Accipiter nisus'                }       135       171%
     {'Accipiter striatus'             }     173.4     94.55%
