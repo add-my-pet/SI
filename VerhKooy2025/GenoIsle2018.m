@@ -3,7 +3,7 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Antilocapra americana'	37800.00'	10586.00 %
 'Alcelaphus buselaphus'	98000.00'	30024.00 %
 'Connochaetes taurinus'	140000.00'	27440.00 %
-'Gazella gazella'	16300.00'	6275.00
+'Gazella gazella'	16300.00'	6275.00      %
 'Gazella spekei'	12400.00'	5926.00      %
 'Gazella subgutturosa'	17100.00'	4595.80  %
 'Kobus ellipsiprymnus'	100000.00'	26667.00 %
@@ -30,7 +30,7 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Tursiops truncatus'	190720.00'	43503.00 %
 'Delphinapterus leucas'	625000.00'	114090.00%
 'Phocoena phocoena'	28500.00'	19380.00     %
-'Equus asinus'	177500.00'	29400.00
+'Equus africanus asinus' 177500.00'	29400.00 %
 'Canis latrans'	10000.00'	2688.00          %
 'Canis lupus'	35500.00'	8305.00          %
 'Canis mesomelas'	7720.00'	3760.00      %
@@ -39,7 +39,7 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Cerdocyon thous'	5444.00'	1497.10      %
 'Nyctereutes procyonoides'	7575.00'	3045.00%
 'Vulpes rueppellii'	1546.00'	798.90       %
-'Vulpes cana'	1285.00'	631.20
+'Vulpes cana'	1285.00'	631.20           %
 'Vulpes zerda'	1106.00'	396.00           %
 'Vulpes lagopus'	3970.00'	1709.50      %
 'Vulpes macrotis'	1769.00'	1078.40      %

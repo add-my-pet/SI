@@ -63,40 +63,32 @@ nm = { ...
 'Acontias_meleagris'
 'Typhlacontias_brevipes'
 % Aves
-'Myrmotherula_fulviventris'
-'Sclerurus_guatemalensis'
-'Pipra_mentalis' % Ceratopipra_mentalis
-'Oncostoma_olivaceum'
-'Elaenia_chiriquensis'
-'Tyrannulus_elatus'
-'Rhynchocyclus_olivaceus'
-'Capsiempis_flaveola'
-'Tolmomyias_assimillis'
-'Ramphocaenus_melanurus'
-'Ramphocelus_dimidiatus'
-'Ramphocelus_dimidiatus'
-'Thryothorus_fasciatoventris'
-'Thryothorus_leucotis'
-'Thryothorus_leucotis'
-'Thryothorus_rutilus'
-'Turdus_grayi'
-'Turdus_grayi'
-'Vireo_flavoviridis'
-'Vireo_flavoviridis'
-'Hylophilus_flavipes'
-'Euphonia_laniirostris'
-'Euphonia_laniirostris'
-'Cyanocompsa_cyanoides'
-'Cyanocompsa_cyanoides'
-'Habia_fuscicauda'
-'Phrygilus_gayi'
-'Oryzoborus_angolensis'
-'Saltator_striatipectus'
-'Sporophila_nigricollis'
-'Thraupis_palmarum'
-'Arremonops_conirostris'
-'Arremonops_conirostris'
-'Basileuterus_rufifrons'
+'Myrmotherula_fulviventris' % BMR NaN
+'Sclerurus_guatemalensis' % BMR NaN
+'Oncostoma_olivaceum' % BMR NaN
+'Elaenia_chiriquensis' % BMR NaN
+'Tyrannulus_elatus' % BMR NaN
+'Rhynchocyclus_olivaceus' % BMR NaN
+'Capsiempis_flaveola' % BMR NaN
+'Tolmomyias_assimillis' % BMR NaN
+'Ramphocaenus_melanurus' % BMR NaN
+'Ramphocelus_dimidiatus' % BMR NaN
+'Ramphocelus_dimidiatus' % BMR NaN
+'Thryothorus_fasciatoventris' % BMR NaN
+'Thryothorus_leucotis' % BMR NaN
+'Thryothorus_leucotis' % BMR NaN
+'Thryothorus_rutilus' % BMR NaN
+'Hylophilus_flavipes' % BMR NaN
+'Euphonia_laniirostris' % BMR NaN
+'Euphonia_laniirostris' % BMR NaN
+'Cyanocompsa_cyanoides' % BMR NaN
+'Cyanocompsa_cyanoides' % BMR NaN
+'Habia_fuscicauda' % BMR NaN
+'Phrygilus_gayi' % BMR NaN
+'Oryzoborus_angolensis' % BMR NaN
+'Sporophila_nigricollis' % BMR NaN
+'Thraupis_palmarum' % BMR NaN
+'Basileuterus_rufifrons' % BMR NaN
 % Mammalia
 'Helogale_parvula'
 'Mungos_mungo'
@@ -116,9 +108,6 @@ nm = { ...
 'Graomys_griseoflavus'
 'Oryzomys_longicaudatus' % Oligoryzomys longicaudatus
 'Reithrodon_auritus'
-'Perognathus_fallax' % Chaetodipus fallax
-'Perognathus_fallax' % Chaetodipus fallax
-'Perognathus_fallax' % Chaetodipus fallax
 'Octodon_bridgesi'   % Octodon bridgesii 
 'Octodon_lunatus'
 'Rattus_colletti'
