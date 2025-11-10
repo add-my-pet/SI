@@ -89,8 +89,8 @@ PMR.method = {'Loco.land','Loco.water','Loco.fly', 'Loco.flyburst', 'Turpor.arou
     [6000       15      7.4    10.8]    'Loco.water', 'GrahDewa1990',    'Triakis_semifasciata' % 105 154 mg O2/h.kg
     [3900       18      13.7   21.2]    'Loco.water', 'GrahDewa1990',    'Isurus_oxyrinchus' % 300 466 mg O2/h.kg
     [2530       18.5    1.47    7.25]   'Loco.water', 'PiipMeye1977',    'Scyliorhinus_stellaris' % 0.026 0.128 mmol/kg.min
-    [10700     20	    3.632  15.5]    'Loco.water', 'Nespoloetal2017', 'Pteroplatytrygon_violacea' 
-    [2000	   10	    0.54	1.4731] 'Loco.water', 'Nespoloetal2017', 'Squalus_acanthias' 
+    [10700     20	    3.632  15.5]    'Loco.water', 'NespSola2017', 'Pteroplatytrygon_violacea' 
+    [2000	   10	    0.54	1.4731] 'Loco.water', 'NespSola2017', 'Squalus_acanthias' 
   };
 
     % 1 mg O2/h = 0.7 ml O2/h
@@ -128,103 +128,103 @@ PMR.method = {'Loco.land','Loco.water','Loco.fly', 'Loco.flyburst', 'Turpor.arou
     [ 50    15   0.0362  0.2217] 'Loco.water', 'GrahDewa1990',    'Oncorhynchus_nerka'      % 62 380 mg O2/h.kg
     [258	18	 0.3926	 1.3055] 'Loco.water', 'Sandblometal2016','Perca_fluviatilis'     	%  91.3;MMR:303.6 mg/kg/hr
     [285	23	 0.5282	 1.7095] 'Loco.water', 'Sandblometal2016','Perca_fluviatilis'		% 111.2 ;MMR: 359.8mg/kg/hr
-    [285	15	 0.0550	 0.1904] 'Loco.water', 'Verhilleetal2016','Oncorhynchus_mykiss'		% 2.03 ;MMR: 7.03 mgkg^-0.95/min
+    [285	15	 0.0550	 0.1904] 'Loco.water', 'VerhEngl2016','Oncorhynchus_mykiss'		% 2.03 ;MMR: 7.03 mgkg^-0.95/min
   };
 
  % 1 mg O2/h = 0.7 ml O2/h; %x means not in AmP
  amp = { ... % Amphibia, mass(g), temp(C), SMR(ml O2/min), PMR(ml O2/min), PMR.method
    [  2    13  0.0007   0.0075] 'Loco.land', 'Fede1986',        'Desmognathus_ochrophaeus' % 0.9 10 mumol/h.g
    [  4.1  13  0.005    0.0376] 'Loco.land', 'Full1985',        'Plethodon_jordani' % PMR 0.55 ml O2/h.g; FAS 6-9
-   [ 30.7  20  0.0188	0.1361] 'Loco.land', 'Nespoloetal2017', 'Discoglossus_pictus' % 0.0063;0.0456 W
-   [  2.6  20  0.0024	0.0206] 'Loco.land', 'Nespoloetal2017', 'Bombina_orientalis' % 0.0008;0.0069 W
-   [252    22  0.1848	2.0576] 'Loco.land', 'Nespoloetal2017', 'Rhinella_marina' % 0.0619;0.6893 W
-   [ 26.1  25  0.0439	0.5555] 'Loco.land', 'Nespoloetal2017', 'Anaxyrus_boreas' % 0.0147;0.1861 W
-   [  8.7  20  0.0084	0.1128] 'Loco.land', 'Nespoloetal2017', 'Epidalea_calamita' % 0.0028;0.0378 W
-   [ 39.59 25  0.0746	0.7719] 'Loco.land', 'Nespoloetal2017', 'Anaxyrus_cognatus' % 0.025;0.2586 W
-   [  1.55 20  0.0024	0.0188] 'Loco.land', 'Nespoloetal2017', 'Colostethus_inguinalis' % 0.0008;0.0063 W
-   [  2.02 20  0.0024	0.0296] 'Loco.land', 'Nespoloetal2017', 'Dendrobates_auratus' % 0.0008;0.0099 W
-   [  0.27 20  0.0006	0.0024] 'Loco.land', 'Nespoloetal2017', 'Colostethus_nubicola' % 0.0002;0.0008 W
-   [  1.3  19  0.0024	0.0239] 'Loco.land', 'Nespoloetal2017', 'Pseudacris_crucifer' % 0.0008;0.008 W
-   [  2.76 20  0.0027	0.0125] 'Loco.land', 'Nespoloetal2017', 'Pseudacris_regilla' % 0.0009;0.0042 W
-   [  5    20  0.0027	0.0125] 'Loco.land', 'Nespoloetal2017', 'Osteopilus_septentrionalis' % 0.0018;0.0182 W
-   [  5.7  20  0.0057	0.0499] 'Loco.land', 'Nespoloetal2017', 'Agalychnis_callidryas' % 0.0019;0.0167 W
-   [ 15.1  20  0.0081	0.1]    'Loco.land', 'Nespoloetal2017', 'Smilisca_fodiens' % 0.0027;0.0335 W
-   [  5.1  27	0.0113	0.0866] 'Loco.land', 'Nespoloetal2017', 'Hyla_cinerea' %0.0038;0.029 W
-   [  3.4  20	0.0054	0.0472] 'Loco.land', 'Nespoloetal2017', 'Hyla_arenicolor' %0.0018;0.0158 W
-   [  5.47 20	0.0116	0.0896] 'Loco.land', 'Nespoloetal2017', 'Hyla_chrysoscelis' %0.0039;0.03 W
-   [ 13.85 29	0.0221	0.2875] 'Loco.land', 'Nespoloetal2017', 'Hyla_gratiosa' %0.0074;0.0963 W
-   [  2.2  28	0.006	0.0657] 'Loco.land', 'Nespoloetal2017', 'Hyla_squirella' %0.002;0.022 W
-   [  6.1  20	0.0101	0.1036] 'Loco.land', 'Nespoloetal2017', 'Hyla_versicolor' %0.0034;0.0347 W
-   [  0.9  25  0.0015	0.011]  'Loco.land', 'Nespoloetal2017', 'Hyperolius_viridiflavus' % 0.0005;0.0037 W
-   [  6.3  20	0.0057	0.0687] 'Loco.land', 'Nespoloetal2017', 'Semnodactylus_wealii' %0.0019;0.023 W
-   [  3	   20	0.0039	0.0415] 'Loco.land', 'Nespoloetal2017', 'Kassina_senegalensis' %0.0013;0.0139 W
-   [  1.78 25	0.0042	0.0558] 'Loco.land', 'Nespoloetal2017', 'Engystomops_pustulosus' %0.0014;0.0187 W
-   [  1.9  20	0.0018	0.0257] 'Loco.land', 'Nespoloetal2017', 'Gastrophryne_carolinensis' %0.0006;0.0086 W
-   [ 30.7  20	0.0134	0.3561] 'Loco.land', 'Nespoloetal2017', 'Kaloula_pulchra' % 0.0045;0.1193 W
-   [ 22.1  18  0.0299	0.266]  'Loco.land', 'Nespoloetal2017', 'Xenopus_laevis' % 0.01;0.0891 W
-   [481.15 20  0.237	5.7322] 'Loco.land', 'Nespoloetal2017', 'Pyxicephalus_adspersus' % 0.0794;1.9203 W
-   [ 38.4  10  0.0269	0.094]  'Loco.land', 'Nespoloetal2017', 'Rana_pipiens' % 0.0090;0.0315 W
-   [ 43.58 20  0.0275	0.1155] 'Loco.land', 'Nespoloetal2017', 'Lithobates_catesbeiana' % 0.0092;0.0387 W
-   [ 12.7  20	0.0179	0.1576] 'Loco.land', 'Nespoloetal2017', 'Lithobates_sylvaticus' % 0.0060;0.0528 W
-   [ 10.88 15	0.0125	0.0725] 'Loco.land', 'Nespoloetal2017', 'Spea_hammondii' % 0.0042;0.0243 W
-   [ 26.43 15	0.0104	0.0337] 'Loco.land', 'Nespoloetal2017', 'Ambystoma_gracile' % 0.0035;0.0113 W
-   [  7.06 15	0.0054	0.0069] 'Loco.land', 'Nespoloetal2017', 'Ambystoma_jeffersonianum' % 0.0018;0.0023 W
-   [  2.79 15  0.0018	0.0048] 'Loco.land', 'Nespoloetal2017', 'Ambystoma_macrodactylum' % 0.0016;0.0113 W
-   [ 36.25 15	0.0257	0.0469] 'Loco.land', 'Nespoloetal2017', 'Ambystoma_tigrinum' % 0.0086;0.0157 W
-   [104    18  0.0812	0.2457] 'Loco.land', 'Nespoloetal2017', 'Amphiuma_means' % 0.0272;0.0823 W
-   [493	   25	0.1642	0.5176] 'Loco.land', 'Nespoloetal2017', 'Amphiuma_tridactylum' % 0.055;0.1734 W    
-   [  3.47 14  0.0021	0.0066] 'Loco.land', 'Nespoloetal2017', 'Ensatina_eschscholtzii' % 0.0007;0.0022 W
-   [  4.69 15  0.0024	0.0104] 'Loco.land', 'Nespoloetal2017', 'Plethodon_glutinosus' % 0.0008;0.0035 W
-   [ 13.13 15	0.0033	0.0128] 'Loco.land', 'Nespoloetal2017', 'Pseudoeurycea_bellii' % 0.0011;0.0043 W
-   [  5.49 23	0.0024	0.063]  'Loco.land', 'Nespoloetal2017', 'Aneides_lugubris' %0.0008;0.0211 W    
-   [  0.78 15  0.0006	0.0024] 'Loco.land', 'Nespoloetal2017', 'Batrachoseps_attenuatus' %0.0002;0.0008 W
-   [  0.61 25	0.0003	0.0018] 'Loco.land', 'Nespoloetal2017', 'Bolitoglossa_occidentalis' %0.0001;0.0006 W
-   [  1.67 13  0.0009	0.0069] 'Loco.land', 'Nespoloetal2017', 'Bolitoglossa_subpalmata' % 0.0003;0.0023 W
-   [ 20.05 15  0.0072	0.0227] 'Loco.land', 'Nespoloetal2017', 'Desmognathus_quadramaculatus' % 0.0016;0.0076 W
-   [  1.41 15  0.0009	0.0048] 'Loco.land', 'Nespoloetal2017', 'Eurycea_longicauda' % 0.0003;0.0016 W
-   [  7.34 15	0.003	0.0119] 'Loco.land', 'Nespoloetal2017', 'Gyrinophilus_porphyriticus' %0.001;0.0040 W
-   [  1.83 15	0.0015	0.0045] 'Loco.land', 'Nespoloetal2017', 'Plethodon_jordani' % 0.0005;0.0015 W
-   [  2.35 15	0.0015	0.0042] 'Loco.land', 'Nespoloetal2017', 'Pseudoeurycea_gadovii' % 0.0005;0.0014 W
-   [  4.55 15	0.0018	0.0075] 'Loco.land', 'Nespoloetal2017', 'Pseudoeurycea_smithi' % 0.0006;0.0025 W
-   [ 10.8  15	0.0039	0.017]  'Loco.land', 'Nespoloetal2017', 'Pseudotriton_ruber' % 0.0013;0.0057 W
-   [101.9  15  0.0009	0.0036] 'Loco.land', 'Nespoloetal2017', 'Necturus_maculosus' % 0.0068;0.0176 W
-   [  1.48 15  0.0012	0.0051] 'Loco.land', 'Nespoloetal2017', 'Notophthalmus_viridescens' % 0.0003;0.0012 W
-   [  1.93 20	0.0012	0.0051] 'Loco.land', 'Nespoloetal2017', 'Geotrypetes_seraphini' % 0.0004;0.0017 W
+   [ 30.7  20  0.0188	0.1361] 'Loco.land', 'NespSola2017', 'Discoglossus_pictus' % 0.0063;0.0456 W
+   [  2.6  20  0.0024	0.0206] 'Loco.land', 'NespSola2017', 'Bombina_orientalis' % 0.0008;0.0069 W
+   [252    22  0.1848	2.0576] 'Loco.land', 'NespSola2017', 'Rhinella_marina' % 0.0619;0.6893 W
+   [ 26.1  25  0.0439	0.5555] 'Loco.land', 'NespSola2017', 'Anaxyrus_boreas' % 0.0147;0.1861 W
+   [  8.7  20  0.0084	0.1128] 'Loco.land', 'NespSola2017', 'Epidalea_calamita' % 0.0028;0.0378 W
+   [ 39.59 25  0.0746	0.7719] 'Loco.land', 'NespSola2017', 'Anaxyrus_cognatus' % 0.025;0.2586 W
+   [  1.55 20  0.0024	0.0188] 'Loco.land', 'NespSola2017', 'Colostethus_inguinalis' % 0.0008;0.0063 W
+   [  2.02 20  0.0024	0.0296] 'Loco.land', 'NespSola2017', 'Dendrobates_auratus' % 0.0008;0.0099 W
+   [  0.27 20  0.0006	0.0024] 'Loco.land', 'NespSola2017', 'Colostethus_nubicola' % 0.0002;0.0008 W
+   [  1.3  19  0.0024	0.0239] 'Loco.land', 'NespSola2017', 'Pseudacris_crucifer' % 0.0008;0.008 W
+   [  2.76 20  0.0027	0.0125] 'Loco.land', 'NespSola2017', 'Pseudacris_regilla' % 0.0009;0.0042 W
+   [  5    20  0.0027	0.0125] 'Loco.land', 'NespSola2017', 'Osteopilus_septentrionalis' % 0.0018;0.0182 W
+   [  5.7  20  0.0057	0.0499] 'Loco.land', 'NespSola2017', 'Agalychnis_callidryas' % 0.0019;0.0167 W
+   [ 15.1  20  0.0081	0.1]    'Loco.land', 'NespSola2017', 'Smilisca_fodiens' % 0.0027;0.0335 W
+   [  5.1  27	0.0113	0.0866] 'Loco.land', 'NespSola2017', 'Hyla_cinerea' %0.0038;0.029 W
+   [  3.4  20	0.0054	0.0472] 'Loco.land', 'NespSola2017', 'Hyla_arenicolor' %0.0018;0.0158 W
+   [  5.47 20	0.0116	0.0896] 'Loco.land', 'NespSola2017', 'Hyla_chrysoscelis' %0.0039;0.03 W
+   [ 13.85 29	0.0221	0.2875] 'Loco.land', 'NespSola2017', 'Hyla_gratiosa' %0.0074;0.0963 W
+   [  2.2  28	0.006	0.0657] 'Loco.land', 'NespSola2017', 'Hyla_squirella' %0.002;0.022 W
+   [  6.1  20	0.0101	0.1036] 'Loco.land', 'NespSola2017', 'Hyla_versicolor' %0.0034;0.0347 W
+   [  0.9  25  0.0015	0.011]  'Loco.land', 'NespSola2017', 'Hyperolius_viridiflavus' % 0.0005;0.0037 W
+   [  6.3  20	0.0057	0.0687] 'Loco.land', 'NespSola2017', 'Semnodactylus_wealii' %0.0019;0.023 W
+   [  3	   20	0.0039	0.0415] 'Loco.land', 'NespSola2017', 'Kassina_senegalensis' %0.0013;0.0139 W
+   [  1.78 25	0.0042	0.0558] 'Loco.land', 'NespSola2017', 'Engystomops_pustulosus' %0.0014;0.0187 W
+   [  1.9  20	0.0018	0.0257] 'Loco.land', 'NespSola2017', 'Gastrophryne_carolinensis' %0.0006;0.0086 W
+   [ 30.7  20	0.0134	0.3561] 'Loco.land', 'NespSola2017', 'Kaloula_pulchra' % 0.0045;0.1193 W
+   [ 22.1  18  0.0299	0.266]  'Loco.land', 'NespSola2017', 'Xenopus_laevis' % 0.01;0.0891 W
+   [481.15 20  0.237	5.7322] 'Loco.land', 'NespSola2017', 'Pyxicephalus_adspersus' % 0.0794;1.9203 W
+   [ 38.4  10  0.0269	0.094]  'Loco.land', 'NespSola2017', 'Rana_pipiens' % 0.0090;0.0315 W
+   [ 43.58 20  0.0275	0.1155] 'Loco.land', 'NespSola2017', 'Lithobates_catesbeiana' % 0.0092;0.0387 W
+   [ 12.7  20	0.0179	0.1576] 'Loco.land', 'NespSola2017', 'Lithobates_sylvaticus' % 0.0060;0.0528 W
+   [ 10.88 15	0.0125	0.0725] 'Loco.land', 'NespSola2017', 'Spea_hammondii' % 0.0042;0.0243 W
+   [ 26.43 15	0.0104	0.0337] 'Loco.land', 'NespSola2017', 'Ambystoma_gracile' % 0.0035;0.0113 W
+   [  7.06 15	0.0054	0.0069] 'Loco.land', 'NespSola2017', 'Ambystoma_jeffersonianum' % 0.0018;0.0023 W
+   [  2.79 15  0.0018	0.0048] 'Loco.land', 'NespSola2017', 'Ambystoma_macrodactylum' % 0.0016;0.0113 W
+   [ 36.25 15	0.0257	0.0469] 'Loco.land', 'NespSola2017', 'Ambystoma_tigrinum' % 0.0086;0.0157 W
+   [104    18  0.0812	0.2457] 'Loco.land', 'NespSola2017', 'Amphiuma_means' % 0.0272;0.0823 W
+   [493	   25	0.1642	0.5176] 'Loco.land', 'NespSola2017', 'Amphiuma_tridactylum' % 0.055;0.1734 W    
+   [  3.47 14  0.0021	0.0066] 'Loco.land', 'NespSola2017', 'Ensatina_eschscholtzii' % 0.0007;0.0022 W
+   [  4.69 15  0.0024	0.0104] 'Loco.land', 'NespSola2017', 'Plethodon_glutinosus' % 0.0008;0.0035 W
+   [ 13.13 15	0.0033	0.0128] 'Loco.land', 'NespSola2017', 'Pseudoeurycea_bellii' % 0.0011;0.0043 W
+   [  5.49 23	0.0024	0.063]  'Loco.land', 'NespSola2017', 'Aneides_lugubris' %0.0008;0.0211 W    
+   [  0.78 15  0.0006	0.0024] 'Loco.land', 'NespSola2017', 'Batrachoseps_attenuatus' %0.0002;0.0008 W
+   [  0.61 25	0.0003	0.0018] 'Loco.land', 'NespSola2017', 'Bolitoglossa_occidentalis' %0.0001;0.0006 W
+   [  1.67 13  0.0009	0.0069] 'Loco.land', 'NespSola2017', 'Bolitoglossa_subpalmata' % 0.0003;0.0023 W
+   [ 20.05 15  0.0072	0.0227] 'Loco.land', 'NespSola2017', 'Desmognathus_quadramaculatus' % 0.0016;0.0076 W
+   [  1.41 15  0.0009	0.0048] 'Loco.land', 'NespSola2017', 'Eurycea_longicauda' % 0.0003;0.0016 W
+   [  7.34 15	0.003	0.0119] 'Loco.land', 'NespSola2017', 'Gyrinophilus_porphyriticus' %0.001;0.0040 W
+   [  1.83 15	0.0015	0.0045] 'Loco.land', 'NespSola2017', 'Plethodon_jordani' % 0.0005;0.0015 W
+   [  2.35 15	0.0015	0.0042] 'Loco.land', 'NespSola2017', 'Pseudoeurycea_gadovii' % 0.0005;0.0014 W
+   [  4.55 15	0.0018	0.0075] 'Loco.land', 'NespSola2017', 'Pseudoeurycea_smithi' % 0.0006;0.0025 W
+   [ 10.8  15	0.0039	0.017]  'Loco.land', 'NespSola2017', 'Pseudotriton_ruber' % 0.0013;0.0057 W
+   [101.9  15  0.0009	0.0036] 'Loco.land', 'NespSola2017', 'Necturus_maculosus' % 0.0068;0.0176 W
+   [  1.48 15  0.0012	0.0051] 'Loco.land', 'NespSola2017', 'Notophthalmus_viridescens' % 0.0003;0.0012 W
+   [  1.93 20	0.0012	0.0051] 'Loco.land', 'NespSola2017', 'Geotrypetes_seraphini' % 0.0004;0.0017 W
    };
 
 squ = { ... % Squamata mass (g), Tb (C), SMR (mg O2/min), PMR (mg O2/min), PMR.method
   %Alligatoridae
-  [ 100.51 40.5	1.2432 14.3946]	 'Loco.land', 'Nespoloetal2017', 'Alligator_mississippiensis' %0.4165;4.8222 W  
+  [ 100.51 40.5	1.2432 14.3946]	 'Loco.land', 'NespSola2017', 'Alligator_mississippiensis' %0.4165;4.8222 W  
   %Anguidae
-  [  32.17 25   0.0205  0.6796]  'Loco.land', 'KamelGatten1983', 'Ophisaurus_ventralis'  % SMR 0.0382 ml/g/h; MMR: 1.2675
+  [  32.17 25   0.0205  0.6796]  'Loco.land', 'KameGatt1983', 'Ophisaurus_ventralis'  % SMR 0.0382 ml/g/h; MMR: 1.2675
   %Anniellidae
-  [   4.94 25  	0.0054  0.04]	 'Loco.land', 'KamelGatten1983', 'Anniella_pulchra'  	% SMR 0.0662 ml/g/h; MMR: 0.4863
+  [   4.94 25  	0.0054  0.04]	 'Loco.land', 'KameGatt1983', 'Anniella_pulchra'  	% SMR 0.0662 ml/g/h; MMR: 0.4863
   %Colubridae
-  [ 548	   30	0.0068	0.07092] 'Loco.land', 'Nespoloetal2017', 'Pituophis_catenifer' %0.1377;1.4256 W
-  [  19.04 25   0.0188  0.1477]  'Loco.land', 'KamelGatten1983', 'Thamnophis_butleri'  %0.0591;0.4653 ml/g/h
+  [ 548	   30	0.0068	0.07092] 'Loco.land', 'NespSola2017', 'Pituophis_catenifer' %0.1377;1.4256 W
+  [  19.04 25   0.0188  0.1477]  'Loco.land', 'KameGatt1983', 'Thamnophis_butleri'  %0.0591;0.4653 ml/g/h
   %Crocodylidae
-  [1030	   32	0.4015	7.0645]	 'Loco.land', 'Nespoloetal2017', 'Crocodylus_porosus' %0.1476;1.5383 W
+  [1030	   32	0.4015	7.0645]	 'Loco.land', 'NespSola2017', 'Crocodylus_porosus' %0.1476;1.5383 W
   %Helodermatidae
-  [ 463.9  25	0.4406	4.5919]	 'Loco.land', 'Nespoloetal2017', 'Heloderma_suspectum' %0.1476;1.5383 W
+  [ 463.9  25	0.4406	4.5919]	 'Loco.land', 'NespSola2017', 'Heloderma_suspectum' %0.1476;1.5383 W
   %Iguanidae
-  [ 690.16 35	1.2015 10.6651]	 'Loco.land', 'Nespoloetal2017', 'Ctenosaura_similis'  %4025;3.5728 W
-  [  80.99 40	0.2042	2.0472]	 'Loco.land', 'Nespoloetal2017', 'Dipsosaurus_dorsalis'  %0.0684;0.6858 W
-  [2149.83 35	3.1627 27.4173]	 'Loco.land', 'Nespoloetal2017', 'Iguana_iguana'  %1.0595;9.1848 W
-  [ 574	   37.5	0.8418	5.3373]	 'Loco.land', 'Nespoloetal2017', 'Sauromalus_hispidus'  %0.2820;1.7880 W
+  [ 690.16 35	1.2015 10.6651]	 'Loco.land', 'NespSola2017', 'Ctenosaura_similis'  %4025;3.5728 W
+  [  80.99 40	0.2042	2.0472]	 'Loco.land', 'NespSola2017', 'Dipsosaurus_dorsalis'  %0.0684;0.6858 W
+  [2149.83 35	3.1627 27.4173]	 'Loco.land', 'NespSola2017', 'Iguana_iguana'  %1.0595;9.1848 W
+  [ 574	   37.5	0.8418	5.3373]	 'Loco.land', 'NespSola2017', 'Sauromalus_hispidus'  %0.2820;1.7880 W
   [1136    35    NaN   16.9]	 'Loco.land', 'ChriConl1994',    'Cyclura_nubila'
   %Phrynosomatidae
-  [  19.77 35	0.0812  0.7427]	 'Loco.land', 'Nespoloetal2017', 'Sceloporus_occidentalis'  %0.0272;0.2488 W
-  [   3.76 35	0.0316	0.2140]	 'Loco.land', 'Nespoloetal2017', 'Uta_stansburiana'  %0.0106;0.0717 W
+  [  19.77 35	0.0812  0.7427]	 'Loco.land', 'NespSola2017', 'Sceloporus_occidentalis'  %0.0272;0.2488 W
+  [   3.76 35	0.0316	0.2140]	 'Loco.land', 'NespSola2017', 'Uta_stansburiana'  %0.0106;0.0717 W
   %Polychrotidae
-  [   5.1  20	0.0054	0.0263]	 'Loco.land', 'Nespoloetal2017', 'Anolis_carolinensis'  %0.0018;0.0088 W
+  [   5.1  20	0.0054	0.0263]	 'Loco.land', 'NespSola2017', 'Anolis_carolinensis'  %0.0018;0.0088 W
   %Teiidae
-  [1089	   35	2.4681 12.1946]	 'Loco.land', 'Nespoloetal2017', 'Tupinambis_nigropunctatus'	%0.8268;4.0852 W
+  [1089	   35	2.4681 12.1946]	 'Loco.land', 'NespSola2017', 'Tupinambis_nigropunctatus'	%0.8268;4.0852 W
   %Testudines
-  [ 179	   25	0.1081	0.4376]	 'Loco.land', 'Nespoloetal2017', 'Chrysemys_picta'  %0.0362;0.1466 W
-  [ 354	   20	0.0549	1.2122]	 'Loco.land', 'Nespoloetal2017', 'Terrapene_ornata'  %0.0184;0.4061 W
-  [ 305	   20	0.0555	1.4048]	 'Loco.land', 'Nespoloetal2017', 'Trachemys_scripta'  %0.0186;0.4706 W
+  [ 179	   25	0.1081	0.4376]	 'Loco.land', 'NespSola2017', 'Chrysemys_picta'  %0.0362;0.1466 W
+  [ 354	   20	0.0549	1.2122]	 'Loco.land', 'NespSola2017', 'Terrapene_ornata'  %0.0184;0.4061 W
+  [ 305	   20	0.0555	1.4048]	 'Loco.land', 'NespSola2017', 'Trachemys_scripta'  %0.0186;0.4706 W
   %Trogonophidae
-  [   4.97 25   0.0032  0.0473]  'Loco.land', 'KamelGatten1983', 'Trogonophis_wiegmanni'  % SMR 0.0391 ml/g/h; MMR: 0.5705
+  [   4.97 25   0.0032  0.0473]  'Loco.land', 'KameGatt1983', 'Trogonophis_wiegmanni'  % SMR 0.0391 ml/g/h; MMR: 0.5705
   %Varanidae
   [1287    35   3.1    24.3]     'Loco.land', 'ChriConl1994',    'Varanus_rosenbergi' %x
   [1788.5  35	4.7325 30.9949]	 'Loco.land', 'Nespolietal2017', 'Varanus_rosenbergi' %1.5854;10.3833 W
@@ -235,15 +235,15 @@ squ = { ... % Squamata mass (g), Tb (C), SMR (mg O2/min), PMR (mg O2/min), PMR.m
   [  17.44 35	0.0451	0.9397]	 'Loco.land', 'Nespolietal2017', 'Varanus_brevicauda' %0.0151;0.3148 W
   [  14.03 35	0.0376	1.5663]	 'Loco.land', 'Nespolietal2017', 'Varanus_caudolineatus' %0.0126;0.5247 W
   [  37.94 35	0.1027	1.5313]	 'Loco.land', 'Nespolietal2017', 'Varanus_eremius' %0.0344;0.5130 W
-  [ 505    35   1.212   9.2583]  'Loco.land', 'Gleeson1981',     'Varanus_salvator'	% all male; 0.144;1.10 ml/g/hr
+  [ 505    35   1.212   9.2583]  'Loco.land', 'Glee1979',     'Varanus_salvator'	% all male; 0.144;1.10 ml/g/hr
   %Scincidae
   [ 517    35  	1.6    	5.4]     'Loco.land', 'ChriConl1994',    'Tiliqua_rugosa'  
-  [  10.2  15   0.0031  0.0139]	 'Righting',  'Withers1981',     'Mabuya_capensis'  %0.018;0.082 ml/g/hr
-  [  10.2  15   0.0031  0.0139]  'Righting',  'Withers1981',     'Mabuya_varia'  %0.018;0.082 ml/g/hr
-  [  10.2  15   0.0031  0.0139]	 'Righting',  'Withers1981',     'Mabuya_sulcata'  %0.018:0.082 ml/g/hr
-  [   1.1  15  	0.0009  0.0144]  'Righting',  'Withers1981',     'Scelotes_gronovii'  %0.048;0.783 ml/g/hr
-  [   7.3  15   0.0051  0.0623]  'Righting',  'Withers1981',     'Acontias_meleagris'  %0.042;0.512 ml/g/hr
-  [   1.7  15   0.0003  0.0055]  'Righting',  'Withers1981',     'Typhlacontias_brevipes'  %0.012;0.194 ml/g/hr
+  [  10.2  15   0.0031  0.0139]	 'Righting',  'With1981',     'Mabuya_capensis'  %0.018;0.082 ml/g/hr
+  [  10.2  15   0.0031  0.0139]  'Righting',  'With1981',     'Mabuya_varia'  %0.018;0.082 ml/g/hr
+  [  10.2  15   0.0031  0.0139]	 'Righting',  'With1981',     'Mabuya_sulcata'  %0.018:0.082 ml/g/hr
+  [   1.1  15  	0.0009  0.0144]  'Righting',  'With1981',     'Scelotes_gronovii'  %0.048;0.783 ml/g/hr
+  [   7.3  15   0.0051  0.0623]  'Righting',  'With1981',     'Acontias_meleagris'  %0.042;0.512 ml/g/hr
+  [   1.7  15   0.0003  0.0055]  'Righting',  'With1981',     'Typhlacontias_brevipes'  %0.012;0.194 ml/g/hr
   };
 
 ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min), PMRmethod; %x means not in AmP
@@ -1045,6 +1045,88 @@ for c=1:length(fig)
       xlabel('supply stress, s_s, -')
       ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
       saveas(gca,'ss_jOi.png')
+      
+    case 12 % care-corrected s_s
+      shstat_options('default');
+      shstat_options('x_transform', 'none');
+      shstat_options('y_transform', 'none');
+      shstat_options('x_label', 'on');
+      shstat_options('y_label', 'on');
+      data = read_allStat({'p_Ji','p_Si','p_Ai','kap'}); 
+      p_Ji = data(:,1); p_Si = data(:,2); p_Ai = data(:,3); kap = data(:,4);
+      s_s = p_Ji.*p_Si.^2./p_Ai.^3; % -, supply stress
+      
+      [Hfig, Hleg] = shstat([s_s, kap], legend_aves, date); % set title, output handle for adding items    
+      figure(Hfig) % care-corrected  s_s-kap
+      xlabel('supply stress, s_s, -')
+      ylabel('allocation fraction to soma, \kappa, -')
+      text(0.01,0.5,'\kappa_J^M = 0')
+      kkap = linspace(0, 1, 100); ss = kkap.^2 .* (1 - kkap); 
+      plot(ss, kkap, 'k', 'Linewidth', 2)
+      xlim([0 4/27]); ylim([0 1]);
+      saveas(gca,'ss_kap.png')
+      %
+      shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
+      saveas(gca,'legend_aves.png')
+      
+      % care-corrected s_s
+      kap_JM = 0.025;
+      s_scor = (p_Ji + kap_JM * p_Si)*(1-kap_JM)^2.*p_Si.^2./p_Ai.^3; % -, care-corrected supply stress
+      [Hfig, Hleg] = shstat([s_scor, (1 - kap_JM)*kap], legend_aves, date); % set title, output handle for adding items
+    
+      figure(Hfig) % care-corrected s_s-care-corrected kap
+      xlabel('care-corrected supply stress, s_s^c, -')
+      ylabel('corr alloc frac to soma, (1 - \kappa_J^M) \kappa, -')
+      text(0.01,0.5,['\kappa_J^M = ', num2str(kap_JM)])
+      kkap = linspace(0, 1, 100)'; ss = kkap.^2 .* (1 - kkap); 
+      plot(ss, kkap, 'k', 'Linewidth', 2)
+      xlim([0 4/27]); ylim([0 1]);
+      saveas(gca,'ssc_kap.png')
+
+      nm = select; nm_ave = ave(:,4); n_ave = length(nm_ave); FMR_ave = NaN(n_ave,1);
+      data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
+      for i=1:n_ave
+        FMR_ave(i) = 15.55 * get_FMR(nm_ave{i}, W_ave(i), T_ave(i), 1); % ml O2/min
+      end
+      FAS_ave = PMR_ave./FMR_ave;  data = read_stat(nm_ave,{'p_Ji','p_Si','p_Ai','kap'}); 
+      p_Ji = data(:,1); p_Si = data(:,2); p_Ai = data(:,3); kap = data(:,4);
+      s_s_ave = p_Ji.*p_Si.^2./p_Ai.^3; % -, supply stress
+
+      Hfig = figure; % ss-FAS for birds
+      plot([0;4/27],[1/2;3/2],'-', 'Color',[.85 .85 .85], 'LineWidth',15) % grey "model" prediction
+      hold on
+      plot(s_s_ave, log10(FAS_ave), '.r', 'MarkerSize',20)
+
+      xlabel('supply stress s_s, -')
+      xlim([0 4/27])
+      ylabel('_{10}log measured PMR/ predicted FMR, -')
+       
+      % set species names behind markers in plot figure
+      h = datacursormode(Hfig); entries_txt = nm_ave; data = [s_s_ave, log10(FAS_ave)];
+      h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+      datacursormode on % mouse click on plot
+      text(.02, 2, '\kappa_J^M = 0')
+
+      saveas(gcf,'ss_FAS_ave.fig')
+      saveas(gcf,'ss_FAS_ave.png')
+
+      Hfig = figure; % care-corrected ss-FAS for birds
+      plot([0;4/27],[1/2;3/2],'-', 'Color',[.85 .85 .85], 'LineWidth',15) % grey "model" prediction
+      hold on
+      s_scor_ave = (p_Ji + kap_JM * p_Si)*(1-kap_JM)^2.*p_Si.^2./p_Ai.^3; % -, care-corrected supply stress
+      plot(s_scor_ave, log10(FAS_ave), '.r', 'MarkerSize',20)
+      xlabel('care corr supply stress s_s^c, -')
+      xlim([0 4/27])
+      ylabel('_{10}log measured PMR/ predicted FMR, -')
+      text(.02, 2, ['\kappa_J^M = ', num2str(kap_JM)])
+       
+      % set species names behind markers in plot figure
+      h = datacursormode(Hfig); entries_txt = nm_ave; data = [s_scor_ave, log10(FAS_ave)];
+      h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+      datacursormode on % mouse click on plot
+
+      saveas(gcf,'ssc_FAS_ave.fig')
+      saveas(gcf,'ssc_FAS_ave.png')
 
   end
 end
@@ -1250,6 +1332,16 @@ end
 %   author = {Todd T. Gleeson}
 % }
 %
+%
+% @article{Glee1979,
+%   title = {Preferred Body Temperature, Aerobic Scope, and Activity Capacity in the Monitor Lizard, Varanus salvator},
+%   journal = {Physiological Zoology},
+%   volume = {54},
+%   year = {1981},
+%   pages = {423-429},
+%   author = {Todd T. Gleeson}
+% }
+%
 % @article{GormMill1998,
 %   title = {High hunting costs make African wild dogs vulnerable to kleptoparasitism by hyaenas},
 %   journal = {Nature},
@@ -1305,6 +1397,16 @@ end
 %   author = {Jason S. John and Dennis R. Christen and Katherine L. Flammer and Traci L. Kendall and Emily C. Nazario and Beau P. Richter and Verena Gill and Terrie M. Williams}
 % }
 % 
+% @article{KameGatt1983,
+%   title = {Aerobic and Anaerobic Activity Metabolism of Limbless and Fossorial Reptiles},
+%   journal = {Physiological Zoology},
+%   volume = {56},
+%   year = {1983},
+%   pages = {416-429},
+%   author = {S. Kamel and R. E. Gatten}
+% }
+% 
+%
 % @article{Kirk1983,
 %   title = {A LIMIT TO METABOLISABLE ENERGY INTAKE IN MAMMALS AND BIRDS},
 %   journal = {Comp. Biochem. Physiol.},
@@ -1368,6 +1470,15 @@ end
 %   pages = {67-73}
 % }
 %
+% @ARTICLE{NespSola2017,
+%   author = {R. F. Nespolo and J. J. Solano-Iguaran and F. Bozinovic},
+%   title = {Phylogenetic Analysis Supports the Aerobic-Capacity Model for the Evolution of Endothermy},
+%   journal = {Am. Nat.},
+%   year = {2017},
+%   volume = {189},
+%   pages = {13-27}
+% }
+%
 % @ARTICLE{OchoTayl2005,
 %   author = {Dorota Ochoci\'{n}ska and Jan R. E. Taylor},
 %   title = {Living at the Physiological Limits: Field and Maximum Metabolic Rates of the Common Shrew (Sorex araneus)},
@@ -1413,6 +1524,16 @@ end
 %   year = {2002},
 %   volume = {205},
 %   pages = {101–107}
+% }
+%
+% @ARTICLE{SandClar2016,
+%   doi = { 10.1038/ncomms11447 | www.nature.com/naturecommunications},
+%   author = {E. Sandblom and T.D. Clark and A. Grans and A. Ekstrom and J. Brijs and L.F. Sundstrom and A. Odelstrom and A. Adill and T. Aho and F. Jutfelt},
+%   title = {Physiological constraints to climate warming in fish follow principles of plastic floors and concrete ceilings},
+%   journal = {Nature Communications},
+%   year = {2016},
+%   volume = {7},
+%   pages = {11447}
 % }
 %
 % @ARTICLE{ScanMill2014,
@@ -1471,6 +1592,16 @@ end
 %   pages = {e02062}
 % }
 %
+% @ARTICLE{VerhEngl2016,
+%   doi = {10.1093/conphys/cow057},
+%   author = {C.E. Verhille and K.K. English and D.E. Cocherell and A.P. Farrell and N.A. Fangue},
+%   title = {High thermal tolerance of a rainbow trout population near its southern range limit suggests local thermal adjustment},
+%   journal = {Conserv. Physiol.},
+%   year = {2016},
+%   volume = {4}, 
+%   pages = {cow057}
+% }
+%
 % @ARTICLE{VeziGers2017,
 %   doi = {10.1152/ajpregu.00453.2016},
 %   author = {Fran\c{c}ois V\'{e}zina and Alexander R. Gerson and Christopher G. Guglielmo and Theunis Piersma},
@@ -1515,6 +1646,16 @@ end
 %   volume = {80(5)},
 %   year = {2013},
 %   pages = {1-9}
+% }
+%
+% @ARTICLE{With1981,
+%   doi = {10.2307/1444055}, 
+%   author = {P.C. Withers},
+%   title = {Physiological Correlates of Limblessness and Fossoriality in Scincid Lizards},
+%   journal = {Copeia},
+%   volume = {1981},
+%   year = {1981},
+%   pages = {197-204}
 % }
 %
 % @ARTICLE{WithThom2000,

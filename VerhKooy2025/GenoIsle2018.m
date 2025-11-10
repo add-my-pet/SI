@@ -108,17 +108,17 @@ Mamm = { ... % data from GenoIsle2018: weight (g), BMR (ml O2/h)
 'Paradoxurus hermaphroditus'	3160.00'	760.00 %
 'Peropteryx macrotis'	5.10'	11.78        %
 'Saccopteryx bilineata'	7.80'	14.50        %
-'Saccopteryx leptura'	4.20'	9.49
-'Taphozous mauritianus'	26.17'	31.14
-'Aselliscus tricuspidatus'	4.20'	7.14
-'Hipposideros diadema'	37.20'	33.00
-'Hipposideros cervinus'	8.30'	8.96
-'Hipposideros galeritus'	8.50'	9.35
-'Hipposideros maggietaylorae'	18.20'	21.10
-'Hipposideros armiger'	53.10'	32.90           %
-'Rhinonicteris aurantia'	8.27'	16.20       %
-'Macroderma gigas'	107.20'	94.30               %
-'Nycteris thebaica'	11.65'	18.76
+'Saccopteryx leptura'	4.20'	9.49         %
+'Taphozous mauritianus'	26.17'	31.14        %
+'Aselliscus tricuspidatus'	4.20'	7.14     %
+'Hipposideros diadema'	37.20'	33.00        %
+'Hipposideros cervinus'	8.30'	8.96         %
+'Hipposideros galeritus'	8.50'	9.35     %
+'Hipposideros maggietaylorae'	18.20'	21.10%
+'Hipposideros armiger'	53.10'	32.90        %
+'Rhinonicteris aurantia'	8.27'	16.20    %
+'Macroderma gigas'	107.20'	94.30            %
+'Nycteris thebaica'	11.65'	18.76            %
 'Miniopterus natalensis'	9.77'	4.89
 'Miniopterus schreibersii'	11.10'	25.40       %
 'Eumops perotis'	56.00'	39.80               %
