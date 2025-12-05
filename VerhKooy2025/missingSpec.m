@@ -94,22 +94,4 @@ nm = { ...
 'Mungos_mungo'
 'Nesotragus_moschatus' % Neotragus moschatus
 'Gazella_granti'
-'Microcavia_niata'
-'Abrothrix_andinus'
-'Abrothrix_andinus'
-'Abrothrix_andinus'
-'Abrothrix_andinus'
-'Abrothrix_andinus'
-'Abrothrix_longipilis'
-'Abrothrix_olivaceus'
-'Abrothrix_lanosus'
-'Akodon_albiventer'
-'Auliscomys_boliviensis'
-'Graomys_griseoflavus'
-'Oryzomys_longicaudatus' % Oligoryzomys longicaudatus
-'Reithrodon_auritus'
-'Octodon_bridgesi'   % Octodon bridgesii 
-'Octodon_lunatus'
-'Rattus_colletti'
-'Rattus_villosissimus'
 };
