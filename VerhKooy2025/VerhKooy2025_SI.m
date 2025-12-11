@@ -1060,7 +1060,7 @@ for c=1:length(fig)
       p_Ji = data(:,1); p_Si = data(:,2); p_Ai = data(:,3); kap = data(:,4);
       s_s = p_Ji.*p_Si.^2./p_Ai.^3; % -, supply stress
       
-      [Hfig, Hleg] = shstat([s_s, kap], legend_aves, date); % set title, output handle for adding items    
+      [Hfig, Hleg] = shstat([s_s, kap], legend_aves, datestr(datenum(date),'yyyy/mm/dd')); % set title, output handle for adding items    
       figure(Hfig) % care-corrected  s_s-kap
       xlabel('supply stress, s_s, -')
       ylabel('allocation fraction to soma, \kappa, -')
@@ -1071,12 +1071,12 @@ for c=1:length(fig)
       saveas(gca,'ss_kap.png')
       %
       shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
-      saveas(gca,'legend_aves.png')
+      %saveas(gca,'legend_aves.png')
       
       % care-corrected s_s
       kap_JM = 0.025;
       s_scor = (p_Ji + kap_JM * p_Si)*(1-kap_JM)^2.*p_Si.^2./p_Ai.^3; % -, care-corrected supply stress
-      [Hfig, Hleg] = shstat([s_scor, (1 - kap_JM)*kap], legend_aves, date); % set title, output handle for adding items
+      [Hfig, Hleg] = shstat([s_scor, (1 - kap_JM)*kap], legend_aves, datestr(datenum(date),'yyyy/mm/dd')); % set title, output handle for adding items
     
       figure(Hfig) % care-corrected s_s-care-corrected kap
       xlabel('care-corrected supply stress, s_s^c, -')
@@ -1086,7 +1086,7 @@ for c=1:length(fig)
       plot(ss, kkap, 'k', 'Linewidth', 2)
       xlim([0 4/27]); ylim([0 1]);
       saveas(gca,'ssc_kap.png')
-
+      
       nm = select; nm_ave = ave(:,4); n_ave = length(nm_ave); FMR_ave = NaN(n_ave,1);
       data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
       for i=1:n_ave
@@ -1111,8 +1111,8 @@ for c=1:length(fig)
       datacursormode on % mouse click on plot
       text(.02, 2, '\kappa_J^M = 0')
 
-      saveas(gcf,'ss_FAS_ave.fig')
-      saveas(gcf,'ss_FAS_ave.png')
+      %saveas(gcf,'ss_FAS_ave.fig')
+      %saveas(gcf,'ss_FAS_ave.png')
 
       Hfig = figure; % care-corrected ss-FAS for birds
       plot([0;4/27],[1/2;3/2],'-', 'Color',[.85 .85 .85], 'LineWidth',15) % grey "model" prediction
@@ -1129,8 +1129,26 @@ for c=1:length(fig)
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
 
-      saveas(gcf,'ssc_FAS_ave.fig')
-      saveas(gcf,'ssc_FAS_ave.png')
+      %saveas(gcf,'ssc_FAS_ave.fig')
+      %saveas(gcf,'ssc_FAS_ave.png')
+
+    case 13 % Wwi_FAS
+      figure
+      data = cell2mat(pla(:,1)); FAS_pla = data(:,4)./data(:,3);
+      Wwi_pla = read_stat(pla(:,4),'Wwi');
+      plot(log10([Wwi_pla, FAS_pla]), '.r', 'MarkerSize',20)
+      xlabel('_{10}log ultimate wet weight W_w^\infty, g')
+      ylabel('_{10}log measured FAS, -')
+      title(['Placentalia @ ', datestr(datenum(date),'yyyy/mm/dd')])
+      
+      figure
+      data = cell2mat(ave(:,1)); FAS_ave = data(:,4)./data(:,3);
+      Wwi_ave = read_stat(ave(:,4),'Wwi');
+      plot(log10([Wwi_ave, FAS_ave]), '.r', 'MarkerSize',20)
+      xlabel('_{10}log ultimate wet weight W_w^\infty, g')
+      ylabel('_{10}log measured FAS, -')
+      title(['Aves @ ', datestr(datenum(date),'yyyy/mm/dd')])
+
 
   end
 end
