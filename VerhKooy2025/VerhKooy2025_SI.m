@@ -562,53 +562,125 @@ mar = { ... % Marsupialia & Prototheria; m(g), Tb(C), BMR(ml O2/min), PMR (ml O2
 for c=1:length(fig)
  
   switch fig(c)
-    case 1 % Fig 6a: ss_FAS
-    
-      data = cell2mat(act(:,1)); PMR_BMR_act = data(:,4)./data(:,3);
-      ss_act = read_stat(act(:,4),'s_s');
-      %
-      data = cell2mat(cho(:,1)); PMR_BMR_cho = data(:,4)./data(:,3);
-      ss_cho = read_stat(cho(:,4),'s_s');
-      %
-      data = cell2mat(amp(:,1)); PMR_BMR_amp = data(:,4)./data(:,3);
-      ss_amp = read_stat(amp(:,4),'s_s');
-      %
-      data = cell2mat(squ(:,1)); PMR_BMR_squ = data(:,4)./data(:,3);
-      ss_squ = read_stat(squ(:,4),'s_s');
-      %
-      data = cell2mat(ave(:,1)); PMR_BMR_ave = data(:,4)./data(:,3);
-      ss_ave = read_stat(ave(:,4),'s_s');
-      %
-      data = cell2mat(mar(:,1)); PMR_BMR_mar = data(:,4)./data(:,3);
-      ss_mar = read_stat(mar(:,4),'s_s');
-      %
-      data = cell2mat(pla(:,1)); PMR_BMR_pla = data(:,4)./data(:,3);
-      ss_pla = read_stat(pla(:,4),'s_s');
+    case 1 % Fig 1: kap_ss_kapRA: kapRA = pRi/ pAi
 
-      Hfig = figure;
-      plot(ss_cho, log10(PMR_BMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
+      shstat_options('default');
+      shstat_options('x_transform', 'none');
+      shstat_options('y_transform', 'none');
+      shstat_options('z_transform', 'none');
+      kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+      kap_ss_kapRA = [read_allStat({'kap','s_s'}),kapRA(:,1)];
+       
+      [Hfig_vert, Hleg_vert] = shstat(kap_ss_kapRA, legend_vert, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+      figure(Hfig_vert) % add items to figure
+      xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+      kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
+      mesh(kap,ss,kapRA'); % add surface to figure
+      kap_xy = linspace(0,1,100)'; ss_xy= kap_xy.^2.*(1-kap_xy); plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
+      xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+      % define colormap for mesh: k->b->m->r->white
+      Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+      colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+      caxis([0 1]) % range for colormap
+      view(150,18)
+      %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+      %saveas(gcf,'kap_ss_kapRA_vert.fig')
+      %saveas(gcf,'kap_ss_kapRA_vert.png')
+      %saveas(Hleg_vert,'legend_vert.png')
+
+      [Hfig_invert, Hleg_invert] = shstat(kap_ss_kapRA, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+      figure(Hfig_invert) % add items to figure
+      xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
+      %kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
+      mesh(kap,ss,kapRA'); % add surface to figure
+      plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
+      xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+      % define colormap for mesh: k->b->m->r->white
+      % Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+      colormap(Hfig_invert, Colmap) % set color map to add_my_pet colors 
+      caxis([0 1]) % range for colormap
+      view(150,18)
+      %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+      %saveas(gcf,'kap_ss_kapRA_invert.fig')
+      %saveas(gcf,'kap_ss_kapRA_invert.png')
+      %saveas(Hleg_invert,'legend_invert.png')
+       
+    case 2 % Fig 2: kap, s_s, kapRA
+        
+      figure % Fig 2a: kap 
+      kap = read_allStat('kap');
+      kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - mean(kap)^2;
+      surv_kap = surv(kap); 
+      M = m; V = v; 
+      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+      fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
+      S_kap =linspace(0,1,100)'; S = 1 - betainc(S_kap,a,b);
+      plot(S_kap, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
       hold on
-      plot(ss_act, log10(PMR_BMR_act), '.b', 'MarkerSize',20)
-      plot(ss_amp, log10(PMR_BMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
-      plot(ss_squ, log10(PMR_BMR_squ), '.m', 'MarkerSize',20)
-      plot(ss_ave, log10(PMR_BMR_ave), '.r', 'MarkerSize',20)
-      plot(ss_mar, log10(PMR_BMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
-      plot(ss_pla, log10(PMR_BMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
-      xlabel('supply stress s_s, -')
-      ylabel('_{10}log PMR/BMR, -')
-      xlim([0 4/27]); ylim([-1 2.5])
+      plot([kap_min; kap_med; kap_med], [0.5;0.5;0], 'r', surv_kap(:,1), surv_kap(:,2), 'b', 'Linewidth', 2)
+      xlabel('fraction of mobilized reserve to soma \kappa,  -')
+      ylabel('survivor function')
+      %title([num2str(length(kap)),' @ ',datestr(datenum(date),'yyyy/mm/dd')])
+      %saveas(gca,'kap.png')
 
-      % set species names behind markers in plot figure
-      h = datacursormode(Hfig); entries_txt = [cho(:,4); act(:,4); amp(:,4); squ(:,4); ave(:,4); mar(:,4); pla(:,4)]; 
-      data = [[ss_cho;ss_act;ss_amp;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_BMR_cho;PMR_BMR_act;PMR_BMR_amp;PMR_BMR_squ;PMR_BMR_ave;PMR_BMR_mar;PMR_BMR_pla])];
-      for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
-      h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
-      datacursormode on % mouse click on plot
+      figure % Fig 2b: s_s
+      ss = read_allStat('s_s'); ss_max = 4/27;
+      ss_med = median(ss); ss_min = min(ss);  m = mean(ss); v = mean(ss.^2) - mean(ss)^2;
+      surv_ss = surv(ss); 
+      M = m/ss_max; V = v/ss_max^2; 
+      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+      fprintf(['pars beta for s_s: ', num2str(a), ' , ', num2str(b),'\n'])
+      ss =linspace(0,1,100)'; S = 1 - betainc(ss,a,b);
+      plot(ss*ss_max, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+      hold on
+      plot([ss_min; ss_med; ss_med], [0.5;0.5;0], 'r', surv_ss(:,1), surv_ss(:,2), 'b', 'Linewidth', 2)
+      xlabel('supply stress s_s, -') 
+      ylabel('survivor function')
+      %saveas(gca,'ss.png')
 
-      saveas(gcf,'ss_PBMR.fig')
-      saveas(gcf,'ss_PBMR.png')
+      figure % Fig 2c: kapRA
+      kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); kapRA = kapRA(:,1); 
+      kapRA_med = median(kapRA); kapRA_min = min(kapRA);  m = mean(kapRA); v = mean(kapRA.^2) - mean(kapRA)^2;
+      surv_kapRA = surv(kapRA); 
+      M = m; V = v; 
+      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
+      fprintf(['pars beta for kapRA: ', num2str(a), ' , ', num2str(b),'\n'])
+      S_RA =linspace(0,1,100)'; S = 1 - betainc(S_RA,a,b);
+      plot(S_RA, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+      hold on
+      plot([kapRA_min; kapRA_med; kapRA_med], [0.5;0.5;0], 'r', surv_kapRA(:,1), surv_kapRA(:,2), 'b', 'Linewidth', 2)
+      xlabel('fraction of assimilation to reproduction \kappa_R^A, -') 
+      ylabel('survivor function')
+      %saveas(gca,'kapRA.png')
+        
+      figure % p_A
+      pAsM = read_allStat('p_Am','s_M', 'L_i'); pA = pAsM(:,1) .*pAsM(:,2) .* pAsM(:,3).^2;
+      surv_pA = surv(pA); 
+      pA_med = median(pA); pA_min = min(pA); pA_max = max(pA); 
+      PA = 10.^linspace(log10(pA_min),log10(pA_max),500)'; 
+      %AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+      AB = wblML(pA); % gives MLEs
+      A = AB(1); B = AB(2);
+      fprintf(['Pars Weibull for p_A: ', num2str(A), ' J/d; ', num2str(B), '\n'])
+      %[M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
+      [M, V] = wblStat(A,B); S = exp(-(PA/A).^B);
+      fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
+      plot(log10(PA), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+      hold on
+      plot([log10(pA_min); log10(pA_med); log10(pA_med)], [0.5;0.5;0], 'r', log10(surv_pA(:,1)), surv_pA(:,2), 'b', 'Linewidth', 2)
+      xlabel('_{10}log max assimilation p_A^\infty, J/d') 
+      ylabel('survivor function')
+      %saveas(gca,'pAi.png')
 
-    case 2  % Fig 3: predicted FMR_measured BMR; this case takes a while to run 
+    case 3  % Fig 3: predicted FMR_measured BMR; this case takes a while to run 
       WD0 = pwd; % store original directory
       nm_cho = cho(:,4); n_cho = length(nm_cho); FMR_cho = zeros(n_cho,1); 
       data_cho = cell2mat(cho(:,1)); PMR_cho = data_cho(:,4); BMR_cho = data_cho(:,3); T_cho = data_cho(:,2); W_cho = data_cho(:,1); 
@@ -674,10 +746,106 @@ for c=1:length(fig)
       datacursormode on % mouse click on plot
 
       %prt_tab({nm_act, W_act, T_act, FMR_act, SMR_act, PMR_act},{'species', 'weight, g', 'T, C', 'FMR, ml O2/min', 'SMR, ml O2/min', 'PMR, ml O2/min'}, 'act')
-      saveas(gcf,'FMR_BMR.fig')
-      saveas(gcf,'FMR_BMR.png')
+      %saveas(gcf,'FMR_BMR.fig')
+      %saveas(gcf,'FMR_BMR.png')
 
-    case 3  % Fig 6b: ss_PMR/FMR; this case takes a while to run 
+    case 4 % Fig 4a: FMR_BMR for mammals
+      % data from GenoIsle2018
+      GenoIsle2018 % the plotting is in this script
+ 
+    case 5 % Fig 4b: FMR_BMR for birds
+      % data from GavrGolu2023
+      GavrGolu2023 % the plotting is in this script
+
+    case 6 % Fig 5: ss_var(j_Oi)
+      ssJOiW = read_allStat({'s_s', 'J_Oi', 'Ww_i', 'c_T'}); s_s = ssJOiW(:,1); Wwi = ssJOiW(:,3); jT_Oi = ssJOiW(:,2)./Wwi; j_Oi = jT_Oi./ssJOiW(:,4);
+      ss_int = linspace(0,4/27,20)'; ss = mean([ss_int(1:19),ss_int(2:20)],2); n = nan(19,1); std_jTOi = n; std_jOi = n;
+      for j = 1:19
+        sel = s_s>ss_int(j) & s_s<ss_int(j+1); 
+        jTO = jT_Oi(sel); jO = j_Oi(sel); std_jTOi(j) = std(jTO); std_jOi(j) = std(jO); n(j)=length(jTO);
+      end
+      
+      figure
+      plot(ss, 1e3*std_jTOi, 'ob')
+      xlabel('supply stress, -')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+      %saveas(gca,'ss_stdjTOi.png')
+
+      figure
+      plot(ss, 1e3*std_jOi, 'ob')
+      xlabel('supply stress, -')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+      %saveas(gca,'ss_stdjOi.png')
+      
+      figure
+      plot(s_s, log10(1e3*j_Oi), 'or')
+      xlabel('supply stress, -')
+      ylabel('_{10}log spec ultimate resp, mmol O_2/d.g')
+
+      figure
+      plot(s_s, log10(Wwi), 'or')
+      xlabel('supply stress, -')
+      ylabel('_{10}log ultimate body weight, g')
+      
+      jOi_min = min(j_Oi); jOi_max = max(j_Oi);  jO_int = linspace(jOi_min,jOi_max,20)'; 
+      jO = mean([jO_int(1:19),jO_int(2:20)],2); n = nan(19,1); std_jO = n; 
+      for j = 1:19
+        sel = s_s>jO_int(j) & s_s<jO_int(j+1); 
+        jO2 = j_Oi(sel); std_jO(j) = std(jO2); n(j)=length(jO2);
+      end
+
+      figure
+      plot(1e3*jO, 1e3*std_jO, 'or')
+      xlabel('spec ultimate respiration mmol O2/d.g')
+      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
+      
+    case 7 % Fig 6a: ss_FAS
+    
+      data = cell2mat(act(:,1)); PMR_BMR_act = data(:,4)./data(:,3);
+      ss_act = read_stat(act(:,4),'s_s');
+      %
+      data = cell2mat(cho(:,1)); PMR_BMR_cho = data(:,4)./data(:,3);
+      ss_cho = read_stat(cho(:,4),'s_s');
+      %
+      data = cell2mat(amp(:,1)); PMR_BMR_amp = data(:,4)./data(:,3);
+      ss_amp = read_stat(amp(:,4),'s_s');
+      %
+      data = cell2mat(squ(:,1)); PMR_BMR_squ = data(:,4)./data(:,3);
+      ss_squ = read_stat(squ(:,4),'s_s');
+      %
+      data = cell2mat(ave(:,1)); PMR_BMR_ave = data(:,4)./data(:,3);
+      ss_ave = read_stat(ave(:,4),'s_s');
+      %
+      data = cell2mat(mar(:,1)); PMR_BMR_mar = data(:,4)./data(:,3);
+      ss_mar = read_stat(mar(:,4),'s_s');
+      %
+      data = cell2mat(pla(:,1)); PMR_BMR_pla = data(:,4)./data(:,3);
+      ss_pla = read_stat(pla(:,4),'s_s');
+
+      Hfig = figure;
+      plot(ss_cho, log10(PMR_BMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
+      hold on
+      plot(ss_act, log10(PMR_BMR_act), '.b', 'MarkerSize',20)
+      plot(ss_amp, log10(PMR_BMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
+      plot(ss_squ, log10(PMR_BMR_squ), '.m', 'MarkerSize',20)
+      plot(ss_ave, log10(PMR_BMR_ave), '.r', 'MarkerSize',20)
+      plot(ss_mar, log10(PMR_BMR_mar), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[0 0 0])
+      plot(ss_pla, log10(PMR_BMR_pla), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 .5 .5], 'MarkerFaceColor',[1 .5 .5])
+      xlabel('supply stress s_s, -')
+      ylabel('_{10}log PMR/BMR, -')
+      xlim([0 4/27]); ylim([-1 2.5])
+
+      % set species names behind markers in plot figure
+      h = datacursormode(Hfig); entries_txt = [cho(:,4); act(:,4); amp(:,4); squ(:,4); ave(:,4); mar(:,4); pla(:,4)]; 
+      data = [[ss_cho;ss_act;ss_amp;ss_squ;ss_ave;ss_mar;ss_pla],log10([PMR_BMR_cho;PMR_BMR_act;PMR_BMR_amp;PMR_BMR_squ;PMR_BMR_ave;PMR_BMR_mar;PMR_BMR_pla])];
+      for i=1:length(entries_txt); entries_txt{i} = strrep(entries_txt{i}, '_' , ' '); end
+      h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
+      datacursormode on % mouse click on plot
+
+      %saveas(gcf,'ss_PBMR.fig')
+      %saveas(gcf,'ss_PBMR.png')
+
+    case 8  % Fig 6b: ss_PMR/FMR; this case takes a while to run 
       WD0 = pwd; % store original directory
       nm_cho = cho(:,4); n_cho = length(nm_cho); FMR_cho = zeros(n_cho,1); ss_cho = read_stat(nm_cho, 's_s');
       data_cho = cell2mat(cho(:,1)); PMR_cho = data_cho(:,4); BMR_cho = data_cho(:,3); T_cho = data_cho(:,2); W_cho = data_cho(:,1); 
@@ -743,131 +911,46 @@ for c=1:length(fig)
       h.UpdateFcn = @(obj, event_obj)xylabels(obj, event_obj, entries_txt, data);
       datacursormode on % mouse click on plot
        
-      saveas(gcf,'ss_PFMR.fig')
-      saveas(gcf,'ss_PFMR.png')
+      %saveas(gcf,'ss_PFMR.fig')
+      %saveas(gcf,'ss_PFMR.png')
       %prt_tab({entries_txt, data},{'species', 's_s, -', 'PMR/FMR, -'}, 'PMR/FMR')
        
-    case 4 % Fig 1: kap_ss_kapRA: kapRA = pRi/ pAi
+    case 9 % Fig 7: simulation of standard DEB model with stochastic searching
+      shtraject % description see DEBtool_M/animal/shtraject
+      % the parameters are set in this function and all can be changed
+      % type "edit shtraject" (without the quotes) in the Matlab window
+      %saveas(Hfig_O,'organics.png')
+      %saveas(Hfig_M,'minerals.png')
+      
+    case 10 % Fig 8: ss and kapRA for rodents and carnivorans
+        
+      llegend = {...
+        {'-', 2, [0 0 1]}, 'Rodentia'; ....
+        {'-', 2, [1 0 0]}, 'Carnivora'; ....
+      };
 
       shstat_options('default');
       shstat_options('x_transform', 'none');
-      shstat_options('y_transform', 'none');
-      shstat_options('z_transform', 'none');
-      kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
-      kap_ss_kapRA = [read_allStat({'kap','s_s'}),kapRA(:,1)];
-       
-      [Hfig_vert, Hleg_vert] = shstat(kap_ss_kapRA, legend_vert, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
-      figure(Hfig_vert) % add items to figure
-      xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
-      kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
-      mesh(kap,ss,kapRA'); % add surface to figure
-      kap_xy = linspace(0,1,100)'; ss_xy= kap_xy.^2.*(1-kap_xy); plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
-      xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
-      % define colormap for mesh: k->b->m->r->white
-      Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
-      colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
-      caxis([0 1]) % range for colormap
-      view(150,18)
-      %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
-      saveas(gcf,'kap_ss_kapRA_vert.fig')
-      saveas(gcf,'kap_ss_kapRA_vert.png')
-      saveas(Hleg_vert,'legend_vert.png')
+      shstat_options('y_label', 'on'); % if 'off' (default), no `survivor function' shown on yaxis
+      Hfig_ss = shstat({'s_s'}, llegend); 
+      figure(Hfig_ss)
+      xlabel('supply stress, s_s')
+      %saveas(gcf,'ss_rodent.png')
+      
+      shllegend(llegend,[],[0.9 0.2]);
+      %saveas(gcf,'legend_rodent.png')
 
-      [Hfig_invert, Hleg_invert] = shstat(kap_ss_kapRA, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
-      figure(Hfig_invert) % add items to figure
-      xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_R^A, -');
-      %kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapRA = 1 - kap*ones(1,50) - kap.^-2*ss; % set x,y,z values
-      mesh(kap,ss,kapRA'); % add surface to figure
-      plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapRA=0 plane
-      xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
-      % define colormap for mesh: k->b->m->r->white
-      % Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
-      colormap(Hfig_invert, Colmap) % set color map to add_my_pet colors 
-      caxis([0 1]) % range for colormap
-      view(150,18)
-      %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
-      saveas(gcf,'kap_ss_kapRA_invert.fig')
-      saveas(gcf,'kap_ss_kapRA_invert.png')
-      saveas(Hleg_invert,'legend_invert.png')
-       
-    case 5 % Fig 2 & 8: kap, s_s, kapRA
-        
-      figure % Fig 2a: kap 
-      kap = read_allStat('kap');
-      kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - mean(kap)^2;
-      surv_kap = surv(kap); 
-      M = m; V = v; 
-      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
-      fprintf(['pars beta for kap: ', num2str(a), ' , ', num2str(b),'\n'])
-      S_kap =linspace(0,1,100)'; S = 1 - betainc(S_kap,a,b);
-      plot(S_kap, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
-      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
-       
-      hold on
-      plot([kap_min; kap_med; kap_med], [0.5;0.5;0], 'r', surv_kap(:,1), surv_kap(:,2), 'b', 'Linewidth', 2)
-      xlabel('fraction of mobilized reserve to soma \kappa,  -')
-      ylabel('survivor function')
-      %title([num2str(length(kap)),' @ ',datestr(datenum(date),'yyyy/mm/dd')])
-      saveas(gca,'kap.png')
+      pRA = read_allStat({'p_Ri','p_Ai'}); kapRA = pRA(:,1)./pRA(:,2);
+      Hfig_kapRA = shstat(kapRA, llegend); 
+      figure(Hfig_kapRA)
+      xlabel('frac of assim to reprod, \kappa_R^A')
+      %saveas(gcf,'kapRA_rodent.png')
 
-      figure % Fig 2b: s_s
-      ss = read_allStat('s_s'); ss_max = 4/27;
-      ss_med = median(ss); ss_min = min(ss);  m = mean(ss); v = mean(ss.^2) - mean(ss)^2;
-      surv_ss = surv(ss); 
-      M = m/ss_max; V = v/ss_max^2; 
-      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
-      fprintf(['pars beta for s_s: ', num2str(a), ' , ', num2str(b),'\n'])
-      ss =linspace(0,1,100)'; S = 1 - betainc(ss,a,b);
-      plot(ss*ss_max, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
-      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
-       
-      hold on
-      plot([ss_min; ss_med; ss_med], [0.5;0.5;0], 'r', surv_ss(:,1), surv_ss(:,2), 'b', 'Linewidth', 2)
-      xlabel('supply stress s_s, -') 
-      ylabel('survivor function')
-      saveas(gca,'ss.png')
-
-      figure % Fig 2c: kapRA
-      kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); kapRA = kapRA(:,1); 
-      kapRA_med = median(kapRA); kapRA_min = min(kapRA);  m = mean(kapRA); v = mean(kapRA.^2) - mean(kapRA)^2;
-      surv_kapRA = surv(kapRA); 
-      M = m; V = v; 
-      a = M*(M*(1-M)/V-1); b = a*(1-M)/M;
-      fprintf(['pars beta for kapRA: ', num2str(a), ' , ', num2str(b),'\n'])
-      S_RA =linspace(0,1,100)'; S = 1 - betainc(S_RA,a,b);
-      plot(S_RA, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
-      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
-       
-      hold on
-      plot([kapRA_min; kapRA_med; kapRA_med], [0.5;0.5;0], 'r', surv_kapRA(:,1), surv_kapRA(:,2), 'b', 'Linewidth', 2)
-      xlabel('fraction of assimilation to reproduction \kappa_R^A, -') 
-      ylabel('survivor function')
-      saveas(gca,'kapRA.png')
-        
-      figure % p_A
-      pAsM = read_allStat('p_Am','s_M', 'L_i'); pA = pAsM(:,1) .*pAsM(:,2) .* pAsM(:,3).^2;
-      surv_pA = surv(pA); 
-      pA_med = median(pA); pA_min = min(pA); pA_max = max(pA); 
-      PA = 10.^linspace(log10(pA_min),log10(pA_max),500)'; 
-      %AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-      AB = wblML(pA); % gives MLEs
-      A = AB(1); B = AB(2);
-      fprintf(['Pars Weibull for p_A: ', num2str(A), ' J/d; ', num2str(B), '\n'])
-      %[M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
-      [M, V] = wblStat(A,B); S = exp(-(PA/A).^B);
-      fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
-      plot(log10(PA), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
-      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
-       
-      hold on
-      plot([log10(pA_min); log10(pA_med); log10(pA_med)], [0.5;0.5;0], 'r', log10(surv_pA(:,1)), surv_pA(:,2), 'b', 'Linewidth', 2)
-      xlabel('_{10}log max assimilation p_A^\infty, J/d') 
-      ylabel('survivor function')
-      saveas(gca,'pAi.png')
-
-      figure % Fig 8a: p_R
+    case 11 % Fig 9: p_A, p_M, p_J
+          
+      figure % Fig 9a: p_R
       pRcT = read_allStat('p_Ri', 'c_T'); pR = pRcT(:,1) ./ pRcT(:,2);
-      pR = pR(pR>0); % remove entreis for wich pR == 0 (some insects) 
+      pR = pR(pR>0); % remove entries for wich pR == 0 (some insects) 
       surv_pR = surv(pR); 
       pR_med = median(pR); pR_min = min(pR); pR_max = max(pR); 
       PR = 10.^linspace(log10(pR_min),log10(pR_max),500)'; 
@@ -885,9 +968,9 @@ for c=1:length(fig)
       plot([log10(pR_min); log10(pR_med); log10(pR_med)], [0.5;0.5;0], 'r', log10(surv_pR(:,1)), surv_pR(:,2), 'b', 'Linewidth', 2)
       xlabel('_{10}log max reproduction p_R^\infty, J/d') 
       ylabel('survivor function')
-      saveas(gca,'pRi.png')
+      %saveas(gca,'pRi.png')
 
-      figure % Fig 8b: p_M
+      figure % Fig 9b: p_M
       pMLi = read_allStat('p_M', 'L_i'); pM = pMLi(:,1) .* pMLi(:,2).^3;
       pM_med = median(pM); pM_min = min(pM); pM_max = max(pM);
       surv_pM = surv(pM); 
@@ -906,9 +989,9 @@ for c=1:length(fig)
       plot([log10(pM_min); log10(pM_med); log10(pM_med)], [0.5;0.5;0], 'r', log10(surv_pM(:,1)), surv_pM(:,2), 'b', 'Linewidth', 2)
       xlabel('_{10}log max somatic maintenance p_M^\infty, J/d') 
       ylabel('survivor function')
-      saveas(gca,'pMi.png')
+      %saveas(gca,'pMi.png')
 
-      figure % Fig 8c: p_J 
+      figure % Fig 9c: p_J 
       vars = read_allStat('k_J', 'E_Hp'); pJ = vars(:,1) .* vars(:,2);
       pJ_med = median(pJ); pJ_min = min(pJ); pJ_max = max(pJ); 
       surv_pJ = surv(pJ); 
@@ -927,130 +1010,9 @@ for c=1:length(fig)
       plot([log10(pJ_min); log10(pJ_med); log10(pJ_med)], [0.5;0.5;0], 'r', log10(surv_pJ(:,1)), surv_pJ(:,2), 'b', 'Linewidth', 2)
       xlabel('_{10}log max maturation maintenance p_J^\infty, J/d') 
       ylabel('survivor function')
-      saveas(gca,'pJi.png')
+      %saveas(gca,'pJi.png')
 
-    case 6 % Fig 7: simulation of standard DEB model with stochastic searching
-      shtraject % description see DEBtool_M/animal/shtraject
-      % the parameters are set in this function and all can be changed
-      % type "edit shtraject" (without the quotes) in the Matlab window
-      saveas(Hfig_O,'organics.png')
-      saveas(Hfig_M,'minerals.png')
-      
-    case 7 % ss_var(j_Oi)
-      ssJOiW = read_allStat({'s_s', 'J_Oi', 'Ww_i', 'c_T'}); s_s = ssJOiW(:,1); Wwi = ssJOiW(:,3); jT_Oi = ssJOiW(:,2)./Wwi; j_Oi = jT_Oi./ssJOiW(:,4);
-      ss_int = linspace(0,4/27,20)'; ss = mean([ss_int(1:19),ss_int(2:20)],2); n = nan(19,1); std_jTOi = n; std_jOi = n;
-      for j = 1:19
-        sel = s_s>ss_int(j) & s_s<ss_int(j+1); 
-        jTO = jT_Oi(sel); jO = j_Oi(sel); std_jTOi(j) = std(jTO); std_jOi(j) = std(jO); n(j)=length(jTO);
-      end
-      
-      figure
-      plot(ss, 1e3*std_jTOi, 'ob')
-      xlabel('supply stress, -')
-      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
-      saveas(gca,'ss_stdjTOi.png')
-
-      figure
-      plot(ss, 1e3*std_jOi, 'ob')
-      xlabel('supply stress, -')
-      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
-      saveas(gca,'ss_stdjOi.png')
-      
-      figure
-      plot(s_s, log10(1e3*j_Oi), 'or')
-      xlabel('supply stress, -')
-      ylabel('_{10}log spec ultimate resp, mmol O_2/d.g')
-
-      figure
-      plot(s_s, log10(Wwi), 'or')
-      xlabel('supply stress, -')
-      ylabel('_{10}log ultimate body weight, g')
-      
-      jOi_min = min(j_Oi); jOi_max = max(j_Oi);  jO_int = linspace(jOi_min,jOi_max,20)'; 
-      jO = mean([jO_int(1:19),jO_int(2:20)],2); n = nan(19,1); std_jO = n; 
-      for j = 1:19
-        sel = s_s>jO_int(j) & s_s<jO_int(j+1); 
-        jO2 = j_Oi(sel); std_jO(j) = std(jO2); n(j)=length(jO2);
-      end
-
-      figure
-      plot(1e3*jO, 1e3*std_jO, 'or')
-      xlabel('spec ultimate respiration mmol O2/d.g')
-      ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
-      
-    case 8 % Fig 4a: FMR_BMR for mammals
-      % data from GenoIsle2018
-      GenoIsle2018 % the plotting is in this script
- 
-    case 9 % Fig 4b: FMR_BMR for birds
-      % data from GavrGolu2023
-      GavrGolu2023 % the plotting is in this script
-
-    case 10 % GavrGolu2023
-        
-      legend_GavrGolu2023 = {...
-        {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
-        {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
-        {'o', 5, 2, [1 .5 .5], [1 .5 .5]}, 'Placentalia'   % 0.57
-        {'o', 5, 2, [1 0 0], [0 0 0]}, 'Paleognathae'  % 0.53
-        {'o', 5, 2, [1 0 0], [1 1 1]}, 'Passeriformes' % 1.00
-        {'o', 5, 2, [1 0 0], [1 0 0]}, 'Neognathae'    % 0.75  Neognathae - Passeriformes
-      };
-
-      shstat_options('default');
-
-      JOiW = read_allStat({'J_Oi','Ww_i','c_T'}); %WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3)];
-      WJOi = JOiW(:,[2 1]); % at typical temperatures
-      [Hfig, Hleg] = shstat(WJOi, legend_GavrGolu2023);
-     
-      figure(Hfig)
-      xlabel('_{10}log ultimate weight W_w^\infty, g')
-      ylabel('_{10}log O_2 consumption J_O^\infty, mol/d')
-     
-      % T typical
-      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
-      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]); % Neognathae minus Passeriformes
-      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
-      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
-      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
-      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
-      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
-     
-      slope_T = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
-
-      % T_ref
-      WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,3)]; % at T_ref
-      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
-      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
-      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
-      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
-      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
-      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
-      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
-
-      slope_20 = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
-     
-      slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
-      n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
-      n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
-
-     
-      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
-      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
-
-    case 11 % ss_jOi
-      shstat_options('default');
-      shstat_options('x_transform', 'none');
-
-      JOiW = read_allStat({'J_Oi','Ww_i','c_T','s_s'}); s_s = JOiW(:,4); jOi = JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3);
-      [Hfig, Hleg] = shstat([s_s, log10(jOi)], legend, datestr(datenum(date),'yyyy/mm/dd'));
-      
-      figure(Hfig)
-      xlabel('supply stress, s_s, -')
-      ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
-      saveas(gca,'ss_jOi.png')
-      
-    case 12 % Fig 9: care-corrected s_s
+    case 12 % Fig 10: care-corrected s_s
       shstat_options('default');
       shstat_options('x_transform', 'none');
       shstat_options('y_transform', 'none');
@@ -1068,7 +1030,7 @@ for c=1:length(fig)
       kkap = linspace(0, 1, 100); ss = kkap.^2 .* (1 - kkap); 
       plot(ss, kkap, 'k', 'Linewidth', 2)
       xlim([0 4/27]); ylim([0 1]);
-      saveas(gca,'ss_kap.png')
+      %saveas(gca,'ss_kap.png')
       %
       shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_aves.png')
@@ -1085,7 +1047,7 @@ for c=1:length(fig)
       kkap = linspace(0, 1, 100)'; ss = kkap.^2 .* (1 - kkap); 
       plot(ss, kkap, 'k', 'Linewidth', 2)
       xlim([0 4/27]); ylim([0 1]);
-      saveas(gca,'ssc_kap.png')
+      %saveas(gca,'ssc_kap.png')
       
       nm = select; nm_ave = ave(:,4); n_ave = length(nm_ave); FMR_ave = NaN(n_ave,1);
       data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
@@ -1149,6 +1111,69 @@ for c=1:length(fig)
       ylabel('_{10}log measured FAS, -')
       title(['Aves @ ', datestr(datenum(date),'yyyy/mm/dd')])
 
+    case 14 % ss_jOi
+      shstat_options('default');
+      shstat_options('x_transform', 'none');
+
+      JOiW = read_allStat({'J_Oi','Ww_i','c_T','s_s'}); s_s = JOiW(:,4); jOi = JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3);
+      [Hfig, Hleg] = shstat([s_s, log10(jOi)], legend, datestr(datenum(date),'yyyy/mm/dd'));
+      
+      figure(Hfig)
+      xlabel('supply stress, s_s, -')
+      ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
+      %saveas(gca,'ss_jOi.png')
+      
+    case 15 % GavrGolu2023
+        
+      legend_GavrGolu2023 = {...
+        {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
+        {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
+        {'o', 5, 2, [1 .5 .5], [1 .5 .5]}, 'Placentalia'   % 0.57
+        {'o', 5, 2, [1 0 0], [0 0 0]}, 'Paleognathae'  % 0.53
+        {'o', 5, 2, [1 0 0], [1 1 1]}, 'Passeriformes' % 1.00
+        {'o', 5, 2, [1 0 0], [1 0 0]}, 'Neognathae'    % 0.75  Neognathae - Passeriformes
+      };
+
+      shstat_options('default');
+
+      JOiW = read_allStat({'J_Oi','Ww_i','c_T'}); %WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,2) ./ JOiW(:,3)];
+      WJOi = JOiW(:,[2 1]); % at typical temperatures
+      [Hfig, Hleg] = shstat(WJOi, legend_GavrGolu2023);
+     
+      figure(Hfig)
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log O_2 consumption J_O^\infty, mol/d')
+     
+      % T typical
+      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]); % Neognathae minus Passeriformes
+      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+     
+      slope_T = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+
+      % T_ref
+      WJOi = [JOiW(:,2), JOiW(:,1) ./ JOiW(:,3)]; % at T_ref
+      [~,slope_prot] = get_axis(log10(WJOi(select_01('Prototheria'),:)));
+      [~,slope_mars] = get_axis(log10(WJOi(select_01('Marsupialia'),:)));
+      [~,slope_plac] = get_axis(log10(WJOi(select_01('Placentalia'),:)));
+      [~,slope_pale] = get_axis(log10(WJOi(select_01('Paleognathae'),:)));
+      sel = select_01('Neognathae'); sel = sel(~ismember(select,select('Passeriformes'))); 
+      [~,slope_neog] = get_axis(log10(WJOi(sel,:)),[0;9]);
+      [~,slope_pass] = get_axis(log10(WJOi(select_01('Passeriformes'),:)));
+
+      slope_20 = [slope_prot; slope_mars; slope_plac; slope_pale; slope_pass; slope_neog];
+     
+      slope_GavrGolu2023 = [0.26; 0.44; 0.57; 0.53; 1.00; 0.75];
+      n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
+      n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
+
+     
+      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
+      prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
 
   end
 end
