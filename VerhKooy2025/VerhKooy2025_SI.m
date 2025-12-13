@@ -928,6 +928,8 @@ for c=1:length(fig)
         {'-', 2, [0 0 1]}, 'Rodentia'; ....
         {'-', 2, [1 0 0]}, 'Carnivora'; ....
       };
+      shllegend(llegend,[],[0.9 0.2]);
+      %saveas(gcf,'legend_rodent.png')
 
       shstat_options('default');
       shstat_options('x_transform', 'none');
@@ -935,16 +937,18 @@ for c=1:length(fig)
       Hfig_ss = shstat({'s_s'}, llegend); 
       figure(Hfig_ss)
       xlabel('supply stress, s_s')
-      %saveas(gcf,'ss_rodent.png')
-      
-      shllegend(llegend,[],[0.9 0.2]);
-      %saveas(gcf,'legend_rodent.png')
+      saveas(gcf,'ss_rodent.png')
+
+      Hfig_kap = shstat({'kap'}, llegend); 
+      figure(Hfig_kap)
+      xlabel('frac of mobilisation to soma, \kappa')
+      saveas(gcf,'kap_rodent.png')
 
       pRA = read_allStat({'p_Ri','p_Ai'}); kapRA = pRA(:,1)./pRA(:,2);
       Hfig_kapRA = shstat(kapRA, llegend); 
       figure(Hfig_kapRA)
-      xlabel('frac of assim to reprod, \kappa_R^A')
-      %saveas(gcf,'kapRA_rodent.png')
+      xlabel('frac of assimilation to reprod, \kappa_R^A')
+      saveas(gcf,'kapRA_rodent.png')
 
     case 11 % Fig 9: p_A, p_M, p_J
           
