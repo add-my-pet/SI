@@ -21,6 +21,7 @@ function VerhKooy2025_SI(fig)
 % To run the code for a figure: type in the Matlab window e.g. VerhKooy2025_SI(1)
 %
 % Remarks: 
+%  This function begins with specifying lots of data; then follows code for generating figues and references, please scroll down.
 %  The figures show current AmP data, which might change in time; the results might differ from the publication
 %  The scripts call functions read_popStat and read_allStat; the first call to these functions loads the .mat file, which can take some time
 %  Click on a marker in the Matlab-figure to see the species name
@@ -278,8 +279,8 @@ ave = { ...  % Aves ; m(g) Tb(C) BMR(ml O2/min) PMR (ml O2/min), PMRmethod; %x m
     % Gruiformes
     [   850.3 37.4   9.19   52.08]  'Cold',     'HindBaud1993', 'Porphyrio_martinica' 
     % Apodiformes
-    [     5.7 40.7   NaN     5]     'Loco.flyActive', 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, omit BMR not measured; values and FAS of 14 reported are based on Lasi's BMR values for other species and MMR may not be max
-    [     3.3 34     0.198   1.815] 'Loco.fly', 'Lasi1963',     'Archilochus_alexandri' % PMR 33 ml/h.g SMR 3.6 ml/h.g
+    [     5.7 40.7   NaN     5]     'Loco.flyActive', 'BergHart1972', 'Chionomesa_fimbriata' % PMR 43 ml/h.g, omit BMR not measured; values and FAS of 14 reported are based on Lasi's BMR values for other species and MMR may not be max 
+   %[     3.3 34     0.198   1.815] 'Loco.fly', 'Lasi1963',     'Archilochus_alexandri' % PMR 33 ml/h.g SMR 3.6 ml/h.g; omit because PMR was not measured properly
     [     4.1 39     0.232   9.157] 'Loco.fly', 'Lasi1963',     'Selasphorus_rufus' % PMR 124 ml/h.g SMR 3.4 ml/h.g
     [     3.2 36.2   0.192   7.147] 'Loco.fly', 'Lasi1963',     'Selasphorus_sasin' % PMR 134 ml/h.g SMR 3.6 ml/h.g
     [     2.3 36     0.153   2.542] 'Loco.fly', 'Lasi1963',     'Selasphorus_calliope' % PMR 66.3 ml/h.g SMR 4.0 ml/h.g
@@ -823,8 +824,9 @@ for c=1:length(fig)
       ss_pla = read_stat(pla(:,4),'s_s');
 
       Hfig = figure;
-      plot(ss_cho, log10(PMR_BMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
+      plot([0;4/27],[1/2;3/2],'-', 'Color',[.85 .85 .85], 'LineWidth',15)
       hold on
+      plot(ss_cho, log10(PMR_BMR_cho), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[0 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_act, log10(PMR_BMR_act), '.b', 'MarkerSize',20)
       plot(ss_amp, log10(PMR_BMR_amp), 'o', 'MarkerSize',4, 'LineWidth',2, 'MarkerEdgeColor',[1 0 1], 'MarkerFaceColor',[0 1 1])
       plot(ss_squ, log10(PMR_BMR_squ), '.m', 'MarkerSize',20)
@@ -937,18 +939,18 @@ for c=1:length(fig)
       Hfig_ss = shstat({'s_s'}, llegend); 
       figure(Hfig_ss)
       xlabel('supply stress, s_s')
-      saveas(gcf,'ss_rodent.png')
+      %saveas(gcf,'ss_rodent.png')
 
       Hfig_kap = shstat({'kap'}, llegend); 
       figure(Hfig_kap)
       xlabel('frac of mobilisation to soma, \kappa')
-      saveas(gcf,'kap_rodent.png')
+      %saveas(gcf,'kap_rodent.png')
 
       pRA = read_allStat({'p_Ri','p_Ai'}); kapRA = pRA(:,1)./pRA(:,2);
       Hfig_kapRA = shstat(kapRA, llegend); 
       figure(Hfig_kapRA)
       xlabel('frac of assimilation to reprod, \kappa_R^A')
-      saveas(gcf,'kapRA_rodent.png')
+      %saveas(gcf,'kapRA_rodent.png')
 
     case 11 % Fig 9: p_A, p_M, p_J
           
@@ -1016,7 +1018,28 @@ for c=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'pJi.png')
 
-    case 12 % Fig 10: ss_kap, yes & no care-corrected for birds
+    case 12 % Fig 9: ss_kap_kap_RA
+      figure
+      xlim([0 4/27]); ylim([0 1]);
+      xlabel('supply stress, s_s')
+      ylabel('frac of mobilised reserve to soma, \kappa')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+
+      hold on
+      % kapRA isoclines for kap(s_s)
+      kap = linspace(0, 1, 100)';
+      kapRA = (0:0.1:0.9)'; 
+      for j=1:10
+        ssi = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
+        plot(ssi, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
+      end
+      hold on
+      % kap(s_s) for which kapRA is max
+      ss = linspace(1e-8,4/27,100)'; kap = (2 * ss).^(1/3);
+      plot(ss, kap, 'r', 'Linewidth', 2)
+      saveas(gca,'ss_kap_kapRA.png')
+      
+    case 13 % Fig 10: ss_kap, yes & no care-corrected for birds
       shstat_options('default');
       shstat_options('x_transform', 'none');
       shstat_options('y_transform', 'none');
@@ -1098,7 +1121,7 @@ for c=1:length(fig)
       %saveas(gcf,'ssc_FAS_ave.fig')
       %saveas(gcf,'ssc_FAS_ave.png')
 
-    case 13 % Wwi_FAS; FAS is independent of max body weight
+    case 14 % Wwi_FAS; FAS is independent of max body weight
       figure
       data = cell2mat(pla(:,1)); FAS_pla = data(:,4)./data(:,3);
       Wwi_pla = read_stat(pla(:,4),'Wwi');
@@ -1115,7 +1138,7 @@ for c=1:length(fig)
       ylabel('_{10}log measured FAS, -')
       title(['Aves @ ', datestr(datenum(date),'yyyy/mm/dd')])
 
-    case 14 % ss_jOi; specific respiration is indendent of s_s
+    case 15 % ss_jOi; specific respiration is indendent of s_s
       shstat_options('default');
       shstat_options('x_transform', 'none');
 
@@ -1127,7 +1150,7 @@ for c=1:length(fig)
       ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
       %saveas(gca,'ss_jOi.png')
       
-    case 15 % ss_am; life span is indendent of s_s
+    case 16 % ss_am; life span is indendent of s_s
       shstat_options('default');
       shstat_options('x_transform', 'none');
 
@@ -1139,7 +1162,7 @@ for c=1:length(fig)
       ylabel('_{10}log life span a_m, d')
       %saveas(gca,'ss_am.png')
 
-    case 16 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
+    case 17 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
         
       legend_GavrGolu2023 = {...        % scaling exponent according to GavrGolu2023
         {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
@@ -1190,7 +1213,7 @@ for c=1:length(fig)
      
       prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
       prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
-
+  
   end
 end
    
