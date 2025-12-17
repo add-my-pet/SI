@@ -658,27 +658,6 @@ for c=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'kapRA.png')
         
-      figure % p_A
-      pAsM = read_allStat('p_Am','s_M', 'L_i'); pA = pAsM(:,1) .*pAsM(:,2) .* pAsM(:,3).^2;
-      surv_pA = surv(pA); 
-      pA_med = median(pA); pA_min = min(pA); pA_max = max(pA); 
-      PA = 10.^linspace(log10(pA_min),log10(pA_max),500)'; 
-      %AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
-      AB = wblML(pA); % gives MLEs
-      A = AB(1); B = AB(2);
-      fprintf(['Pars Weibull for p_A: ', num2str(A), ' J/d; ', num2str(B), '\n'])
-      %[M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
-      [M, V] = wblStat(A,B); S = exp(-(PA/A).^B);
-      fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
-      plot(log10(PA), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
-      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
-       
-      hold on
-      plot([log10(pA_min); log10(pA_med); log10(pA_med)], [0.5;0.5;0], 'r', log10(surv_pA(:,1)), surv_pA(:,2), 'b', 'Linewidth', 2)
-      xlabel('_{10}log max assimilation p_A^\infty, J/d') 
-      ylabel('survivor function')
-      %saveas(gca,'pAi.png')
-
     case 3  % Fig 3: predicted FMR_measured BMR; this case takes a while to run 
       WD0 = pwd; % store original directory
       nm_cho = cho(:,4); n_cho = length(nm_cho); FMR_cho = zeros(n_cho,1); 
@@ -948,8 +927,49 @@ for c=1:length(fig)
       xlabel('frac of assimilation to reprod, \kappa_R^A')
       %saveas(gcf,'kapRA_rodent.png')
 
-    case 11 % Fig 9: p_A, p_M, p_J
-      figure % Fig 9a: p_R
+    case 11 % Fig 9: ss_kap_kap_RA
+      figure
+      xlim([0 4/27]); ylim([0 1]);
+      xlabel('supply stress, s_s')
+      ylabel('frac of mobilised reserve to soma, \kappa')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+
+      hold on
+      % kapRA isoclines for kap(s_s)
+      kap = linspace(0, 1, 100)';
+      kapRA = (0:0.1:0.9)'; 
+      for j=1:10
+        ss = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
+        plot(ss, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
+      end
+      % kap(s_s) for which kapRA is max
+      ss = linspace(1e-8,4/27,100)'; kap = (2 * ss).^(1/3);
+      plot(ss, kap, 'r', 'Linewidth', 2)
+      %saveas(gca,'ss_kap_kapRA.png')
+      
+   case 12 % Fig 10: p_A, p_M, p_J
+      figure % Fig 10a: p_A
+      pAsM = read_allStat('p_Am','s_M', 'L_i'); pA = pAsM(:,1) .*pAsM(:,2) .* pAsM(:,3).^2;
+      surv_pA = surv(pA); 
+      pA_med = median(pA); pA_min = min(pA); pA_max = max(pA); 
+      PA = 10.^linspace(log10(pA_min),log10(pA_max),500)'; 
+      %AB = wblfit(pA, 0.05); % gives MLEs and 100(1-ALPHA)% CI
+      AB = wblML(pA); % gives MLEs
+      A = AB(1); B = AB(2);
+      fprintf(['Pars Weibull for p_A: ', num2str(A), ' J/d; ', num2str(B), '\n'])
+      %[M, V] = wblstat(A,B); S = 1-wblcdf(PA, A, B);
+      [M, V] = wblStat(A,B); S = exp(-(PA/A).^B);
+      fprintf(['mean & var: ', num2str(M), ' , ', num2str(V),'\n'])
+      plot(log10(PA), S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      set(gca, 'FontSize', 15, 'Box', 'on', 'YTick', 0:0.2:1)
+       
+      hold on
+      plot([log10(pA_min); log10(pA_med); log10(pA_med)], [0.5;0.5;0], 'r', log10(surv_pA(:,1)), surv_pA(:,2), 'b', 'Linewidth', 2)
+      xlabel('_{10}log max assimilation p_A^\infty, J/d') 
+      ylabel('survivor function')
+      %saveas(gca,'pAi.png')
+
+      figure % p_R (not in VerhKooy2025)
       pRcT = read_allStat('p_Ri', 'c_T'); pR = pRcT(:,1) ./ pRcT(:,2);
       pR = pR(pR>0); % remove entries for wich pR == 0 (some insects) 
       surv_pR = surv(pR); 
@@ -971,7 +991,7 @@ for c=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'pRi.png')
 
-      figure % Fig 9b: p_M
+      figure % Fig 10b: p_M
       pMLi = read_allStat('p_M', 'L_i'); pM = pMLi(:,1) .* pMLi(:,2).^3;
       pM_med = median(pM); pM_min = min(pM); pM_max = max(pM);
       surv_pM = surv(pM); 
@@ -992,7 +1012,7 @@ for c=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'pMi.png')
 
-      figure % Fig 9c: p_J 
+      figure % Fig 10c: p_J 
       vars = read_allStat('k_J', 'E_Hp'); pJ = vars(:,1) .* vars(:,2);
       pJ_med = median(pJ); pJ_min = min(pJ); pJ_max = max(pJ); 
       surv_pJ = surv(pJ); 
@@ -1013,27 +1033,7 @@ for c=1:length(fig)
       ylabel('survivor function')
       %saveas(gca,'pJi.png')
 
-    case 12 % Fig 9: ss_kap_kap_RA
-      figure
-      xlim([0 4/27]); ylim([0 1]);
-      xlabel('supply stress, s_s')
-      ylabel('frac of mobilised reserve to soma, \kappa')
-      set(gca, 'FontSize', 15, 'Box', 'on')
-
-      hold on
-      % kapRA isoclines for kap(s_s)
-      kap = linspace(0, 1, 100)';
-      kapRA = (0:0.1:0.9)'; 
-      for j=1:10
-        ss = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
-        plot(ss, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
-      end
-      % kap(s_s) for which kapRA is max
-      ss = linspace(1e-8,4/27,100)'; kap = (2 * ss).^(1/3);
-      plot(ss, kap, 'r', 'Linewidth', 2)
-      saveas(gca,'ss_kap_kapRA.png')
-      
-    case 13 % Fig 10: ss_kap, yes & no care-corrected for birds
+    case 13 % Fig 11: ss_kap, yes & no care-corrected for birds
       shstat_options('default');
       shstat_options('x_transform', 'none');
       shstat_options('y_transform', 'none');
@@ -1070,6 +1070,7 @@ for c=1:length(fig)
       xlim([0 4/27]); ylim([0 1]);
       %saveas(gca,'ssc_kap.png')
             
+    case 14 % Fig 12: ss_FAS, yes & no care-corrected for birds
       nm = select; nm_ave = ave(:,4); n_ave = length(nm_ave); FMR_ave = NaN(n_ave,1);
       data_ave = cell2mat(ave(:,1)); PMR_ave = data_ave(:,4); T_ave = data_ave(:,2); W_ave = data_ave(:,1); 
       for i=1:n_ave
@@ -1115,7 +1116,7 @@ for c=1:length(fig)
       %saveas(gcf,'ssc_FAS_ave.fig')
       %saveas(gcf,'ssc_FAS_ave.png')
 
-    case 14 % Wwi_FAS; FAS is independent of max body weight
+    case 15 % Wwi_FAS; FAS is independent of max body weight (not in VerhKooy2025)
       figure
       data = cell2mat(pla(:,1)); FAS_pla = data(:,4)./data(:,3);
       Wwi_pla = read_stat(pla(:,4),'Wwi');
@@ -1132,7 +1133,7 @@ for c=1:length(fig)
       ylabel('_{10}log measured FAS, -')
       title(['Aves @ ', datestr(datenum(date),'yyyy/mm/dd')])
 
-    case 15 % ss_jOi; specific respiration is indendent of s_s
+    case 16 % ss_jOi; specific respiration is indendent of s_s (not in VerhKooy2025)
       shstat_options('default');
       shstat_options('x_transform', 'none');
 
@@ -1144,7 +1145,7 @@ for c=1:length(fig)
       ylabel('_{10}log spec O_2 consumption J_O^\infty/ W_w^\infty, mol/d.g')
       %saveas(gca,'ss_jOi.png')
       
-    case 16 % ss_am; life span is indendent of s_s
+    case 17 % ss_am; life span is indendent of s_s (not in VerhKooy2025)
       shstat_options('default');
       shstat_options('x_transform', 'none');
 
@@ -1156,7 +1157,8 @@ for c=1:length(fig)
       ylabel('_{10}log life span a_m, d')
       %saveas(gca,'ss_am.png')
 
-    case 17 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
+    case 18 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
+      % (not in VerhKooy2025)
       legend_GavrGolu2023 = {...        % scaling exponent according to GavrGolu2023
         {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
         {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
@@ -1203,7 +1205,6 @@ for c=1:length(fig)
       n_GavrGolu2023 = [3; 84; 730; 9; 404; 585];
       n_AmP = [length(select('Prototheria')); length(select('Marsupialia')); length(select('Placentalia')); length(select('Paleognathae')); length(select('Passeriformes')); sum(sel)];
 
-     
       prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023')
       prt_tab({legend_GavrGolu2023(:,2),[slope_GavrGolu2023,n_GavrGolu2023,  slope_T, slope_20,n_AmP ] },{'taxon','slope GavrGolu2023','n GavrGolu2023', 'slope T_body', 'slope T_ref', 'n AmP'}, 'GavrGolu2023.tex')
   
