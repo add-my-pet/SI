@@ -564,7 +564,6 @@ for c=1:length(fig)
  
   switch fig(c)
     case 1 % Fig 1: kap_ss_kapRA: kapRA = pRi/ pAi
-
       shstat_options('default');
       shstat_options('x_transform', 'none');
       shstat_options('y_transform', 'none');
@@ -607,7 +606,6 @@ for c=1:length(fig)
       %saveas(Hleg_invert,'legend_invert.png')
        
     case 2 % Fig 2: kap, s_s, kapRA
-        
       figure % Fig 2a: kap 
       kap = read_allStat('kap');
       kap_med = median(kap); kap_min = min(kap);  m = mean(kap); v = mean(kap.^2) - mean(kap)^2;
@@ -801,7 +799,6 @@ for c=1:length(fig)
       ylabel('standard dev spec ultimate resp, mmol O_2/d.g')
       
     case 7 % Fig 6a: ss_FAS
-    
       data = cell2mat(act(:,1)); PMR_BMR_act = data(:,4)./data(:,3);
       ss_act = read_stat(act(:,4),'s_s');
       %
@@ -925,7 +922,6 @@ for c=1:length(fig)
       %saveas(Hfig_M,'minerals.png')
       
     case 10 % Fig 8: ss and kapRA for rodents and carnivorans
-        
       llegend = {...
         {'-', 2, [0 0 1]}, 'Rodentia'; ....
         {'-', 2, [1 0 0]}, 'Carnivora'; ....
@@ -953,7 +949,6 @@ for c=1:length(fig)
       %saveas(gcf,'kapRA_rodent.png')
 
     case 11 % Fig 9: p_A, p_M, p_J
-          
       figure % Fig 9a: p_R
       pRcT = read_allStat('p_Ri', 'c_T'); pR = pRcT(:,1) ./ pRcT(:,2);
       pR = pR(pR>0); % remove entries for wich pR == 0 (some insects) 
@@ -1030,10 +1025,9 @@ for c=1:length(fig)
       kap = linspace(0, 1, 100)';
       kapRA = (0:0.1:0.9)'; 
       for j=1:10
-        ssi = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
-        plot(ssi, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
+        ss = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
+        plot(ss, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
       end
-      hold on
       % kap(s_s) for which kapRA is max
       ss = linspace(1e-8,4/27,100)'; kap = (2 * ss).^(1/3);
       plot(ss, kap, 'r', 'Linewidth', 2)
@@ -1163,7 +1157,6 @@ for c=1:length(fig)
       %saveas(gca,'ss_am.png')
 
     case 17 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
-        
       legend_GavrGolu2023 = {...        % scaling exponent according to GavrGolu2023
         {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
         {'o', 5, 2, [1 .5 .5], [0 0 0]}, 'Marsupialia'   % 0.44
