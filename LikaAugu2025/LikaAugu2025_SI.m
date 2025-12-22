@@ -80,13 +80,37 @@ end
        saveas(gcf,'Wwi_pM_Mamm.png')
        
        %figure Wwi-jOi Mammalia climate
-       color = climate2color(climate);
+       %color = climate2color(climate);
        leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
        plot2i([log10(Ww_i), log10(jO_i)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
        xlabel('_{10}log ultimate weight W_w^\infty, g')
        ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
        set(gca, 'FontSize', 15, 'Box', 'on')
        saveas(gcf,'Wwi_jOi_Mamm.png')
+       
+     case 3 % Actinopterygii
+       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
+       habitat = read_eco(nm, 'habitat');
+       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
+       Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+       
+       %figure Wwi-pM Pisces habitat
+       [color, sel] = habitat2color(habitat);
+       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+       plot2i([log10(Ww_i(sel)), log10(p_M(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+       xlabel('_{10}log ultimate weight W_w^\infty, g')
+       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+       set(gca, 'FontSize', 15, 'Box', 'on')
+       saveas(gcf,'Wwi_pM_Pisc.png')
+       
+       %figure Wwi-jOi Pisces habitat
+       %color = habitat2color(habitat);
+       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',6,2,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+       plot2i([log10(Ww_i(sel)), log10(jO_i(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+       xlabel('_{10}log ultimate weight W_w^\infty, g')
+       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
+       set(gca, 'FontSize', 15, 'Box', 'on')
+       saveas(gcf,'Wwi_jOi_Pisc.png')
 
     end
  end
@@ -102,6 +126,20 @@ function color = climate2color(climate)
      E = any(contains(climate{i},'E')); 
      val = (0.1*A + 0.3*B + 0.5*C + 0.7*D + 0.9*E)/ (A + B + C + D + E);
      color(i,:) = color_lava(val); 
+   end 
+end
+
+function [color, sel] = habitat2color(habitat)
+   n = length(habitat); color = NaN(n,3); sel = false(n,1);
+   for i = 1:n
+     if any(contains(habitat{i},'Mr')); val = 0.0; sel(i)= true;
+     elseif any(contains(habitat{i},'Mdb')); val = 0.3; sel(i)= true;
+     elseif any(contains(habitat{i},'Mb')); val = 0.5; sel(i)= true;
+     elseif any(contains(habitat{i},'Mc')); val = 0.7; sel(i)= true;
+     elseif any(contains(habitat{i},'Mi'));  val = 0.9; sel(i)= true;
+     else val = NaN; sel(i)= false;
+     end
+     color(i,:) = color_lava(val);
    end
     
 end
