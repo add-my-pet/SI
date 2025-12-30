@@ -111,7 +111,52 @@ end
        ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
        set(gca, 'FontSize', 15, 'Box', 'on')
        saveas(gcf,'Wwi_jOi_Pisc.png')
+       
+     case 4 % coral versus pelagic fish
+       legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Chaetodontiformes'; 
+         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Serranidae'; 
+         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Pomacentridae'; 
+         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Pomacanthiformes'; 
+         {'o', 8, 3, [1 0 0], [0 0 0]}, 'Myctophiformes'; 
+         {'o', 8, 3, [1 0 0], [0 1 1]}, 'Clupeiformes'; 
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Scombriformes'; 
+         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Pleuronectiformes'; 
+      };
+     %tax = 'Pleuronectiformes'; nm_ple = select(tax); prt_tab({nm_ple,read_stat(nm_ple,{'Ww_i','p_M'}),read_eco(nm_ple,'habitat')},[],tax)
+      shlegend(legend,[],[0.9 0.2]);
+      saveas(gcf,'legend_fish.png')
 
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_pM_fish.png')
+
+     case 5 % birds Forests A, forests C & D
+       legend = { ... % colors: blue edge tropical forests, red edge temprerate forests
+         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
+         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
+         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Meliphagides'; 
+         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Paradisaeidae'; 
+         {'o', 8, 3, [1 0 0], [0 0 0]}, 'Sylviida'; 
+         {'o', 8, 3, [1 0 0], [0 1 1]}, 'Corvidae'; 
+         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Sylviida'; 
+         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Passeroidea'; 
+      };
+     %tax = 'Pleuronectiformes'; nm_ple = select(tax); prt_tab({nm_ple,read_stat(nm_ple,{'Ww_i','p_M'}),read_eco(nm_ple,'habitat')},[],tax)
+      shlegend(legend,[],[0.9 0.2]);
+      saveas(gcf,'legend_aves.png')
+
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_pM_aves.png')
     end
  end
 end

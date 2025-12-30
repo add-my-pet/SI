@@ -1157,7 +1157,7 @@ for c=1:length(fig)
       ylabel('_{10}log life span a_m, d')
       %saveas(gca,'ss_am.png')
 
-    case 18 % GavrGolu2023: compute scaling exponent wrongly and do strange claims on origin of endothermy
+    case 18 % GavrGolu2023 compute scaling exponent wrongly and do strange claims on origin of endothermy
       % (not in VerhKooy2025)
       legend_GavrGolu2023 = {...        % scaling exponent according to GavrGolu2023
         {'o', 5, 2, [1 .5 .5], [1 1 1]}, 'Monotremata'   % 0.26
