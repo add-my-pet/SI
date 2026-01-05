@@ -197,10 +197,15 @@ for i=1:length(fig)
 
     case 7 % ducks
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
+        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Dendrocygninae'; % grass eaters
+        {'o', 8, 3, [0 0 0], [1 1 1]}, 'Tadorninae'; % grass eaters
         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Anserinae'; % grass eaters
-        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Anatini'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Anas'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Mareca'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Spatula'; % grass eaters
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Oxyurini'; % fish eaters	
         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Mergini'; % fish eaters	
-        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Aythyinae'; % insect/worm eaters
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Aythya'; % insect/worm eaters
       };
       %tax = 'Anseriformes'; nm_ans = select(tax); prt_tab({nm_ans,read_stat(nm_ans,{'Ww_i','p_M'}),read_eco(nm_and,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
@@ -211,7 +216,7 @@ for i=1:length(fig)
       figure(Hfig_WpM)
       xlabel('_{10}log weight W_w^\infty, g')
       ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
-      xlim([-1 6])
+      xlim([2 4.5])
       saveas(gcf,'Wwi_pM_ans.png')
 
       figure
