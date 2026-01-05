@@ -37,93 +37,93 @@ end
  shstat_options('y_label', 'on'); 
  shstat_options('x_label', 'off'); 
   
- for i=1:length(fig)
+for i=1:length(fig)
  
-   switch fig(i)
-     case 1 %  Aves
-       nm = select('Aves'); n = length(nm); 
-       climate = read_eco(nm, 'climate');
-       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
-       Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+  switch fig(i)
+    case 1 %  Aves
+      nm = select('Passeriformes'); n = length(nm); 
+      climate = read_eco(nm, 'climate');
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
        
-       %figure Wwi-pM Aves climate
-       color = climate2color(climate);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i), log10(p_M)], leg, ['Aves @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_pM_Aves.png')
+      %figure Wwi-pM Aves climate
+      [color sel] = climate2color(climate);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',3,1,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(sel)), log10(p_M(sel))], leg(sel,:), ['Passeriformes @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_pM_Aves.png')
        
-       %figure Wwi-jOi Aves climate
-       color = climate2color(climate);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i), log10(jO_i)], leg, ['Aves @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_jOi_Aves.png')
+      %figure Wwi-jOi Aves climate
+      [color sel] = climate2color(climate);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',3,1,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(sel)), log10(jO_i(sel))], leg(sel,:), ['Passeriformes @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_jOi_Aves.png')
        
-     case 2 %  Mammalia
-       nm = select('Mammalia'); n = length(nm); 
-       climate = read_eco(nm, 'climate'); 
-       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
-       Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+    case 2 %  Mammalia
+      nm = select('Mammalia'); n = length(nm); 
+      climate = read_eco(nm, 'climate'); 
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
        
-       %figure Wwi-pM Mammalia climate
-       color = climate2color(climate);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i), log10(p_M)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_pM_Mamm.png')
+      %figure Wwi-pM Mammalia climate
+      color = climate2color(climate);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i), log10(p_M)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_pM_Mamm.png')
        
-       %figure Wwi-jOi Mammalia climate
-       %color = climate2color(climate);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i), log10(jO_i)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_jOi_Mamm.png')
+      %figure Wwi-jOi Mammalia climate
+      %color = climate2color(climate);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i), log10(jO_i)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_jOi_Mamm.png')
        
-     case 3 % Actinopterygii
-       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
-       habitat = read_eco(nm, 'habitat');
-       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
-       Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+    case 3 % Actinopterygii
+      nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
+      habitat = read_eco(nm, 'habitat');
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
        
-       %figure Wwi-pM Pisces habitat
-       [color, sel] = habitat2color(habitat);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i(sel)), log10(p_M(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_pM_Pisc.png')
+      %figure Wwi-pM Pisces habitat
+      [color, sel] = habitat2color(habitat);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(sel)), log10(p_M(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_pM_Pisc.png')
        
-       %figure Wwi-jOi Pisces habitat
-       %color = habitat2color(habitat);
-       leg = cell(n,2); for j=1:n; leg{j,1} = {'o',6,2,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-       plot2i([log10(Ww_i(sel)), log10(jO_i(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-       xlabel('_{10}log ultimate weight W_w^\infty, g')
-       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
-       set(gca, 'FontSize', 15, 'Box', 'on')
-       saveas(gcf,'Wwi_jOi_Pisc.png')
+      %figure Wwi-jOi Pisces habitat
+      %color = habitat2color(habitat);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',6,2,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(sel)), log10(jO_i(sel))], leg(sel,:), ['Pisces @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      saveas(gcf,'Wwi_jOi_Pisc.png')
        
-     case 4 % coral versus pelagic fish
-       legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
-         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Chaetodontiformes'; 
-         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Serranidae'; 
-         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Pomacentridae'; 
-         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Pomacanthiformes'; 
-         {'o', 8, 3, [1 0 0], [0 0 0]}, 'Myctophiformes'; 
-         {'o', 8, 3, [1 0 0], [0 1 1]}, 'Clupeiformes'; 
-         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Scombriformes'; 
-         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Pleuronectiformes'; 
+    case 4 % coral versus pelagic fish
+      legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Chaetodontiformes'; 
+        {'o', 8, 3, [0 0 1], [0 1 1]}, 'Serranidae'; 
+        {'o', 8, 3, [0 0 1], [1 0 0]}, 'Pomacentridae'; 
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Pomacanthiformes'; 
+        {'o', 8, 3, [1 0 0], [0 0 0]}, 'Myctophiformes'; 
+        {'o', 8, 3, [1 0 0], [0 1 1]}, 'Clupeiformes'; 
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Scombriformes'; 
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Pleuronectiformes'; 
       };
-     %tax = 'Pleuronectiformes'; nm_ple = select(tax); prt_tab({nm_ple,read_stat(nm_ple,{'Ww_i','p_M'}),read_eco(nm_ple,'habitat')},[],tax)
+      %tax = 'Pleuronectiformes'; nm_ple = select(tax); prt_tab({nm_ple,read_stat(nm_ple,{'Ww_i','p_M'}),read_eco(nm_ple,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
       saveas(gcf,'legend_fish.png')
 
@@ -135,18 +135,27 @@ end
       xlim([-1 6])
       saveas(gcf,'Wwi_pM_fish.png')
 
-     case 5 % birds Forests A, forests C & D
-       legend = { ... % colors: blue edge tropical forests, red edge temprerate forests
-         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
-         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
-         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Meliphagides'; 
-         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Paradisaeidae'; 
-         {'o', 8, 3, [1 0 0], [0 0 0]}, 'Sylviida'; 
-         {'o', 8, 3, [1 0 0], [0 1 1]}, 'Corvidae'; 
-         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Sylviida'; 
-         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Passeroidea'; 
+      figure
+      WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
+      Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
+      figure(Hfig_WjOi)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration, mol O_2/d.g')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_jOi_fish.png')
+
+    case 5 % birds Forests A, forests C & D
+      legend = { ... % colors: blue edge tropical forests, red edge temperate forests
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
+        {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
+        {'o', 8, 3, [0 0 1], [1 0 0]}, 'Meliphagides'; 
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Paradisaeidae'; 
+        {'o', 8, 3, [1 0 0], [0 0 0]}, 'Sylviida'; 
+        {'o', 8, 3, [1 0 0], [0 1 1]}, 'Corvidae'; 
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Sylviida'; 
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Passeroidea'; 
       };
-     %tax = 'Pleuronectiformes'; nm_ple = select(tax); prt_tab({nm_ple,read_stat(nm_ple,{'Ww_i','p_M'}),read_eco(nm_ple,'habitat')},[],tax)
+      %tax = 'Aves'; nm_ave = select(tax); prt_tab({nm_ave,read_stat(nm_ave,{'Ww_i','p_M'}),read_eco(nm_ave,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
       saveas(gcf,'legend_aves.png')
 
@@ -157,20 +166,84 @@ end
       ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
       xlim([-1 6])
       saveas(gcf,'Wwi_pM_aves.png')
-    end
- end
+
+    case 6 % mammalia 
+      legend = { ... % colors: blue edge grass eaters, red edge carnivores
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Pecora'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 1 1]}, 'Macropodiformes'; % grass eaters	
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Eulipotyphla'; % insect/worm eaters
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Feliformia'; % carnivores
+      };
+      %tax = 'Mammalia'; nm_mam = select(tax); prt_tab({nm_mam,read_stat(nm_mam,{'Ww_i','p_M'}),read_eco(nm_mam,'habitat')},[],tax)
+      shlegend(legend,[],[0.9 0.2]);
+      saveas(gcf,'legend_mam.png')
+
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_pM_mam.png')
+
+      figure
+      WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
+      Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
+      figure(Hfig_WjOi)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration, mol O_2/d.g')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_jOi_mam.png')
+
+    case 7 % ducks
+      legend = { ... % colors: blue edge grass eaters, red edge carnivores
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Anserinae'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Anatini'; % grass eaters
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Mergini'; % fish eaters	
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Aythyinae'; % insect/worm eaters
+      };
+      %tax = 'Anseriformes'; nm_ans = select(tax); prt_tab({nm_ans,read_stat(nm_ans,{'Ww_i','p_M'}),read_eco(nm_and,'habitat')},[],tax)
+      shlegend(legend,[],[0.9 0.2]);
+      saveas(gcf,'legend_ans.png')
+
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_pM_ans.png')
+
+      figure
+      WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
+      Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
+      figure(Hfig_WjOi)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration, mol O_2/d.g')
+      xlim([-1 6])
+      saveas(gcf,'Wwi_jOi_mam.png')
+   end
+  end
 end
 
-function color = climate2color(climate)
-   n = length(climate); color = NaN(n,3);
+function [color sel] = climate2color(climate)
+   n = length(climate); color = ones(n,3); sel = false(n,1);
    for i = 1:n
-     A = any(contains(climate{i},'A')); 
-     B = any(contains(climate{i},'B')); 
-     C = any(contains(climate{i},'C')); 
-     D = any(contains(climate{i},'D')); 
-     E = any(contains(climate{i},'E')); 
-     val = (0.1*A + 0.3*B + 0.5*C + 0.7*D + 0.9*E)/ (A + B + C + D + E);
-     color(i,:) = color_lava(val); 
+%      A = any(contains(climate{i},'A')); 
+%      B = any(contains(climate{i},'B')); 
+%      C = any(contains(climate{i},'C')); 
+%      D = any(contains(climate{i},'D')); 
+%      E = any(contains(climate{i},'E')); 
+%      val = (0.1*A + 0.3*B + 0.5*C + 0.7*D + 0.9*E)/ (A + B + C + D + E);
+%      color(i,:) = color_lava(val); 
+     if     any(contains(climate{i},'A'))&& ~any(contains(climate{i},{'B','C','D','E'})); color(i,:) = [0 0 0]; sel(i) = true;
+     elseif any(contains(climate{i},'B'))&& ~any(contains(climate{i},{'A','C','D','E'})); color(i,:) = [0 0 1]; sel(i) = true;
+     elseif any(contains(climate{i},'C'))&& ~any(contains(climate{i},{'A','B','D','E'})); color(i,:) = [1 0 1]; sel(i) = true;
+     elseif any(contains(climate{i},'D'))&& ~any(contains(climate{i},{'A','B','C','E'})); color(i,:) = [1 0 0]; sel(i) = true; 
+     elseif any(contains(climate{i},'E'))&& ~any(contains(climate{i},{'A','B','C','D'})); color(i,:) = [0 1 0]; sel(i) = true;
+     end
+     %val = (0.1*A + 0.3*B + 0.5*C + 0.7*D + 0.9*E)/ (A + B + C + D + E);
+     %color(i,:) = color_lava(val); 
    end 
 end
 
