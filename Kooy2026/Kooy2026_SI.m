@@ -211,7 +211,7 @@ for i=1:length(fig)
      ylabel('_{10}log life span @ 20C, d')
      title(['\it 7325 species @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gca,'Li_am_RSED.png')
+     %saveas(gca,'Li_am_RSED.png')
  
      Hfig_WwiWwib = shstat([Ww_i, Ww_ib], legend_RSED);  
      figure(Hfig_WwiWwib)
@@ -221,7 +221,135 @@ for i=1:length(fig)
      title(['\it 7325 species @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      xlim([-10 10]); ylim([-10 10]); 
      set(gca, 'FontSize', 15, 'Box', 'on')
-     saveas(gca,'Wwi_Wwib_RSED.png')
+     %saveas(gca,'Wwi_Wwib_RSED.png')
+
+   case 6 % kap_ss_sRb: overall reprod efficiency
+     shstat_options('default');
+     shstat_options('x_transform', 'none');
+     shstat_options('y_transform', 'none');
+     shstat_options('z_transform', 'none');
+     
+     sel_vert = select_01('Cyclostomata') | select_01('Chondrichthyes') | select_01('Actinopterygii') | select_01('Latimeria') | ...
+       select_01('Dipnoi') | select_01('Amphibia') | select_01('Lepidosauria') | select_01('Aves') | select_01('Archelosauria') |  select_01('Mammalia');
+     sel_invert = select_01('Radiata') | select_01('Xenacoelomorpha') | select_01('Spiralia') | select_01('Ecdysozoa') | ...
+       select_01('Echinodermata') | select_01('Cephalochordata') | select_01('Tunicata');
+
+     vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V','s_s'});
+     E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6); s_s=vars(:,7);
+     kap_R = 0.95 + 0*kap_R; % remove simultaneous hermaphrodite allocation
+     s_Rb = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % overall reproduction efficiency
+     kap_ss_sRb = [read_allStat('kap'),s_s,s_Rb];
+
+
+     [Hfig_vert, Hleg_vert] = shstat(kap_ss_sRb, legend_vert, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+     figure(Hfig_vert) % add items to figure
+     xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('s_R^b, -');
+     xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+     view(150,18)
+     %kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapbA = 0.8*(1 - kap*ones(1,50) - ss./kap.^2); % set x,y,z values
+     %mesh(kap,ss,kapbA'); % add surface to figure
+     % define colormap for mesh: k->b->m->r->white
+     %Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+     %colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+     %caxis([0 1]) % range for colormap
+     kap_xy = linspace(0,1,100)'; ss_xy= kap_xy.^2.*(1-kap_xy); plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapbA=0 plane
+%     val_vert = kap_ss_sRb(sel_vert,:); n_vert = size(val_vert,1); % number for points
+%      for j=1:n_vert % scan points to make projections to the mesh
+%        kapbA_vert = 0.8*(1 - val_vert(j,1) - val_vert(j,2)/ val_vert(j,1)^2); 
+%        if kapbA_vert>val_vert(j,3); color='b'; else color='r'; end
+%        plot3(val_vert(j,[1;1]), val_vert(j,[2;2]),[kapbA_vert;val_vert(j,3)], color, 'LineWidth', 2) 
+%      end
+     %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+     %saveas(gcf,'kap_ss_kapbA_vert.fig')
+     %saveas(gcf,'kap_ss_kapbA_vert.png')
+     %saveas(Hleg_vert,'legend_vert.png')
+
+     [Hfig_invert, Hleg_invert] = shstat(kap_ss_sRb, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+     figure(Hfig_invert) % add items to figure
+     xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('s_R^b, -');
+     xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+     view(150,18)
+     %kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapbA = 0.8*(1 - kap*ones(1,50) - kap.^-2*ss); % set x,y,z values
+     %mesh(kap,ss,kapbA'); % add surface to figure
+     % define colormap for mesh: k->b->m->r->white
+     %Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+     %colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+     %caxis([0 1]) % range for colormap
+     plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapbA=0 plane
+%      val_invert = kap_ss_kapbA(sel_invert,:); n_invert = size(val_invert,1); % number for points
+%      for j=1:n_invert % scan points to make projections to the mesh
+%        kapbA_invert = 0.8*(1 - val_invert(j,1) - val_invert(j,2)/ val_invert(j,1)^2); 
+%        if kapbA_invert>val_invert(j,3); color='b'; else color='r'; end
+%        plot3(val_invert(j,[1;1]), val_invert(j,[2;2]),[kapbA_invert;val_invert(j,3)], color, 'LineWidth', 2) 
+%      end
+     %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+     %saveas(gcf,'kap_ss_kapbA_invert.fig')
+     %saveas(gcf,'kap_ss_kapbA_invert.png')
+     %saveas(Hleg_invert,'legend_invert.png')
+
+   case 7 % kap_ss_kapbA: kapbA frac of assim to neonate prod
+     shstat_options('default');
+     shstat_options('x_transform', 'none');
+     shstat_options('y_transform', 'none');
+     shstat_options('z_transform', 'none');
+     
+     sel_vert = select_01('Cyclostomata') | select_01('Chondrichthyes') | select_01('Actinopterygii') | select_01('Latimeria') | ...
+       select_01('Dipnoi') | select_01('Amphibia') | select_01('Lepidosauria') | select_01('Aves') | select_01('Archelosauria') |  select_01('Mammalia');
+     sel_invert = select_01('Radiata') | select_01('Xenacoelomorpha') | select_01('Spiralia') | select_01('Ecdysozoa') | ...
+       select_01('Echinodermata') | select_01('Cephalochordata') | select_01('Tunicata');
+
+     vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V','s_s'});
+     E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6); s_s=vars(:,7);
+     kap_R = 0.95 + 0*kap_R; % remove simultaneous hermaphrodite allocation
+     s_Rb = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % overall reproduction efficiency
+     kapRA = get_kapRA(read_allStat({'p_Am','p_M','k_J','E_Hp','s_M','kap','L_i'})); 
+     kap_ss_kapbA = [read_allStat('kap'),s_s,kapRA(:,1).*s_Rb];
+
+     [Hfig_vert, Hleg_vert] = shstat(kap_ss_kapbA, legend_vert, ['vertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+     figure(Hfig_vert) % add items to figure
+     xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_b^A, -');
+     xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+     view(150,18)
+     kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapbA = 0.8*(1 - kap*ones(1,50) - ss./kap.^2); % set x,y,z values
+     mesh(kap,ss,kapbA'); % add surface to figure
+     % define colormap for mesh: k->b->m->r->white
+     Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+     colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+     caxis([0 1]) % range for colormap
+     kap_xy = linspace(0,1,100)'; ss_xy= kap_xy.^2.*(1-kap_xy); plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapbA=0 plane
+     val_vert = kap_ss_kapbA(sel_vert,:); n_vert = size(val_vert,1); % number for points
+     for j=1:n_vert % scan points to make projections to the mesh
+       kapbA_vert = 0.8*(1 - val_vert(j,1) - val_vert(j,2)/ val_vert(j,1)^2); 
+       if kapbA_vert>val_vert(j,3); color='b'; else color='r'; end
+       plot3(val_vert(j,[1;1]), val_vert(j,[2;2]),[kapbA_vert;val_vert(j,3)], color, 'LineWidth', 2) 
+     end
+     %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+     %saveas(gcf,'kap_ss_kapbA_vert.fig')
+     %saveas(gcf,'kap_ss_kapbA_vert.png')
+     %saveas(Hleg_vert,'legend_vert.png')
+
+     [Hfig_invert, Hleg_invert] = shstat(kap_ss_kapbA, legend_invert, ['invertebrates @ ',datestr(datenum(date),'yyyy/mm/dd')]); % set title, output handle for adding items   
+     figure(Hfig_invert) % add items to figure
+     xlabel('\kappa, -'); ylabel('s_s, -'); zlabel('\kappa_b^A, -');
+     xlim([0 1]); ylim([0 4/27]); zlim([0 1]);
+     view(150,18)
+     kap = linspace(.005,1,50)'; ss = linspace(1e-8, 4/27, 50); kapbA = 0.8*(1 - kap*ones(1,50) - kap.^-2*ss); % set x,y,z values
+     mesh(kap,ss,kapbA'); % add surface to figure
+     % define colormap for mesh: k->b->m->r->white
+     Colmap = [0 0 0; 0 0 .5; 0 0 1; .5 0 1; 1 0 1; 1 0 .5; 1 0 0; 1 .25 .25; 1 .5 .5; 1 .75 .75];
+     colormap(Hfig_vert, Colmap) % set color map to add_my_pet colors 
+     caxis([0 1]) % range for colormap
+     plot3(kap_xy,ss_xy,0*kap_xy); % curve in kapbA=0 plane
+     val_invert = kap_ss_kapbA(sel_invert,:); n_invert = size(val_invert,1); % number for points
+     for j=1:n_invert % scan points to make projections to the mesh
+       kapbA_invert = 0.8*(1 - val_invert(j,1) - val_invert(j,2)/ val_invert(j,1)^2); 
+       if kapbA_invert>val_invert(j,3); color='b'; else color='r'; end
+       plot3(val_invert(j,[1;1]), val_invert(j,[2;2]),[kapbA_invert;val_invert(j,3)], color, 'LineWidth', 2) 
+     end
+     %set(gca, 'FontSize', 25, 'Box', 'on') %%%%%%%%%%%%%%%%
+     %saveas(gcf,'kap_ss_kapbA_invert.fig')
+     %saveas(gcf,'kap_ss_kapbA_invert.png')
+     %saveas(Hleg_invert,'legend_invert.png')
 
 end
 
