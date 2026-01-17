@@ -359,7 +359,7 @@ for i=1:length(fig)
         {'-', 2, [1 0 1]}, 'Batomorphi'; ....
       };
       shllegend(llegend_chon,[],[0.9 0.2]);
-      saveas(gcf,'llegend_chon.png')
+      %saveas(gcf,'llegend_chon.png')
       get_n(llegend_chon(:,2));
       
       % p_M
@@ -370,7 +370,7 @@ for i=1:length(fig)
       figure(Hfig_pM)
       xlabel('_{10}log [p_M], J/d.cm^3')
       ylabel('survivor function')
-      title(['\it Chondrichthes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      title(['\it Chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'pM_chon.png')
 
       % s_s
@@ -382,7 +382,7 @@ for i=1:length(fig)
       figure(Hfig_ss)
       xlabel('_{10}log supply stress s_s, -')
       ylabel('survivor function')
-      title(['\it Chondrichthes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      title(['\it Chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_chon.png')
 
     case 11 % Testudines
@@ -457,6 +457,38 @@ for i=1:length(fig)
       title(['\it Squamata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_squa.png')
 
+    case 13 % Amphibia
+      llegend_amph = {...
+        {'-', 2, [0 0 0]}, 'Gymnophiona'; ...
+        {'-', 2, [0 0 1]}, 'Caudata'; ....
+        {'-', 2, [1 0 0]}, 'Anura'; ....
+      };
+      shllegend(llegend_amph,[],[0.9 0.2]);
+      %saveas(gcf,'llegend_amph.png')
+      get_n(llegend_amph(:,2));
+      
+      % p_M
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_pM = shstat({'p_M'}, llegend_amph); 
+      figure(Hfig_pM)
+      xlabel('_{10}log [p_M], J/d.cm^3')
+      ylabel('survivor function')
+      title(['\it Amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_amph.png')
+
+      % s_s
+      shstat_options('default');
+      %shstat_options('x_transform', 'none'); 
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_ss = shstat({'s_s'}, llegend_amph); 
+      figure(Hfig_ss)
+      xlabel('_{10}log supply stress s_s, -')
+      ylabel('survivor function')
+      title(['\it Amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'ss_amph.png')
     end
   end
 end
