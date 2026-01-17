@@ -356,10 +356,10 @@ for i=1:length(fig)
         {'-', 2, [0 0 0]}, 'Holocephali'; ...
         {'-', 2, [0 0 1]}, 'Selachii'; ....
         {'-', 2, [1 0 0]}, 'Rajiformes'; ....
-        {'-', 2, [1 0 1]}, 'NonRajiformes'; ....
+        {'-', 2, [1 0 1]}, 'Batomorphi'; ....
       };
       shllegend(llegend_chon,[],[0.9 0.2]);
-      %saveas(gcf,'llegend_chon.png')
+      saveas(gcf,'llegend_chon.png')
       get_n(llegend_chon(:,2));
       
       % p_M
@@ -384,6 +384,78 @@ for i=1:length(fig)
       ylabel('survivor function')
       title(['\it Chondrichthes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_chon.png')
+
+    case 11 % Testudines
+      llegend_test = {...
+        {'-', 2, [0 0 0]}, 'Pleurodira'; ...
+        {'-', 2, [0 0 1]}, 'Trionychia'; ....
+        {'-', 2, [0 1 1]}, 'Americhelydia'; ....
+        {'-', 2, [1 0 1]}, 'Emystemia'; ....
+        {'-', 2, [1 0 0]}, 'Geoemydidae'; ....
+        {'-', 2, [.8 0 0]}, 'Testudinidae'; ....
+      };
+      shllegend(llegend_test,[],[0.9 0.2]);
+      %saveas(gcf,'llegend_test.png')
+      get_n(llegend_test(:,2));
+      
+      % p_M
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_pM = shstat({'p_M'}, llegend_test); 
+      figure(Hfig_pM)
+      xlabel('_{10}log [p_M], J/d.cm^3')
+      ylabel('survivor function')
+      title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_test.png')
+
+      % s_s
+      shstat_options('default');
+      %shstat_options('x_transform', 'none'); 
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_ss = shstat({'s_s'}, llegend_test); 
+      figure(Hfig_ss)
+      xlabel('_{10}log supply stress s_s, -')
+      ylabel('survivor function')
+      title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'ss_test.png')
+
+    case 12 % Squamata
+      llegend_squa = {...
+        {'-', 2, [0 0 0]}, 'Gekkota'; ...
+        {'-', 2, [0 0 1]}, 'Scinciformata'; ....
+        {'-', 2, [0 1 1]}, 'Laterata'; ....
+        {'-', 2, [1 0 1]}, 'Anguimorpha'; ....
+        {'-', 2, [1 0 0]}, 'Iguania'; ....
+        {'-', 2, [1 1 0]}, 'Serpentes'; ....
+      };
+      shllegend(llegend_squa,[],[0.9 0.2]);
+      %saveas(gcf,'llegend_squa.png')
+      get_n(llegend_squa(:,2));
+      
+      % p_M
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_pM = shstat({'p_M'}, llegend_squa); 
+      figure(Hfig_pM)
+      xlabel('_{10}log [p_M], J/d.cm^3')
+      ylabel('survivor function')
+      title(['\it Squamata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_squa.png')
+
+      % s_s
+      shstat_options('default');
+      %shstat_options('x_transform', 'none'); 
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_ss = shstat({'s_s'}, llegend_squa); 
+      figure(Hfig_ss)
+      xlabel('_{10}log supply stress s_s, -')
+      ylabel('survivor function')
+      title(['\it Squamata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'ss_squa.png')
 
     end
   end
