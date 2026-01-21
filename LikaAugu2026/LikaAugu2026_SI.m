@@ -53,7 +53,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_pM_Aves.png')
+      %saveas(gcf,'Wwi_pM_Aves.png')
        
       %figure Wwi-jOi Aves climate
       [color sel] = climate2color(climate);
@@ -62,7 +62,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_jOi_Aves.png')
+      %saveas(gcf,'Wwi_jOi_Aves.png')
        
     case 2 %  Mammalia
       nm = select('Mammalia'); n = length(nm); 
@@ -77,7 +77,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_pM_Mamm.png')
+      %saveas(gcf,'Wwi_pM_Mamm.png')
        
       %figure Wwi-jOi Mammalia climate
       %color = climate2color(climate);
@@ -86,7 +86,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_jOi_Mamm.png')
+      %saveas(gcf,'Wwi_jOi_Mamm.png')
        
     case 3 % Actinopterygii
       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
@@ -101,7 +101,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_pM_Pisc.png')
+      %saveas(gcf,'Wwi_pM_Pisc.png')
        
       %figure Wwi-jOi Pisces habitat
       %color = habitat2color(habitat);
@@ -110,7 +110,7 @@ for i=1:length(fig)
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'Wwi_jOi_Pisc.png')
+      %saveas(gcf,'Wwi_jOi_Pisc.png')
        
     case 4 % coral versus pelagic fish
       legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
@@ -124,7 +124,7 @@ for i=1:length(fig)
         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Pleuronectiformes'; 
       };
       shlegend(legend,[],[0.9 0.2]);
-      saveas(gcf,'legend_fish.png')
+      %saveas(gcf,'legend_fish.png')
 
       % Wwi-pM
       shstat_options('default');
@@ -134,7 +134,7 @@ for i=1:length(fig)
       ylabel('_{10}log spec som maint [p_M], J/d.cm^3')
       title(['\it fish @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_pM_fish.png')
+      %saveas(gcf,'Wwi_pM_fish.png')
       %
       WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
       Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
@@ -143,7 +143,7 @@ for i=1:length(fig)
       ylabel('_{10}log spec respiration, mol O_2/d.g')
       title(['\it fish @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_jOi_fish.png')
+      %saveas(gcf,'Wwi_jOi_fish.png')
       
       % Wwi-s_Rb
       shstat_options('default');
@@ -160,7 +160,7 @@ for i=1:length(fig)
       ylabel('overall reprod efficiency s_R^b, -')
       title(['\it fish @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_sRb_fish.png')
+      %saveas(gcf,'Wwi_sRb_fish.png')
 
     case 5 % birds Forests A, forests C & D
       legend = { ... % colors: blue edge tropical forests, red edge temperate forests
@@ -175,7 +175,7 @@ for i=1:length(fig)
       };
       %tax = 'Aves'; nm_ave = select(tax); prt_tab({nm_ave,read_stat(nm_ave,{'Ww_i','p_M'}),read_eco(nm_ave,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
-      saveas(gcf,'legend_aves.png')
+      %saveas(gcf,'legend_aves.png')
 
       shstat_options('default');
       Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
@@ -184,7 +184,7 @@ for i=1:length(fig)
       ylabel('_{10}log spec som maint [p_M], J/d.cm^3')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_pM_aves.png')
+      %saveas(gcf,'Wwi_pM_aves.png')
       
       % Wwi-s_Rb
       shstat_options('default');
@@ -201,7 +201,7 @@ for i=1:length(fig)
       ylabel('overall reprod efficiency s_R^b, -')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_sRb_aves.png')
+      %saveas(gcf,'Wwi_sRb_aves.png')
 
     case 6 % mammalia 
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
@@ -212,7 +212,7 @@ for i=1:length(fig)
       };
       %tax = 'Mammalia'; nm_mam = select(tax); prt_tab({nm_mam,read_stat(nm_mam,{'Ww_i','p_M'}),read_eco(nm_mam,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
-      saveas(gcf,'legend_mam.png')
+      %saveas(gcf,'legend_mam.png')
 
       shstat_options('default');
       Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
@@ -221,7 +221,7 @@ for i=1:length(fig)
       ylabel('_{10}log spec som maint [p_M], J/d.cm^3')
       title(['\it mammals @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_pM_mam.png')
+      %saveas(gcf,'Wwi_pM_mam.png')
 
       WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
       Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
@@ -230,7 +230,7 @@ for i=1:length(fig)
       ylabel('_{10}log spec respiration, mol O_2/d.g')
       title(['\it mammals @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_jOi_mam.png')
+      %saveas(gcf,'Wwi_jOi_mam.png')
 
       % Wwi-s_Rb
       shstat_options('default');
@@ -247,23 +247,70 @@ for i=1:length(fig)
       ylabel('overall reprod efficiency s_R^b, -')
       title(['\it mammals @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([-1 6])
-      saveas(gcf,'Wwi_sRb_mam.png')
+      %saveas(gcf,'Wwi_sRb_mam.png')
 
-    case 7 % ducks
+    case 7 % glires: pika's vs voles 
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
-        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Dendrocygninae'; % grass eaters
-        {'o', 8, 3, [0 0 0], [1 1 1]}, 'Tadorninae'; % grass eaters
-        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Anserinae'; % grass eaters
-        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Anas'; % grass eaters
-        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Mareca'; % grass eaters
-        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Spatula'; % grass eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Leporidae'; % grass eaters
+        {'o', 8, 3, [0 0 1], [1 0 0]}, 'Ochotonidae'; % grass eaters
+        {'o', 8, 3, [1 0 0], [0 0 1]}, 'Arvicolinae'; % seed eaters	
+        {'o', 8, 3, [1 0 0], [0 1 1]}, 'Neotominae'; % seed eaters	
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Sigmodontinae'; % seed eaters	
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Tylomyinae'; % seed eaters	
+      };
+      shlegend(legend,[],[0.9 0.2]);
+      %saveas(gcf,'legend_gli.png')
+
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      title(['\it glires @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      xlim([-1 6])
+      %saveas(gcf,'Wwi_pM_gli.png')
+
+      WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
+      Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
+      figure(Hfig_WjOi)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration, mol O_2/d.g')
+      title(['\it glires @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      xlim([-1 6])
+      %saveas(gcf,'Wwi_jOi_gli.png')
+
+      % Wwi-s_Rb
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      vars = read_allStat({'E_0','kap_R','L_b','E_m','mu_V','M_V','Ww_i','Ww_b','s_s'});
+      E_0=vars(:,1); kap_R=vars(:,2); L_b=vars(:,3); E_m=vars(:,4); mu_V=vars(:,5); M_V=vars(:,6); Ww_i=vars(:,7); s_s=vars(:,9);
+      kap_R = 0.95 + 0*kap_R; % remove simultaneous hermaphrodite allocation
+      s_Rb = kap_R.*L_b.^3.*(M_V.*mu_V+E_m)./E_0; % overall reproduction efficiency
+      %
+      Hfig_WsRb = shstat([Ww_i, s_Rb], legend); 
+      figure(Hfig_WsRb)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('overall reprod efficiency s_R^b, -')
+      title(['\it glires @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      xlim([-1 6])
+      %saveas(gcf,'Wwi_sRb_gli.png')
+
+    case 8 % ducks
+      legend = { ... % colors: blue edge grass eaters, red edge carnivores
+        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Dendrocygninae'; % plant eaters
+        {'o', 8, 3, [0 0 0], [1 1 1]}, 'Tadorninae'; % plant eaters
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Anserinae'; % plant eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Anas'; % plant eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Mareca'; % plant eaters
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Spatula'; % plant eaters
         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Oxyurini'; % fish eaters	
         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Mergini'; % fish eaters	
         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Aythya'; % insect/worm eaters
       };
       %tax = 'Anseriformes'; nm_ans = select(tax); prt_tab({nm_ans,read_stat(nm_ans,{'Ww_i','p_M'}),read_eco(nm_and,'habitat')},[],tax)
       shlegend(legend,[],[0.9 0.2]);
-      saveas(gcf,'legend_ans.png')
+      %saveas(gcf,'legend_ans.png')
 
       shstat_options('default');
       Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
@@ -271,18 +318,17 @@ for i=1:length(fig)
       xlabel('_{10}log weight W_w^\infty, g')
       ylabel('_{10}log spec som maintenance [p_M], J/d.cm^3')
       xlim([2 4.5])
-      saveas(gcf,'Wwi_pM_ans.png')
+      %saveas(gcf,'Wwi_pM_ans.png')
 
-      figure
       WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
       Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
       figure(Hfig_WjOi)
       xlabel('_{10}log weight W_w^\infty, g')
       ylabel('_{10}log spec respiration, mol O_2/d.g')
       xlim([-1 6])
-      saveas(gcf,'Wwi_jOi_mam.png')
+      %saveas(gcf,'Wwi_jOi_mam.png')
       
-    case 8 % molluscs
+    case 9 % molluscs
       llegend_mol = {...
         {'-', 2, [0 0 0]}, 'Lophophorata'; ....
         {'-', 2, [0 0 1]}, 'Bivalvia'; ....
@@ -317,7 +363,7 @@ for i=1:length(fig)
       title(['\it Lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_mol.png')
 
-    case 9 % echinoderms
+    case 10 % echinoderms
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
         {'-', 2, [1 0 1]}, 'Asteroidea'; ....
@@ -351,7 +397,7 @@ for i=1:length(fig)
       title(['\it Echinodermata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ech.png')
 
-    case 10 % chondrichthyes
+    case 11 % chondrichthyes
       llegend_chon = {...
         {'-', 2, [0 0 0]}, 'Holocephali'; ...
         {'-', 2, [0 0 1]}, 'Selachii'; ....
@@ -385,7 +431,7 @@ for i=1:length(fig)
       title(['\it Chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_chon.png')
 
-    case 11 % Testudines
+    case 12 % Testudines
       llegend_test = {...
         {'-', 2, [0 0 0]}, 'Pleurodira'; ...
         {'-', 2, [0 0 1]}, 'Trionychia'; ....
@@ -421,7 +467,7 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 12 % Squamata
+    case 13 % Squamata
       llegend_squa = {...
         {'-', 2, [0 0 0]}, 'Gekkota'; ...
         {'-', 2, [0 0 1]}, 'Scinciformata'; ....
@@ -457,7 +503,9 @@ for i=1:length(fig)
       title(['\it Squamata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_squa.png')
 
-    case 13 % Amphibia
+      nm=select('Iguania'); prt_tab({nm,read_stat(nm,'Ww_i','p_M')},{'species','weight','spec som main'},'Iguania',1)
+      
+    case 14 % Amphibia
       llegend_amph = {...
         {'-', 2, [0 0 0]}, 'Gymnophiona'; ...
         {'-', 2, [0 0 1]}, 'Caudata'; ....
