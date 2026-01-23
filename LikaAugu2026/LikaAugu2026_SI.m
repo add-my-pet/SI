@@ -313,7 +313,24 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 8 % not in paper: echinoderms
+    case 8 % fig 9: surv for p_M
+        
+      close all; 
+      global pets 
+
+      pets = {'surv_pM'}; 
+
+      estim_options('default'); 
+      estim_options('max_step_number', 5e3); 
+      estim_options('max_fun_evals', 5e3); 
+
+      estim_options('pars_init_method', 2); 
+      estim_options('results_output', 3); 
+      %estim_options('method', 'no'); 
+
+      estim_pars; 
+      
+    case 9 % not in paper: echinoderms
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
         {'-', 2, [1 0 1]}, 'Asteroidea'; ....
@@ -347,7 +364,7 @@ for i=1:length(fig)
       title(['\it Echinodermata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ech.png')    
       
-    case 9 %  not in paper: birds Forests A, forests C & D
+    case 10 %  not in paper: birds Forests A, forests C & D
       legend = { ... % colors: blue edge tropical forests, red edge temperate forests
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
@@ -388,7 +405,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_aves.png')
 
-    case 10 %  not in paper: pM_ss
+    case 11 %  not in paper: pM_ss
       legend = {...
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Gekkota'; ...
         {'o', 8, 3, [0 0 1], [0 0 0]}, 'Scinciformata'; ....
@@ -408,7 +425,7 @@ for i=1:length(fig)
       ylabel('supply stress, s_s, -')
       %saveas(gca,'pM_ss.png')
       
-    case 11 %   not in paper: Aves
+    case 12 %   not in paper: Aves
       nm = select('Passeriformes'); n = length(nm); 
       climate = read_eco(nm, 'climate');
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -432,7 +449,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Aves.png')
        
-    case 12 %   not in paper: Mammalia
+    case 13 %   not in paper: Mammalia
       nm = select('Mammalia'); n = length(nm); 
       climate = read_eco(nm, 'climate'); 
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -456,7 +473,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Mamm.png')
        
-    case 13 %  not in paper: Actinopterygii
+    case 14 %  not in paper: Actinopterygii
       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
       habitat = read_eco(nm, 'habitat');
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -480,7 +497,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Pisc.png')
  
-    case 14 %  not in paper: glires: pika's vs voles 
+    case 15 %  not in paper: glires: pika's vs voles 
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Leporidae'; % grass eaters
         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Ochotonidae'; % grass eaters
@@ -527,7 +544,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_gli.png')
 
-    case 15 %  not in paper: ducks
+    case 16 %  not in paper: ducks
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Dendrocygninae'; % plant eaters
         {'o', 8, 3, [0 0 0], [1 1 1]}, 'Tadorninae'; % plant eaters
