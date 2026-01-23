@@ -313,8 +313,8 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 8 % fig 9: surv for p_M
-        
+    case 8 % fig 8: surv for p_M
+      % this case calls mydata_surv_pM, pars_init_surv_pM, predict_surv_pM
       close all; 
       global pets 
 
