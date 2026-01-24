@@ -137,7 +137,69 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_mam.png')
 
-    case 3 % Fig 3: molluscs
+    case 3 % Fig 3: mammalia food 
+      llegend_mam = {...
+        {'-', 2, [0 0 0]}, 'plant, leaves'; ....
+        {'-', 2, [0 0 1]}, 'plant, seeds/fruits'; ....
+        {'-', 2, [1 0 1]}, 'animal, invertebrate'; ....
+        {'-', 2, [1 0 0]}, 'animal, vertebrates'; ....
+      };
+      %shllegend(llegend_mam,[],[0.9 0.2]);
+      %saveas(gcf,'llegend_mam_food.png')
+
+      nm = select('Mammalia'); n = length(nm); 
+      food = read_eco(nm, 'food');
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+       
+      %figure Wwi-pM mam food
+      [color, sel] = food2color(food);
+      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',3,1,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(any(sel,2))), log10(p_M(any(sel,2)))], leg(any(sel,2),:), ['mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'Wwi_pM_mam_food.png')
+       
+      %figure Wwi-jOi mam food
+      %[color, sel] = food2color(food);
+      %leg = cell(n,2); for j=1:n; leg{j,1} = {'o',3,1,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
+      plot2i([log10(Ww_i(any(sel,2))), log10(jO_i(any(sel,2)))], leg(any(sel,2),:), ['mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'Wwi_jOi_mam_food.png')
+      
+      figure % Fig 3a pM mam food
+      surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); 
+      surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); 
+      surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); 
+      surv_pM_Cv = surv(p_M(sel(:,4))); surv_W_Cv = surv(Ww_i(sel(:,4))); 
+      plot(log10(surv_pM_Hl(:,1)), surv_pM_Hl(:,2), 'k', 'LineWidth', 2); hold on
+      plot(log10(surv_pM_Hs(:,1)), surv_pM_Hs(:,2), 'b', 'LineWidth', 2);
+      plot(log10(surv_pM_Ci(:,1)), surv_pM_Ci(:,2), 'm', 'LineWidth', 2);
+      plot(log10(surv_pM_Cv(:,1)), surv_pM_Cv(:,2), 'r', 'LineWidth', 2);
+      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      ylabel('survivor function, -')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      xlim([0.7 4])
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'pM_mam_food.png')
+     
+      figure % Fig 3b Wwi mam food
+      plot(log10(surv_W_Hl(:,1)), surv_W_Hl(:,2), 'k', 'LineWidth', 2); hold on
+      plot(log10(surv_W_Hs(:,1)), surv_W_Hs(:,2), 'b', 'LineWidth', 2);
+      plot(log10(surv_W_Ci(:,1)), surv_W_Ci(:,2), 'm', 'LineWidth', 2);
+      plot(log10(surv_W_Cv(:,1)), surv_W_Cv(:,2), 'r', 'LineWidth', 2);
+      xlabel('_{10}log ultimate weight W_w^\infty, g')
+      ylabel('survivor function, -')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'Wwi_mam_food.png')
+      
+    case 4 % Fig 4: molluscs
       llegend_mol = {...
         {'-', 2, [0 0 0]}, 'Lophophorata'; ....
         {'-', 2, [0 0 1]}, 'Bivalvia'; ....
@@ -172,7 +234,7 @@ for i=1:length(fig)
       title(['\it Lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_mol.png')
 
-    case 4 % Fig 4: chondrichthyes
+    case 5 % Fig 5: chondrichthyes
       llegend_chon = {...
         {'-', 2, [0 0 0]}, 'Holocephali'; ...
         {'-', 2, [0 0 1]}, 'Selachii'; ....
@@ -206,7 +268,7 @@ for i=1:length(fig)
       title(['\it Chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_chon.png')
       
-    case 5 % Fig 5: Amphibia
+    case 6 % Fig 6: Amphibia
       llegend_amph = {...
         {'-', 2, [0 0 0]}, 'Gymnophiona'; ...
         {'-', 2, [0 0 1]}, 'Caudata'; ....
@@ -239,7 +301,7 @@ for i=1:length(fig)
       title(['\it Amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_amph.png')
       
-    case 6 % Fig 6: Squamata
+    case 7 % Fig 7: Squamata
       llegend_squa = {...
         {'-', 2, [0 0 0]}, 'Gekkota'; ...
         {'-', 2, [0 0 1]}, 'Scinciformata'; ....
@@ -277,7 +339,7 @@ for i=1:length(fig)
 
       nm=select('Iguania'); prt_tab({nm,read_stat(nm,'Ww_i','p_M')},{'species','weight','spec som main'},'Iguania',1)
 
-    case 7 % Fig 7: Testudines
+    case 8 % Fig 8: Testudines
       llegend_test = {...
         {'-', 2, [0 0 0]}, 'Pleurodira'; ...
         {'-', 2, [0 0 1]}, 'Trionychia'; ....
@@ -313,7 +375,7 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 8 % fig 8: surv for p_M
+    case 9 % fig 9: surv for p_M
       % this case calls mydata_surv_pM, pars_init_surv_pM, predict_surv_pM
       close all; 
       global pets 
@@ -330,7 +392,7 @@ for i=1:length(fig)
 
       estim_pars; 
       
-    case 9 % not in paper: echinoderms
+    case 10 % not in paper: echinoderms
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
         {'-', 2, [1 0 1]}, 'Asteroidea'; ....
@@ -364,7 +426,7 @@ for i=1:length(fig)
       title(['\it Echinodermata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ech.png')    
       
-    case 10 %  not in paper: birds Forests A, forests C & D
+    case 11 %  not in paper: birds Forests A, forests C & D
       legend = { ... % colors: blue edge tropical forests, red edge temperate forests
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
@@ -405,7 +467,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_aves.png')
 
-    case 11 %  not in paper: pM_ss
+    case 12 %  not in paper: pM_ss
       legend = {...
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Gekkota'; ...
         {'o', 8, 3, [0 0 1], [0 0 0]}, 'Scinciformata'; ....
@@ -425,7 +487,7 @@ for i=1:length(fig)
       ylabel('supply stress, s_s, -')
       %saveas(gca,'pM_ss.png')
       
-    case 12 %   not in paper: Aves
+    case 13 %   not in paper: Aves
       nm = select('Passeriformes'); n = length(nm); 
       climate = read_eco(nm, 'climate');
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -448,30 +510,6 @@ for i=1:length(fig)
       ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Aves.png')
-       
-    case 13 %   not in paper: Mammalia
-      nm = select('Mammalia'); n = length(nm); 
-      climate = read_eco(nm, 'climate'); 
-      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
-      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
-       
-      %figure Wwi-pM Mammalia climate
-      color = climate2color(climate);
-      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-      plot2i([log10(Ww_i), log10(p_M)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-      xlabel('_{10}log ultimate weight W_w^\infty, g')
-      ylabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
-      set(gca, 'FontSize', 15, 'Box', 'on')
-      %saveas(gcf,'Wwi_pM_Mamm.png')
-       
-      %figure Wwi-jOi Mammalia climate
-      %color = climate2color(climate);
-      leg = cell(n,2); for j=1:n; leg{j,1} = {'o',8,3,color(j,:),color(j,:)}; leg{j,2} = strrep(nm{j},'_',' ');  end
-      plot2i([log10(Ww_i), log10(jO_i)], leg, ['Mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')]);
-      xlabel('_{10}log ultimate weight W_w^\infty, g')
-      ylabel('_{10}log spec respiration at 20 C, j_O^\infty, mol/d.g')
-      set(gca, 'FontSize', 15, 'Box', 'on')
-      %saveas(gcf,'Wwi_jOi_Mamm.png')
        
     case 14 %  not in paper: Actinopterygii
       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
@@ -612,6 +650,19 @@ function [color, sel] = habitat2color(habitat)
      else val = NaN; sel(i)= false;
      end
      color(i,:) = color_lava(val);
+   end
+    
+end
+
+function [color, sel] = food2color(food)
+   n = length(food); color = NaN(n,3); sel = false(n,4);
+   for i = 1:n
+     if     any(contains(food{i},'Hl')); color(i,:) = [0 0 0]; sel(i,1) = true;
+     elseif any(contains(food{i},'Hs')); color(i,:) = [0 0 1]; sel(i,2) = true;
+     elseif any(contains(food{i},'Ci')); color(i,:) = [1 0 1]; sel(i,3) = true;
+     elseif any(contains(food{i},'Cv')); color(i,:) = [1 0 0]; sel(i,4) = true;
+     else color(i,:) = [NaN NaN NaN]; sel(i)= false;
+     end
    end
     
 end
