@@ -195,6 +195,7 @@ for i=1:length(fig)
       plot(log10(surv_W_Cv(:,1)), surv_W_Cv(:,2), 'r', 'LineWidth', 2);
       xlabel('_{10}log ultimate weight W_w^\infty, g')
       ylabel('survivor function, -')
+      xlim([0.2 8.3])
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_mam_food.png')
@@ -657,12 +658,10 @@ end
 function [color, sel] = food2color(food)
    n = length(food); color = NaN(n,3); sel = false(n,4);
    for i = 1:n
-     if     any(contains(food{i},'Hl')); color(i,:) = [0 0 0]; sel(i,1) = true;
-     elseif any(contains(food{i},'Hs')); color(i,:) = [0 0 1]; sel(i,2) = true;
-     elseif any(contains(food{i},'Ci')); color(i,:) = [1 0 1]; sel(i,3) = true;
-     elseif any(contains(food{i},'Cv')); color(i,:) = [1 0 0]; sel(i,4) = true;
-     else color(i,:) = [NaN NaN NaN]; sel(i)= false;
-     end
+     if any(contains(food{i},'Hl')); color(i,:) = [0 0 0]; sel(i,1) = true; end
+     if any(contains(food{i},'Hs')); color(i,:) = [0 0 1]; sel(i,2) = true; end
+     if any(contains(food{i},'Ci')); color(i,:) = [1 0 1]; sel(i,3) = true; end
+     if any(contains(food{i},'Cv')); color(i,:) = [1 0 0]; sel(i,4) = true; end
    end
     
 end
