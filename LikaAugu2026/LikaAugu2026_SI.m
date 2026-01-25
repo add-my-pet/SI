@@ -141,7 +141,7 @@ for i=1:length(fig)
       llegend_mam = {...
         {'-', 2, [0 0 0]}, 'plant, leaves/shoots'; ....
         {'-', 2, [0 0 1]}, 'plant, seeds/fruits'; ....
-        {'-', 2, [1 0 1]}, 'animal, invertebrate'; ....
+        {'-', 2, [1 0 1]}, 'animal, invertebrates'; ....
         {'-', 2, [1 0 0]}, 'animal, vertebrates'; ....
       };
       %shllegend(llegend_mam,[],[0.9 0.2]);
@@ -376,23 +376,29 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 9 % fig 9: surv for p_M
-      % this case calls mydata_surv_pM, pars_init_surv_pM, predict_surv_pM
-      close all; 
-      global pets 
+    case 9 % fig 9: surv for p_M      
+      S_pM = surv(log10(read_allStat('p_M'))); % surv fn for log10([p_M]) in AmP
+      range_pM = S_pM([1 end],1); % range of log10([p_M]) values
+      %     lambda_r lambda_h k_r      k_h       p_r
+      par = [23.9 1; 910.4 1; 3.649 1; 0.5971 1; 0.32 1]; % parameters
+      nmregr_options('report',0); % no output during estimation
+      par = nmregr('Weibull2', par, S_pM); % overwrite initial par with estimated par
+      PM = linspace(range_pM(1),range_pM(2),200)'; S = Weibull2(par, PM);
+      Sr = spline1(log10(par(1,1)),[PM,S]); Sh = spline1(log10(par(2,1)),[PM,S]); 
 
-      pets = {'surv_pM'}; 
-
-      estim_options('default'); 
-      estim_options('max_step_number', 5e3); 
-      estim_options('max_fun_evals', 5e3); 
-
-      estim_options('pars_init_method', 2); 
-      estim_options('results_output', 3); 
-      estim_options('method', 'no'); 
-
-      estim_pars; 
-      
+      figure
+      plot(PM, S, '-', 'color', [0.75 0.75 1], 'linewidth',8)
+      xlim(range_pM);
+      hold on
+      plot(S_pM(:,1), S_pM(:,2), 'b', 'Linewidth', 2)
+      plot([range_pM(1);log10(par(1,1));log10(par(1,1))], [Sr;Sr;0], ':r', 'linewidth',2)
+      plot([range_pM(1);log10(par(2,1));log10(par(2,1))], [Sh;Sh;0], ':r', 'linewidth',2)
+      xlabel('_{10}log spec somatic maint [p_M], J/d.cm^3') 
+      ylabel('survivor function')
+      title(['\it all 7325 AmP species @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'off', 'YTick', 0:0.2:1)
+      saveas(gca,'pM.png')
+     
     case 10 % not in paper: echinoderms
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
