@@ -380,7 +380,7 @@ for i=1:length(fig)
       S_pM = surv(log10(read_allStat('p_M'))); % surv fn for log10([p_M]) in AmP
       range_pM = S_pM([1 end],1); % range of log10([p_M]) values
       %     lambda_r lambda_h k_r      k_h       p_r
-      par = [23.9 1; 910.4 1; 3.649 1; 0.5971 1; 0.32 1]; % parameters
+      par = [23.9 1; 910.4 1; 3.649 1; 0.5971 1; 0.32 1]; % initial parameters
       nmregr_options('report',0); % no output during estimation
       par = nmregr('Weibull2', par, S_pM); % overwrite initial par with estimated par
       PM = linspace(range_pM(1),range_pM(2),200)'; S = Weibull2(par, PM);
