@@ -656,13 +656,75 @@ for i=1:length(fig)
       xlabel('_{10}log weight W_w^\infty, g')
       ylabel('_{10}log spec respiration, mol O_2/d.g')
       xlim([-1 6])
-      %saveas(gcf,'Wwi_jOi_mam.png')
+      %saveas(gcf,'Wwi_jOi_ans.png')
       
+    case 18 % not in paper: ecdysozoa
+      legend = { ... % 
+        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Arachnida';
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Branchiopoda';
+        {'o', 8, 3, [0 0 1], [1 0 0]}, 'Multicrustacea';
+        {'o', 8, 3, [0 0 1], [0 0 0]}, 'Oligostraca';
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Hexapoda';
+      };
+      %tax = 'Ecdysozoa'; nm_ecd = select(tax); prt_tab({nm_ecd,read_stat(nm_ecd,{'Ww_i','p_M'}),read_eco(nm_ecd,'habitat')},[],tax)
+      shlegend(legend,[],[0.9 0.2]);
+      %saveas(gcf,'legend_ecd.png')
+
+      % Wwi_pM
+      shstat_options('default');
+      Hfig_WpM = shstat({'Ww_i','p_M'}, legend); 
+      figure(Hfig_WpM)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      %saveas(gcf,'Wwi_pM_ecd.png')
+
+      % Wwi_jOi
+      WJc = read_allStat({'Ww_i','J_Oi','c_T'}); Ww_i = WJc(:,1); j_Oi = WJc(:,2)./WJc(:,1)./WJc(:,3); 
+      Hfig_WjOi = shstat([Ww_i,j_Oi], legend); 
+      figure(Hfig_WjOi)
+      xlabel('_{10}log weight W_w^\infty, g')
+      ylabel('_{10}log spec respiration, mol O_2/d.g')
+      %saveas(gcf,'Wwi_jOi_ecd.png')
+      
+      llegend_ecd = {...
+        {'-', 2, [0 0 0]}, 'Arachnida'; ....
+        {'-', 2, [0 0 1]}, 'Branchiopoda'; ....
+        {'-', 2, [0 1 1]}, 'Multicrustacea'; ....
+       %{'-', 2, [1 0 1]}, 'Oligostraca'; ....
+        {'-', 2, [1 0 0]}, 'Hexapoda'; ....
+      };
+      shllegend(llegend_ecd,[],[0.9 0.2]);
+      %saveas(gcf,'llegend_ecd.png')
+      get_n(llegend_ecd(:,2));
+      
+      % p_M
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_pM = shstat({'p_M'}, llegend_ecd); 
+      figure(Hfig_pM)
+      xlabel('_{10}log [p_M], J/d.cm^3')
+      ylabel('survivor function')
+      title(['\it ecdysozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_ecd.png')
+      
+      % s_s
+      shstat_options('default');
+      shstat_options('x_transform', 'none'); 
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_ss = shstat({'s_s'}, llegend_ecd); 
+      figure(Hfig_ss)
+      xlabel('_{10}log supply stress s_s, -')
+      ylabel('survivor function')
+      title(['\it ecdysozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'ss_ecd.png')    
+
     end
   end
 end
 
-function [color sel] = climate2color(climate)
+function [color, sel] = climate2color(climate)
    n = length(climate); color = ones(n,3); sel = false(n,1);
    for i = 1:n
 %      A = any(contains(climate{i},'A')); 
