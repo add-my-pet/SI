@@ -41,7 +41,39 @@ for i=1:length(fig)
  
   switch fig(i)
       
-    case 1 % Fig 1a & 1b: coral versus pelagic fish
+    case 1 % Fig 1a & 1b: Spiralia
+      legend = { ... % Spiralia
+        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Gnathifera'; 
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Bivalvia'; 
+        {'o', 8, 3, [1 0 1], [1 0 1]}, 'Gastropoda'; 
+        {'o', 8, 3, [1 0 1], [0 1 1]}, 'Cephalopoda'; 
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Lophophorata'; 
+        };
+
+      %tax = 'Spiralia'; nm_spi = select(tax); prt_tab({nm_spi,read_stat(nm_spi,{'Ww_i','p_M'}),read_eco(nm_spi,'habitat')},[],tax)
+      %shlegend(legend,[],[0.9 0.2]);
+      %saveas(gcf,'legend_spi.png')
+
+      % pM_dWm/W_dWm
+      shstat_options('default');
+      data = read_allStat('p_M','dWm','W_dWm','R_i','Ww_b','Ww_i','r_B');
+      p_M = data(:,1); dW = data(:,2)./data(:,3); R = data(:,4).*data(:,5)./data(:,6); r_B = data(:,7);
+      Hfig_pMdW = shstat([p_M, r_B], legend); 
+      figure(Hfig_pMdW)
+      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      ylabel('_{10}log von Bert growth rate, 1/d')
+      title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_rB_spi.png')
+
+      % pM_Ri*Wwb/Wwi
+      Hfig_pMR = shstat([p_M, R], legend); 
+      figure(Hfig_pMR)
+      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      ylabel('_{10}log max repod R_\infty \times W_w^b/ W_w^\infty, 1/d')
+      title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'pM_R_spi.png')
+
+    case 2 % Fig 2a & 1b: coral versus pelagic fish
       legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Chaetodontiformes'; 
         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Serranidae'; 
@@ -91,7 +123,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_fish.png')
 
-    case 2 % Fig 2a & 2b, mammalia 
+    case 3 % Fig 3a & 2b, mammalia 
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Pecora'; % grass eaters
         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Macropodiformes'; % grass eaters	
@@ -137,7 +169,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_mam.png')
 
-    case 3 % Fig 3: mammalia food 
+    case 4 % Fig 4: mammalia food 
       llegend_mam = {...
         {'-', 2, [0 0 0]}, 'plant, leaves/shoots'; ....
         {'-', 2, [0 0 1]}, 'plant, seeds/fruits'; ....
@@ -200,7 +232,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_mam_food.png')
       
-    case 4 % Fig 4: molluscs
+    case 5 % Fig 5: molluscs
       llegend_mol = {...
         {'-', 2, [0 0 0]}, 'Lophophorata'; ....
         {'-', 2, [0 0 1]}, 'Bivalvia'; ....
@@ -235,7 +267,7 @@ for i=1:length(fig)
       title(['\it Lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_mol.png')
 
-    case 5 % Fig 5: chondrichthyes
+    case 6 % Fig 6: chondrichthyes
       llegend_chon = {...
         {'-', 2, [0 0 0]}, 'Holocephali'; ...
         {'-', 2, [0 0 1]}, 'Selachii'; ....
@@ -269,7 +301,7 @@ for i=1:length(fig)
       title(['\it Chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_chon.png')
       
-    case 6 % Fig 6: Amphibia
+    case 7 % Fig 7: Amphibia
       llegend_amph = {...
         {'-', 2, [0 0 0]}, 'Gymnophiona'; ...
         {'-', 2, [0 0 1]}, 'Caudata'; ....
@@ -302,7 +334,7 @@ for i=1:length(fig)
       title(['\it Amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_amph.png')
       
-    case 7 % Fig 7: Squamata
+    case 8 % Fig 8: Squamata
       llegend_squa = {...
         {'-', 2, [0 0 0]}, 'Gekkota'; ...
         {'-', 2, [0 0 1]}, 'Scinciformata'; ....
@@ -340,7 +372,7 @@ for i=1:length(fig)
 
       nm=select('Iguania'); prt_tab({nm,read_stat(nm,'Ww_i','p_M')},{'species','weight','spec som main'},'Iguania',1)
 
-    case 8 % Fig 8: Testudines
+    case 9 % Fig 9: Testudines
       llegend_test = {...
         {'-', 2, [0 0 0]}, 'Pleurodira'; ...
         {'-', 2, [0 0 1]}, 'Trionychia'; ....
@@ -376,7 +408,7 @@ for i=1:length(fig)
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
 
-    case 9 % fig 9: surv for p_M      
+    case 10 % fig 10: surv for p_M      
       S_pM = surv(log10(read_allStat('p_M'))); % surv fn for log10([p_M]) in AmP
       range_pM = S_pM([1 end],1); % range of log10([p_M]) values
       %     lambda_r lambda_h k_r      k_h       p_r
@@ -399,7 +431,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'off', 'YTick', 0:0.2:1)
       saveas(gca,'pM.png')
      
-    case 10 % not in paper: echinoderms
+    case 11 % not in paper: echinoderms
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
         {'-', 2, [1 0 1]}, 'Asteroidea'; ....
@@ -433,7 +465,7 @@ for i=1:length(fig)
       title(['\it Echinodermata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ech.png')    
       
-    case 11 % not in paper: petrels
+    case 12 % not in paper: petrels
       llegend_pro = {...
         {'-', 2, [1 0 0]}, 'Procellariidae'; ....
         {'-', 2, [1 0 1]}, 'Diomedeidae'; ....
@@ -470,7 +502,7 @@ for i=1:length(fig)
       title(['\it Procellariiformes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_pro.png')    
 
-    case 12 %  not in paper: birds Forests A, forests C & D
+    case 13 %  not in paper: birds Forests A, forests C & D
       legend = { ... % colors: blue edge tropical forests, red edge temperate forests
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Eurylaimides'; 
         {'o', 8, 3, [0 0 1], [0 1 1]}, 'Tyrannides'; 
@@ -511,7 +543,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_aves.png')
 
-    case 13 %  not in paper: pM_ss
+    case 14 %  not in paper: pM_ss
       legend = {...
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Gekkota'; ...
         {'o', 8, 3, [0 0 1], [0 0 0]}, 'Scinciformata'; ....
@@ -531,7 +563,7 @@ for i=1:length(fig)
       ylabel('supply stress, s_s, -')
       %saveas(gca,'pM_ss.png')
       
-    case 14 %   not in paper: Aves
+    case 15 %   not in paper: Aves
       nm = select('Passeriformes'); n = length(nm); 
       climate = read_eco(nm, 'climate');
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -555,7 +587,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Aves.png')
        
-    case 15 %  not in paper: Actinopterygii
+    case 16 %  not in paper: Actinopterygii
       nm = [select('Arhynchobatidae');select('Rajidae')]; n = length(nm); 
       habitat = read_eco(nm, 'habitat');
       data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
@@ -579,7 +611,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_Pisc.png')
  
-    case 16 %  not in paper: glires: pika's vs voles 
+    case 17 %  not in paper: glires: pika's vs voles 
       legend = { ... % colors: blue edge grass eaters, red edge carnivores
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Leporidae'; % grass eaters
         {'o', 8, 3, [0 0 1], [1 0 0]}, 'Ochotonidae'; % grass eaters
@@ -626,7 +658,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_sRb_gli.png')
 
-    case 17 %  not in paper: ducks
+    case 18 %  not in paper: ducks
       legend = { ... % colors: blue edge plant eaters, red edge carnivores
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Dendrocygninae'; % plant eaters
         {'o', 8, 3, [0 0 0], [1 1 1]}, 'Tadorninae'; % plant eaters
@@ -658,7 +690,7 @@ for i=1:length(fig)
       xlim([-1 6])
       %saveas(gcf,'Wwi_jOi_ans.png')
       
-    case 18 % not in paper: ecdysozoa
+    case 19 % not in paper: ecdysozoa
       legend = { ... % 
         {'o', 8, 3, [0 0 0], [0 0 0]}, 'Arachnida';
         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Branchiopoda';
@@ -719,7 +751,7 @@ for i=1:length(fig)
       ylabel('survivor function')
       title(['\it ecdysozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ecd.png')    
-
+      
     end
   end
 end
