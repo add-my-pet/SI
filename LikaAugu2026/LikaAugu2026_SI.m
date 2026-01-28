@@ -43,35 +43,44 @@ for i=1:length(fig)
       
     case 1 % Fig 1a & 1b: Spiralia
       legend = { ... % Spiralia
-        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Gnathifera'; 
-        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Bivalvia'; 
-        {'o', 8, 3, [1 0 1], [1 0 1]}, 'Gastropoda'; 
+        {'o', 8, 3, [0 0 0], [1 1 1]}, 'Gnathifera'; 
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Bivalvia'; 
+        {'o', 8, 3, [1 0 1], [1 1 1]}, 'Gastropoda'; 
         {'o', 8, 3, [1 0 1], [0 1 1]}, 'Cephalopoda'; 
-        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Lophophorata'; 
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Lophophorata'; 
         };
 
       %tax = 'Spiralia'; nm_spi = select(tax); prt_tab({nm_spi,read_stat(nm_spi,{'Ww_i','p_M'}),read_eco(nm_spi,'habitat')},[],tax)
       %shlegend(legend,[],[0.9 0.2]);
       %saveas(gcf,'legend_spi.png')
+      %get_n(legend(:,2));
 
-      % pM_dWm/W_dWm
+      % pM_rB
       shstat_options('default');
-      data = read_allStat('p_M','dWm','W_dWm','R_i','Ww_b','Ww_i','r_B');
-      p_M = data(:,1); dW = data(:,2)./data(:,3); R = data(:,4).*data(:,5)./data(:,6); r_B = data(:,7);
+      data = read_allStat('p_M','dWm','W_dWm','R_i','Ww_b','Ww_i','r_B','a_m');
+      p_M = data(:,1); dW = data(:,2)./data(:,3); R = data(:,4).*data(:,5)./data(:,6); r_B = data(:,7); a_m = data(:,8);
       Hfig_pMdW = shstat([p_M, r_B], legend); 
       figure(Hfig_pMdW)
       xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
       ylabel('_{10}log von Bert growth rate, 1/d')
       title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'pM_rB_spi.png')
+      saveas(gcf,'pM_rB_spi.png')
 
       % pM_Ri*Wwb/Wwi
       Hfig_pMR = shstat([p_M, R], legend); 
       figure(Hfig_pMR)
       xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
-      ylabel('_{10}log max repod R_\infty \times W_w^b/ W_w^\infty, 1/d')
+      ylabel('_{10}log max repod R_\infty W_w^b/ W_w^\infty, 1/d')
       title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'pM_R_spi.png')
+      saveas(gcf,'pM_R_spi.png')
+
+      % pM_am
+      Hfig_pMR = shstat([p_M, a_m], legend); 
+      figure(Hfig_pMR)
+      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      ylabel('_{10}log life span a_m, d')
+      title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      saveas(gcf,'pM_am_spi.png')
 
     case 2 % Fig 2a & 1b: coral versus pelagic fish
       legend = { ... % blue edge: coral reefs, red edge pelagic * demersel
@@ -181,8 +190,8 @@ for i=1:length(fig)
 
       nm = select('Mammalia'); n = length(nm); 
       food = read_eco(nm, 'food');
-      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T'}); 
-      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i;
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T', 's_s'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i; s_s = data(:,5);
        
       %figure Wwi-pM mam food
       [color, sel] = food2color(food);
@@ -205,10 +214,10 @@ for i=1:length(fig)
       %saveas(gcf,'Wwi_jOi_mam_food.png')
       
       figure % Fig 3a pM mam food
-      surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); 
-      surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); 
-      surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); 
-      surv_pM_Cv = surv(p_M(sel(:,4))); surv_W_Cv = surv(Ww_i(sel(:,4))); 
+      surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); surv_ss_Hl = surv(s_s(sel(:,1)));
+      surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); surv_ss_Hs = surv(s_s(sel(:,2)));
+      surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); surv_ss_Ci = surv(s_s(sel(:,3)));
+      surv_pM_Cv = surv(p_M(sel(:,4))); surv_W_Cv = surv(Ww_i(sel(:,4))); surv_ss_Cv = surv(s_s(sel(:,4)));
       plot(log10(surv_pM_Hl(:,1)), surv_pM_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(log10(surv_pM_Hs(:,1)), surv_pM_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_pM_Ci(:,1)), surv_pM_Ci(:,2), 'm', 'LineWidth', 2);
@@ -232,6 +241,18 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_mam_food.png')
       
+      figure % Fig 3a ss mam food
+      plot(surv_ss_Hl(:,1), surv_ss_Hl(:,2), 'k', 'LineWidth', 2); hold on
+      plot(surv_ss_Hs(:,1), surv_ss_Hs(:,2), 'b', 'LineWidth', 2);
+      plot(surv_ss_Ci(:,1), surv_ss_Ci(:,2), 'm', 'LineWidth', 2);
+      plot(surv_ss_Cv(:,1), surv_ss_Cv(:,2), 'r', 'LineWidth', 2);
+      xlabel('supply stress s_s, -')
+      ylabel('survivor function, -')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      xlim([0  4/27])
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'ss_mam_food.png')
+
     case 5 % Fig 5: molluscs
       llegend_mol = {...
         {'-', 2, [0 0 0]}, 'Lophophorata'; ....
