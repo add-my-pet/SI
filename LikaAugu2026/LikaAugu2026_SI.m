@@ -251,7 +251,7 @@ for i=1:length(fig)
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([0  4/27])
       set(gca, 'FontSize', 15, 'Box', 'on')
-      %saveas(gcf,'ss_mam_food.png')
+      saveas(gcf,'ss_mam_food.png')
 
     case 5 % Fig 5: molluscs
       llegend_mol = {...
@@ -773,6 +773,33 @@ for i=1:length(fig)
       title(['\it ecdysozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ecd.png')    
       
+    case 20 % not in paper: relationship between [p_M] and R_i*l_b^3 for std model
+      %U_Hb = E_Hb/ p_Am; U_Hp = E_Hp/ p_Am; notice that Ww^b/Ww_i = l_b^3 
+      pet = 'Rattus_norvegicus'; % edit name, e.g. 'Daphnia_magna' 
+      pars_R = read_stat(pet,{'kap','kap_R','g','k_J','k_M','L_T','v','U_Hb','U_Hp'}); % read parameters
+      L_m = pars_R(7)/pars_R(5)/pars_R(3); % L_m = v/k_M/g; k = k_J/k_M; k_M = [p_M]/[E_G]
+      k = pars_R(4)/pars_R(5);  v_Hb = pars_R(7)*pars_R(5)/(1-pars_R(1))/L_m^2; % v_Hb = U_Hb*k_M/(1-kap)/L_m^2
+      pars_lb = [pars_R(3),k,v_Hb]; % [g k v_Hb]
+      
+      n=30; fac = linspace(.05,5,n)'; kMp = NaN(n,2); % fac is vector of factors with which [p_M] will be multiplied
+      for j = 1:n % scan factor values
+        par = pars_R;  par(5) = par(5)*fac(j); % par(5) = k_M
+        par_lb = pars_lb; par_lb(2) = par_lb(2)/fac(j); par_lb(3) = par_lb(3)*fac(j)^3; 
+        L = L_m/fac(j);
+        try
+          R_i = reprod_rate(L, 1, par);
+          l_b = get_lb(par_lb, 1);
+        catch
+        end
+        kMp(j,:) = [par(5), R_i*l_b^3]; 
+      end
+      plot(kMp(:,1), kMp(:,2),'r','Linewidth',2)
+      xlabel('som maint rate coeff k_M, 1/d')
+      ylabel('spec neonate mass prod, 1/d');
+      title(['\it ', strrep(pet,'_',' '), ' @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'kM_R.png')    
+          
     end
   end
 end
