@@ -773,9 +773,9 @@ for i=1:length(fig)
       title(['\it ecdysozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_ecd.png')    
       
-    case 20 % not in paper: relationship between [p_M] and R_i*l_b^3 for std model at T_ref
-      %U_Hb = E_Hb/ p_Am; U_Hp = E_Hp/ p_Am; notice that Ww^b/Ww_i = l_b^3 
+    case 20 % not in paper: relationship between [p_M] and R_i*l_b^3  and a_m for std model at T_ref
       pet = 'Rattus_norvegicus'; % edit name, e.g. 'Daphnia_magna' 
+      %U_Hb = E_Hb/ p_Am; U_Hp = E_Hp/ p_Am; notice that Ww^b/Ww_i = l_b^3 
       pars_R = read_stat(pet,{'kap','kap_R','g','k_J','k_M','L_T','v','U_Hb','U_Hp'}); % read parameters
       k_M = pars_R(5); L_m = pars_R(7)/k_M/pars_R(3); % L_m = v/k_M/g; k = k_J/k_M; k_M = [p_M]/[E_G]
       k = pars_R(4)/k_M;  v_Hb = pars_R(7)*k_M/(1-pars_R(1))/L_m^2; % v_Hb = U_Hb*k_M/(1-kap)/L_m^2
