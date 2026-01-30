@@ -190,8 +190,8 @@ for i=1:length(fig)
 
       nm = select('Mammalia'); n = length(nm); 
       food = read_eco(nm, 'food');
-      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T', 's_s'}); 
-      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i; s_s = data(:,5);
+      data = read_stat(nm,{'Ww_i', 'p_M', 'J_Oi', 'c_T', 's_s', 'E_m'}); 
+      Ww_i = data(:,1); p_M = data(:,2); jO_i = data(:,3)./data(:,4)./Ww_i; s_s = data(:,5); E_m = data(:,6);
        
       %figure Wwi-pM mam food
       [color, sel] = food2color(food);
@@ -213,11 +213,11 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_mam_food.png')
       
-      figure % Fig 3a pM mam food
-      surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); surv_ss_Hl = surv(s_s(sel(:,1)));
-      surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); surv_ss_Hs = surv(s_s(sel(:,2)));
-      surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); surv_ss_Ci = surv(s_s(sel(:,3)));
-      surv_pM_Cv = surv(p_M(sel(:,4))); surv_W_Cv = surv(Ww_i(sel(:,4))); surv_ss_Cv = surv(s_s(sel(:,4)));
+      figure % Fig 4a pM mam food
+      surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); surv_ss_Hl = surv(s_s(sel(:,1))); surv_Em_Hl = surv(E_m(sel(:,1)));
+      surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); surv_ss_Hs = surv(s_s(sel(:,2))); surv_Em_Hs = surv(E_m(sel(:,2)));
+      surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); surv_ss_Ci = surv(s_s(sel(:,3))); surv_Em_Ci = surv(E_m(sel(:,3)));
+      surv_pM_Cv = surv(p_M(sel(:,4))); surv_W_Cv = surv(Ww_i(sel(:,4))); surv_ss_Cv = surv(s_s(sel(:,4))); surv_Em_Cv = surv(E_m(sel(:,4)));
       plot(log10(surv_pM_Hl(:,1)), surv_pM_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(log10(surv_pM_Hs(:,1)), surv_pM_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_pM_Ci(:,1)), surv_pM_Ci(:,2), 'm', 'LineWidth', 2);
@@ -229,7 +229,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'pM_mam_food.png')
      
-      figure % Fig 3b Wwi mam food
+      figure % Fig 4b Wwi mam food
       plot(log10(surv_W_Hl(:,1)), surv_W_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(log10(surv_W_Hs(:,1)), surv_W_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_W_Ci(:,1)), surv_W_Ci(:,2), 'm', 'LineWidth', 2);
@@ -241,7 +241,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_mam_food.png')
       
-      figure % Fig 3a ss mam food
+      figure % Fig 4c ss mam food
       plot(surv_ss_Hl(:,1), surv_ss_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(surv_ss_Hs(:,1), surv_ss_Hs(:,2), 'b', 'LineWidth', 2);
       plot(surv_ss_Ci(:,1), surv_ss_Ci(:,2), 'm', 'LineWidth', 2);
@@ -251,7 +251,19 @@ for i=1:length(fig)
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([0  4/27])
       set(gca, 'FontSize', 15, 'Box', 'on')
-      saveas(gcf,'ss_mam_food.png')
+      %saveas(gcf,'ss_mam_food.png')
+
+      figure % Fig 4d Em mam food
+      plot(log10(surv_Em_Hl(:,1)), surv_Em_Hl(:,2), 'k', 'LineWidth', 2); hold on
+      plot(log10(surv_Em_Hs(:,1)), surv_Em_Hs(:,2), 'b', 'LineWidth', 2);
+      plot(log10(surv_Em_Ci(:,1)), surv_Em_Ci(:,2), 'm', 'LineWidth', 2);
+      plot(log10(surv_Em_Cv(:,1)), surv_Em_Cv(:,2), 'r', 'LineWidth', 2);
+      xlabel('_{10}log reserve capacity [E_m], J/cm^3')
+      ylabel('survivor function, -')
+      xlim([3  6.5])
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      set(gca, 'FontSize', 15, 'Box', 'on')
+      %saveas(gcf,'Em_mam_food.png')
 
     case 5 % Fig 5: molluscs
       llegend_mol = {...
@@ -778,7 +790,7 @@ for i=1:length(fig)
       %U_Hb = E_Hb/ p_Am; U_Hp = E_Hp/ p_Am; notice that Ww^b/Ww_i = l_b^3 
       pars_R = read_stat(pet,{'kap','kap_R','g','k_J','k_M','L_T','v','U_Hb','U_Hp'}); % read parameters
       k_M = pars_R(5); L_m = pars_R(7)/k_M/pars_R(3); % L_m = v/k_M/g; k = k_J/k_M; k_M = [p_M]/[E_G]
-      k = pars_R(4)/k_M;  v_Hb = pars_R(7)*k_M/(1-pars_R(1))/L_m^2; % v_Hb = U_Hb*k_M/(1-kap)/L_m^2
+      k = pars_R(4)/k_M;  v_Hb = pars_R(8)*k_M/(1-pars_R(1))/L_m^2; % v_Hb = U_Hb*k_M/(1-kap)/L_m^2
       g = pars_R(3); pars_lb = [g,k,v_Hb];
       
       pars_tm = read_stat(pet,{'h_a','s_G'});
@@ -798,7 +810,7 @@ for i=1:length(fig)
         end
         kMR(j,:) = [par_R(5), R_i*l_b^3]; kMam(j,:) = [par_R(5), a_m]; 
       end
-      plot(kMR(:,1), kMR(:,2),'r','Linewidth',2)
+      plot(kMR(:,1),kMR(:,2),'r','Linewidth',2)
       xlabel('som maint rate coeff k_M, 1/d')
       ylabel('spec neonate mass prod, 1/d');
       title(['\it ', strrep(pet,'_',' '), ' @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
