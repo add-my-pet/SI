@@ -1,6 +1,6 @@
 function LikaAugu2026_SI(fig)
-% Supporting Information for LikaAugu2025
-% Title: Relax-hurry spectra in animal kingdom
+% Supporting Information for LikaAugu2026
+% Title: Relax-hurry spectrum; specific somatic maintenance depends on seasonal dynamics of food
 % Authors: Lika, Augustine, Kooijman
 % Journal: Ecol. Mod
 % DOI: 
@@ -56,15 +56,6 @@ for i=1:length(fig)
       %get_n(legend(:,2));
 
       % pM_rB
-      shstat_options('default');
-      data = read_allStat('p_M','dWm','W_dWm','R_i','Ww_b','Ww_i','r_B','a_m');
-      p_M = data(:,1); dW = data(:,2)./data(:,3); R = data(:,4).*data(:,5)./data(:,6); r_B = data(:,7); a_m = data(:,8);
-      Hfig_pMdW = shstat([p_M, r_B], legend); 
-      figure(Hfig_pMdW)
-      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
-      ylabel('_{10}log von Bert growth rate, 1/d')
-      title(['\it spiralia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'pM_rB_spi.png')
 
       % pM_Ri*Wwb/Wwi
       Hfig_pMR = shstat([p_M, R], legend); 
