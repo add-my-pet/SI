@@ -1,6 +1,6 @@
 function LikaAugu2026a_SI(fig)
 % Supporting Information for LikaAugu2026a
-% Title: Relative size at birth
+% Title: DEB theory's equation of life
 % Authors: Lika, Augustine, Kooijman
 % Journal: Ecol. Mod
 % DOI: 
@@ -89,7 +89,7 @@ end
       };
   
       legend_aves = {...
-        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
+        %{'o', 8, 3, [0 0 0], [0 0 0]}, 'Crocodilia'
         {'o', 8, 3, [0 0 1], [0 0 1]}, 'Paleognathae'
         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Galloanserae'
         % Neoaves: edge magenta and red
@@ -129,22 +129,22 @@ for i=1:length(fig)
       shstat_options('default');
       shstat_options('x_transform','none');
       
-      data = read_allStat({'s_s','Ww_b','Ww_i','E_Hb','E_Hp'});
-      s_s = data(:,1); Ww_bi = data(:,2)./data(:,3); s_Hbp = data(:,4)./data(:,5); 
+      data = read_allStat({'s_s','Ww_b','Ww_p','Ww_i','E_Hb','E_Hp'});
+      s_s = data(:,1); Ww_bi = data(:,2)./data(:,4); Ww_bp = data(:,2)./data(:,3); s_Hbp = data(:,5)./data(:,6); 
       
-      Hfig_ssWbi = shstat([s_s,Ww_bi], legend_mamm); 
-      figure(Hfig_ssWbi)
-      xlabel('supply stress, s_s, -')
-      ylabel('_{10}log rel weight at birth, W_w^b/W_w^\infty, -')
-      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'ss_Wbi_mamm.png')
+%       Hfig_ssWbi = shstat([s_s,Ww_bi], legend_mamm); 
+%       figure(Hfig_ssWbi)
+%       xlabel('supply stress, s_s, -')
+%       ylabel('_{10}log rel weight at birth, W_w^b/W_w^\infty, -')
+%       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+%       %saveas(gcf,'ss_Wbi_mamm.png')
 
-      Hfig_sssHbp = shstat([s_s,s_Hbp], legend_mamm); 
-      figure(Hfig_sssHbp)
-      xlabel('supply stress, s_s, -')
-      ylabel('_{10}log procociality coeff s_H^{bp}, -')
-      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'ss_sHbp_mamm.png')
+%       Hfig_sssHbp = shstat([s_s,s_Hbp], legend_mamm); 
+%       figure(Hfig_sssHbp)
+%       xlabel('supply stress, s_s, -')
+%       ylabel('_{10}log procociality coeff s_H^{bp}, -')
+%       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+%       %saveas(gcf,'ss_sHbp_mamm.png')
 
       shstat_options('x_transform','log10');
       Hfig_WbisHbp = shstat([Ww_bi,s_Hbp], legend_mamm); 
@@ -155,15 +155,30 @@ for i=1:length(fig)
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'Wbi_sHbp_mamm.png')
       
-      shstat_options('x_transform','log10');
       Hfig_WbisHbp = shstat([Ww_bi,s_Hbp], legend_aves); 
       figure(Hfig_WbisHbp)
-      plot([-5;0],[-5;0], 'k', 'Linewidth',2)
+      plot([-2.5;0],[-3;-0.5], 'k', 'Linewidth',2)
       xlabel('_{10}log rel weight at birth, W_w^b/W_w^\infty, -')
       ylabel('_{10}log procociality coeff s_H^{bp}, -')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'Wbi_sHbp_aves.png')
+
+      Hfig_WbpsHbp = shstat([Ww_bp,s_Hbp], legend_mamm); 
+      figure(Hfig_WbpsHbp)
+      plot([-6;0],[-7;-1], 'k', 'Linewidth',2)
+      xlabel('_{10}log rel weight at birth, W_w^b/W_w^p, -')
+      ylabel('_{10}log procociality coeff s_H^{bp}, -')
+      title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'Wbp_sHbp_mamm.png')
       
+      Hfig_WbpsHbp = shstat([Ww_bp,s_Hbp], legend_aves); 
+      figure(Hfig_WbpsHbp)
+      plot([-2.5;0],[-3;-0.5], 'k', 'Linewidth',2)
+      xlabel('_{10}log rel weight at birth, W_w^b/W_w^p, -')
+      ylabel('_{10}log procociality coeff s_H^{bp}, -')
+      title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'Wbp_sHbp_aves.png')
+
     case 2
       data = read_allStat({'N_i','Ww_b','Ww_i','a_m'});
       N_i = data(:,1); Ww_b = data(:,2); Ww_i = data(:,3); a_m = data(:,4); 
@@ -261,7 +276,7 @@ for i=1:length(fig)
       plot([-3.3;0],[-2;1.3], 'k', 'Linewidth',2)
       xlabel('_{10}log \kappa_R^A, -')
       ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
-      title(['\it amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      title(['\it reptilia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'kapRA_Ni_rept.png')
 
       shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
@@ -283,6 +298,9 @@ for i=1:length(fig)
       ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'kapRA_Ni_mamm.png')
+      
+    case 4
+          
 end
 end
 
