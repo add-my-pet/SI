@@ -126,26 +126,91 @@ for i=1:length(fig)
   switch fig(i)
       
     case 1 % Fig 1: ss_kap_kap_RA
+      sskap = read_allStat({'s_s','kap',}); ss = sskap(:,1); kap = sskap(:,2); kapRA = 1 - kap - ss./kap.^2; n = length(kap);    
+
+      close all
       figure
+      hold on
+      for j=1:n; plot(ss(j),kap(j), '.', 'MarkerSize',4, 'Color',color_lava(kapRA(j))); end
       xlim([0 4/27]); ylim([0 1]);
       xlabel('supply stress, s_s')
       ylabel('frac of mobilised reserve to soma, \kappa')
       set(gca, 'FontSize', 15, 'Box', 'on')
 
-      hold on
-      % kapRA isoclines for kap(s_s)
       kap = linspace(0, 1, 100)';
       kapRA = (0:0.1:0.9)'; 
       for j=1:10
         ss = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
         plot(ss, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
       end
-      % kap(s_s) for which kapRA is max
-      ss = linspace(1e-8,4/27,100)'; kap = (2 * ss).^(1/3);
-      plot(ss, kap, 'r', 'Linewidth', 2)
+      % kap(s_s) for which kapRA is max 
+      ss = linspace(1e-8,4/27,500)'; kap = (2*ss).^(1/3); kapRA = 1 - kap - ss./kap.^2; 
+      for j=0:10; plot(ss(kapRA>j/10), kap(kapRA>j/10), 'color',color_lava(j/10), 'Linewidth',2); end
+      kap = (2*ss).^(1/3)/0.2; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/0.4; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/0.6; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/0.8; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/1.2; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/1.4; kapRA = 1-kap-ss./kap.^2; 
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/1.6; kapRA = 1-kap-ss./kap.^2; 
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/1.8; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/2.0; kapRA = 1-kap-ss./kap.^2; 
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      kap = (2*ss).^(1/3)/2.2; kapRA = 1-kap-ss./kap.^2;
+      for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
+      text(0.14, -0.06, '4/27', 'FontSize',15)
+      text(0.15,  2/3+.02, '2/3', 'FontSize',15)
+      text(0.148, 0.621, '\kappa_R^A=0',   'FontSize',8, 'color',color_lava(0))
+      text(0.109, 0.566, '\kappa_R^A=0.1', 'FontSize',8, 'color',color_lava(0.1))
+      text(0.078, 0.512, '\kappa_R^A=0.2', 'FontSize',8, 'color',color_lava(0.2))
+      text(0.053, 0.447, '\kappa_R^A=0.3', 'FontSize',8, 'color',color_lava(0.3))
+      text(0.033, 0.374, '\kappa_R^A=0.4', 'FontSize',8, 'color',color_lava(0.4))
+      text(0.020, 0.313, '\kappa_R^A=0.5', 'FontSize',8, 'color',color_lava(0.5))
       %saveas(gca,'ss_kap_kapRA.png')
 
-    case 2
+    case 2 % Fig 1: ss_kap_fmin
+      sskap = read_allStat({'s_s','kap',}); ss = sskap(:,1); kap = sskap(:,2); fmin = (ss./kap.^2./(1-kap)).^(1/3); n = length(kap);    
+
+      close all
+      figure
+      hold on
+      for j=1:n; plot(ss(j),kap(j), '.', 'MarkerSize',4, 'Color',color_lava(fmin(j))); end
+      xlim([0 4/27]); ylim([0 1]);
+      xlabel('supply stress, s_s')
+      ylabel('frac of mobilised reserve to soma, \kappa')
+      set(gca, 'FontSize', 15, 'Box', 'on')
+
+      kap = linspace(0, 1, 100)';
+      plot(kap.^2.*(1 - kap),kap, 'color',[0 0 0], 'LineWidth',2)
+      fMin = (0:0.1:0.9)'; n=length(fMin);
+      for j=1:n
+        ss = kap.^2 .*(1 - kap).*fMin(j)^3; 
+        plot(ss,kap, 'color',color_lava(fMin(j)), 'LineWidth',1)
+      end
+      % kap(s_s) for which fmin is max 
+      fMin = (0:0.01:0.99)'; n=length(fMin);
+      ss = linspace(1e-8,4/27,500)'; kap = 2/3*ones(500,1); fmin = (ss./kap.^2./(1 - kap)).^(1/3); 
+      for j=1:n; plot(ss(fmin>fMin(j)), kap(fmin>fMin(j)), 'color',color_lava(fMin(j)), 'Linewidth',2); end
+      
+      text(0.14, -0.06, '4/27', 'FontSize',15)
+      text(0.15,  2/3+.02, '2/3', 'FontSize',15)
+      text(0.149, 0.621, 'f_{min}=1', 'FontSize',8, 'color',color_lava(0))
+      text(0.108, 0.621, 'f_{min}=0.9', 'FontSize',8, 'color',color_lava(0.9))
+      text(0.076, 0.621, 'f_{min}=0.8', 'FontSize',8, 'color',color_lava(0.8))
+      text(0.051, 0.621, 'f_{min}=0.7', 'FontSize',8, 'color',color_lava(0.7))
+      text(0.032, 0.621, 'f_{min}=0.6', 'FontSize',8, 'color',color_lava(0.6))
+
+      %saveas(gca,'ss_kap_fmin.png')
+ 
+    case 3
       data = read_allStat({'N_i','Ww_b','Ww_i','a_m'});
       N_i = data(:,1); Ww_b = data(:,2); Ww_i = data(:,3); a_m = data(:,4); 
 
@@ -178,7 +243,7 @@ for i=1:length(fig)
       title(['\it mollusca @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'Wwi_NiWbi_moll.png')
 
-    case 3
+    case 4 % kapRA_Ni
       data = read_allStat({'N_i','Ww_b','Ww_i','kap','s_s'});
       N_i = data(:,1); Ww_b = data(:,2); Ww_i = data(:,3); kap = data(:,4); s_s = data(:,5); 
       kap_RA = 1 - kap - s_s./kap.^2; NWW = N_i.*Ww_b./Ww_i;
@@ -186,86 +251,86 @@ for i=1:length(fig)
       shstat_options('default');
  
       shlegend(legend_moll, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_moll.png')
+      %saveas(gca,'legend_moll.png'); cropWhite('legend_moll');
       Hfig_kapRANi_moll = shstat([kap_RA, NWW], legend_moll); 
       figure(Hfig_kapRANi_moll)
       plot([-6;0],[-5.5;0.5], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it mollusca @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_moll.png')
+      %saveas(gcf,'kapRA_Ni_moll.png')
 
       shlegend(legend_crus, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_crus.png')
+      %saveas(gca,'legend_crus.png'); cropWhite('legend_crus');
       Hfig_kapRANi_crus = shstat([kap_RA, NWW], legend_crus); 
       figure(Hfig_kapRANi_crus)
       plot([-4;0],[-3;1], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it crustacea @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_crus.png')
+      %saveas(gcf,'kapRA_Ni_crus.png')
 
       shlegend(legend_chon, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_chon.png')
+      %saveas(gca,'legend_chon.png'); cropWhite('legend_chon');
       Hfig_kapRANi_chon = shstat([kap_RA, NWW], legend_chon); 
       figure(Hfig_kapRANi_chon)
       plot([-2.5;0],[-1.8;0.7], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_chon.png')
+      %saveas(gcf,'kapRA_Ni_chon.png')
        
       shlegend(legend_acti, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_acti.png')
+      %saveas(gca,'legend_acti.png'); cropWhite('legend_acti');
       Hfig_kapRANi_acti = shstat([kap_RA, NWW], legend_acti); 
-      figure(Hfig_kapRANi_acti)
+      figure(Hfig_kapRANi_acti); cropWhite('legend_acti');
       plot([-4;0],[-3.8;0.2], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it actinopterygii @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_acti.png')
+      %saveas(gcf,'kapRA_Ni_acti.png')
 
       shlegend(legend_amph, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_amph.png')
+      %saveas(gca,'legend_amph.png'); cropWhite('legend_amph');
       Hfig_kapRANi_amph = shstat([kap_RA, NWW], legend_amph); 
       figure(Hfig_kapRANi_amph)
       plot([-4;0],[-2.8;1.2], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_amph.png')
+      %saveas(gcf,'kapRA_Ni_amph.png')
 
       shlegend(legend_rept, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_rept.png')
+      %saveas(gca,'legend_rept.png'); cropWhite('legend_rept');
       Hfig_kapRANi_rept = shstat([kap_RA, NWW], legend_rept); 
       figure(Hfig_kapRANi_rept)
       plot([-3.3;0],[-2;1.3], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log cum spec neonate mass prod, #')
       title(['\it reptilia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_rept.png')
+      %saveas(gcf,'kapRA_Ni_rept.png')
 
       shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_aves.png')
+      %saveas(gca,'legend_aves.png'); cropWhite('legend_aves');
       Hfig_kapRANi_aves = shstat([kap_RA, NWW], legend_aves); 
       figure(Hfig_kapRANi_aves)
       plot([-3.5;0],[-1;2.5], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_aves.png')
+      %saveas(gcf,'kapRA_Ni_aves.png')
 
       shlegend(legend_mamm, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_mamm.png')
+      %saveas(gca,'legend_mamm.png'); cropWhite('legend_mamm');
       Hfig_kapRANi_mamm = shstat([kap_RA, NWW], legend_mamm); 
       figure(Hfig_kapRANi_mamm)
       plot([-5.8;-0.3],[-4;1.5], 'k', 'Linewidth',2)
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
       ylabel('_{10}log spec cum neonate mass prod, #')
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      saveas(gcf,'kapRA_Ni_mamm.png')
+      %saveas(gcf,'kapRA_Ni_mamm.png')
       
-    case 4 
+    case 5 
       shstat_options('default');
       shstat_options('x_transform','none');
       
@@ -319,7 +384,7 @@ for i=1:length(fig)
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'Wbp_sHbp_aves.png')
 
-    case 5
+    case 6
       data = read_allStat({'kap','s_s'});
       kap = data(:,1); s_s = data(:,2); 
       kap_RA = 1 - kap - s_s./kap.^2; 
