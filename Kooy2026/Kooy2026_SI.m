@@ -350,6 +350,21 @@ for i=1:length(fig)
      %saveas(gcf,'kap_ss_kapbA_invert.fig')
      %saveas(gcf,'kap_ss_kapbA_invert.png')
      %saveas(Hleg_invert,'legend_invert.png')
+     
+   case 8
+     data = read_allStat('Ww_b','Ww_p','Ww_i','a_p','a_m');
+     Ww_i = data(:,3); a_pm = data(:,4)./data(:,5);
+     
+     shstat_options('default');
+     %
+     Hfig_Wiapm = shstat([Ww_i,a_pm], legend_mamm);
+     figure(Hfig_Wiapm)
+     xlabel('_{10}log ultimate weight W_w^\infty, g')
+     ylabel('_{10}log a_p/a_m, -')
+     title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'Wwi_apam_mamm.png')
+
 
 end
 

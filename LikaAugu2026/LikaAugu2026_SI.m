@@ -199,7 +199,7 @@ for i=1:length(fig)
         {'-', 2, [1 0 1]}, 'animal, invertebrates'; ....
         {'-', 2, [1 0 0]}, 'animal, vertebrates'; ....
       };
-      %shllegend(llegend_mam,[],[0.9 0.2]);
+      shllegend(llegend_mam,[],[0.9 0.2]);
       %saveas(gcf,'llegend_mam_food.png'); cropWhite('llegend_mam_food');
 
       nm = select('Mammalia'); n = length(nm); 
@@ -227,7 +227,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_jOi_mam_food.png')
       
-      figure % Fig 4a pM mam food
+      figure % Fig 5a pM mam food
       surv_pM_Hl = surv(p_M(sel(:,1))); surv_W_Hl = surv(Ww_i(sel(:,1))); surv_ss_Hl = surv(s_s(sel(:,1))); surv_Em_Hl = surv(E_m(sel(:,1)));
       surv_pM_Hs = surv(p_M(sel(:,2))); surv_W_Hs = surv(Ww_i(sel(:,2))); surv_ss_Hs = surv(s_s(sel(:,2))); surv_Em_Hs = surv(E_m(sel(:,2)));
       surv_pM_Ci = surv(p_M(sel(:,3))); surv_W_Ci = surv(Ww_i(sel(:,3))); surv_ss_Ci = surv(s_s(sel(:,3))); surv_Em_Ci = surv(E_m(sel(:,3)));
@@ -236,14 +236,14 @@ for i=1:length(fig)
       plot(log10(surv_pM_Hs(:,1)), surv_pM_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_pM_Ci(:,1)), surv_pM_Ci(:,2), 'm', 'LineWidth', 2);
       plot(log10(surv_pM_Cv(:,1)), surv_pM_Cv(:,2), 'r', 'LineWidth', 2);
-      xlabel('_{10}log spec som maint [p_M], J/d.cm^3')
+      xlabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
       ylabel('survivor function, -')
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       xlim([0.7 4])
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'pM_mam_food.png')
      
-      figure % Fig 4b Wwi mam food
+      figure % Fig 5b Wwi mam food
       plot(log10(surv_W_Hl(:,1)), surv_W_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(log10(surv_W_Hs(:,1)), surv_W_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_W_Ci(:,1)), surv_W_Ci(:,2), 'm', 'LineWidth', 2);
@@ -255,7 +255,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Wwi_mam_food.png')
       
-      figure % Fig 4c ss mam food
+      figure % Fig 5c ss mam food
       plot(surv_ss_Hl(:,1), surv_ss_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(surv_ss_Hs(:,1), surv_ss_Hs(:,2), 'b', 'LineWidth', 2);
       plot(surv_ss_Ci(:,1), surv_ss_Ci(:,2), 'm', 'LineWidth', 2);
@@ -267,7 +267,7 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'ss_mam_food.png')
 
-      figure % Fig 4d Em mam food
+      figure % Fig 5d Em mam food
       plot(log10(surv_Em_Hl(:,1)), surv_Em_Hl(:,2), 'k', 'LineWidth', 2); hold on
       plot(log10(surv_Em_Hs(:,1)), surv_Em_Hs(:,2), 'b', 'LineWidth', 2);
       plot(log10(surv_Em_Ci(:,1)), surv_Em_Ci(:,2), 'm', 'LineWidth', 2);
@@ -279,7 +279,40 @@ for i=1:length(fig)
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'Em_mam_food.png')
 
-    case 6 % Fig 6: molluscs & echinoderms
+    case 6 % Fig 6: coelenterates, molluscs & echinoderms
+      % coelenterates
+      llegend_coel = {...
+        {'-', 2, [0 0 1]}, 'Cnidaria'; ....
+        {'-', 2, [1 0 0]}, 'Ctenophora'; ....
+      };
+      shllegend(llegend_coel,[],[0.9 0.2]);
+      saveas(gcf,'llegend_coel.png'); cropWhite('llegend_coel');
+      get_n(llegend_coel(:,2));
+      
+      % p_M
+      shstat_options('default');
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_pM = shstat({'p_M'}, llegend_coel); 
+      figure(Hfig_pM)
+      xlabel('_{10}log spec somatic maint [p_M], J/d.cm^3')
+      ylabel('survivor function')
+      title(['\it Coelenterata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      saveas(gcf,'pM_coel.png')
+
+      % s_s
+      shstat_options('default');
+      %shstat_options('x_transform', 'none'); 
+      shstat_options('y_transform', 'none'); 
+      %
+      Hfig_ss = shstat({'s_s'}, llegend_coel); 
+      figure(Hfig_ss)
+      xlabel('_{10}log supply stress s_s, -')
+      ylabel('survivor function')
+      title(['\it Coelenterata @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'ss_coel.png')
+
+      % Lophotrochozoa
       llegend_mol = {...
         {'-', 2, [0 0 0]}, 'Lophophorata'; ....
         {'-', 2, [0 0 1]}, 'Bivalvia'; ....
@@ -314,6 +347,7 @@ for i=1:length(fig)
       title(['\it Lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_mol.png')
 
+      % Echinodermata
       llegend_ech = {...
         {'-', 2, [1 0 0]}, 'Ophiuroidea'; ....
         {'-', 2, [1 0 1]}, 'Asteroidea'; ....
@@ -487,8 +521,7 @@ for i=1:length(fig)
       ylabel('survivor function')
       title(['\it Testudines @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       %saveas(gcf,'ss_test.png')
-
-      
+  
     case 11 % not in paper: petrels
       llegend_pro = {...
         {'-', 2, [1 0 0]}, 'Procellariidae'; ....
@@ -816,7 +849,7 @@ for i=1:length(fig)
       title(['\it ', strrep(pet,'_',' '), ' @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
       set(gca, 'FontSize', 15, 'Box', 'on')
       %saveas(gcf,'kM_am.png')
-          
+                      
     end
   end
 end
