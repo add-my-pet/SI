@@ -116,6 +116,17 @@ end
         {'o', 8, 3, [1 0 0], [1 1 1]}, 'Primates'; ....
       };
 
+      legend_sHbp = {...
+        {'o', 8, 3, [0 0 0], [0 0 0]}, 'Lophotrochozoa'; ...
+        {'o', 8, 3, [0 0 0], [1 1 1]}, 'Crustacea'; ...
+        {'o', 8, 3, [0 0 1], [0 0 1]}, 'Chondrichthyes'; ...
+        {'o', 8, 3, [0 0 1], [1 0 0]}, 'Actinopterygii'; ....
+        {'o', 8, 3, [0 0 1], [1 1 1]}, 'Amphibia'; ....
+        {'o', 8, 3, [1 0 1], [1 0 1]}, 'Reptilia'; ....
+        {'o', 8, 3, [1 0 1], [1 1 1]}, 'Aves'; ....
+        {'o', 8, 3, [1 0 0], [1 0 0]}, 'Mammalia'; ....
+      };
+
  close all
  shstat_options('default');
  shstat_options('y_label', 'on'); 
@@ -210,92 +221,92 @@ for i=1:length(fig)
 
       %saveas(gca,'ss_kap_fmin.png')
  
-     case 3 % Fig 3: kapRA_Ni
+    case 3 % Fig 3: kapRA_omeR
       data = read_allStat({'N_i','Ww_b','Ww_i','kap','s_s'});
       N_i = data(:,1); Ww_b = data(:,2); Ww_i = data(:,3); kap = data(:,4); s_s = data(:,5); 
-      kap_RA = 1 - kap - s_s./kap.^2; NWW = N_i.*Ww_b./Ww_i;
+      kap_RA = 1 - kap - s_s./kap.^2; ome_R = N_i.*Ww_b./Ww_i;
 
       shstat_options('default');
  
       shlegend(legend_moll, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_moll.png'); cropWhite('legend_moll');
-      Hfig_kapRANi_moll = shstat([kap_RA, NWW], legend_moll); 
-      figure(Hfig_kapRANi_moll)
+      Hfig_kapRAomeR_moll = shstat([kap_RA, ome_R], legend_moll); 
+      figure(Hfig_kapRAomeR_moll)
       plot([-6;0],[-5.5;0.5], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_moll.png')
+     %saveas(gcf,'kapRA_omeR_moll.png')
 
       shlegend(legend_crus, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_crus.png'); cropWhite('legend_crus');
-      Hfig_kapRANi_crus = shstat([kap_RA, NWW], legend_crus); 
-      figure(Hfig_kapRANi_crus)
+      Hfig_kapRAomeR_crus = shstat([kap_RA, ome_R], legend_crus); 
+      figure(Hfig_kapRAomeR_crus)
       plot([-4;0],[-3;1], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it crustacea @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_crus.png')
+     %saveas(gcf,'kapRA_omeR_crus.png')
 
       shlegend(legend_chon, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_chon.png'); cropWhite('legend_chon');
-      Hfig_kapRANi_chon = shstat([kap_RA, NWW], legend_chon); 
-      figure(Hfig_kapRANi_chon)
+      Hfig_kapRAomeR_chon = shstat([kap_RA, ome_R], legend_chon); 
+      figure(Hfig_kapRAomeR_chon)
       plot([-2.5;0],[-1.8;0.7], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_chon.png')
+     %saveas(gcf,'kapRA_omeR_chon.png')
        
       shlegend(legend_acti, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_acti.png'); cropWhite('legend_acti');
-      Hfig_kapRANi_acti = shstat([kap_RA, NWW], legend_acti); 
-      figure(Hfig_kapRANi_acti); cropWhite('legend_acti');
+      Hfig_kapRAomeR_acti = shstat([kap_RA, ome_R], legend_acti); 
+      figure(Hfig_kapRAomeR_acti); cropWhite('legend_acti');
       plot([-4;0],[-3.8;0.2], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it actinopterygii @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_acti.png')
+     %saveas(gcf,'kapRA_omeR_acti.png')
 
       shlegend(legend_amph, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_amph.png'); cropWhite('legend_amph');
-      Hfig_kapRANi_amph = shstat([kap_RA, NWW], legend_amph); 
-      figure(Hfig_kapRANi_amph)
+      Hfig_kapRAomeR_amph = shstat([kap_RA, ome_R], legend_amph); 
+      figure(Hfig_kapRAomeR_amph)
       plot([-4;0],[-2.8;1.2], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_amph.png')
+     %saveas(gcf,'kapRA_omeR_amph.png')
 
       shlegend(legend_rept, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_rept.png'); cropWhite('legend_rept');
-      Hfig_kapRANi_rept = shstat([kap_RA, NWW], legend_rept); 
-      figure(Hfig_kapRANi_rept)
+      Hfig_kapRAomeR_rept = shstat([kap_RA, ome_R], legend_rept); 
+      figure(Hfig_kapRAomeR_rept)
       plot([-3.3;0],[-2;1.3], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log cum spec neonate mass prod, #')
+      ylabel('_{10}log cum spec neonate prod \omega_R, -')
       title(['\it reptilia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_rept.png')
+      %saveas(gcf,'kapRA_omeR_rept.png')
 
       shlegend(legend_aves, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_aves.png'); cropWhite('legend_aves');
-      Hfig_kapRANi_aves = shstat([kap_RA, NWW], legend_aves); 
-      figure(Hfig_kapRANi_aves)
+      Hfig_kapRAomeR_aves = shstat([kap_RA, ome_R], legend_aves); 
+      figure(Hfig_kapRAomeR_aves)
       plot([-3.5;0],[-1;2.5], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_aves.png')
+     %saveas(gcf,'kapRA_omeR_aves.png')
 
       shlegend(legend_mamm, [0.7 0.2], [0.8 0.2]);
       %saveas(gca,'legend_mamm.png'); cropWhite('legend_mamm');
-      Hfig_kapRANi_mamm = shstat([kap_RA, NWW], legend_mamm); 
-      figure(Hfig_kapRANi_mamm)
+      Hfig_kapRAomeR_mamm = shstat([kap_RA, ome_R], legend_mamm); 
+      figure(Hfig_kapRAomeR_mamm)
       plot([-5.8;-0.3],[-4;1.5], 'k', 'Linewidth',2) % slope 1
       xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
-      ylabel('_{10}log spec cum neonate mass prod, #')
+      ylabel('_{10}log spec cum neonate prod \omega_R, -')
       title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'kapRA_Ni_mamm.png')
+     %saveas(gcf,'kapRA_omeR_mamm.png')
 
     case 4 % Fig 4: Wwi_sHbp
       shstat_options('default');
@@ -446,40 +457,76 @@ for i=1:length(fig)
      set(gca, 'FontSize', 15, 'Box', 'on')
      %saveas(gca,'kapRA_sHbp_mamm.png')
      
-   case 6
+   case 6 % Fig 6
+     data = { ...
+        %ome_R/kap_RA, s_Hbp/kap_RA
+         3.16    3.16e-4 'loph'
+         10.0    0.0126  'crus'
+         5.01     0.159  'chon'
+         1.58     0.001  'acti'
+         15.8     0.01   'amph'
+         20.0     0.158  'rept'
+         316.2    3.16   'aves'
+         63.1     0.316  'mamm'
+         };
+     Hfig = figure;
+     plot([0;2.5],[-4;1], '-', 'color',[.9 .9 .9], 'LineWidth',10);
+     hold on
+     plot2i(log10(cell2mat(data(:,[1 2]))), data(:,3), [], Hfig)
+     xlabel('_{10}log \omega_R/\kappa_R^A, \alpha')
+     ylabel('_{10}log s_H^{bp}/\kappa_R^A, \beta')
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     saveas(gca,'alpha_beta.png');
+
+      shstat_options('default');
+
+      data = read_allStat('s_s','s_Hbp','kap','N_i','Ww_b','Ww_i');
+      s_s = data(:,1); s_Hbp = data(:,2); kap = data(:,3); kap_RA = 1 - kap - s_s./kap.^2; 
+      ome_R = data(:,4).*data(:,5)./data(:,6); S_HBP = 1e-4*ome_R.^2./kap_RA;
+
+      shstat_options('default');
+      Hfig_sHbp_sHbp = shstat([s_Hbp, S_HBP], legend_sHbp); 
+      figure(Hfig_sHbp_sHbp)
+      plot([-10;0],[-10;0],'-k', 'LineWidth',2)
+      xlabel('_{10}log precociality index s_H^{bp}, -')
+      ylabel('_{10}log 10^{-4} \omega_R^2/\kappa_R^A, -')
+      title(['\it tetrapoda @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+      %saveas(gcf,'sHbp_sHbp.png')
+
+    case 7
       data = read_allStat({'N_i','Ww_b','Ww_i','a_m'});
       N_i = data(:,1); Ww_b = data(:,2); Ww_i = data(:,3); a_m = data(:,4); 
 
       shstat_options('default');
-      Hfig_WwiNi_mamm = shstat([Ww_i, N_i.*Ww_b./Ww_i], legend_mamm); 
+      Hfig_WwiomeR_mamm = shstat([Ww_i, N_i.*Ww_b./Ww_i], legend_mamm); 
       figure(Hfig_WwiNi_mamm)
       xlabel('_{10}log ultimate weight, W_w^\infty, g')
-      ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
+      ylabel('_{10}log spec neonate mass prod \omega_R, -')
       title(['\it mamm @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'Wwi_NiWbi_mamm.png')
+      %saveas(gcf,'Wwi_omeR_mamm.png')
 
-      Hfig_amNi_mamm = shstat([a_m, N_i.*Ww_b./Ww_i], legend_mamm); 
-      figure(Hfig_amNi_mamm)
+      Hfig_amomeR_mamm = shstat([a_m, N_i.*Ww_b./Ww_i], legend_mamm); 
+      figure(Hfig_amomeR_mamm)
       xlabel('_{10}log life span, d')
-      ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
+      ylabel('_{10}log spec neonate mass prod omega_R, -')
       title(['\it mamm @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'am_NiWbi_mamm.png')
+      %saveas(gcf,'am_omeR_mamm.png')
 
-      Hfig_WwiNi_aves = shstat([Ww_i, N_i.*Ww_b./Ww_i], legend_aves); 
-      figure(Hfig_WwiNi_aves)
+      Hfig_WwiomeR_aves = shstat([Ww_i, N_i.*Ww_b./Ww_i], legend_aves); 
+      figure(Hfig_WwiomeR_aves)
       xlabel('_{10}log ultimate weight, W_w^\infty, g')
-      ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
+      ylabel('_{10}log spec neonate mass prod \omega_R, -')
       title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'Wwi_NiWbi_aves.png')
+      %saveas(gcf,'Wwi_omeRi_aves.png')
 
       Hfig_WwiNi_moll = shstat([Ww_i, N_i.*Ww_b./Ww_i], legend_moll); 
-      figure(Hfig_WwiNi_moll)
+      figure(Hfig_WwiomeR_moll)
       xlabel('_{10}log ultimate weight, W_w^\infty, g')
-      ylabel('_{10}log spec neonate mass prod, N_\infty W_w^b/ W_w^\infty, -')
+      ylabel('_{10}log spec neonate mass prod \omega_R, -')
       title(['\it mollusca @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
-      %saveas(gcf,'Wwi_NiWbi_moll.png')
+      %saveas(gcf,'Wwi_omeR_moll.png')
       
-    case 7
+    case 8
       data = read_allStat({'kap','s_s'});
       kap = data(:,1); s_s = data(:,2); 
       kap_RA = 1 - kap - s_s./kap.^2; 
@@ -502,7 +549,136 @@ for i=1:length(fig)
       xlabel('_{10}log max assimilation p_A^\infty, J/d') 
       ylabel('survivor function')
       %saveas(gca,'pAi.png')
+      
+   case 9 % Fig ?: kapRA_am
+       
+     shstat_options('default');
 
+     data = read_allStat('s_s','kap','a_m','c_T');
+     s_s = data(:,1); kap = data(:,2); kap_RA = 1 - kap - s_s./kap.^2; aT_m  = data(:,3) .* data(:,4);
+
+     % lophotrochozoa
+     Hfig_kapRA_am_moll = shstat([kap_RA,aT_m], legend_moll);
+     figure(Hfig_kapRA_am_moll)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it lophotrochozoa @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_moll.png')
+
+     % custacea
+     Hfig_kapRA_am_crus = shstat([kap_RA,aT_m], legend_crus);
+     figure(Hfig_kapRA_am_crus)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it crustacea @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_crus.png')
+     
+     % chondrichthyes
+     Hfig_kapRA_am_chon = shstat([kap_RA,aT_m], legend_chon);
+     figure(Hfig_kapRA_am_chon)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it chondrichthyes @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_chon.png')
+
+     % actinopterygii
+     Hfig_kapRA_am_acti = shstat([kap_RA,aT_m], legend_acti);
+     figure(Hfig_kapRA_am_acti)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it actinopterygii @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_acti.png')
+
+     % amphibia
+     Hfig_kapRA_am_amph = shstat([kap_RA,aT_m], legend_amph);
+     figure(Hfig_kapRA_am_amph)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it amphibia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_amph.png')
+
+     % reptilia
+     Hfig_kapRA_am_rept = shstat([kap_RA,aT_m], legend_rept);
+     figure(Hfig_kapRA_am_rept)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it reptilia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_rept.png')
+
+     % aves
+     Hfig_kapRA_am_aves = shstat([kap_RA,aT_m], legend_aves);
+     figure(Hfig_kapRA_am_aves)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it aves @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_aves.png')
+
+     % mammalia
+     Hfig_kapRA_am_mamm = shstat([kap_RA,aT_m], legend_mamm);
+     figure(Hfig_kapRA_am_mamm)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it mammalia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_mamm.png')
+
+     % RSED
+     Hfig_kapRA_am_RSED = shstat([kap_RA,aT_m], legend_RSED);
+     figure(Hfig_kapRA_am_RSED)
+     hold on
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log life span, a_m, d')
+     title(['\it RSED @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_am_RSED.png')
+     
+   case 10
+     label = {'loph';'crus';'chon';'acti';'amph';'rept';'aves';'mamm'};
+     taxa = legend_sHbp(:,2);
+     
+     for i = 1:8
+     lWi = log10(read_stat(taxa{i},'Ww_i')); lWp = log10(read_stat(taxa{i},'Ww_p')); lWb = log10(read_stat(taxa{i},'Ww_b')); 
+     figure; hold on
+     plot(lWi,lWp,'.r', 'Markersize',8); plot(lWi,lWb,'.b', 'Markersize',8)
+     Xrange = [min(lWi)-0.2,max(lWi)+0.2];
+     [~, slope_b, Yrange] = get_axis([lWi,lWb], Xrange); plot(Xrange,Yrange,'-b', 'LineWidth',2)
+     [~, slope_p, Yrange] = get_axis([lWi,lWp], Xrange); plot(Xrange,Yrange,'-r', 'LineWidth',2)
+     xlabel('_{10}log ultimate weight W_w^\infty, g')
+     ylabel('_{10}log weight at birth, puberty, g')
+     text(Xrange(1)+0.2,Yrange(2), num2str(slope_p), 'Color','r'); text(Xrange(1)+0.2,Yrange(2)-0.9, num2str(slope_b), 'Color','b');
+     title(['\it ',taxa{i},' @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     xlim(Xrange)
+     %ylim(Yrange)
+     %saveas(gca,['Wwi_Wwp_',label(i),'.png')
+     end
+     
+     % scaling exponents for Wwb, Wwp
+     scale_bp = { ...
+     'loph' 0.954 0.795 
+     'crus' 0.366 0.928
+     'chon' 0.955 0.963
+     'acti' 0.044 0.988
+     'amph' 0.229 1.002
+     'rept' 0.578 1.014
+     'aves' 0.782 0.985
+     'mamm' 0.984 1.034};
+     
 end
 end
 
