@@ -1,6 +1,6 @@
 function Kooy2026_SI(fig)
 % Supporting Information for Kooy2026
-% Title: The ecofysiology of food chains
+% Title: The ecophysiology of food chains
 % Authors: Kooijman
 % Journal: Ecol. Mod
 % DOI: 

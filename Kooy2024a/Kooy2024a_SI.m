@@ -3,7 +3,7 @@ function Kooy2024a\_SI(fig)
 % Title: The comparative energetics of the branchiopods
 % Authors: Kooijman
 % Journal: Ecological Modelling
-% DOI: 
+% DOI: 10.1016/j.ecolmodel.2024.110721
 % Date: 2024/04/04
 % 
 % Matlab scripts to generate the figures in the publication

@@ -1,6 +1,6 @@
 function Kooy2026a_SI(fig)
 % Supporting Information for Kooy2026a
-% Title: DEB theory's equation of life
+% Title: DEB theory's tetrahedron of life links
 % Authors: Kooijman
 % Journal: Ecol. Mod
 % DOI: 
@@ -678,7 +678,50 @@ for i=1:length(fig)
      'rept' 0.578 1.014
      'aves' 0.782 0.985
      'mamm' 0.984 1.034};
+ 
+   case 11
+       
+     legend_muri = {... % Muridae
+       {'o', 8, 3, [0 0 1], [0 0 0]}, 'Deomyinae'; ...
+       {'o', 8, 3, [0 0 1], [1 1 1]}, 'Gerbillinae'; ...
+       {'o', 8, 3, [1 0 0], [0 0 1]}, 'Murinae'; ...
+     };
+
+     legend_myom = {... % Muroidea
+       {'o', 8, 3, [0 0 1], [0 0 0]}, 'Cricetidae'; ...
+       {'o', 8, 3, [0 0 1], [1 1 1]}, 'Muridae'; ...
+       {'o', 8, 3, [1 0 0], [0 0 0]}, 'Nesomyidae'; ...
+       {'o', 8, 3, [1 0 0], [1 1 1]}, 'Spalacidae'; ...
+     };
+
+     legend_rode = {... % Rodentia
+       {'o', 8, 3, [0 0 1], [0 0 0]}, 'Anomaluromorpha'; ...
+       {'o', 8, 3, [0 0 1], [1 1 1]}, 'Hystricomorpha'; ...
+       {'o', 8, 3, [1 0 0], [0 0 0]}, 'Sciuromorpha'; ...
+       {'o', 8, 3, [1 0 0], [0 1 0]}, 'Castorimorpha'; ...
+       {'o', 8, 3, [1 0 0], [1 1 1]}, 'Myomorpha'; ...
+     };
+
+     data = read_allStat('s_Hbp','kap','s_s','t_g','N_i','Ww_b','Ww_i');
+     s_Hbp = data(:,1); kap = data(:,2); s_s = data(:,3); kap_RA = 1 - kap - s_s./kap.^2; 
+     ome_R = data(:,5) .* data(:,6) ./ data(:,7);
      
+     Hfig_kapRA_sHbp_rode = shstat([kap_RA,s_Hbp], legend_rode);
+     figure(Hfig_kapRA_sHbp_rode)
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log preciciality index s_H^{bp}, -')
+     title(['\it Rodentia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_sHbp_rode.png')
+
+     Hfig_kapRA_omeR_rode = shstat([kap_RA,ome_R], legend_rode);
+     figure(Hfig_kapRA_omeR_rode)
+     xlabel('_{10}log frac of assim to reprod \kappa_R^A, -')
+     ylabel('_{10}log spec cum neonate mass prod \omega_R, -')
+     title(['\it Rodentia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kapRA_omeR_rode.png')
+               
 end
 end
 

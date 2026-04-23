@@ -1,5 +1,5 @@
 function KooyLika2014a_SI(fig)
-% Supporting Information for KooyLika2014
+% Supporting Information for KooyLika2014a
 % Title: Comparative energetics of the 5 fish classes on the basis of dynamic energy budgets.
 % Authors: Kooijman, Lika
 % Journal: J. Sea Res. 94 (2014): 19-28

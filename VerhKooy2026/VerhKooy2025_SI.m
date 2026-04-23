@@ -3,7 +3,7 @@ function VerhKooy2025_SI(fig)
 % Title: The aerobic scope links clearly to the supply-demand spectrum
 % Authors: Verhille, Kooijman
 % Journal: Ecol. Mod
-% DOI: 
+% DOI: 10.1016/j.ecolmodel.2026.111479
 % Date: 2025/12/10
 % 
 % Matlab scripts to generate the figures in the publication

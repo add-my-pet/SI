@@ -1,10 +1,10 @@
-function Kooy2025_SI(figi)
-% Supporting Information for Kooy2025
-% Title:  The syntrophic nature of life's evolution
+function Kooy2014_SI(figi)
+% Supporting Information for Kooy2014
+% Title:  Metabolic acceleration in animal ontogeny: an evolutionary perspective
 % Authors: Kooijman
-% Journal: to be determined
-% DOI: 
-% Date: 2025/01/27
+% Journal: J. Sea Res.
+% DOI: 10.1016/j.seares.2014.06.005
+% Date: 2014
 % 
 % Matlab scripts to generate the figures in the publication
 %
