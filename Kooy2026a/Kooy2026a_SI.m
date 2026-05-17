@@ -721,6 +721,18 @@ for i=1:length(fig)
      title(['\it Rodentia @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      set(gca, 'FontSize', 15, 'Box', 'on')
      %saveas(gca,'kapRA_omeR_rode.png')
+     
+   case 12 % kap_kapRA
+     data = read_allStat('kap','s_s'); 
+     kap_1 = 1 - data(:,1); kap_RA = kap_1 - data(:,2)./data(:,1);
+     
+     Hfig = shstat([kap_1,kap_RA], legend_vert);
+     figure(Hfig)
+     xlabel('_{10}log 1 - \kappa, -')
+     ylabel('_{10}log \kappa_R^A, -')
+     title(['\it vert @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
+     set(gca, 'FontSize', 15, 'Box', 'on')
+     %saveas(gca,'kap_kapRA_vert.png')
                
 end
 end
