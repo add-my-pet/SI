@@ -60,7 +60,7 @@ for i=1:length(fig)
 
      llegend = {...
        {'-', 2, [0 0 0]}, 'Hexapoda'; ....
-       %{'-', 2, [0 0 1]}, 'Passeriformes'; ....
+       %{'-', 2, [0 0 1]}, 'Passeriformes'; .... % this includes seed eaters
        {'-', 2, [1 0 0]}, 'Hieraves'; ....
      };
      shllegend(llegend,[],[0.9 0.2]);
@@ -252,18 +252,35 @@ for i=1:length(fig)
      %shllegend(llegend,[],[0.9 0.2]);
      %saveas(gcf,'legend_CrusClupSela.png')
 
-     vars = read_allStat({'kap_X','L_b','L_j','L_i', 'r_j','r_B','a_b','a_m','E_m','mu_V','M_V','N_i','p_Am','c_T'}); model = read_allStat('model');
-     kap_X=vars(:,1); L_b=vars(:,2); L_j=vars(:,3); L_i=vars(:,4); r_j=vars(:,5)./vars(:,14); r_B=vars(:,6)./vars(:,14); 
-     a_b=vars(:,7); a_m=vars(:,8); E_m=vars(:,9); mu_V=vars(:,10); M_V=vars(:,11); N_i=vars(:,12); p_Am=vars(:,13); 
+     vars = read_allStat({'kap_X','L_b','L_j','L_p','L_i', 'r_j','r_B','a_b','a_j','a_p','a_m','E_m','mu_V','M_V','N_i','p_Am','c_T'}); 
+     model = read_allStat('model'); c_T=vars(:,17); 
+     kap_X=vars(:,1); L_b=vars(:,2); L_j=vars(:,3); L_p=vars(:,4); L_i=vars(:,5); r_j=vars(:,6)./c_T; r_B=vars(:,7)./c_T; 
+     a_b=vars(:,8).*c_T; a_j=vars(:,9).*c_T; a_p=vars(:,10).*c_T; a_m=vars(:,11).*c_T; 
+     E_m=vars(:,12); mu_V=vars(:,13); M_V=vars(:,14); N_i=vars(:,15); p_Am=vars(:,16); 
+     t_j = a_j - a_b; t_p = a_p - a_b; t_m = a_m - a_b;
      n=size(vars,1); p_X=NaN(n,1); % p_Am/kap_X * int_0^am L^2(t) dt
      for j=1:n
        switch model{j}
-         case 'abj'
-           t_j = 3*log(L_j(j)/L_b(j))/r_j(j); s_M = L_j(j)/L_b(j);
-           [~, ~, L_3] = tL123_abj([L_b(j),L_j(j),L_i(j),r_j(j),r_B(j)],0,t_j); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
-           [~, L_2, ~] = tL123_abj([L_j(j),L_j(j),L_i(j),r_j(j),r_B(j)],t_j,a_m(j)-t_j-a_b(j)); p_X(j) = p_X(j)+p_Am(j)*s_M*L_2/kap_X(j);
          case {'std','stx','stf'}
-           [~, L_2, ~] = tL123_std([L_b(j),L_i(j),r_B(j)],0,a_m(j)); p_X(j) = p_Am(j)*L_2/kap_X(j);
+           [~, L_2, ~] = tL123_std([L_b(j),L_i(j),r_B(j)],0,t_m(j)); p_X(j) = p_Am(j)*L_2/kap_X(j);
+         case 'sbp'
+           [~, L_2, ~] = tL123_std([L_b(j),L_p(j),L_i(j),r_B(j)],0,t_m(j)); p_X(j) = p_Am(j)*L_2/kap_X(j);
+         case 'abj'
+           s_M = L_j(j)/L_b(j); 
+           [~, ~, L_3] = tL123_abj([L_b(j),L_j(j),L_i(j),r_j(j),r_B(j),t_j(j)],0,t_j(j)); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
+           [~, L_2, ~] = tL123_abj([L_b(j),L_j(j),L_i(j),r_j(j),r_B(j),t_j(j)],t_j(j),t_m(j)); p_X(j) = p_X(j)+p_Am(j)*s_M*L_2/kap_X(j);
+         case 'abp'
+           [~, ~, L_3] = tL123_abp([L_b(j),L_p(j),r_j(j),t_p(j)],0,t_m(j)); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
+         case 'hep'
+           s_M = L_p(j)/L_b(j); 
+           [~, ~, L_3] = tL123_hep([L_b(j),L_p(j),L_i(j),r_j(j),r_B(j),t_p(j)],0,t_p(j)); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
+           [~, L_2, ~] = tL123_hep([L_b(j),L_p(j),L_i(j),r_j(j),r_B(j),t_p(j)],t_p(j),t_j(j)); p_X(j) = p_X(j)+p_Am(j)*s_M*L_2/kap_X(j);
+         case 'hax'
+           s_M = L_p(j)/L_b(j); 
+           [~, ~, L_3] = tL123_hax([L_b(j),L_p(j),L_i(j),r_j(j),r_B(j),t_p(j)],0,t_p(j)); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
+           [~, L_2, ~] = tL123_hax([L_b(j),L_p(j),L_i(j),r_j(j),r_B(j),t_p(j)],t_p(j),t_j(j)); p_X(j) = p_X(j)+p_Am(j)*s_M*L_2/kap_X(j);
+         case 'hex'
+           [~, ~, L_3] = tL123_hex([L_b(j),r_j(j)],0,t_j(j)); p_X(j) = p_Am(j)*L_3/L_b(j)/kap_X(j);
        end
      end
      s_RX = min(1,max(0,(L_b.^3.*(M_V.*mu_V+E_m).*N_i)./p_X)); % overall production efficiency
@@ -277,15 +294,15 @@ for i=1:length(fig)
      xlabel('overall production efficiency, s_R^X')
      title(['\it aquatic chain @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      set(gca, 'FontSize', 15, 'Box', 'on')
-     ylim([0,1]);
+     xlim([0,0.5]);
      saveas(gcf,'sRX_CrusClupSela.png')
 
      llegend = {...
        {'-', 2, [0 0 0]}, 'Hexapoda'; ....
-       %{'-', 2, [0 0 1]}, 'Passeriformes'; ....
+       %{'-', 2, [0 0 1]}, 'Passeriformes'; .... % this includes seed eaters
        {'-', 2, [1 0 0]}, 'Hieraves'; ....
      };
-     shllegend(llegend,[],[0.9 0.2]);
+     %shllegend(llegend,[],[0.9 0.2]);
      %saveas(gcf,'legend_HexaPassHier.png'); cropWhite('legend_HexaPassHier')
 
      [taxa, sel_food] = select_eco('food', {'Ci'});
@@ -299,14 +316,14 @@ for i=1:length(fig)
      xlabel('overall production efficiency, s_R^X')
      title(['\it terrestrial chain @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      set(gca, 'FontSize', 15, 'Box', 'on')
-     ylim([0,1]);
+     xlim([0,0.7]);
      saveas(gcf,'sRX_HexaPassHier.png'); 
      
      llegend_rodent = {...
        {'-', 2, [0 0 1]}, 'Rodentia'; ....
        {'-', 2, [1 0 0]}, 'Carnivora'; ....
      };
-     get_n(llegend_rodent(:,2));
+     %get_n(llegend_rodent(:,2));
      shllegend(llegend_rodent,[],[0.9 0.2]);
      %saveas(gcf,'legend_rodent.png'); cropWhite('legend_rodent')
 
