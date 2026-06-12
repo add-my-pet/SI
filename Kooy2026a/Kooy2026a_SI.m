@@ -67,7 +67,7 @@ end
         {'o', 8, 3, [0 0 1], [1 1 1]}, 'Elopocephalai'; 
         {'o', 8, 3, [1 0 0], [0 0 0]}, 'Osteoglossocephala'; 
         {'o', 8, 3, [1 0 0], [1 0 0]}, 'Otomorpha'; 
-        {'o', 8, 3, [1 0 0], [0 0 0]}, 'Euteleosteomorpha'; 
+        {'o', 8, 3, [1 0 0], [1 1 1]}, 'Euteleosteomorpha'; 
       };
 
       legend_amph = {...
@@ -259,7 +259,7 @@ for i=1:length(fig)
      %saveas(gcf,'kapRA_omeR_chon.png')
        
       shlegend(legend_acti, [0.7 0.2], [0.8 0.2]);
-      %saveas(gca,'legend_acti.png'); cropWhite('legend_acti');
+     %saveas(gca,'legend_acti.png'); cropWhite('legend_acti');
       Hfig_kapRAomeR_acti = shstat([kap_RA, ome_R], legend_acti); 
       figure(Hfig_kapRAomeR_acti); cropWhite('legend_acti');
       plot([-4;0],[-3.8;0.2], 'k', 'Linewidth',2) % slope 1
@@ -733,7 +733,7 @@ for i=1:length(fig)
      title(['\it vert @ ',datestr(datenum(date),'yyyy/mm/dd')], 'FontSize',15, 'FontWeight','normal'); 
      set(gca, 'FontSize', 15, 'Box', 'on')
      %saveas(gca,'kap_kapRA_vert.png')
-               
+                    
 end
 end
 
