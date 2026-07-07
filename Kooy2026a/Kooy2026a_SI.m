@@ -152,7 +152,7 @@ for i=1:length(fig)
       kapRA = (0:0.1:0.9)'; 
       for j=1:10
         ss = kap.^2 .*(1 - kapRA(j) - kap); if j==1; lw=2; else lw=1; end
-        plot(ss, kap, 'color', color_lava(kapRA(j)), 'Linewidth', lw)
+        plot(ss, kap, 'color',color_lava(kapRA(j)), 'Linewidth', lw)
       end
       % kap(s_s) for which kapRA is max 
       ss = linspace(1e-8,4/27,500)'; kap = (2*ss).^(1/3); kapRA = 1 - kap - ss./kap.^2; 
