@@ -1,6 +1,6 @@
 function Kooy2026a_SI(fig)
 % Supporting Information for Kooy2026a
-% Title: DEB theory's tetrahedron of life links
+% Title: DEB theory's tetrahedron of life links feeding and reproduction to trophic position of species
 % Authors: Kooijman
 % Journal: Ecol. Mod
 % DOI: 
