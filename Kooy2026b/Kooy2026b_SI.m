@@ -2,9 +2,9 @@ function Kooy2026b_SI(fig)
 % Supporting Information for Kooy2026b
 % Title: Evolution favours over-exploitation avoidance, not fitness maximization
 % Authors: Kooijman
-% Journal: Biol. Rev.
+% Journal: Theor. Ecol.
 % DOI: 
-% Date: 2026/07/27
+% Date: 2026/08/17
 % 
 % Matlab scripts to generate the figures in the publication
 %

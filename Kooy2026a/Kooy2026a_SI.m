@@ -3,7 +3,7 @@ function Kooy2026a_SI(fig)
 % Title: DEB theory's tetrahedron of life links feeding and reproduction to trophic position of species
 % Authors: Kooijman
 % Journal: Ecol. Mod
-% DOI: 
+% DOI: 10.1016/j.ecolmodel.2026.111771
 % Date: 2026/02/24
 % 
 % Matlab scripts to generate the figures in the publication
@@ -177,8 +177,6 @@ for i=1:length(fig)
       for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
       kap = (2*ss).^(1/3)/2.2; kapRA = 1-kap-ss./kap.^2;
       for j=0:10; sel=kapRA>j/10; plot(ss(sel), kap(sel), 'color',color_lava(j/10), 'Linewidth',0.1); end
-      text(0.14, -0.06, '4/27', 'FontSize',15)
-      text(0.15,  2/3+.02, '2/3', 'FontSize',15)
       text(0.148, 0.621, '\kappa_R^A=0',   'FontSize',8, 'color',color_lava(0))
       text(0.109, 0.566, '\kappa_R^A=0.1', 'FontSize',8, 'color',color_lava(0.1))
       text(0.078, 0.512, '\kappa_R^A=0.2', 'FontSize',8, 'color',color_lava(0.2))

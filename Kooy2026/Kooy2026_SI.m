@@ -3,7 +3,7 @@ function Kooy2026_SI(fig)
 % Title: The ecophysiology of food chains
 % Authors: Kooijman
 % Journal: Ecol. Mod
-% DOI: 
+% DOI: 10.1016/j.ecolmodel.2026.111691
 % Date: 2026/01/07
 % 
 % Matlab scripts to generate the figures in the publication
