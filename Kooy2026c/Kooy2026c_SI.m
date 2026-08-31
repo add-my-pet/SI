@@ -143,31 +143,39 @@ function Kooy2026c_SI(fig)
 
     case 6 % pyramid 
       % pars
-      p.kap = [0.93 0.8 0.7]; p.kapR = 0.95; p.g = [10 15 20]; p.kJ = 0.002; p.kM = 0.006; p.k = p.kJ/p.kM; p.v = 0.02; 
-      p.hp = 2e-3; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.01]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
-      p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1;
-     
+%       p.kap = [0.90 0.8 0.75]; p.kapR = 0.95; p.g = [10 15 20]; p.kJ = 0.001; p.kM = 0.006; p.k = p.kJ/p.kM; p.v = 0.02; 
+%       p.hp = 2e-3; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.05]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
+%       p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1; p.ome = 3;
+
+      p.kap = [0.93 0.8 0.7]; p.kapR = 0.95; p.g = .3*[20 15 10]; p.kJ = 0.002; p.kM = 0.003; p.k = p.kJ/p.kM; p.v = 0.02; 
+      p.hp = [2e-3 1e-3 0.5e-3]; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.01]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
+      p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1; p.ome = 3;
+
+%       p.kap = [0.93 0.8 0.7]; p.kapR = 0.95; p.g = 5; p.kJ = 0.002; p.kM = 0.003; p.k = p.kJ/p.kM; p.v = 0.02; 
+%       p.hp = [2e-3 1e-3 0.5e-3]; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.01]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
+%       p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1; p.ome = 3;
+
       [f, norm, info] = pyramid(p); if any(~info); fprintf('warning from pyramid: some f''s did not converge\n'); end
       K = p.X*(1-f)./f; % mMol, half sat coeff
-      prt_tab({(1:3)',f, norm, info,K},{'level','f','norm','info','K, mMol'},'pyramid')
-
+      prt_tab({(1:3)', f, norm, info, K},{'level','f','norm','info','K, mMol'},'pyramid')
+      
+      [t, S] = sad(f,p);
     end
   end
 end
 
 function [f, fval, info] = pyramid(par)
-  n = length(par.kap); % -, length of the pyramid 
+  n = length(par.ss); % -, length of the pyramid 
   f = NaN(n,1); fval = NaN(n,1); info = false(n,1); opt = []; opt.tol_fun = 1e-6; % opt.tol_simplex = 1e-10; 
   
   for i=1:n % scan levels
-    p = par; p.kap=p.kap(i); p.g=p.g(i); p.Lm=p.Lm(i); % overwrite pars: reduce vectors to scalars
-    p.ss=p.ss(i); p.vHb=p.vHb(i); p.vHp=p.vHp(i); 
+    % overwrite par to reduce vectors to scalars
+    p = par;flds=fields(p);for j=1:length(flds);if length(p.(flds{j}))>1;p.(flds{j})=p.(flds{j})(i);end;end
     
     % initialize range for f(i)
     f_0 = (p.ss/p.kap^2/(1-p.kap))^(1/3); % lower boundary for f(i)
     f_1 = 1;         % upper boundary for f(i)
      
     [f(i), fval(i), info(i)] = fsolve('pyr', (f_0+f_1)/2, opt, p);
-
   end
 end
