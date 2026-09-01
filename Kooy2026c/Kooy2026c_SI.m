@@ -90,7 +90,7 @@ function Kooy2026c_SI(fig)
       figure
       hold on
       plot(ss(sel),kapRA(sel), '.b', 'MarkerSize',4); 
-      plot(ss(~sel),kapRA(~sel), '.r', 'MarkerSize',6); 
+      plot(ss(~sel),kapRA(~sel), '.r', 'MarkerSize',8); 
       xlim([0 4/27]); 
       xlabel('supply stress, s_s')
       ylabel('frac assim to reprod, \kappa_R^A')
@@ -114,7 +114,7 @@ function Kooy2026c_SI(fig)
 
       %saveas(gca,'ss_Wwi.png')
       
-    case 5 % f_X
+    case 5 % X_f
       
       figure
       hold on
@@ -151,15 +151,12 @@ function Kooy2026c_SI(fig)
       p.hp = [2e-3 1e-3 0.5e-3]; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.01]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
       p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1; p.ome = 3;
 
-%       p.kap = [0.93 0.8 0.7]; p.kapR = 0.95; p.g = 5; p.kJ = 0.002; p.kM = 0.003; p.k = p.kJ/p.kM; p.v = 0.02; 
-%       p.hp = [2e-3 1e-3 0.5e-3]; p.hW = 2e-4; p.ss = [0.001 0.05 0.1]; p.vHb = [0.002 0.005 0.01]; p.vHp = p.ss./(p.kap.^2.*(1-p.kap)*p.k);
-%       p.Lm = p.v./p.g/p.kM; p.LT = 0; p.X = 1; p.ome = 3;
-
       [f, norm, info] = pyramid(p); if any(~info); fprintf('warning from pyramid: some f''s did not converge\n'); end
       K = p.X*(1-f)./f; % mMol, half sat coeff
-      prt_tab({(1:3)', f, norm, info, K},{'level','f','norm','info','K, mMol'},'pyramid')
+      aW = sad(f,p); % mean age, weight
       
-      [t, S] = sad(f,p);
+      prt_tab({(1:3)', f, norm, info, K, aW},{'level','f','norm','info','K, mMol','age, d','weight, g'},'pyramid')
+      
     end
   end
 end
